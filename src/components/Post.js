@@ -13,11 +13,11 @@ const Post = ({ title, author, path, date, body, fluid }) => {
         <CardTitle>
           <Link to={path}>{title}</Link>
         </CardTitle>
-        <CardSubtitle>
-          <span className="text-info">{date}</span> by{" "}
+        <CardSubtitle className="mt-3">
+          <span className="text-info">{date}</span>{" "}|{" "}
           <span className="text-info">{author}</span>
         </CardSubtitle>
-        <CardText>{body}</CardText>
+        <CardText className="mt-2">{body}</CardText>
         <Link to={path} className="btn btn-outline-primary float-right">
           Read More
         </Link>
