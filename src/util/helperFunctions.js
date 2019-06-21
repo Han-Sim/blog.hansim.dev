@@ -9,4 +9,6 @@ const slugify = function(text) {
     .replace(/-+$/, "") // Trim - from end of text
 }
 
-module.exports = { slugify } //node syntax
+module.exports = { slugify } 
+//Node.js syntax export (not ES6)
+// this module is to be used in gatsby-node.js, because gatsby-node.js is run by Node as well.

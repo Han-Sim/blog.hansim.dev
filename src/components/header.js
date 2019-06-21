@@ -32,7 +32,7 @@ class Header extends React.Component {
   }
   render() {
     return (
-      <Navbar ixed="top" light expand="sm">
+      <Navbar fixed="top" light expand="sm">
         <div className="container">
           <NavbarBrand href="/">
             <img src={logo} width="32px" alt={this.props.siteTitle} />
