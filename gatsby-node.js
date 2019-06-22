@@ -17,7 +17,9 @@ exports.onCreateNode = ({ node, actions }) => {
   }
 }
 
-exports.createPage = ({ actions, graphql }) => {
+//create a post page with a single-post.js component as a template
+// this will be 'component' and we pass 'context' to this template.
+exports.createPages = ({ actions, graphql }) => {
     const { createPage } = actions
     const singlePostTemplate = path.resolve("src/templates/single-post.js")
   
@@ -27,8 +29,8 @@ exports.createPage = ({ actions, graphql }) => {
           edges {
             node {
               frontmatter {
-                author
-                tag
+                author 
+                tags
               }
               fields {
                 slug
