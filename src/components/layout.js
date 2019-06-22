@@ -14,6 +14,7 @@ import Header from "./header"
 import Footer from "./footer"
 import "../styles/index.scss"
 import Sidebar from "./Sidebar"
+import IndexQuery from "../pages/index";
 
 const Layout = ({ children, pageTitle }) => {
   //props.pageTitle but destructured

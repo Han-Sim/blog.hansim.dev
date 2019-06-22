@@ -3,6 +3,7 @@ import { Badge, Card, CardTitle, CardBody, Form, FormGroup, Input } from "reacts
 import { Link, graphql, StaticQuery } from "gatsby"
 import Img from "gatsby-image"
 import { slugify } from "../util/helperFunctions"
+import Tags from "./Tags";
 
 const Sidebar = () => (
   <div>
@@ -46,27 +47,7 @@ const Sidebar = () => (
         ></StaticQuery>
       </CardBody>
     </Card>
-    <Card>
-      <CardBody>
-        <CardTitle className="text-center text-uppercase mb-3">
-          Tags
-        </CardTitle>
-        <StaticQuery
-          query={SidebarQuery}
-          render={data => (
-            <div>
-              <ul className="list-unstyled">
-                {data.allMarkdownRemark.edges.map(({ node }) => (
-                  <Link to={``}>
-                  <Badge color="primary">{node.frontmatter.tag}</Badge>
-                  </Link>
-                ))}
-              </ul>
-            </div>
-          )}
-        ></StaticQuery>
-      </CardBody>
-    </Card>
+    <Tags />
   </div>
 )
 
