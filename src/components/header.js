@@ -41,10 +41,7 @@ class Header extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/tags">Tags</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="/about">About</NavLink>
+                <NavLink href="https://hansim.dev" target="_blank">about</NavLink>
               </NavItem>
             </Nav>
           </Collapse>
