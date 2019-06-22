@@ -9,11 +9,8 @@ import Post from "../components/Post"
 import Sidebar from "../components/Sidebar"
 
 const IndexPage = () => (
-  <Layout>
+  <Layout pageTitle="Temporary Blog Header :/">
     <SEO title="Home" />
-    <h1>Main Page</h1>
-    <Row>
-      <Col md="8">
         <StaticQuery
           query={IndexQuery}
           render={data => {
@@ -35,11 +32,6 @@ const IndexPage = () => (
             )
           }}
         />
-      </Col>
-      <Col md="4">
-        <Sidebar />
-      </Col>
-    </Row>
   </Layout>
 )
 
