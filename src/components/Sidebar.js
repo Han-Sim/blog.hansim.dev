@@ -3,7 +3,7 @@ import { Badge, Card, CardTitle, CardBody, Form, FormGroup, Input } from "reacts
 import { Link, graphql, StaticQuery } from "gatsby"
 import Img from "gatsby-image"
 import { slugify } from "../util/helperFunctions"
-import Tags from "./Tags";
+import Tags from "./tags";
 
 const Sidebar = () => (
   <div>

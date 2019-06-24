@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import Post from "../components/post"
-import Page from "../components/Page"
+import Page from "../components/page"
 
 //declare a functional component
 const PostList = (props) => {

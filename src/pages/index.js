@@ -5,9 +5,9 @@ import { Row, Col } from "reactstrap"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Post from "../components/Post"
-import Sidebar from "../components/Sidebar"
-import Page from "../components/Page"
+import Post from "../components/post"
+import Sidebar from "../components/sidebar"
+import Page from "../components/page"
 
 const IndexPage = () => {
   const postPerPage = 2
