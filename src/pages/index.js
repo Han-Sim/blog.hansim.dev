@@ -7,33 +7,44 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Post from "../components/Post"
 import Sidebar from "../components/Sidebar"
+import Page from "../components/Page"
 
-const IndexPage = () => (
-  <Layout pageTitle="Temporary Blog Header :/">
-    <SEO title="Home" />
-    <StaticQuery
-      query={IndexQuery}
-      render={data => {
-        return (
-          <div>
-            {data.allMarkdownRemark.edges.map(({ node }) => (
-              <Post
-                key={node.id}
-                title={node.frontmatter.title}
-                author={node.frontmatter.author}
-                slug={node.fields.slug}
-                date={node.frontmatter.date}
-                body={node.excerpt}
-                fluid={node.frontmatter.image.childImageSharp.fluid}
-                tags={node.frontmatter.tags}
-              />
-            ))}
-          </div>
-        )
-      }}
-    />
-  </Layout>
-)
+const IndexPage = () => {
+  const postPerPage = 2
+  let numOfPages
+
+  return (
+    <Layout pageTitle="Temporary Blog Header :/">
+      <SEO title="Home" />
+      <StaticQuery
+        query={IndexQuery}
+        render={data => {
+          numOfPages = Math.ceil(
+            data.allMarkdownRemark.totalCount / postPerPage
+          )
+          return (
+            <div>
+              {data.allMarkdownRemark.edges.map(({ node }) => (
+                <Post
+                  key={node.id}
+                  title={node.frontmatter.title}
+                  author={node.frontmatter.author}
+                  slug={node.fields.slug}
+                  date={node.frontmatter.date}
+                  body={node.excerpt}
+                  fluid={node.frontmatter.image.childImageSharp.fluid}
+                  tags={node.frontmatter.tags}
+                />
+              ))}
+              <Page currentPage={1} numOfPages={numOfPages} />
+              {/* index page should be the first page */}
+            </div>
+          )
+        }}
+      />
+    </Layout>
+  )
+}
 
 const IndexQuery = graphql`
   query {
@@ -41,6 +52,7 @@ const IndexQuery = graphql`
       sort: { fields: [frontmatter___date], order: DESC }
       limit: 2
     ) {
+      totalCount
       edges {
         node {
           id
