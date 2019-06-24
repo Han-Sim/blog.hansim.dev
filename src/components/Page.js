@@ -28,7 +28,7 @@ const Page = ({ currentPage, numOfPages }) => {
         currentPage === index + 1 ? (
           <PaginationItem active key={`page-number${index + 1}`}>
             <PaginationLink
-              href={`/${index === 0 ? "" : "/page/" + (index + 1)}`}
+              href={`/${index === 0 ? "" : "page/" + (index + 1)}`}
             >
               {index + 1}
             </PaginationLink>
@@ -36,7 +36,7 @@ const Page = ({ currentPage, numOfPages }) => {
         ) : (
           <PaginationItem key={`page-number${index + 1}`}>
             <PaginationLink
-              href={`/${index === 0 ? "" : "/page/" + (index + 1)}`}
+              href={`/${index === 0 ? "" : "page/" + (index + 1)}`}
             >
               {index + 1}
             </PaginationLink>
