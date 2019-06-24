@@ -30,13 +30,10 @@ const Tags = () => {
   `)
   const edges = data.allMarkdownRemark.edges
 
-  console.log(edges)
-
   //gather tags from each nodes
   let tags = []
   _.each(edges, edge => {
     if (_.get(edge, "node.frontmatter.tags")) {
-      console.log(edge.node.frontmatter.tags)
       tags = tags.concat(edge.node.frontmatter.tags)
     }
   })
@@ -51,9 +48,6 @@ const Tags = () => {
   })
 
   tags = _.uniq(tags) //remove duplicate tags
-
-  console.log(tags)
-  console.log(tagPostCount)
 
   return (
     <Card>

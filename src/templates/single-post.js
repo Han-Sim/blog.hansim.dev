@@ -1,6 +1,5 @@
 import React from "react"
 import Layout from "../components/layout"
-import Sidebar from "../components/sidebar"
 import SEO from "../components/seo"
 import { graphql, Link } from "gatsby"
 import { Row, Col, Badge, Card, CardBody, CardSubtitle } from "reactstrap"
@@ -8,6 +7,7 @@ import Img from "gatsby-image"
 import { slugify } from "../util/helperFunctions"
 import { DiscussionEmbed} from "disqus-react"
 
+/* import icons */
 import facebook from "../images/facebook.png"
 import twitter from "../images/twitter.png"
 import linkedin from "../images/linkedin.png"
@@ -95,7 +95,7 @@ const SinglePost = ({ data, pageContext }) => {
 }
 
 export const postQuery = graphql`
-  query blogPostBySlug($slug: String!) {
+  query($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
       html

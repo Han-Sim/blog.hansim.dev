@@ -1,3 +1,4 @@
+//slugify text to create user friendly url for tags
 const slugify = function(text) {
   return text
     .toString()
