@@ -13,7 +13,6 @@ This is my personal blog to post some useful codes snippets, programming concept
 
 This is a fully featured blog which supports these features.
 
-- Mutiple attributors
 - Markdown Language
 - Email subscribing
 - Recent Post Sections
