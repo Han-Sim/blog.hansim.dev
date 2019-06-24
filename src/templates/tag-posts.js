@@ -5,12 +5,14 @@ import Layout from "../components/layout"
 import Post from "../components/Post"
 
 const TagPosts = ({ data, pageContext }) => {
+  // { data } <----- props.data [destructured]
+
   const { tag } = pageContext
   const { totalCount } = data.allMarkdownRemark
-  
-  console.log(tag);
-  console.log(totalCount);
-  
+
+  console.log(tag)
+  console.log(totalCount)
+
   const pageTitle = `${totalCount} post${
     totalCount === 1 ? "" : "s"
   } tagged with "${tag}"`

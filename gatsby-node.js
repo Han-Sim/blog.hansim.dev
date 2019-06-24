@@ -22,7 +22,8 @@ exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
   const templates = {
     singlePost: path.resolve("src/templates/single-post.js"),
-    tagPosts: path.resolve("src/templates/tag-posts.js")
+    tagPosts: path.resolve("src/templates/tag-posts.js"),
+    postList: path.resolve("src/templates/post-list.js")
   }
 
   return graphql(`
@@ -46,6 +47,8 @@ exports.createPages = ({ actions, graphql }) => {
 
     const posts = res.data.allMarkdownRemark.edges
 
+    /***** Post *****/
+
     //Create a post page with a single-post.js component as a template
     posts.forEach(({ node }) => {
       createPage({
@@ -57,6 +60,8 @@ exports.createPages = ({ actions, graphql }) => {
         },
       })
     })
+
+    /***** Tags *****/
 
     //gather tags from each nodes
     let tags = []
@@ -77,18 +82,44 @@ exports.createPages = ({ actions, graphql }) => {
 
     tags = _.uniq(tags)
 
-    console.log(tags)
-    console.log(tagPostCount)
-    
     //Create a page with the given tag
     tags.forEach(tag => {
       createPage({
         path: `/tag/${slugify(tag)}`,
         component: templates.tagPosts,
         context: {
-          tag
-         },
+          tag,
+        },
       })
+    })
+
+    /***** Pagination *****/
+
+    const postsPerPage = 2
+    const numOfPages = Math.ceil(posts.length / postsPerPage)
+    /* 
+      we have 2 posts per page
+      If there are 7 posts, we need Math.ceil(7/2) = 4 pages
+    */
+
+    //create a shallow-copied array to createPage
+    //  length = numOfPages
+    //  
+    Array.from({length: numOfPages}).forEach((_, index) => {
+      const isFirstPage = index === 0
+      const currentPage = index + 1 //page number starts from 1
+
+      if(isFirstPage) return
+      createPage({
+        path: `/page/${currentPage}`,
+        component: templates.postList,
+        context: {
+          limit: postsPerPage,
+          skip: index * postsPerPage,
+          currentPage
+        }
+      })
+
     })
   })
 }
