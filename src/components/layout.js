@@ -17,7 +17,7 @@ import Sidebar from "./sidebar"
 
 import logo from "../images/logo.jpg"
 
-const Layout = ({ children, pageTitle }) => {
+const Layout = ({ children }) => {
   //props.pageTitle but destructured
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {

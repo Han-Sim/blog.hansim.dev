@@ -2,15 +2,21 @@ import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { graphql, Link } from "gatsby"
-import { Row, Col, Badge, Card, CardBody, CardSubtitle } from "reactstrap"
+import {
+  Row,
+  Col,
+  Card,
+  CardBody,
+  CardSubtitle,
+  Button,
+  Badge,
+} from "reactstrap"
 import Img from "gatsby-image"
 import { slugify } from "../util/helperFunctions"
 import { DiscussionEmbed } from "disqus-react"
 
 /* import icons */
-import facebook from "../images/facebook.png"
-import twitter from "../images/twitter.png"
-import linkedin from "../images/linkedin.png"
+import tagIcon from "../images/tags.png"
 
 const SinglePost = ({ data, pageContext }) => {
   const post = data.markdownRemark.frontmatter
@@ -25,83 +31,42 @@ const SinglePost = ({ data, pageContext }) => {
   }
 
   //Converted HTML source
-  console.log(data.markdownRemark.html)
+  console.log(post.tags)
 
   return (
-    <Layout pageTitle={post.title}>
+    <Layout>
       <SEO title={post.title} />
-      <Card>
-        <Img className="card-image" fluid={post.image.childImageSharp.fluid} />
-        <CardBody>
-          <CardSubtitle>
-            <span className="text-info">{post.date}</span> |{" "}
-            <span className="text-info">{post.author}</span>
-          </CardSubtitle>
-          <div
-            class="markdown-body"
-            dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}
-          />
-          <ul className="post-tags">
-            {post.tags.map(tag => (
-              <li key={tag}>
-                <Link to={`/tag/${slugify(tag)}`}>
-                  <Badge color="primary">{tag}</Badge>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </CardBody>
-      </Card>
-      <h3 className="text-center">Share this post</h3>
-      <div className="text-center social-share-links">
-        <ul>
-          <li>
-            <a
-              href={
-                "https://www.facebook.com/sharer/sharer.php?u=" +
-                baseUrl +
-                pageContext.slug
-              }
-              className="facebook"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img src={facebook} width="32px" alt="facebook" />
-            </a>
-          </li>
-          <li>
-            <a
-              href={
-                "https://www.twitter.com/share?url=" +
-                baseUrl +
-                pageContext.slug +
-                "&text=" +
-                post.title
-              }
-              className="twitter"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img src={twitter} width="32px" alt="twitter" />
-            </a>
-          </li>
-          <li>
-            <a
-              href={
-                "https://www.linkedin.com/shareAritlce?url=" +
-                baseUrl +
-                pageContext.slug
-              }
-              className="twitter"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img src={linkedin} width="32px" alt="linkedin" />
-            </a>
-          </li>
-        </ul>
+
+      <div className="post-header-area">
+        <div className="post-header">
+          <div className="post-title">
+            <h1>{post.title}</h1>
+          </div>
+          <div className="post-info text-center">
+            {post.date}, {post.author}
+          </div>
+        </div>
       </div>
-      <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
+      <div
+        class="markdown-body container py-5"
+        dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}
+      />
+      <div className="container post-tags py-5">
+        <img src={tagIcon} alt="TAGS : " />
+        {post.tags.map(tag => (
+          <Button
+            size="sm"
+            color="primary"
+            href={`/tag/${slugify(tag)}`}
+            className="m-1 tags"
+          >
+            {tag}
+          </Button>
+        ))}
+      </div>
+      <div class="container">
+        <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
+      </div>
     </Layout>
   )
 }
