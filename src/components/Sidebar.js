@@ -1,55 +1,86 @@
 import React from "react"
-import { Badge, Card, CardTitle, CardBody, Form, FormGroup, Input } from "reactstrap"
-import { Link, graphql, StaticQuery } from "gatsby"
+import {
+  Badge,
+  Card,
+  CardTitle,
+  CardBody,
+  Form,
+  FormGroup,
+  Input,
+} from "reactstrap"
+import { Link, graphql, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
 import { slugify } from "../util/helperFunctions"
-import Tags from "./tags";
+import _ from "lodash"
 
-const Sidebar = () => (
-  <div>
-    <Card>
-      <CardBody>
-        <CardTitle className="text-center text-uppercase mb-3">
-          Newsletter
-        </CardTitle>
-        <Form className="text-center">
-          <FormGroup>
-            <Input
-              type="email"
-              name="email"
-              placeholder="Your email address..."
-            />
-          </FormGroup>
-          <button className="btn btn-outline-success text-uppercase">
-            Subscribe
-          </button>
-        </Form>
-      </CardBody>
-    </Card>
-    <Card>
-      <CardBody>
-        <CardTitle className="text-center text-uppercase mb-3">
-          Recent Posts
-        </CardTitle>
-        <StaticQuery
-          query={SidebarQuery}
-          render={data => (
-            <div>
-              <ul className="list-unstyled">
-                {data.allMarkdownRemark.edges.map(({ node }) => (
-                  <Link to={node.fields.slug}>
-                    <li>{node.frontmatter.title} </li>
-                  </Link>
-                ))}
-              </ul>
-            </div>
-          )}
-        ></StaticQuery>
-      </CardBody>
-    </Card>
-    <Tags />
-  </div>
-)
+import { stack as Menu } from "react-burger-menu"
+import logo from "../images/logo.jpg"
+
+const Sidebar = () => {
+  const data = useStaticQuery(graphql`
+    query {
+      allMarkdownRemark(
+        sort: { fields: [frontmatter___date], order: DESC }
+        limit: 10
+      ) {
+        edges {
+          node {
+            frontmatter {
+              title
+              tags
+            }
+            fields {
+              slug
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const edges = data.allMarkdownRemark.edges
+
+  //gather tags from each nodes
+  let tags = []
+  _.each(edges, edge => {
+    if (_.get(edge, "node.frontmatter.tags")) {
+      tags = tags.concat(edge.node.frontmatter.tags)
+    }
+  })
+
+  //count tags
+  // {JavaScript:5, Javs: 12 ...}
+  let tagPostCount = {}
+  tags.forEach(tag => {
+    tagPostCount[tag] = (tagPostCount[tag] || 0) + 1
+    //This is to prevent 'NaN'
+    //  if tagPostCount[tag] === undefined, it will be 0 + 1
+  })
+
+  tags = _.uniq(tags) //remove duplicate tags
+
+  return (
+    <Menu right>
+      <h3 className="menu-title m-4">Tags</h3>
+      {tags.map(tag => (
+        <a id={tag} className="menu-item" href={`/tag/${slugify(tag)}`}>
+          {tag}{" "}
+          <Badge color="light" className="ml-1">
+            {tagPostCount[tag]}
+          </Badge>
+        </a>
+      ))}
+      <div className="menu-between">
+      </div>
+      <h3 className="menu-title m-4">Recent Posts</h3>
+      {data.allMarkdownRemark.edges.map(({ node }) => (
+        <a id={node.id} className="menu-item" href={``}>
+          {node.frontmatter.title}
+        </a>
+      ))}
+    </Menu>
+  )
+}
 
 const SidebarQuery = graphql`
   query {

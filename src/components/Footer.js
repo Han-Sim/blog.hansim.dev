@@ -5,7 +5,7 @@ import linkedin from "../images/linkedin.png"
 import github from "../images/github.png"
 
 const Footer = () => (
-  <div className="site-footer container">
+  <div className="site-footer">
     <div className="footer-social-links">
       <p className="text-center">
         Copyright © 2019 — Han Sim. All Rights Reserved.{" "}
