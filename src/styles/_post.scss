@@ -1,5 +1,10 @@
+/* 
+header area background pattern: 
+  http://www.patternify.com/
+*/
 .post-header-area {
-  background-color: $light-gray;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAKklEQVQYV2O8fu74fwYo0DC0YGCECYA4N86fgAjAOCCFjP////8PkoEBACBrF0J+c/9EAAAAAElFTkSuQmCC)
+    repeat;
   height: 100vh;
   //position: absolute;
 
@@ -13,12 +18,58 @@
   h1 {
     font-size: 6vw;
     font-weight: 800;
+    text-align: center;
   }
 }
 
 .post-tags {
-    img {
-        height: 16px;
-        margin-right: 10px;
+  img {
+    height: 16px;
+    margin-right: 10px;
+  }
+}
+
+.post-list {
+  h1 {
+    text-align: left;
+    font-size: 24px;
+    color: $dark-gray;
+
+    &:hover {
+      text-decoration: underline;
     }
+  }
+
+  .card {
+    border-color: $dark-gray;
+
+    .btn {
+      border-color: $dark-gray;
+      color: $dark-gray;
+    }
+
+    .btn:hover {
+      background-color: $dark-gray;
+      color: $light-gray;
+    }
+
+    &:hover {
+      transform: translate(15px, 0);
+      -webkit-transform: translate(15px, 0); /** Chrome & Safari **/
+      -o-transform: translate(15px, 0); /** Opera **/
+      -moz-transform: translate(15px, 0); /** Firefox **/
+      background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQYV2NkQALXzx3/zwjjgziaRpaMYAEYB8RmROaABAD6pQ9wraGMiQAAAABJRU5ErkJggg==)
+        repeat;
+
+      h1 {
+        font-weight: 800;
+      }
+    }
+  }
+
+  .badge {
+    &:hover {
+      background-color: $dark-gray;
+    }
+  }
 }

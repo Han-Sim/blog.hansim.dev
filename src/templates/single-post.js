@@ -1,6 +1,8 @@
 import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Page from "../components/page"
+
 import { graphql, Link } from "gatsby"
 import {
   Row,
@@ -36,7 +38,6 @@ const SinglePost = ({ data, pageContext }) => {
   return (
     <Layout>
       <SEO title={post.title} />
-
       <div className="post-header-area">
         <div className="post-header">
           <div className="post-title">

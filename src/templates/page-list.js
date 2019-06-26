@@ -2,18 +2,18 @@ import React, { Component } from "react"
 import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
-import Post from "../components/post"
+import PostList from "../components/post-list"
 import Page from "../components/page"
 
 //declare a functional component
-const PostList = (props) => {
+const pageList = (props) => {
   const posts = props.data.allMarkdownRemark.edges
   const { currentPage, numOfPages } = props.pageContext 
 
   return (
-    <Layout pageTitle={`Page ${currentPage}`}>
+    <Layout>
       {posts.map(({ node }) => (
-        <Post
+        <PostList
           key={node.id}
           title={node.frontmatter.title}
           author={node.frontmatter.author}
@@ -62,4 +62,4 @@ export const postListQuery = graphql`
   }
 `
 
-export default PostList
+export default pageList

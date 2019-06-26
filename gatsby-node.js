@@ -23,7 +23,7 @@ exports.createPages = ({ actions, graphql }) => {
   const templates = {
     singlePost: path.resolve("src/templates/single-post.js"),
     tagPosts: path.resolve("src/templates/tag-posts.js"),
-    postList: path.resolve("src/templates/post-list.js")
+    pageList: path.resolve("src/templates/page-list.js")
   }
 
   return graphql(`
@@ -95,7 +95,7 @@ exports.createPages = ({ actions, graphql }) => {
 
     /***** Pagination *****/
 
-    const postsPerPage = 2
+    const postsPerPage = 1
     const numOfPages = Math.ceil(posts.length / postsPerPage)
     /* 
       we have 2 posts per page
@@ -112,7 +112,7 @@ exports.createPages = ({ actions, graphql }) => {
       if(isFirstPage) return
       createPage({
         path: `/page/${currentPage}`,
-        component: templates.postList,
+        component: templates.pageList,
         context: {
           limit: postsPerPage,
           skip: index * postsPerPage,

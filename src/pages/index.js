@@ -5,7 +5,7 @@ import { Row, Col } from "reactstrap"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Post from "../components/post"
+import PostList from "../components/post-list"
 import Sidebar from "../components/sidebar"
 import Page from "../components/page"
 
@@ -25,7 +25,7 @@ const IndexPage = () => {
           return (
             <div>
               {data.allMarkdownRemark.edges.map(({ node }) => (
-                <Post
+                <PostList
                   key={node.id}
                   title={node.frontmatter.title}
                   author={node.frontmatter.author}
