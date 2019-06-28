@@ -1,5 +1,6 @@
 // This is to style md file
 // copied from: https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/3.0.1/github-markdown.css
+// modified few elements
 
 .markdown-body .octicon {
   display: inline-block;
@@ -209,7 +210,9 @@
 }
 
 .markdown-body img {
-  border-style: none;
+  border: 1px solid $dark-gray;
+  border-radius: 4px;
+  padding: 5px;
 }
 
 .markdown-body code,
