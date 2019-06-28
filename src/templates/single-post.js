@@ -2,6 +2,7 @@ import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Page from "../components/page"
+import Post from "../components/post"
 
 import { graphql, Link } from "gatsby"
 import {
@@ -38,33 +39,17 @@ const SinglePost = ({ data, pageContext }) => {
   return (
     <Layout>
       <SEO title={post.title} />
-      <div className="post-header-area">
-        <div className="post-header">
-          <div className="post-title">
-            <h1>{post.title}</h1>
-          </div>
-          <div className="post-info text-center">
-            {post.date}, {post.author}
-          </div>
-        </div>
-      </div>
-      <div
-        class="markdown-body container py-5"
-        dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}
-      />
-      <div className="container post-tags py-5">
-        <img src={tagIcon} alt="TAGS : " />
-        {post.tags.map(tag => (
-          <Button
-            size="sm"
-            color="primary"
-            href={`/tag/${slugify(tag)}`}
-            className="m-1 tags"
-          >
-            {tag}
-          </Button>
-        ))}
-      </div>
+      <Post
+        title={post.title}
+        date={post.date}
+        author={post.author}
+        tags={post.tags}
+      >
+        <div
+          class="markdown-body container py-5"
+          dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}
+        />
+      </Post>
       <div class="container">
         <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
       </div>

@@ -2,27 +2,28 @@ import React, { Component } from "react"
 import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
-import PostList from "../components/post-list"
+import Post from "../components/post"
 import Page from "../components/page"
 
 //declare a functional component
-const pageList = (props) => {
+const pageList = props => {
   const posts = props.data.allMarkdownRemark.edges
-  const { currentPage, numOfPages } = props.pageContext 
+  const { currentPage, numOfPages } = props.pageContext
 
   return (
     <Layout>
       {posts.map(({ node }) => (
-        <PostList
-          key={node.id}
+        <Post
           title={node.frontmatter.title}
-          author={node.frontmatter.author}
-          slug={node.fields.slug}
           date={node.frontmatter.date}
-          body={node.excerpt}
-          fluid={node.frontmatter.image.childImageSharp.fluid}
+          author={node.frontmatter.author}
           tags={node.frontmatter.tags}
-        />
+        >
+          <div
+            class="markdown-body container py-5"
+            dangerouslySetInnerHTML={{ __html: node.html }}
+          />
+        </Post>
       ))}
       <Page currentPage={currentPage} numOfPages={numOfPages} />
     </Layout>
@@ -39,6 +40,7 @@ export const postListQuery = graphql`
       edges {
         node {
           id
+          html
           frontmatter {
             title
             date(formatString: "MMM Do YYYY")

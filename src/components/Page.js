@@ -14,7 +14,7 @@ const Page = ({ currentPage, numOfPages }) => {
   const nextPage = "/page/" + (currentPage + 1).toString()
 
   return (
-    <Pagination aria-label="Page navigation example">
+    <Pagination className="pagination justify-content-center" aria-label="Page navigation text-center">
       {isFirstPage ? (
         <PaginationItem disabled>
           <PaginationLink previous href="/"></PaginationLink>
