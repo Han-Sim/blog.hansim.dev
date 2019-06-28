@@ -25,6 +25,7 @@ const pageList = props => {
             slug={node.fields.slug}
             currentPage={currentPage}
             numOfPages={numOfPages}
+            isSinglePage={false}
           >
             <div
               class="markdown-body container py-5"

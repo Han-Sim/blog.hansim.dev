@@ -27,6 +27,7 @@ const SinglePost = ({ data, pageContext }) => {
         tags={post.tags}
         id={data.markdownRemark.id}
         slug={pageContext.slug}
+        isSinglePage={true}
       >
         <div
           class="markdown-body container py-5"

@@ -52,9 +52,10 @@ const IndexPage = () => {
         author={latestPost.frontmatter.author}
         tags={latestPost.frontmatter.tags}
         id={latestPost.id}
-        slug = {latestPost.fields.slug}
+        slug={latestPost.fields.slug}
         currentPage={1}
         numOfPages={numOfPages}
+        isSinglePage={false}
       >
         <div
           class="markdown-body container py-5"

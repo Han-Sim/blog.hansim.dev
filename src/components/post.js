@@ -19,6 +19,7 @@ const Post = ({
   slug,
   currentPage,
   numOfPages,
+  isSinglePage,
 }) => {
   //DisQus plugin
   const baseUrl = "https://dev-blog.hansim.io/"
@@ -55,7 +56,11 @@ const Post = ({
           </Button>
         ))}
       </div>
-      <Page currentPage={currentPage} numOfPages={numOfPages} />
+      {isSinglePage ? (
+        <></>
+      ) : (
+        <Page currentPage={currentPage} numOfPages={numOfPages} />
+      )}
       <div class="container mt-3">
         <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
       </div>
