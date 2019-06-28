@@ -13,7 +13,7 @@ const TagPosts = ({ data, pageContext }) => {
 
   const pageTitle = `${totalCount} post${
     totalCount === 1 ? "" : "s"
-  } tagged with "${tag}"`
+  } tagged with `
 
   const seoTitle = `Posts about ${tag}`
   return (
@@ -22,7 +22,7 @@ const TagPosts = ({ data, pageContext }) => {
       <div className="post-header-area">
         <div className="post-header">
           <div className="post-title">
-            <h1>{pageTitle}</h1>
+            <h1>{pageTitle}<strong>{tag}</strong></h1>
           </div>
         </div>
       </div>
