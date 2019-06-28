@@ -12,11 +12,16 @@ a {
   text-decoration: none;
   &:hover {
     color: inherit;
-    font-weight: 800;
-    text-decoration: underline;
+    text-decoration: none;
   }
 }
 
+.footer-link {
+  a:hover {
+    font-weight: 600;
+    text-decoration: none;
+  }
+}
 h1 {
   margin-bottom: 20px;
   text-align: left;
@@ -40,4 +45,8 @@ h1 {
 ul {
   list-style: none;
   padding: 0;
+}
+
+strong {
+  color: $highlight-2;
 }

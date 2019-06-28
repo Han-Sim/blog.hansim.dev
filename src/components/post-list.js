@@ -18,14 +18,14 @@ const PostList = ({ title, author, slug, date, body, fluid, tags }) => {
         <CardBody>
           <CardTitle>
             <Link to={slug}>
-              <h1 className="effect-underline">{title}</h1>
+              <h1>{title}</h1>
             </Link>
           </CardTitle>
-          <CardSubtitle className="mt-3">
-            <span className="text-info">{date}</span> |{" "}
-            <span className="text-info">{author}</span>
+          <CardSubtitle className="mt-4">
+            <span className="post-info">{date}</span> |{" "}
+            <span className="post-info">{author}</span>
           </CardSubtitle>
-          <CardText className="mt-2">{body}</CardText>
+          <CardText className="mt-3 post-contents">{body}</CardText>
           <ul className="post-tags">
             {tags.map(tag => (
               <li key={tag}>

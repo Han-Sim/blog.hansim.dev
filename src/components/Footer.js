@@ -9,7 +9,15 @@ const Footer = () => (
     <div className="footer-social-links">
       <p className="text-center">
         Copyright © 2019 — Han Sim. All Rights Reserved.{" "}
-        <a href="mailto:han.sim.dev@gmail.com">han.sim.dev@gmail.com</a>
+        <span className="footer-link">
+          <a id="portfolio-page" href="https://hansim.dev">
+            https://hansim.dev
+          </a>
+          {" | "}
+          <a id="email" href="mailto:han.sim.dev@gmail.com">
+            han.sim.dev@gmail.com
+          </a>
+        </span>
       </p>
       <ul className="social-links-list">
         <li>

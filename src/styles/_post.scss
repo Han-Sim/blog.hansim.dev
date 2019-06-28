@@ -31,8 +31,11 @@ header area background pattern:
 
 .post-list {
   h1 {
+    font-weight:800;
     font-size: 24px;
-    color: $dark-gray;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   .card {
@@ -63,4 +66,9 @@ header area background pattern:
       background-color: $dark-gray;
     }
   }
+}
+
+.post-info {
+  font-size: 15px;
+  font-weight: 600;
 }

@@ -5,4 +5,4 @@
  */
 
 // You can delete this file if you're not using it
-require("./src/prism/prism.css")
+require("./src/styles/prism.css")
