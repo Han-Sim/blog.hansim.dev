@@ -1,4 +1,4 @@
-# https://hansim-blog.dev/
+# https://blog.hansim.dev
 
 This is my personal blog to post some useful codes snippets, programming concepts, etc.
 
