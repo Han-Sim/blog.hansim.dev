@@ -50,6 +50,8 @@ const Sidebar = () => {
 
   tags = _.uniq(tags) //remove duplicate tags
 
+  console.log(edges);
+
   return (
     <Menu right>
       <h3 className="menu-title m-4">Tags</h3>
@@ -61,10 +63,10 @@ const Sidebar = () => {
           </Badge>
         </a>
       ))}
-      <div className="menu-between"></div>
+      <div className="menu-between" />
       <h3 className="menu-title m-4">Recent Posts</h3>
-      {data.allMarkdownRemark.edges.map(({ node }) => (
-        <a id={node.id} className="menu-item" href={``}>
+      {edges.map(({ node }) => (
+        <a id={node.id} className="menu-item" href={`/${slugify(node.frontmatter.title)}`}>
           {node.frontmatter.title}
         </a>
       ))}

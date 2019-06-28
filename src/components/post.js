@@ -22,8 +22,8 @@ const Post = ({
   isSinglePage,
 }) => {
   //DisQus plugin
-  const baseUrl = "https://hansim-blog.dev"
-  const disqusShortname = "https-hansim-blog-dev"
+  const baseUrl = "https://dev.hansim.dev"
+  const disqusShortname = "blog-hansim-dev"
   const disqusConfig = {
     url: baseUrl + slug,
     identifier: id,
