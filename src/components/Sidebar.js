@@ -1,11 +1,10 @@
 import React from "react"
 import { Badge } from "reactstrap"
-import { Link, graphql, useStaticQuery } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 import { slugify } from "../util/helperFunctions"
 import _ from "lodash"
 
 import { stack as Menu } from "react-burger-menu"
-import logo from "../images/logo.jpg"
 
 const Sidebar = () => {
   const data = useStaticQuery(graphql`
@@ -73,27 +72,5 @@ const Sidebar = () => {
     </Menu>
   )
 }
-
-const SidebarQuery = graphql`
-  query {
-    allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
-      limit: 6
-    ) {
-      edges {
-        node {
-          id
-          frontmatter {
-            title
-            tags
-          }
-          fields {
-            slug
-          }
-        }
-      }
-    }
-  }
-`
 
 export default Sidebar

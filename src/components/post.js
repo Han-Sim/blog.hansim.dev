@@ -47,6 +47,7 @@ const Post = ({
         <img src={tagIcon} alt="TAGS : " />
         {tags.map(tag => (
           <Button
+            id={tag}
             size="sm"
             color="primary"
             href={`/tag/${slugify(tag)}`}
@@ -61,7 +62,7 @@ const Post = ({
       ) : (
         <Page currentPage={currentPage} numOfPages={numOfPages} />
       )}
-      <div class="container mt-3">
+      <div className="container mt-3">
         <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
       </div>
     </>

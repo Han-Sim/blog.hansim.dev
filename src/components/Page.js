@@ -3,7 +3,6 @@
 */
 
 import React from "react"
-import _ from "lodash"
 import { Pagination, PaginationItem, PaginationLink } from "reactstrap"
 
 const Page = ({ currentPage, numOfPages }) => {

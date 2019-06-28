@@ -5,12 +5,6 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Post from "../components/post"
 
-import Img from "gatsby-image"
-import { slugify } from "../util/helperFunctions"
-
-/* import icons */
-import tagIcon from "../images/tags.png"
-
 const SinglePost = ({ data, pageContext }) => {
   const post = data.markdownRemark.frontmatter
 
@@ -30,7 +24,7 @@ const SinglePost = ({ data, pageContext }) => {
         isSinglePage={true}
       >
         <div
-          class="markdown-body container py-5"
+          className="markdown-body container py-5"
           dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}
         />
       </Post>

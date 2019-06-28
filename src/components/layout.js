@@ -7,8 +7,7 @@
 
 import React from "react"
 import PropTypes from "prop-types"
-import { Link, useStaticQuery, graphql } from "gatsby"
-import { Row, Col } from "reactstrap"
+import { Link } from "gatsby"
 
 import Footer from "./footer"
 import Sidebar from "./sidebar"
@@ -17,17 +16,6 @@ import logo from "../images/logo.jpg"
 import "../styles/index.scss"
 
 const Layout = ({ children }) => {
-  //props.pageTitle but destructured
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
   return (
     <>
       <div id="main-logo">

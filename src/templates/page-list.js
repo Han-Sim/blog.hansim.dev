@@ -1,9 +1,8 @@
-import React, { Component } from "react"
+import React from "react"
 import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import Post from "../components/post"
-import Page from "../components/page"
 import SEO from "../components/seo"
 
 //declare a functional component
@@ -28,7 +27,7 @@ const pageList = props => {
             isSinglePage={false}
           >
             <div
-              class="markdown-body container py-5"
+              className="markdown-body container py-5"
               dangerouslySetInnerHTML={{ __html: node.html }}
             />
           </Post>

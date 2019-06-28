@@ -4,7 +4,6 @@ import { graphql, useStaticQuery } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Post from "../components/post"
-import Page from "../components/page"
 
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
@@ -39,8 +38,6 @@ const IndexPage = () => {
   `)
 
   const latestPost = data.allMarkdownRemark.edges[0].node
-
-  const postPerPage = 1
   let numOfPages = data.allMarkdownRemark.edges.length
 
   return (
@@ -58,7 +55,7 @@ const IndexPage = () => {
         isSinglePage={false}
       >
         <div
-          class="markdown-body container py-5"
+          className="markdown-body container py-5"
           dangerouslySetInnerHTML={{ __html: latestPost.html }}
         />
       </Post>
