@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import PostList from "../components/post-list"
+import SEO from "../components/seo"
 
 const TagPosts = ({ data, pageContext }) => {
   // { data } <----- props.data [destructured]
@@ -10,15 +11,14 @@ const TagPosts = ({ data, pageContext }) => {
   const { tag } = pageContext
   const { totalCount } = data.allMarkdownRemark
 
-  console.log(tag)
-  console.log(totalCount)
-
   const pageTitle = `${totalCount} post${
     totalCount === 1 ? "" : "s"
   } tagged with "${tag}"`
 
+  const seoTitle = `Posts about ${tag}`
   return (
     <Layout>
+      <SEO title={seoTitle} />
       <div className="post-header-area">
         <div className="post-header">
           <div className="post-title">

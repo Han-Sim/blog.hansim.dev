@@ -4,6 +4,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import Post from "../components/post"
 import Page from "../components/page"
+import SEO from "../components/seo"
 
 //declare a functional component
 const pageList = props => {
@@ -13,19 +14,25 @@ const pageList = props => {
   return (
     <Layout>
       {posts.map(({ node }) => (
-        <Post
-          title={node.frontmatter.title}
-          date={node.frontmatter.date}
-          author={node.frontmatter.author}
-          tags={node.frontmatter.tags}
-        >
-          <div
-            class="markdown-body container py-5"
-            dangerouslySetInnerHTML={{ __html: node.html }}
-          />
-        </Post>
+        <>
+          <SEO title={node.frontmatter.title} />
+          <Post
+            title={node.frontmatter.title}
+            date={node.frontmatter.date}
+            author={node.frontmatter.author}
+            tags={node.frontmatter.tags}
+            id={node.id}
+            slug={node.fields.slug}
+            currentPage={currentPage}
+            numOfPages={numOfPages}
+          >
+            <div
+              class="markdown-body container py-5"
+              dangerouslySetInnerHTML={{ __html: node.html }}
+            />
+          </Post>
+        </>
       ))}
-      <Page currentPage={currentPage} numOfPages={numOfPages} />
     </Layout>
   )
 }

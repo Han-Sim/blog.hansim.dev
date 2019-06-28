@@ -1,12 +1,9 @@
 import React from "react"
-import { Link } from "gatsby"
 import { graphql, useStaticQuery } from "gatsby"
-import { Row, Col } from "reactstrap"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Post from "../components/post"
-import Sidebar from "../components/sidebar"
 import Page from "../components/page"
 
 const IndexPage = () => {
@@ -48,19 +45,22 @@ const IndexPage = () => {
 
   return (
     <Layout>
-      <SEO title="Home" />
+      <SEO title={latestPost.frontmatter.title} />
       <Post
         title={latestPost.frontmatter.title}
         date={latestPost.frontmatter.date}
         author={latestPost.frontmatter.author}
         tags={latestPost.frontmatter.tags}
+        id={latestPost.id}
+        slug = {latestPost.fields.slug}
+        currentPage={1}
+        numOfPages={numOfPages}
       >
         <div
           class="markdown-body container py-5"
           dangerouslySetInnerHTML={{ __html: latestPost.html }}
         />
       </Post>
-      <Page currentPage={1} numOfPages={numOfPages} />
     </Layout>
   )
 }

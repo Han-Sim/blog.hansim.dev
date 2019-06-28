@@ -1,13 +1,22 @@
 import React from "react"
 import { Link } from "gatsby"
-import { Col, Card } from "reactstrap"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 const NotFoundPage = () => (
-  <Layout pageTitle="Oops, something went wrong!">
-    <SEO title="404: Not found" />
+  <Layout>
+    <SEO title="404 Error" />
+    <div className="post-header-area">
+      <div className="post-header">
+        <div className="post-title">
+          <h1>Something went wrong:/</h1>
+        </div>
+        <div className="post-list text-center">
+          <Link to={"/"}><h1>Go to the first page</h1></Link>
+        </div>
+      </div>
+    </div>
   </Layout>
 )
 

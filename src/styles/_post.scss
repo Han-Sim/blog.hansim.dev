@@ -31,13 +31,8 @@ header area background pattern:
 
 .post-list {
   h1 {
-    text-align: left;
     font-size: 24px;
     color: $dark-gray;
-
-    &:hover {
-      text-decoration: underline;
-    }
   }
 
   .card {
@@ -60,10 +55,6 @@ header area background pattern:
       -moz-transform: translate(15px, 0); /** Firefox **/
       background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQYV2NkQALXzx3/zwjjgziaRpaMYAEYB8RmROaABAD6pQ9wraGMiQAAAABJRU5ErkJggg==)
         repeat;
-
-      h1 {
-        font-weight: 800;
-      }
     }
   }
 

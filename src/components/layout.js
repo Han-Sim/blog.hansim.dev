@@ -10,12 +10,11 @@ import PropTypes from "prop-types"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import { Row, Col } from "reactstrap"
 
-import Header from "./header"
 import Footer from "./footer"
-import "../styles/index.scss"
 import Sidebar from "./sidebar"
 
 import logo from "../images/logo.jpg"
+import "../styles/index.scss"
 
 const Layout = ({ children }) => {
   //props.pageTitle but destructured

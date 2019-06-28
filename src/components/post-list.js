@@ -8,7 +8,7 @@ import {
   CardBody,
   Badge,
 } from "reactstrap"
-import Img from "gatsby-image"
+//import Img from "gatsby-image"
 import { slugify } from "../util/helperFunctions"
 
 const PostList = ({ title, author, slug, date, body, fluid, tags }) => {

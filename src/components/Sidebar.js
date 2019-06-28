@@ -1,15 +1,6 @@
 import React from "react"
-import {
-  Badge,
-  Card,
-  CardTitle,
-  CardBody,
-  Form,
-  FormGroup,
-  Input,
-} from "reactstrap"
+import { Badge } from "reactstrap"
 import { Link, graphql, useStaticQuery } from "gatsby"
-import Img from "gatsby-image"
 import { slugify } from "../util/helperFunctions"
 import _ from "lodash"
 
@@ -70,8 +61,7 @@ const Sidebar = () => {
           </Badge>
         </a>
       ))}
-      <div className="menu-between">
-      </div>
+      <div className="menu-between"></div>
       <h3 className="menu-title m-4">Recent Posts</h3>
       {data.allMarkdownRemark.edges.map(({ node }) => (
         <a id={node.id} className="menu-item" href={``}>

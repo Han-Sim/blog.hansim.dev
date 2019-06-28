@@ -1,23 +1,34 @@
 import React from "react"
-import {
-  Row,
-  Col,
-  Card,
-  CardBody,
-  CardSubtitle,
-  Button,
-  Badge,
-} from "reactstrap"
-import Img from "gatsby-image"
+import { Button } from "reactstrap"
 import { slugify } from "../util/helperFunctions"
 import { DiscussionEmbed } from "disqus-react"
+
+import Page from "./page"
 
 /* import icons */
 import tagIcon from "../images/tags.png"
 
-
 //this is a single post page
-const Post = ({ children, title, author, date, tags }) => {
+const Post = ({
+  children,
+  title,
+  author,
+  date,
+  tags,
+  id,
+  slug,
+  currentPage,
+  numOfPages,
+}) => {
+  //DisQus plugin
+  const baseUrl = "https://dev-blog.hansim.io/"
+  const disqusShortname = "https-dev-blog-hansim-io"
+  const disqusConfig = {
+    url: baseUrl + slug,
+    identifier: id,
+    title: title,
+  }
+
   return (
     <>
       <div className="post-header-area">
@@ -43,6 +54,10 @@ const Post = ({ children, title, author, date, tags }) => {
             {tag}
           </Button>
         ))}
+      </div>
+      <Page currentPage={currentPage} numOfPages={numOfPages} />
+      <div class="container mt-3">
+        <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
       </div>
     </>
   )
