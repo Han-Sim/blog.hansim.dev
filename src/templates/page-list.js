@@ -53,13 +53,6 @@ export const postListQuery = graphql`
             date(formatString: "MMM Do YYYY")
             author
             tags
-            image {
-              childImageSharp {
-                fluid(maxWidth: 600) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
           }
           fields {
             slug

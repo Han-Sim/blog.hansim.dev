@@ -11,7 +11,7 @@ import {
 //import Img from "gatsby-image"
 import { slugify } from "../util/helperFunctions"
 
-const PostList = ({ title, author, slug, date, body, fluid, tags }) => {
+const PostList = ({ title, author, slug, date, body, tags }) => {
   return (
     <Link to={slug}>
       <Card>
