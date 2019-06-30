@@ -23,17 +23,21 @@ exports.createPages = ({ actions, graphql }) => {
   const templates = {
     singlePost: path.resolve("src/templates/single-post.js"),
     tagPosts: path.resolve("src/templates/tag-posts.js"),
-    pageList: path.resolve("src/templates/page-list.js")
+    categoryPosts: path.resolve("src/templates/category-posts.js"),
+    allPosts: path.resolve("src/templates/all-posts.js"),
+    pageList: path.resolve("src/templates/page-list.js"),
   }
 
   return graphql(`
     {
       allMarkdownRemark {
+        totalCount
         edges {
           node {
             frontmatter {
               author
               tags
+              category
             }
             fields {
               slug
@@ -93,6 +97,42 @@ exports.createPages = ({ actions, graphql }) => {
       })
     })
 
+    /***** All Posts *****/
+    createPage({
+      path: `/all-posts`,
+      component: templates.allPosts,
+    })
+
+    /***** Category *****/
+
+    //gather category from each nodes
+    let categories = []
+    _.each(posts, edge => {
+      if (_.get(edge, "node.frontmatter.category")) {
+        categories = categories.concat(edge.node.frontmatter.category)
+      }
+    })
+
+    //count categories
+    // {JavaScript:5, Javs: 12 ...}
+    let categoryCount = {}
+    categories.forEach(category => {
+      categoryCount[category] = (categoryCount[category] || 0) + 1
+    })
+
+    categories = _.uniq(categories)
+
+    //Create a page with the given category
+    categories.forEach(category => {
+      createPage({
+        path: `/category/${slugify(category)}`,
+        component: templates.categoryPosts,
+        context: {
+          category,
+        },
+      })
+    })
+
     /***** Pagination *****/
 
     const postsPerPage = 1
@@ -104,12 +144,12 @@ exports.createPages = ({ actions, graphql }) => {
 
     //create a shallow-copied array to createPage
     //  length = numOfPages
-    //  
-    Array.from({length: numOfPages}).forEach((_, index) => {
+    //
+    Array.from({ length: numOfPages }).forEach((_, index) => {
       const isFirstPage = index === 0
       const currentPage = index + 1 //page number starts from 1
 
-      if(isFirstPage) return
+      if (isFirstPage) return
       createPage({
         path: `/page/${currentPage}`,
         component: templates.pageList,
@@ -117,10 +157,9 @@ exports.createPages = ({ actions, graphql }) => {
           limit: postsPerPage,
           skip: index * postsPerPage,
           currentPage,
-          numOfPages
-        }
+          numOfPages,
+        },
       })
-
     })
   })
 }

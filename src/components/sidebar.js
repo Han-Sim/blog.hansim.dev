@@ -18,6 +18,7 @@ const Sidebar = () => {
             frontmatter {
               title
               tags
+              category
             }
             fields {
               slug
@@ -30,15 +31,21 @@ const Sidebar = () => {
 
   const edges = data.allMarkdownRemark.edges
 
-  //gather tags from each nodes
+  //gather tags/category from each nodes
   let tags = []
   _.each(edges, edge => {
     if (_.get(edge, "node.frontmatter.tags")) {
       tags = tags.concat(edge.node.frontmatter.tags)
     }
   })
+  let categories = []
+  _.each(edges, edge => {
+    if (_.get(edge, "node.frontmatter.category")) {
+      categories = categories.concat(edge.node.frontmatter.category)
+    }
+  })
 
-  //count tags
+  //count tags/categories
   // {JavaScript:5, Javs: 12 ...}
   let tagPostCount = {}
   tags.forEach(tag => {
@@ -46,13 +53,44 @@ const Sidebar = () => {
     //This is to prevent 'NaN'
     //  if tagPostCount[tag] === undefined, it will be 0 + 1
   })
+  let categoryCount = {}
+  categories.forEach(category => {
+    categoryCount[category] = (categoryCount[category] || 0) + 1
+  })
 
   tags = _.uniq(tags) //remove duplicate tags
-
-  console.log(edges);
+  categories = _.uniq(categories) //remove duplicate categories
 
   return (
     <Menu right>
+      <h3 className="menu-title m-4">Categories</h3>
+      <a href={`/all-post`} className="menu-item">
+        All Posts
+      </a>
+      {categories.map(category => (
+        <a
+          id={category}
+          className="menu-item"
+          href={`/category/${slugify(category)}`}
+        >
+          {category}{" "}
+          <Badge color="light" className="ml-1">
+            {categoryCount[category]}
+          </Badge>
+        </a>
+      ))}
+      <div className="menu-between" />
+      <h3 className="menu-title m-4">Recent Posts</h3>
+      {edges.map(({ node }) => (
+        <a
+          id={node.id}
+          className="menu-item"
+          href={`/${slugify(node.frontmatter.title)}`}
+        >
+          {node.frontmatter.title}
+        </a>
+      ))}
+      <div className="menu-between" />
       <h3 className="menu-title m-4">Tags</h3>
       {tags.map(tag => (
         <a id={tag} className="menu-item" href={`/tag/${slugify(tag)}`}>
@@ -60,13 +98,6 @@ const Sidebar = () => {
           <Badge color="light" className="ml-1">
             {tagPostCount[tag]}
           </Badge>
-        </a>
-      ))}
-      <div className="menu-between" />
-      <h3 className="menu-title m-4">Recent Posts</h3>
-      {edges.map(({ node }) => (
-        <a id={node.id} className="menu-item" href={`/${slugify(node.frontmatter.title)}`}>
-          {node.frontmatter.title}
         </a>
       ))}
     </Menu>
