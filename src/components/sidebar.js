@@ -64,7 +64,7 @@ const Sidebar = () => {
   return (
     <Menu right>
       <h3 className="menu-title m-4">Categories</h3>
-      <a href={`/all-post`} className="menu-item">
+      <a href={`/all-posts`} className="menu-item">
         All Posts
       </a>
       {categories.map(category => (
