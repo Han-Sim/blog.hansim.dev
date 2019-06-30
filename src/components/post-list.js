@@ -26,16 +26,14 @@ const PostList = ({ title, author, slug, date, body, tags }) => {
             <span className="post-info">{author}</span>
           </CardSubtitle>
           <CardText className="mt-3 post-contents">{body}</CardText>
-          <ul className="post-tags">
+          <div className="post-tags mt-5">
             {tags.map(tag => (
-              <li key={tag}>
                 <Link to={`/tag/${slugify(tag)}`}>
-                  <Badge color="primary">{tag}</Badge>
+                  <Badge color="primary" className="mr-1">{tag}</Badge>
                 </Link>
-              </li>
             ))}
-          </ul>
-          <Link to={slug} className="btn btn-outline-primary float-right">
+          </div>
+          <Link to={slug} className="btn btn-outline-primary float-right mt-3">
             Read More
           </Link>
         </CardBody>
