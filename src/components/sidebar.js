@@ -3,8 +3,9 @@ import { Badge } from "reactstrap"
 import { graphql, useStaticQuery } from "gatsby"
 import { slugify } from "../util/helperFunctions"
 import _ from "lodash"
-
 import { stack as Menu } from "react-burger-menu"
+
+import { totalCount } from "../pages/index"
 
 const Sidebar = () => {
   const data = useStaticQuery(graphql`
@@ -64,15 +65,22 @@ const Sidebar = () => {
   return (
     <Menu right>
       <a href="/markdown-blog-with-gatsbygraphql">
-        <h3><strong className="up-link">About this blog</strong></h3>
+        <h3>
+          <strong className="up-link">About this blog</strong>
+        </h3>
       </a>
       <a href="https://hansim.dev" target="_blank">
-        <h3><strong className="up-link">About me</strong></h3>
+        <h3>
+          <strong className="up-link">About me</strong>
+        </h3>
       </a>
       <div className="menu-between" />
       <h3 className="menu-title m-4">Categories</h3>
       <a href={`/all-posts`} className="menu-item">
-        All Posts
+        All Posts{" "}
+        <Badge color="light" className="ml-1">
+          {totalCount}
+        </Badge>
       </a>
       {categories.map(category => (
         <a
