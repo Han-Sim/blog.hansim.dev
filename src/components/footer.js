@@ -10,7 +10,7 @@ const Footer = () => (
       <p className="text-center">
         Copyright © 2019 — Han Sim. All Rights Reserved.{" "}
         <span className="footer-link">
-          <a id="portfolio-page" href="https://hansim.dev">
+          <a id="portfolio-page" href="https://hansim.dev" target="_blank">
             https://hansim.dev
           </a>
           {" | "}

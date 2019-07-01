@@ -63,7 +63,12 @@ const Sidebar = () => {
 
   return (
     <Menu right>
-      <h3><strong><a href="/markdown-blog-with-gatsbygraphql">See more about this blog</a></strong></h3>
+      <a href="/markdown-blog-with-gatsbygraphql">
+        <h3><strong className="up-link">About this blog</strong></h3>
+      </a>
+      <a href="https://hansim.dev" target="_blank">
+        <h3><strong className="up-link">About me</strong></h3>
+      </a>
       <div className="menu-between" />
       <h3 className="menu-title m-4">Categories</h3>
       <a href={`/all-posts`} className="menu-item">
