@@ -8,7 +8,7 @@ import SEO from "../components/seo"
 const AllPosts = ({ data }) => {
   const { totalCount } = data.allMarkdownRemark
 
-  const pageTitle = `${totalCount} post${totalCount === 1 ? "" : "s"}`
+  const pageTitle = `${totalCount} post${totalCount === 1 ? "" : "s"} in total`
   const seoTitle = `All Posts`
   
   return (
