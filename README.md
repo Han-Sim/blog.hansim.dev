@@ -2,6 +2,8 @@
 
 This is my personal blog to post some useful codes snippets, programming concepts, etc.
 
+To see the full note of this project, visit here: https://blog.hansim.dev/markdown-blog-with-gatsbygraphql
+
 ## Frameworks/libraries
 
 - `GatsbyJS`
