@@ -12,8 +12,8 @@ const Sidebar = () => {
     query {
       allMarkdownRemark(
         sort: { fields: [frontmatter___date], order: DESC }
-        limit: 10
       ) {
+        totalCount
         edges {
           node {
             frontmatter {
@@ -62,6 +62,17 @@ const Sidebar = () => {
   tags = _.uniq(tags) //remove duplicate tags
   categories = _.uniq(categories) //remove duplicate categories
 
+  //take titles from each node.frontmatter
+  let titles = []
+  _.each(edges, edge => {
+    if (_.get(edge, "node.frontmatter.title")) {
+      titles = titles.concat(edge.node.frontmatter.title)
+    }
+  })
+
+  const numOfRecentPosts = 6;
+  titles = titles.slice(0, numOfRecentPosts)
+
   return (
     <Menu right>
       <a href="/markdown-blog-with-gatsbygraphql">
@@ -79,7 +90,7 @@ const Sidebar = () => {
       <a href={`/all-posts`} className="menu-item">
         All Posts{" "}
         <Badge color="light" className="ml-1">
-          {totalCount}
+          {data.allMarkdownRemark.totalCount}
         </Badge>
       </a>
       {categories.map(category => (
@@ -96,13 +107,13 @@ const Sidebar = () => {
       ))}
       <div className="menu-between" />
       <h3 className="menu-title m-4">Recent Posts</h3>
-      {edges.map(({ node }) => (
+      {titles.map(title => (
         <a
-          id={node.id}
+          id={title}
           className="menu-item"
-          href={`/${slugify(node.frontmatter.title)}`}
+          href={`/${slugify(title)}`}
         >
-          {node.frontmatter.title}
+          {title}
         </a>
       ))}
       <div className="menu-between" />

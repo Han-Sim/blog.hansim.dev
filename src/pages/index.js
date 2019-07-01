@@ -5,8 +5,6 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Post from "../components/post"
 
-let totalCount
-
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
     query {
@@ -34,7 +32,6 @@ const IndexPage = () => {
 
   const latestPost = data.allMarkdownRemark.edges[0].node
   let numOfPages = data.allMarkdownRemark.edges.length
-  totalCount = data.allMarkdownRemark.totalCount
 
   return (
     <Layout>
@@ -59,5 +56,4 @@ const IndexPage = () => {
   )
 }
 
-export { totalCount }
 export default IndexPage
