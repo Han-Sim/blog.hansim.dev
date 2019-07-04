@@ -62,9 +62,9 @@ Finished deploying the final version
 
 - Completed redesigning to achieve modern design
   - Removed 'index' page: **`Post` and `PostList` components are the only pages now!**
-  - **No more grid design with Row and Col**: Contents take up the entire screen (reponsive)
+  - **No more grid design with Row and Col**: Contents take up the entire screen (responsively)
   - Warm toned color scheme
-- Refactored codes: enhanced readability
+- Refactored codes: enhanced readability and maintainability
 
 Planning to add more features
 
