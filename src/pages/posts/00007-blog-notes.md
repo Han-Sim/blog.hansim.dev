@@ -2,7 +2,7 @@
 title: "Markdown Blog with Gatsby/GraphQL"
 date: "2019-07-01 02:13:00"
 author: "Han Sim"
-category: "React"
+category: "React | React Native"
 tags:
   - Portfolio
   - JavaScript
@@ -79,3 +79,19 @@ Added **Category** and **All Posts**
 Updated SCSS files
 
 Fixed minor design errors in mobile environment
+
+## July 3, 2019
+
+Added line highlighting. https://www.gatsbyjs.org/packages/gatsby-remark-prismjs/
+
+```CSS
+.gatsby-highlight-code-line {
+  background-color: #feb;
+  display: block;
+  margin-right: -1em;
+  margin-left: -1em;
+  padding-right: 1em;
+  padding-left: 0.75em;
+  border-left: 0.25em solid $highlight-1;
+}
+```
