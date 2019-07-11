@@ -16,6 +16,7 @@ const pageList = props => {
         <>
           <SEO title={node.frontmatter.title} />
           <Post
+            category={node.frontmatter.category}
             title={node.frontmatter.title}
             date={node.frontmatter.date}
             author={node.frontmatter.author}
@@ -53,6 +54,7 @@ export const postListQuery = graphql`
             date(formatString: "MMM Do YYYY")
             author
             tags
+            category
           }
           fields {
             slug

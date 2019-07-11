@@ -15,6 +15,7 @@ const SinglePost = ({ data, pageContext }) => {
     <Layout>
       <SEO title={post.title} />
       <Post
+        category={post.category}
         title={post.title}
         date={post.date}
         author={post.author}
@@ -42,6 +43,7 @@ export const postQuery = graphql`
         author
         tags
         date(formatString: "MMM Do YYYY")
+        category
       }
       excerpt
     }

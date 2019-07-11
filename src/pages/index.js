@@ -19,6 +19,7 @@ const IndexPage = () => {
               date(formatString: "MMM Do YYYY")
               author
               tags
+              category
             }
             fields {
               slug
@@ -37,6 +38,7 @@ const IndexPage = () => {
     <Layout>
       <SEO title={latestPost.frontmatter.title} />
       <Post
+        category={latestPost.frontmatter.category}
         title={latestPost.frontmatter.title}
         date={latestPost.frontmatter.date}
         author={latestPost.frontmatter.author}
