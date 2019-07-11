@@ -28,7 +28,7 @@ const pageList = props => {
             isSinglePage={false}
           >
             <div
-              className="markdown-body container py-5"
+              className="markdown-body"
               dangerouslySetInnerHTML={{ __html: node.html }}
             />
           </Post>

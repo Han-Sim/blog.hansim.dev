@@ -50,7 +50,7 @@ const IndexPage = () => {
         isSinglePage={false}
       >
         <div
-          className="markdown-body container py-5"
+          className="markdown-body"
           dangerouslySetInnerHTML={{ __html: latestPost.html }}
         />
       </Post>

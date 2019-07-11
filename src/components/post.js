@@ -48,28 +48,30 @@ const Post = ({
           </div>
         </div>
       </div>
-      {children}
-      <div className="container post-tags py-5">
-        <img src={tagIcon} alt="TAGS : " />
-        {tags.map(tag => (
-          <Button
-            id={tag}
-            size="sm"
-            color="primary"
-            href={`/tag/${slugify(tag)}`}
-            className="m-1 tags"
-          >
-            {tag}
-          </Button>
-        ))}
-      </div>
-      {isSinglePage ? (
-        <></>
-      ) : (
-        <Page currentPage={currentPage} numOfPages={numOfPages} />
-      )}
-      <div className="container mt-3">
-        <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
+      <div className="container py-5">
+        {children}
+        <div className="post-tags mt-5 mb-5">
+          <img src={tagIcon} alt="TAGS : " />
+          {tags.map(tag => (
+            <Button
+              id={tag}
+              size="sm"
+              color="primary"
+              href={`/tag/${slugify(tag)}`}
+              className="m-1 tags"
+            >
+              {tag}
+            </Button>
+          ))}
+        </div>
+        {isSinglePage ? (
+          <></>
+        ) : (
+          <Page currentPage={currentPage} numOfPages={numOfPages} />
+        )}
+        <div className="mt-3">
+          <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
+        </div>
       </div>
     </>
   )

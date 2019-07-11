@@ -25,7 +25,7 @@ const SinglePost = ({ data, pageContext }) => {
         isSinglePage={true}
       >
         <div
-          className="markdown-body container py-5"
+          className="markdown-body"
           dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}
         />
       </Post>
