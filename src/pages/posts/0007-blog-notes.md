@@ -100,7 +100,7 @@ Added line highlighting. https://www.gatsbyjs.org/packages/gatsby-remark-prismjs
 
 Changed post-header-area: now it shows its category!
 
-Changed **Sidebar** component: increased width and changed Tags inline css property
+Changed **Sidebar** component: changed Tags inline css property
 
 Code Refactoring
 
