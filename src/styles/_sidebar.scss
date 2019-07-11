@@ -32,6 +32,11 @@ body {
   color: $light-gray;
 }
 
+.tag-item {
+  display: inline-block !important;
+  font-size: 1em !important;
+}
+
 //......
 
 .bm-item {

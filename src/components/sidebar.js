@@ -10,9 +10,7 @@ import { totalCount } from "../pages/index"
 const Sidebar = () => {
   const data = useStaticQuery(graphql`
     query {
-      allMarkdownRemark(
-        sort: { fields: [frontmatter___date], order: DESC }
-      ) {
+      allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
         totalCount
         edges {
           node {
@@ -70,11 +68,11 @@ const Sidebar = () => {
     }
   })
 
-  const numOfRecentPosts = 6;
+  const numOfRecentPosts = 6
   titles = titles.slice(0, numOfRecentPosts)
 
   return (
-    <Menu right>
+    <Menu right width={450}>
       <a href="/markdown-blog-with-gatsbygraphql">
         <h3>
           <strong className="up-link">About this blog</strong>
@@ -108,19 +106,19 @@ const Sidebar = () => {
       <div className="menu-between" />
       <h3 className="menu-title m-4">Recent Posts</h3>
       {titles.map(title => (
-        <a
-          id={title}
-          className="menu-item"
-          href={`/${slugify(title)}`}
-        >
+        <a id={title} className="menu-item" href={`/${slugify(title)}`}>
           {title}
         </a>
       ))}
       <div className="menu-between" />
       <h3 className="menu-title m-4">Tags</h3>
       {tags.map(tag => (
-        <a id={tag} className="menu-item" href={`/tag/${slugify(tag)}`}>
-          {tag}{" "}
+        <a
+          id={tag}
+          className="menu-item tag-item mr-4"
+          href={`/tag/${slugify(tag)}`}
+        >
+          {tag}
           <Badge color="light" className="ml-1">
             {tagPostCount[tag]}
           </Badge>
