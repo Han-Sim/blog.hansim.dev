@@ -95,3 +95,12 @@ Added line highlighting. https://www.gatsbyjs.org/packages/gatsby-remark-prismjs
   border-left: 0.25em solid $highlight-1;
 }
 ```
+
+## July 10, 2019
+
+Changed post-header-area: now it shows its category!
+
+Changed **Sidebar** component: increased width and changed Tags inline css property
+
+Code Refactoring
+
