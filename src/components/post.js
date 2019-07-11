@@ -39,7 +39,7 @@ const Post = ({
             <h1>{title}</h1>
           </div>
           <div className="text-center post-category mt-3 mb-1">
-            <Badge href={`/${category}`} color="dark">
+            <Badge href={`/category/${category}`} color="dark">
               {category}
             </Badge>
           </div>
