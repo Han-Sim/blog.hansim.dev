@@ -50,7 +50,7 @@ const Post = ({
       </div>
       <div className="container py-5">
         {children}
-        <div className="post-tags mt-5 mb-5">
+        <div className="post-tags mb-5">
           <img src={tagIcon} alt="TAGS : " />
           {tags.map(tag => (
             <Button
