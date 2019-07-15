@@ -68,6 +68,8 @@ console.log(answer())
 
 **I sorted the given array using the `sort` method.** By doing this, now I can avoid picking every possible pair from the array.
 
+> However, if `sort` is more expensive than doing this, we should avoid use `sort` instead. I assumed the given array is big enough so that using `sort` ultimately makes my code more efficient and faster.
+
 ```JavaScript
 arr.sort(function(a, b) {
   return a - b
