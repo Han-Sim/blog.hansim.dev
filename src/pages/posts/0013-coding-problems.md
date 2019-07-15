@@ -48,10 +48,7 @@ function answer() {
         if (sum === k) {
           return true
         } else if (sum > k) {
-          if (noMoreTryThisIndex === -1) {
-            console.log(`we don't need to try arr[${j}] from now on`)
-            noMoreTryThisIndex = j
-          } else if (noMoreTryThisIndex > j) {
+          if (noMoreTryThisIndex === -1 || noMoreTryThisIndex > j) {
             console.log(`we don't need to try arr[${j}] from now on`)
             noMoreTryThisIndex = j
           }
