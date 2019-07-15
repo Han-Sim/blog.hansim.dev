@@ -74,15 +74,13 @@ Planning to add more features
 
 ## June 30, 2019
 
-Added **Category** and **All Posts**
-
-Updated SCSS files
-
-Fixed minor design errors in mobile environment
+- Added **Category** and **All Posts**
+- Updated SCSS files
+- Fixed minor design errors in mobile environment
 
 ## July 3, 2019
 
-Added line highlighting. https://www.gatsbyjs.org/packages/gatsby-remark-prismjs/
+- Added line highlighting. https://www.gatsbyjs.org/packages/gatsby-remark-prismjs/
 
 ```CSS
 .gatsby-highlight-code-line {
@@ -96,11 +94,20 @@ Added line highlighting. https://www.gatsbyjs.org/packages/gatsby-remark-prismjs
 }
 ```
 
-## July 10, 2019
+## July 10-15, 2019
 
-Changed post-header-area: now it shows its category!
+- Changed `post-header-area`: now each post has its own `category`!
+- Changed **Sidebar** component: changed Tags inline css property
+- Code refactoring
+- Enhanced readibility of the `markdown-body` area
+  - increased the font size and adjusted margins.
 
-Changed **Sidebar** component: changed Tags inline css property
+--------------
 
-Code Refactoring
+# Needs to be done
 
+- *Planning to have `subcategory` as well if it gets too complex*
+- `Tags` gets messier
+  - To fix this, I'm going to increase the width of Sidebar, but now my Sidebar component has an issue in a mobile environment if I changed its `width` to `100%`
+  - Probably going to build a Sidebar component myself without using `react-burger-menu`
+- `More posts` (relate to this post) component
