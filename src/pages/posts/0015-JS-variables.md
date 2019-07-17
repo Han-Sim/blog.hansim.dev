@@ -20,6 +20,19 @@ tags:
 
 var c = a + b; //ERROR
 ```
+
+# Variables and constants declared with `let` or `const` are not hoisted!
+
+```JavaScript
+console.log(x);
+console.log(y); // ERROR: y is not defined
+
+var x = 3;
+let y = 4;
+```
+
+Reference: https://www.w3schools.com/js/js_hoisting.asp
+
 # `const`
 
 `const` is most preffered way to declare variables in these reasons
