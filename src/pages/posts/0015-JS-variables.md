@@ -24,11 +24,11 @@ var c = a + b; //ERROR
 # Variables and constants declared with `let` or `const` are not hoisted!
 
 ```JavaScript
-console.log(x);
-console.log(y); // ERROR: y is not defined
+x = 3;
+y = 4; // ERROR: y is not defined
 
-var x = 3;
-let y = 4;
+var x;
+let y;
 ```
 
 Reference: https://www.w3schools.com/js/js_hoisting.asp
