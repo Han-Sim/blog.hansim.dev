@@ -60,7 +60,7 @@ Object.freeze(JS_CONST_2); //now JS_CONST_2 is immutable and not extensible
 
 # `let`
 
-When we use `let` other than `cosnst`, it means this variable will be reassigned within its `block scope`. 
+When we use `let` other than `const`, it means this variable will be reassigned within its `block scope`. 
 
 One of the most common example would be a counter in a loop
 
