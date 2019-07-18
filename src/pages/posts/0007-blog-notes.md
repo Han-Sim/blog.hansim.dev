@@ -94,7 +94,7 @@ Planning to add more features
 }
 ```
 
-## July 10-15, 2019
+## July 10-18, 2019
 
 - Changed `post-header-area`: now each post has its own `category`!
 - Changed **Sidebar** component: changed Tags inline css property
@@ -107,7 +107,7 @@ Planning to add more features
 # Needs to be done
 
 - *Planning to have `subcategory` as well if it gets too complex*
-- `Tags` gets messier
-  - To fix this, I'm going to increase the width of Sidebar, but now my Sidebar component has an issue in a mobile environment if I changed its `width` to `100%`
-  - Probably going to build a Sidebar component myself without using `react-burger-menu`
+- `Tags` gets messier: build an independent 'tags' page.
 - `More posts` (relate to this post) component
+- `Search` plug-in
+- Better readibility in markdown-body.
