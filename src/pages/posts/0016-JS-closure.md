@@ -1,5 +1,5 @@
 ---
-title: "JavaScript: Why Do We Need Closure?"
+title: "So... Why Do We Need Closure?"
 date: "2019-07-17 18:33:00"
 author: "Han Sim"
 category: "JavaScript | Node.js"
