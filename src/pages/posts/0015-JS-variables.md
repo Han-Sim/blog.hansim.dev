@@ -41,7 +41,7 @@ Reference: https://www.w3schools.com/js/js_hoisting.asp
 
 **It doesn't mean that `const` is `immutable`.** 
 
-[const variables not immutable](https://ponyfoo.com/articles/const-variables-not-immutable)
+Reference: [const variables not immutable](https://ponyfoo.com/articles/const-variables-not-immutable)
 
 > Using const only means that the variable will always have a reference to the same object or primitive value, because that reference can’t change. The reference itself is immutable, but the value held by the variable does not become immutable.
 
@@ -96,5 +96,7 @@ console.log(callbacks.map(
 
 Because the counter `i` is declared with `var`, it is hoisted to the top of the function scope. So we can see `[5, 5, 5, 5, 5]` istead of `[0, 1, 2, 3, 4]` on the console.
 
-Reference: [Why you shouldn't use var anymore](https://hackernoon.com/why-you-shouldnt-use-var-anymore-f109a58b9b70)
+# Reference
+
+- [Why you shouldn't use var anymore](https://hackernoon.com/why-you-shouldnt-use-var-anymore-f109a58b9b70)
 
