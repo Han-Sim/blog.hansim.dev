@@ -42,6 +42,7 @@ This is where the component initially renders.
 
 - This runs after the component is actually mounted.
 - This is to see if the DOM is ready. For example, if I want to use a third-part library and it has to be executed after the DOM is mounted, I can put those codes in this lifecycle method. 
+  - This is the best lifecycle method for `making API calls`.
 
 ## Updating Phase
 
