@@ -30,7 +30,7 @@ JavaScript, being a prototype-based language, does not distinguish between `clas
 
 http://webreference.com/js/tips/010215.html
 
-# In JavaScript, we just creates `constructor` directly.
+# In JavaScript, we just create `constructor` directly.
 
 Every `Function Expression` is essentially a constructor.
 
