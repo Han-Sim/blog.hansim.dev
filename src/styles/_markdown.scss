@@ -264,8 +264,8 @@
 }
 
 .markdown-body a {
-  color: $highlight-1;
   text-decoration: none;
+  background-color: rgba(113, 199, 236, 0.25);
 }
 
 .markdown-body a:hover {
