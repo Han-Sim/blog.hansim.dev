@@ -39,7 +39,7 @@ Reference: https://www.w3schools.com/js/js_hoisting.asp
 
 ## `const` is a signal that the identifier won’t be reassigned.
 
-**It doesn't mean that `const` is `immutable`.** 
+**It doesn't mean that `const` is `immutable`, because for example, we can change `properties` of const object.
 
 Reference: [const variables not immutable](https://ponyfoo.com/articles/const-variables-not-immutable)
 
