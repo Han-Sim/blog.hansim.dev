@@ -1,6 +1,6 @@
 ---
 title: "JavaScript and Prototype-based Inheritance"
-date: "2019-07-17 20:16:00"
+date: "2019-07-17 21:22:00"
 author: "Han Sim"
 category: "JavaScript | Node.js"
 tags:
