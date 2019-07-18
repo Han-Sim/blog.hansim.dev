@@ -47,6 +47,8 @@ This is where we need **Closures** to make our function remember the previous en
 
 # Closure
 
+We can avoid using Global variables by using Closure instead.
+
 > Closures are functions that refer to `independent (free) variables`. In other words, the function defined in the closure ‘remembers’ the environment in which it was created.
 
 > A closure is simply a function defined within another function(**Closure are nested function which has access to the outer scope**). However, the power of closures is derived from the fact that the inner function remembers the environment in which it was created. In other words, the inner function has access to the outer function’s variables and parameters. [Link](https://medium.com/@dis_is_patrick/practical-uses-for-closures-c65640ae7304)
