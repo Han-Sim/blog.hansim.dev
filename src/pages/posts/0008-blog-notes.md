@@ -38,16 +38,15 @@ Welcome to my dev blog!
 
 This is a fully featured blog
 
-- Markdown Language | Syntax Highlighting
+- `Fast Performance` using static site genertaor `GatsbyJS`
+- `Markdown Language` | `Syntax Highlighting`
   - I customized `prism.css` and `markdown.css(GitHub)`
 - Recent Post Sections, Tags
-  - by `GatsbyJS/GraphQL`
 - Comments using Social Media
   - by `DisQus` Plugin
-- `SPA` (Single Page Application) supported by `GatsbyJS`
+- `SPA` (Single Page Application) with `GatsbyJS`
 - User-friendly paths(`Post Slug`) to each post
-- Responsive design
-  - by `Bootstrap` and `ReactStrap`
+- Responsive design with `Bootstrap` and `ReactStrap`
 
 ## Deployment
 
@@ -60,10 +59,10 @@ This is a fully featured blog
 
 Finished deploying the final version
 
-- Completed redesigning to achieve modern design
+- Completed redesigning to achieve modern UI
   - Removed 'index' page: **`Post` and `PostList` components are the only pages now!**
   - **No more grid design with Row and Col**: Contents take up the entire screen (responsively)
-  - Warm toned color scheme
+  - Warm toned color scheme (see `_variable.scss` file in the [source code](https://github.com/Han-Sim/blog.hansim.dev/blob/master/src/styles/_variables.scss))
 - Refactored codes: enhanced readability and maintainability
 
 Planning to add more features
