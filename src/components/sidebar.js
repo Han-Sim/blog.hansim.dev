@@ -72,7 +72,7 @@ const Sidebar = () => {
   titles = titles.slice(0, numOfRecentPosts)
 
   return (
-    <Menu right>
+    <Menu width={"100%"} right>
       <a href="/markdown-blog-with-gatsbygraphql">
         <h3>
           <strong className="up-link">About this blog</strong>
