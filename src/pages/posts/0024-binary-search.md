@@ -12,7 +12,7 @@ tags:
 
 > `Binary searc`h` is an efficient algorithm for **finding an item from a sorted list of items**. It works by repeatedly dividing in half the portion of the list that could contain the item, until you've narrowed down the possible locations to just one. [Link: what is binary search](https://www.khanacademy.org/computing/computer-science/algorithms/binary-search/a/binary-search)
 
-As compared to `linear search`, `binary search` is much faster with Time Complexity of `O(logN)` whereas linear search algorithm works in O(N) time complexity.
+As compared to `linear search`, `binary search` is much faster with Time Complexity of `O(logN)`(Big-O of log N) whereas linear search algorithm works in `O(N)`(Big-O of N) time complexity.****
 
 # JavaScript
 

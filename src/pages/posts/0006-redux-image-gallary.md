@@ -1,6 +1,7 @@
+
 ---
 title: "Image Gallery with Redux-Saga/React"
-date: "2019-07-03 08:42:00"
+date: "2019-06-28 08:42:00"
 author: "Han Sim"
 category: "React | React Native"
 tags:
@@ -11,6 +12,9 @@ tags:
   - Redux-Saga
   - Frontend
 ---
+
+This is to teach myself `Redux` and `Redux-Saga`. I followed [this tutorial](https://www.youtube.com/watch?v=0L99n06F2rU&list=PLMV09mSPNaQlWvqEwF6TfHM-CVM6lXv39) on Youtube.
+
 # Image Gallery Web Page
 
 **Source Code**: https://github.com/Han-Sim/redux-simple-image-gallery/
