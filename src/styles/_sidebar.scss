@@ -28,7 +28,7 @@
 }
 
 .tag-item {
-  display: inline !important;
+  display: inline-block !important;
   font-size: 1em !important;
 }
 
@@ -38,6 +38,7 @@
   display: inline-block;
   text-decoration: none;
   margin-bottom: 10px;
+  
   color: #d1d1d1;
   transition: color 0.2s;
   font-weight: 800;
