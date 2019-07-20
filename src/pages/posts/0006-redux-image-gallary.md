@@ -1,4 +1,3 @@
-
 ---
 title: "Image Gallery with Redux-Saga/React"
 date: "2019-06-28 08:42:00"
