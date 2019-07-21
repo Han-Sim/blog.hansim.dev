@@ -57,7 +57,7 @@ A queue or **FIFO** (first in, first out) is an abstract data type that serves a
 
 It can be implemented by using both **array** and **LinkedList**.
 
-https://www.geeksforgeeks.org/queue-interface-java/
+https://www.geeksforgeeks.**org**/queue-interface-java/
 
 https://dzone.com/articles/arraylist-vs-linkedlist-vs
 
@@ -117,9 +117,9 @@ public class Test
 }
 ```
 
-#### Array vs LinkedList
+### Array vs LinkedList
 
-https://techdifferences.com/difference-between-array-and-linked-list.html
+Related Post: https://blog.hansim.dev/linkedlist-vs-array
 
 - How it works?
   - Arrays are index based data structure
