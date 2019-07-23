@@ -1,0 +1,52 @@
+.pagination {
+  h1 {
+    font-size: 18px;
+  }
+  .col-sm-3 {
+    padding-bottom: 0px;
+  }
+
+  .see-more {
+    &:hover {
+      font-weight: 800;
+      text-decoration: underline;
+    }
+  }
+
+  .card {
+    border-color: $dark-gray;
+    min-height: 155px;
+    margin-bottom: 0px;
+
+    .category-badge {
+      position: relative;
+      top: 70%;
+      background-color: $dark-gray;
+      color: white;
+      font-size: 15px;
+      &:hover {
+        background-color: $light-gray;
+        color: $dark-gray;
+        font-weight: 800;
+      }
+    }
+
+    .card-title {
+      margin-bottom: 0px;
+      font-weight: 600;
+      font-size: 18px;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &:hover {
+      transform: translate(0, -5px);
+      -webkit-transform: translate(0, -5px); /** Chrome & Safari **/
+      -o-transform: translate(0, -5px); /** Opera **/
+      -moz-transform: translate(0, -5px); /** Firefox **/
+      background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQYV2NkQALXzx3/zwjjgziaRpaMYAEYB8RmROaABAD6pQ9wraGMiQAAAABJRU5ErkJggg==)
+        repeat;
+    }
+  }
+}

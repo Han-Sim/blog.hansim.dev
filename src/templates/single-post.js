@@ -22,6 +22,8 @@ const SinglePost = ({ data, pageContext }) => {
         tags={post.tags}
         id={data.markdownRemark.id}
         slug={pageContext.slug}
+        titlesOfAll={pageContext.titlesOfAll}
+        categoriesOfAll={pageContext.categoriesOfAll}
         isSinglePage={true}
       >
         <div

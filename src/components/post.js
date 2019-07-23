@@ -1,9 +1,9 @@
 import React from "react"
 import { Button, Badge } from "reactstrap"
-import { slugify } from "../util/helperFunctions"
+import { slugify, findIndex } from "../util/helperFunctions"
 import { DiscussionEmbed } from "disqus-react"
 
-import Page from "./page"
+import Pagination from "./pagination"
 
 /* import icons */
 import tagIcon from "../images/tags.png"
@@ -13,14 +13,13 @@ const Post = ({
   children,
   category,
   title,
+  titlesOfAll,
+  categoriesOfAll,
   author,
   date,
   tags,
   id,
   slug,
-  currentPage,
-  numOfPages,
-  isSinglePage,
 }) => {
   //DisQus plugin
   const baseUrl = "https://dev.hansim.dev"
@@ -30,7 +29,6 @@ const Post = ({
     identifier: id,
     title: title,
   }
-
   return (
     <>
       <div className="post-header-area">
@@ -64,11 +62,11 @@ const Post = ({
             </Button>
           ))}
         </div>
-        {isSinglePage ? (
-          <></>
-        ) : (
-          <Page currentPage={currentPage} numOfPages={numOfPages} />
-        )}
+        <Pagination
+          titlesOfAll={titlesOfAll}
+          categoriesOfAll={categoriesOfAll}
+          title={title}
+        />
         <div className="mt-3">
           <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
         </div>

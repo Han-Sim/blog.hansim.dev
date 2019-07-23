@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
+import _ from "lodash"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -32,7 +33,20 @@ const IndexPage = () => {
   `)
 
   const latestPost = data.allMarkdownRemark.edges[0].node
-  let numOfPages = data.allMarkdownRemark.edges.length
+
+  let titlesOfAll = []
+  _.each(data.allMarkdownRemark.edges, edge => {
+    if (_.get(edge, "node.frontmatter.title")) {
+      titlesOfAll = titlesOfAll.concat(edge.node.frontmatter.title)
+    }
+  })
+
+  let categoriesOfAll = []
+  _.each(data.allMarkdownRemark.edges, edge => {
+    if (_.get(edge, "node.frontmatter.category")) {
+      categoriesOfAll = categoriesOfAll.concat(edge.node.frontmatter.category)
+    }
+  })
 
   return (
     <Layout>
@@ -45,8 +59,9 @@ const IndexPage = () => {
         tags={latestPost.frontmatter.tags}
         id={latestPost.id}
         slug={latestPost.fields.slug}
+        titlesOfAll={titlesOfAll}
+        categoriesOfAll={categoriesOfAll}
         currentPage={1}
-        numOfPages={numOfPages}
         isSinglePage={false}
       >
         <div

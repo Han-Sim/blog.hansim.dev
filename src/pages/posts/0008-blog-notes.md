@@ -101,6 +101,15 @@ Planning to add more features
 - Enhanced readibility of the `markdown-body` area
   - increased the font size and adjusted margins.
 
+## July 23, 2019
+
+### Major update in `Pagination`
+
+- Now it has its own `recent posts` section in each posts!
+  - Four recent posts of all, and four recent posts of the same category.
+  - Removed pagination from `ReactStrap`; there is no more pages in this blog.
+
+
 --------------
 
 # Needs to be done

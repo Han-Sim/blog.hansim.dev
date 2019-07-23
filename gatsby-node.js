@@ -30,11 +30,12 @@ exports.createPages = ({ actions, graphql }) => {
 
   return graphql(`
     {
-      allMarkdownRemark {
+      allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
         totalCount
         edges {
           node {
             frontmatter {
+              title
               author
               tags
               category
@@ -49,18 +50,31 @@ exports.createPages = ({ actions, graphql }) => {
   `).then(res => {
     if (res.errors) return Promise.reject(res.errors)
 
-    const posts = res.data.allMarkdownRemark.edges
+    const edges = res.data.allMarkdownRemark.edges
+    let titlesOfAll = []
+    _.each(edges, edge => {
+      if (_.get(edge, "node.frontmatter.title")) {
+        titlesOfAll = titlesOfAll.concat(edge.node.frontmatter.title)
+      }
+    })
+    let categoriesOfAll = []
+    _.each(edges, edge => {
+      if (_.get(edge, "node.frontmatter.category")) {
+        categoriesOfAll = categoriesOfAll.concat(edge.node.frontmatter.category)
+      }
+    })
 
     /***** Post *****/
 
     //Create a post page with a single-post.js component as a template
-    posts.forEach(({ node }) => {
+    edges.forEach(({ node }) => {
       createPage({
         path: node.fields.slug,
         component: templates.singlePost,
         context: {
-          //Passing slug for the template to use to get posts.
-          slug: node.fields.slug,
+          slug: node.fields.slug, //Passing slug for the template to use to get posts.
+          titlesOfAll, //titles array
+          categoriesOfAll, //categories
         },
       })
     })
@@ -69,7 +83,7 @@ exports.createPages = ({ actions, graphql }) => {
 
     //gather tags from each nodes
     let tags = []
-    _.each(posts, edge => {
+    _.each(edges, edge => {
       if (_.get(edge, "node.frontmatter.tags")) {
         tags = tags.concat(edge.node.frontmatter.tags)
       }
@@ -107,7 +121,7 @@ exports.createPages = ({ actions, graphql }) => {
 
     //gather category from each nodes
     let categories = []
-    _.each(posts, edge => {
+    _.each(edges, edge => {
       if (_.get(edge, "node.frontmatter.category")) {
         categories = categories.concat(edge.node.frontmatter.category)
       }
@@ -129,35 +143,6 @@ exports.createPages = ({ actions, graphql }) => {
         component: templates.categoryPosts,
         context: {
           category,
-        },
-      })
-    })
-
-    /***** Pagination *****/
-
-    const postsPerPage = 1
-    const numOfPages = Math.ceil(posts.length / postsPerPage)
-    /* 
-      we have 2 posts per page
-      If there are 7 posts, we need Math.ceil(7/2) = 4 pages
-    */
-
-    //create a shallow-copied array to createPage
-    //  length = numOfPages
-    //
-    Array.from({ length: numOfPages }).forEach((_, index) => {
-      const isFirstPage = index === 0
-      const currentPage = index + 1 //page number starts from 1
-
-      if (isFirstPage) return
-      createPage({
-        path: `/page/${currentPage}`,
-        component: templates.pageList,
-        context: {
-          limit: postsPerPage,
-          skip: index * postsPerPage,
-          currentPage,
-          numOfPages,
         },
       })
     })
