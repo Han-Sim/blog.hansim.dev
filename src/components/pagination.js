@@ -91,9 +91,9 @@ class Pagination extends React.Component {
           <h1>Recent Posts</h1>
         </Col>
         {cardsOfAll}
-        <Col className="see-more text-right mt-3 pr-5">
+        <Col className="see-more text-right mb-3 pr-5">
           <Link className="see-more" to={"/all-posts"}>
-            see all posts
+            See More...
           </Link>
         </Col>
         {cardsOfThisCategory.length > 0 && (
@@ -109,12 +109,12 @@ class Pagination extends React.Component {
             {cardsOfThisCategory}
             {cardsOfThisCategory.length === 4 && (
               <>
-                <Col className="see-more text-right mt-3 pr-5">
+                <Col className="see-more text-right mb-3 pr-5">
                   <Link
                     className="see-more"
                     to={`/category/${slugify(thisCategory)}`}
                   >
-                    see more posts in {thisCategory}
+                    See More...
                   </Link>
                 </Col>
               </>
