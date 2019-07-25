@@ -144,7 +144,7 @@ See more about `get` syntax here: https://developer.mozilla.org/en-US/docs/Web/J
 
 A callback is a function that is to be executed after another function has finished executing — hence the name ‘call back’. (https://codeburst.io/javascript-what-the-heck-is-a-callback-aba4da2deced)
 
-https://blog.hansim.dev/asynchronous-javascript-callback-function-and-promise-api/
+http://blog.hansim.dev/asynchronous-javascript-and-callback-function
 
 ```JavaScript
 function getData(callback) {
