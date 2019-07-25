@@ -50,6 +50,7 @@ class Pagination extends React.Component {
       title,
       categoriesOfAll,
       thisCategory,
+      titlesOfAll,
       indexInAll,
     }
   }
@@ -60,6 +61,9 @@ class Pagination extends React.Component {
       recentCategoriesOfAll,
       recentTitlesOfThisCategory,
       thisCategory,
+      titlesOfAll,
+      categoriesOfAll,
+      indexInAll,
     } = this.state //destructurize this.state
 
     //Recent Posts : All
@@ -87,6 +91,30 @@ class Pagination extends React.Component {
 
     return (
       <Row className="pagination mt-3 mb-5">
+        <Col sm="6" className="markdown-body previous-next-post">
+          <h1>Previous Post</h1>
+          <div className="title">
+            {indexInAll === titlesOfAll.length - 1 ? (
+              <a>There is no previous post</a>
+            ) : (
+              <Link to={slugify(titlesOfAll[indexInAll + 1])}>
+                {titlesOfAll[indexInAll + 1]}
+              </Link>
+            )}
+          </div>
+        </Col>
+        <Col sm="6" className="markdown-body previous-next-post">
+          <h1>Next Post</h1>
+          <div className="title">
+            {indexInAll === 0 ? (
+              <a>There is no next post</a>
+            ) : (
+              <Link to={slugify(titlesOfAll[indexInAll + 1])}>
+                {titlesOfAll[indexInAll + 1]}
+              </Link>
+            )}
+          </div>
+        </Col>
         <Col sm="12" className="markdown-body pagination-section mb-4">
           <h1>Recent Posts</h1>
         </Col>
