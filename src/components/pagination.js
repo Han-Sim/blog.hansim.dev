@@ -109,8 +109,8 @@ class Pagination extends React.Component {
             {indexInAll === 0 ? (
               <a>There is no next post</a>
             ) : (
-              <Link to={slugify(titlesOfAll[indexInAll + 1])}>
-                {titlesOfAll[indexInAll + 1]}
+              <Link to={slugify(titlesOfAll[indexInAll - 1])}>
+                {titlesOfAll[indexInAll - 1]}
               </Link>
             )}
           </div>
