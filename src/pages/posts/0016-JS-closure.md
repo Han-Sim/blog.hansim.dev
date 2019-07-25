@@ -69,6 +69,8 @@ foo();
 // the a is now 103
 ```
 
+I used `IIFE` here: see this post to understand why. https://mariusschulz.com/blog/use-cases-for-javascripts-iifes
+
 # Singleton in JavaScript using Closuer
 
 `Singleton`: an object that is meant to have only one instance during the execution of the program.
@@ -90,9 +92,9 @@ var singleton = function () {
 console.log(singleton.get()); //0
 console.log(singleton.get()); //0
 
-singleton.increment(); 
+singleton.increment();
 console.log(singleton.get()); //1
-singleton.increment(); 
+singleton.increment();
 console.log(singleton.get()); //2
 ```
 
