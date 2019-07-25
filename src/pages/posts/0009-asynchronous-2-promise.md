@@ -1,6 +1,6 @@
 ---
-title: "Asynchronous JavaScript: Callback Function and Promise API"
-date: "2019-07-03 11:27:00"
+title: "Promise API and Async/Await"
+date: "2019-07-03 11:30:00"
 author: "Han Sim"
 category: "JavaScript | Node.js"
 tags:
@@ -10,117 +10,12 @@ tags:
   - Callback
   - Ajax
   - Async-Await
+  - Functional-Programming
 ---
 
 > “A promise is an object that may produce a single value some time in the future”
 
-# Asynchronous
-
-In JavaScript, lots of operation can be done in an `asynchronous` way. To understand `asynchronous programming`, I used this resource: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous. **Asynchronous** means JavaScript does _not_ stop executing the code while it is executing a line of code; it just starts executing the next code.
-
-## Examples 1: jQuery `ajax` communication
-
-```JavaScript
-function getData() {
-	var data;
-	$.get('https://api.com/products/1', function (res) {
-		data = res;
-	});
-	return data;
-}
-
-console.log(getData());
-```
-
-Because JavaScript is asynchronous, `console.log(getData());` line returns `undefined`. It does not wait for `get` communication, instead, it just returns `data` variable which is undefined yet.
-
-## Example 2: `setTimeout()`
-
-This is probably the most common example that I can find anywhere.
-
-```JavaScript
-// #1
-console.log('Hello');
-// #2
-setTimeout(function () {
-	console.log('Bye');
-}, 3000);
-// #3
-console.log('Hello Again');
-```
-
-Because `setTimeout` is asynchronous as well, a browser runs `console.log('Hello Again');` before it runs `setTimeout(...)`.
-
-```
-Hello
-Hello Again
-Bye
-```
-
-# Solution: `Callback Function`
-
-A callback is a function that is to be executed after another function has finished executing — hence the name ‘call back’. (https://codeburst.io/javascript-what-the-heck-is-a-callback-aba4da2deced)
-
-With callback function, we can bypass Asynchronous and let it execute the way we want. This is how I solve the `ajax` call problem I mentioned above.
-
-```JavaScript
-//create callback function
-function doHomework(subject, callback) {
-  alert(`Start homework: ${subject}`); //this will be executed first
-  callback(); //second
-}
-
-//call it
-doHomework('math', function() {
-  alert("Finished");
-}); 
-```
-
-## jQuery example
-
-```JavaScript
-function getData(callback) {
-	$.get('https://api.com/products/1', function (res) {
-		callback(res); //pass 'res' from the server to callback function
-	});
-}
-
-getData(function(data) {
-  console.log(data);
-})
-```
-
-## Another example: `setState()` in **React**
-
-How to setState() correctly? https://reactjs.org/docs/state-and-lifecycle.html#state-updates-may-be-asynchronous
-
-```JavaScript
-// Wrong
-this.setState({
-  counter: this.state.counter + this.props.increment,
-});
-
-// Correct
-this.setState((state, props) => ({
-  counter: state.counter + props.increment
-}));
-
-//or.. (without Arrow Syntax)
-// Correct
-this.setState(function(state, props) {
-  return {
-    counter: state.counter + props.increment
-  };
-});
-```
-
-## Another Problem: `Callback Hell`
-
-However, if there is a lot of logic that needs to be executed in sequence, using callback function can be really messy as hell. This is called **Callback Hell**. [Async/Await](https://blog.hansim.dev/asynchronous-javascript-asyncawait)
-
-Ref: https://blog.hellojs.org/asynchronous-javascript-from-callback-hell-to-async-and-await-9b9ceb63c8e8
-
-To solve this problem, we need **Promise** or **async/await**. I'm mainly discussing about **Promise API** today.
+Previous Post: http://blog.hansim.dev/asynchronous-javascript-and-callback-function
 
 # Promise API
 
@@ -167,7 +62,7 @@ new Promise(function (resolve, reject) {
 });
 ```
 
-When it executes the parameter `resolve` of Callback Function, it is now in the `Fulfilled` state. If the promise is in this state, we can get results by using `then()`. 
+When it executes the parameter `resolve` of Callback Function, it is now in the `Fulfilled` state. If the promise is in this state, we can get results by using `then()`.
 
 ```JavaScript
 function getData() {
@@ -252,7 +147,3 @@ app.get('/employees', (req, res) => {
   });
 });
 ```
-
-# Related Post
-
-https://blog.hansim.dev/asynchronous-javascript-asyncawait

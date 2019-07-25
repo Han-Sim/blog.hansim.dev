@@ -71,7 +71,7 @@ foo();
 
 I used `IIFE` here: see this post to understand why. https://mariusschulz.com/blog/use-cases-for-javascripts-iifes
 
-# Singleton in JavaScript using Closuer
+## Singleton in JavaScript using Closuer
 
 `Singleton`: an object that is meant to have only one instance during the execution of the program. Because function() is `anonymous` and called right after its definition, we cannot create anymore object from this factory function. We only can use `get` and `increment` method only by using `singleton` instance. `private_counter` is now truly private.
 
@@ -98,6 +98,27 @@ singleton.increment();
 console.log(singleton.get()); //2
 ```
 
+## Lexcial Scope and closure
+
+[Lexical Scope and Closure](http://astronautweb.co/javascript-lexical-scope/)
+
+- Lexical scope is created by a closure.
+  - Closure is when a function is able to remember and access its `lexical scope` even when that function is executing outside its lexical scope.
+- **Functioanl scope of outer function === lexical scope of inner function**
+  
+```JavaScript
+function foo() {  // 'scope of foo' aka lexical scope for bar
+   var memory = 'hello closure';
+   return function bar() {
+      console.log(memory);
+   }
+}
+ 
+// returns the bar function and assigns it to the identifier 'closure’;
+const closure = foo();
+ 
+closure(); // hello closure
+```
 # References
 
-https://www.codingame.com/playgrounds/6516/closures-in-javascript-for-beginners
+- https://www.codingame.com/playgrounds/6516/closures-in-javascript-for-beginners
