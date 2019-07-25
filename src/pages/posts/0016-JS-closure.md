@@ -73,18 +73,18 @@ I used `IIFE` here: see this post to understand why. https://mariusschulz.com/bl
 
 # Singleton in JavaScript using Closuer
 
-`Singleton`: an object that is meant to have only one instance during the execution of the program.
+`Singleton`: an object that is meant to have only one instance during the execution of the program. Because function() is `anonymous` and called right after its definition, we cannot create anymore object from this factory function. We only can use `get` and `increment` method only by using `singleton` instance. `private_counter` is now truly private.
 
 ```JavaScript
 //factory function (function that returns an object)
-var singleton = function () {
-  var private_contor = 0;
+var singleton = function(){
+  var private_counter = 0;
   return {
       get: function () {
-          return "Contor: " + private_contor;
+          return "Counter: " + private_counter;
       },
       increment: function() {
-          private_contor++;
+          private_counter++;
       }
   };
 }();  // Attention Here - the singleton is the result of this function's call
@@ -92,9 +92,9 @@ var singleton = function () {
 console.log(singleton.get()); //0
 console.log(singleton.get()); //0
 
-singleton.increment();
+singleton.increment(); 
 console.log(singleton.get()); //1
-singleton.increment();
+singleton.increment(); 
 console.log(singleton.get()); //2
 ```
 

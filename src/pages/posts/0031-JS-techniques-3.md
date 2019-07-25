@@ -48,3 +48,12 @@ a
 ```
 
 Even though we have `0` time out, it is not executed right away. It is still asynchronous and it will wait until everything on stack is finished. so `console.log('b')` and `console.log('c')` are going to be on the stack and executed first, and then `asynchronous` is executed.
+
+# `null` vs `undefined`
+
+Both represent an empty value 
+
+- `undefined`: This is something JS does for you automatically. When you define a variable but not assign a value to it, JS puts a placeholder for this variable which is `undefined`.
+  - `typeof(undefined)` is `undefined`.
+- `null`: This is what you do intentionally. If there is a value and I want to clean it up, we can assign `null`. *it is still possible to assign `undefined` manually, but you shouldn't do it*
+  - `typeof(null)` is `object`. `null` is `object`.
