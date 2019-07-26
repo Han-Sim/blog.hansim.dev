@@ -2,7 +2,7 @@
 title: "Node.js and Asynchronous JavaScript"
 date: "2019-07-25 19:45:00"
 author: "Han Sim"
-category: "Node.js"
+category: "NodeJS"
 tags:
   - JavaScript
   - Asynchronous
