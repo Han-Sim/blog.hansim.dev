@@ -103,8 +103,8 @@ class Pagination extends React.Component {
             )}
           </div>
         </Col>
-        <Col sm="6" className="markdown-body previous-next-post">
-          <h1>Next Post</h1>
+        <Col sm="6" className="markdown-body previous-next-post text-right">
+          <h1 className="text-right">Next Post</h1>
           <div className="title">
             {indexInAll === 0 ? (
               <a>There is no next post</a>
