@@ -118,7 +118,7 @@ Both represent an empty value
 
 # How to use variable for object key
 
-This is ES6+ :
+This is ES6+ syntax, `computed property name`.
 
 ```JavaScript
 var key = "name";
