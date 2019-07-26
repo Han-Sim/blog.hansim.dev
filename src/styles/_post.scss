@@ -78,3 +78,11 @@ header area background pattern:
   margin-top: 90px;
   font-size: 30px;
 }
+
+.container {
+  padding: 3rem 4rem;
+
+  @media screen and (max-width: 800px) {
+    padding: 3rem 0.3rem;
+  }
+}
