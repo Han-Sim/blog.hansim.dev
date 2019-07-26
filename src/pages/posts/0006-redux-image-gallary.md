@@ -2,7 +2,7 @@
 title: "Image Gallery with Redux-Saga/React"
 date: "2019-06-28 08:42:00"
 author: "Han Sim"
-category: "React | React Native"
+category: "React"
 tags:
   - Portfolio
   - JavaScript

@@ -2,7 +2,7 @@
 title: "How Does GatsbyJS and NextJS Work?"
 date: "2019-07-24 10:46:00"
 author: "Han Sim"
-category: "React | React Native"
+category: "React"
 tags:
   - JavaScript
   - React
