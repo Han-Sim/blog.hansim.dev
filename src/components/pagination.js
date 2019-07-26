@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
-import { Row, Col, Badge } from "reactstrap"
-import { slugify, findIndex, isFirst, isLast } from "../util/helperFunctions"
+import { Row, Col } from "reactstrap"
+import { slugify, findIndex } from "../util/helperFunctions"
 import PaginationCard from "./pagination-card"
 
 //I declared React.Component class here
@@ -62,7 +62,6 @@ class Pagination extends React.Component {
       recentTitlesOfThisCategory,
       thisCategory,
       titlesOfAll,
-      categoriesOfAll,
       indexInAll,
     } = this.state //destructurize this.state
 
@@ -70,7 +69,7 @@ class Pagination extends React.Component {
     const cardsOfAll = []
     for (const [index, title] of recentTitlesOfAll.entries()) {
       cardsOfAll.push(
-        <Col sm="3">
+        <Col sm="3" key={index}>
           <PaginationCard
             title={title}
             category={recentCategoriesOfAll[index]}
@@ -83,8 +82,8 @@ class Pagination extends React.Component {
     const cardsOfThisCategory = []
     for (const [index, title] of recentTitlesOfThisCategory.entries()) {
       cardsOfThisCategory.push(
-        <Col sm="3">
-          <PaginationCard title={title} category={thisCategory} />{" "}
+        <Col sm="3" key={index}>
+          <PaginationCard title={title} category={thisCategory}/>{" "}
         </Col>
       )
     }

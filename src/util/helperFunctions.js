@@ -18,14 +18,6 @@ const findIndex = function(array, key) {
   return -1
 }
 
-const isFirst = function(array, key) {
-  return array[0] === key ? true : false
-}
-
-const isLast = function(array, key) {
-  return array[array.length - 1] === key ? true : false
-}
-
-module.exports = { slugify, findIndex, isFirst, isLast }
+module.exports = { slugify, findIndex }
 //Node.js syntax export (not ES6)
 // this module is to be used in gatsby-node.js, because gatsby-node.js is run by Node as well.

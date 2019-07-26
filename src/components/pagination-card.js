@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import { Card, CardBody, CardTitle, CardSubtitle, Badge } from "reactstrap"
+import { Card, CardBody, CardTitle } from "reactstrap"
 import { slugify } from "../util/helperFunctions"
 
 const PaginationCard = ({ title, category }) => {

@@ -7,10 +7,7 @@ import Post from "../components/post"
 
 const SinglePost = ({ data, pageContext }) => {
   const post = data.markdownRemark.frontmatter
-
-  //Converted HTML source
-  console.log(post.tags)
-
+  
   return (
     <Layout>
       <SEO title={post.title} />

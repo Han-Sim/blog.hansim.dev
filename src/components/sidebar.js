@@ -5,8 +5,6 @@ import { slugify } from "../util/helperFunctions"
 import _ from "lodash"
 import { stack as Menu } from "react-burger-menu"
 
-import { totalCount } from "../pages/index"
-
 const Sidebar = () => {
   const data = useStaticQuery(graphql`
     query {
@@ -78,7 +76,7 @@ const Sidebar = () => {
           <strong className="up-link">About this blog</strong>
         </h3>
       </a>
-      <a href="https://hansim.dev" target="_blank">
+      <a href="https://hansim.dev" target="_blank" rel="noopener noreferrer">
         <h3>
           <strong className="up-link">About me</strong>
         </h3>
@@ -93,7 +91,7 @@ const Sidebar = () => {
       </a>
       {categories.map(category => (
         <a
-          id={category}
+          key={category}
           className="menu-item"
           href={`/category/${slugify(category)}`}
         >
@@ -106,7 +104,7 @@ const Sidebar = () => {
       <div className="menu-between" />
       <h3 className="menu-title m-4">Recent Posts</h3>
       {titles.map(title => (
-        <a id={title} className="menu-item" href={`/${slugify(title)}`}>
+        <a key={title} className="menu-item" href={`/${slugify(title)}`}>
           {title}
         </a>
       ))}
@@ -114,7 +112,7 @@ const Sidebar = () => {
       <h3 className="menu-title m-4">Tags</h3>
       {tags.map(tag => (
         <a
-          id={tag}
+          key={tag}
           className="menu-item tag-item mr-4"
           href={`/tag/${slugify(tag)}`}
         >

@@ -1,6 +1,6 @@
 import React from "react"
 import { Button, Badge } from "reactstrap"
-import { slugify, findIndex } from "../util/helperFunctions"
+import { slugify } from "../util/helperFunctions"
 import { DiscussionEmbed } from "disqus-react"
 
 import Pagination from "./pagination"
@@ -52,7 +52,7 @@ const Post = ({
           <img src={tagIcon} alt="TAGS : " />
           {tags.map(tag => (
             <Button
-              id={tag}
+              key={tag}
               size="sm"
               color="primary"
               href={`/tag/${slugify(tag)}`}
