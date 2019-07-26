@@ -46,7 +46,7 @@ const Post = ({
           </div>
         </div>
       </div>
-      <div className="container py-5 px-5">
+      <div className="container">
         {children}
         <div className="post-tags mb-5">
           <img src={tagIcon} alt="TAGS : " />
