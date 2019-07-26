@@ -2,7 +2,7 @@
 title: "Functional Programming in Simple English"
 date: "2019-07-25 00:18:00"
 author: "Han Sim"
-category: "JavaScript | Node.js"
+category: "JavaScript"
 tags:
   - JavaScript
   - Functional-Programming

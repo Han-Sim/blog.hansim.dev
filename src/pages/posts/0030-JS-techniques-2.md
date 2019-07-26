@@ -2,7 +2,7 @@
 title: "JavaScript Techniques #2"
 date: "2019-07-25 02:39:00"
 author: "Han Sim"
-category: "JavaScript | Node.js"
+category: "JavaScript"
 tags:
   - JavaScript
   - Closure

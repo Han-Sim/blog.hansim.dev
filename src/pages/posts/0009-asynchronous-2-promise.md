@@ -2,7 +2,7 @@
 title: "Promise API and Async/Await"
 date: "2019-07-03 11:30:00"
 author: "Han Sim"
-category: "JavaScript | Node.js"
+category: "JavaScript"
 tags:
   - JavaScript
   - Asynchronous
