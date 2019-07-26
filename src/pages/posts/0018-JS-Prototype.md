@@ -51,7 +51,10 @@ console.log(myFirstMac.getModel()); //"Macbook Pro"
 console.log(mySecondMac.getModel()); //"Macbook Air"
 ```
 
-I can rewrite this code using `prototype`
+I can rewrite this code using `prototype`. `prototype` works with a constructor this way.
+
+> When a `function` is created in JavaScript, the JavaScript engine adds a `prototype property` to the function. This prototype property is an object (called as `prototype object`) which has a `constructor property` by default. The constructor property points back to the function on which prototype object is a property. We can access the function’s prototype property using `functionName.prototype.`
+> https://medium.com/better-programming/prototypes-in-javascript-5bba2990e04b
 
 ```JavaScript
 var Macbook = function(year, model) {
@@ -59,16 +62,25 @@ var Macbook = function(year, model) {
   this.model = model
 }
 
-macbook.prototype.getModel = function() {
+Macbook.prototype.getModel = function() {
   return "Macbook " + this.model
 }
 ```
 
 ## What's the difference??
 
+```JavaScript
+console.log(myFirstMac.getModel === mySecondMac.getModel)
+//true, because getModel() method is on the prototype chain. 
+//  'getModel' property is not their own property
+
+console.log(myFirstMac.hasOwnProperty('getModel')) //false
+console.log(myFirstMac.hasOwnProperty('year')) //true
+```
+
 **The difference is that `myFirstMac` and `mySecondMac` now doesn't have the method `getModel()` inside anymore!** Instead, whenever `getModel()` is called, it looks up into the `prototype chain` and see if it can find `getModel()` and execute it.
 
-We use `prototype` because it can be redundant if the same method exists in thousands of different objects. This is all because JavaScript does not have `class`! we avoid having rebundant methods by using `prototype`.
+We use `prototype` because it can be redundant if the same method exists in thousands of different objects. This is all because JavaScript does not have `class`! we avoid having redundant methods by using `prototype`.
 
 # Reference
 

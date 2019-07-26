@@ -70,7 +70,7 @@ console.log(typeof(parseInt("01"))) //number
 
 # Definition of Prototypical Inheritance
 
-This is to make objects much lighter without carrying many of methods. Every object has a property called `prototype`. When we create another new object, it'll automatically inherit the property from the parent. If we call a `method`, JavaScript search its own properties first and then search the `prototype chain` to find the matching identifier and execute it.
+This is to make objects much lighter without carrying many of methods. Every object has a property called `prototype`. When we create another new object, it'll automatically inherit the properties including prototype from the parent. If we call a `method`, JavaScript search its own properties first and then search the `prototype chain` to find the matching identifier and execute it.
 
 > Again, JavaScript does not have `class` or `instances` per se (at least like the one in OOP languages such as C++), it just copies one objects to create another objects. If there are 1,000 instances with one method, it's not just one actually; there are 1,000 methods. To solve this problem, `JavaScript` supports `prototype-based inheritance`. [See more.. (my post)](https://blog.hansim.dev/javascript-and-prototype-based-inheritance)
 
@@ -115,3 +115,26 @@ Both represent an empty value
   - `typeof(undefined)` is `undefined`.
 - `null`: This is what you do intentionally. If there is a value and I want to clean it up, we can assign `null`. _it is still possible to assign `undefined` manually, but you shouldn't do it_
   - `typeof(null)` is `object`. `null` is `object`.
+
+# How to use variable for object key
+
+This is ES6+ :
+
+```JavaScript
+var key = "name";
+var person = {
+  [key]: "John"
+};
+console.log(person.name); //"John"
+```
+
+Before ES5 :
+
+```JavaScript
+var person = {};
+
+person["name"] = "John";
+//person.name = "John"; //--same
+
+console.log(person); // should print Object { name="John" }
+```
