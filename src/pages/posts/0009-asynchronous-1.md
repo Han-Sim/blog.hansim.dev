@@ -13,6 +13,10 @@ tags:
   - Functional-Programming
 ---
 
+> Asynchronous programming means that the engine runs in an `event loop`. When a blocking operation(that takes time to finish i.e. fetch) is needed, instead of blocking the event loop, the request is just started while the code keeps running without blocking for the result. When the response is ready, an interrupt is fired, which causes an event handler to be run, where the control flow continues. 
+> `User interfaces` are asynchronous by nature. It spends most of their time waiting for user input to interrupt the event loop and trigger event handlers.
+> https://trello.com/c/5TzQwzMJ/80-what-is-asynchronous-programming-and-why-is-it-important-in-javascript
+
 # Asynchronous
 
 In JavaScript, lots of operation are done in an `asynchronous` way. To understand `asynchronous programming`, I used this resource: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous. **Asynchronous** means JavaScript does _not_ stop executing the code while it is being executed; JS just starts executing the next code.
