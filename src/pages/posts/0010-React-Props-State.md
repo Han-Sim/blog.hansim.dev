@@ -10,6 +10,9 @@ tags:
 
 # So what's `props` and `state` in React?
 
+> The `state` is a  data structure that is local, and starts with a default value when a Component mounts.
+> `Props` (short for properties) are a Component’s configuration. Props are how components talk to each other. They are received from above component and shouldn't be mutated by the child component.
+
 Simply, **Props** and **State** are two different types of data that controls **component**. 
 
 The biggest difference between props and states is that props is meant to set by its _parents_(or _caller_) and hence the value is fixed and never changed, while state can be changed by `setState()`.
@@ -36,7 +39,9 @@ Even when the component may alter some variables depending on events (say you ne
 
 Still, using `state` can be a nice and simple solution, for example, when you need to toggle a modal, you can simply build an internal state and put the boolean property such as `showModal`, and simply flip it by an event handler function and define such as `setState(prevState => { showModal: !prevState.showModal})`. 
 
-However, if you need to implement `single source of truth` or maintain different states in sync, you can `lift state up` which is one of those React Techniques; you just lift state up to the ancestor, and get `props` instead, and whenever you need to change `props`, you just call such as `this.props.handleClick` which is a event handler that is passed from the parent.
+However, if you need to implement `single source of truth` or maintain different states in sync (**when different components need to notify changes in state**), you can `lift state up` which is one of those React Techniques; you just lift state up to the ancestor, and get `props` instead, and whenever you need to change `props`, you just call such as `this.props.handleClick` which is a event handler that is passed from the parent.
+
+> Of course, you can go fot `Redux` to handle this situation.
 
 This official document gives a perfect explanation about `lift state up` and `singe source of truth`: https://reactjs.org/docs/lifting-state-up.html
 
