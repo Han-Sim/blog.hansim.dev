@@ -264,7 +264,7 @@
 
 .markdown-body a {
   text-decoration: none;
-  background-color: rgba(113, 199, 236, 0.25);
+  background-color: $background-blue
 }
 
 .markdown-body a:hover {
@@ -273,6 +273,8 @@
 
 .markdown-body strong {
   font-weight: 600;
+  color: inherit;
+  background-color: $background-yellow;
 }
 
 .markdown-body hr {
@@ -746,6 +748,13 @@
   overflow: visible;
   padding: 0;
   word-wrap: normal;
+  
+  a {
+    background-color: inherit;
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
 
 .markdown-body .commit-tease-sha {
