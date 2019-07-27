@@ -7,6 +7,7 @@ tags:
   - Problem-Solving
   - JavaScript
   - Recursion
+  - JavaScript-Technique
 ---
 
 # Problem
@@ -17,7 +18,7 @@ Effectively reverse the given string.
 
 I used `recursive function` here.
 
-Some techniques here:
+Some JavaScript Techniques here:
 
 - string --> char array: `const arrOfChars = str.split("")`
 - char array --> string: `const result = arrOfChars.join("")`

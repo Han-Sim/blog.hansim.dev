@@ -10,10 +10,10 @@ tags:
   - Object
   - Bind
   - React
-  - JavaScript-Techniques
+  - JavaScript-Technique
 ---
 
-This is about JavaScript coding problems, techniques, and tricky but basic fundamentals of JavaScript. This is the list of the related posts(https://blog.hansim.dev/tag/JavaScript-Techniques).
+This is about JavaScript coding problems, techniques, and tricky but basic fundamentals of JavaScript. This is the list of the related posts(https://blog.hansim.dev/tag/JavaScript-Technique).
 
 # How to add element to array into the first position?
 
