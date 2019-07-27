@@ -28,11 +28,29 @@ console.log(2 - '2') //0; - sign is only number operator! it only works with num
 let arr = [ 1, 2, 2, 3]
 
 //Simplest solution would be using 'Set' data structure
+console.log(new Set(arr))
 //  'Set' doesn't allow the entry of duplicate data.
 //   Set is an object,
 //   so we can convert it into an array using spread operator.
 console.log([...new Set(arr)]) //[1,2,3]
+
+//we can use Array.from(object) method too
+console.log(Array.from(new Set(arr)))
 ```
+
+Because `Object` doesn't allow duplicate properties, we can use this too.
+
+```JavaScript
+let arr = [ 1, 2, 2, 3 ]
+
+let obj = {}
+for (let x of arr) {
+  obj[x] = "whatever here"   
+}
+
+console.log(Object.keys(obj))
+```
+
 
 # make `var` not accessible from its outside of scope
 
