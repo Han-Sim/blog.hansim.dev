@@ -7,7 +7,7 @@ tags:
   - Problem-Solving
   - JavaScript
   - Recursion
-  - JavaScript-Technique
+  - JavaScript-Techniques
 ---
 
 # Problem
