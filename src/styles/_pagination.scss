@@ -21,8 +21,8 @@
   }
 
   a.see-more {
-      position: relative;
-      top: -90%;
+    position: relative;
+    top: -90%;
 
     &:hover {
       font-weight: 800;
@@ -36,7 +36,7 @@
 
     .category-badge {
       position: relative;
-      top: 70%;
+      margin-top: 25%;
       background-color: $dark-gray;
       color: white;
       font-size: 15px;
@@ -47,10 +47,13 @@
       }
     }
 
-    .card-title {
+    .card-body {
+      padding-top: 10%;
       margin-bottom: 0px;
       font-weight: 600;
       font-size: 18px;
+      min-height: 90px;
+      max-height: 90px;
       &:hover {
         color: $light-gray;
       }

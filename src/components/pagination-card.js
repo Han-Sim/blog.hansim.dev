@@ -6,11 +6,11 @@ import { slugify } from "../util/helperFunctions"
 const PaginationCard = ({ title, category }) => {
   return (
     <Card>
-      <CardBody>
-        <Link to={slugify(title)}>
-          <CardTitle>{title}</CardTitle>
-        </Link>
-      </CardBody>
+      <Link to={slugify(title)}>
+        <CardBody>
+          {title}
+        </CardBody>
+      </Link>
       <Link to={`/category/${slugify(category)}`}>
         <div className="category-badge text-center">{category}</div>
       </Link>
