@@ -10,7 +10,7 @@ tags:
 
 # Yes, `const` cannot be re-assigned or re-declared
 
-**But it doesn't mean that `const` is immutable!** Because `arrays` and `objects` are `addressed by reference`, they can be modified directly even though they were declared with the `const` keyword. 
+**But it doesn't mean that `const` is immutable!** Because `arrays` and `objects` are `addressed by reference`, they can be modified directly even though they were declared with the `const` keyword.
 
 > More about JS variables: [When To Use Const and Let](https://blog.hansim.dev/javascript-when-to-use-const-and-let)
 
@@ -41,7 +41,7 @@ console.log(c) //[ 1, 2 ]
 console.log(a) //[ 1, 2, 3, 4] 
 ```
 
-We can also use Array's `map` function. This is a `reducer` example in Redux. 
+We can also use Array's `map` function. This is a `reducer` example in Redux.
 
 ```JavaScript
 function reducer(state, action) {
@@ -68,6 +68,12 @@ Also, we can simply add a dependency such as `Immutable.js`.
 
 ## Shallow Copy: Spread Operator
 
+> https://www.youtube.com/watch?v=XI27nSXSrYs
+
+![Screen Shot 2019-07-26 at 11.26.41 PM.png](https://i.loli.net/2019/07/27/5d3bc4986723c48453.png)
+![Screen Shot 2019-07-26 at 11.27.33 PM.png](https://i.loli.net/2019/07/27/5d3bc4b4ac4ae78221.png)
+![Screen Shot 2019-07-26 at 11.28.54 PM.png](https://i.loli.net/2019/07/27/5d3bc506c143358411.png)
+
 **`Spread Operator` is a syntactic sugar to do a shallow copy over values in the arrays/objects.**
 
 ```JavaScript{1}
@@ -78,7 +84,7 @@ console.log(a) // [ 1, 2, 3, 4 ]
 console.log(d) // [ 1, 2, 3, 4, 5 ]
 ```
 
-When it comes to `Object` in JS, we have to be careful to use Spread Operator in this case below. If there is another nested object inside the object, only memory address will be copied **because spread syntax is a `shallow copy`**; it will still refer to the same address. 
+When it comes to `Object` in JS, we have to be careful to use Spread Operator in this case below. If there is another nested object inside the object, only memory address will be copied **because spread syntax is a `shallow copy`**; it will still refer to the same address.
 
 ![Screen Shot 2019-07-24 at 10.13.23 PM.png](https://i.loli.net/2019/07/25/5d3910571b0c461801.png)
 

@@ -49,7 +49,7 @@ This official document gives a perfect explanation about `lift state up` and `si
 
 ## Functional (Stateless) Component
 
-- Receive props as an argument. 
+- Receive props as an argument.
   - just `props`, not `this.props`
 - No internal state
 - No Lifecycle Methods
@@ -64,6 +64,28 @@ This official document gives a perfect explanation about `lift state up` and `si
 - It is recommended to use it only when its needed.
   - only when we need to use a local state or lifecycle methods from React.Component
   - used for `Container Components` (logics for `Presentational Components`)
+
+# `setState()`
+
+## `setState()` runs asynchronously
+
+```JavaScript
+this.setstate({
+  counter: this.state.counter++
+})
+```
+
+Because it runs asynchronously, `this.state.counter` may not have the value that we expected it to have; there is no guarantee that the old state has reflected any updates. That's why you should `callback` instead
+
+```JavaScript
+this.setState((prevState, prevProps) => {
+  return {
+    counter: prevState.counter + 1
+  }
+})
+```
+
+This way, we can be guaranteed that `prevState.counter` holds the last valid value which we expected.
 
 # References
 
