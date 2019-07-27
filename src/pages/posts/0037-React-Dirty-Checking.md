@@ -1,5 +1,5 @@
 ---
-title: "How React Works + Dirty Checking"
+title: "How React Works and Dirty Checking"
 date: "2019-07-26 14:55:00"
 author: "Han Sim"
 category: "React"
