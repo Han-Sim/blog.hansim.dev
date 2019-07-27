@@ -13,6 +13,13 @@
   width: 36px;
   left: 36px;
   top: 36px;
+
+  @media screen and (max-width: 800px) {
+    position: absolute;
+    width: 20px;
+    left: 5px;
+    top: 5px;
+  }
 }
 
 .menu-title {
@@ -38,7 +45,7 @@
   display: inline-block;
   text-decoration: none;
   margin-bottom: 10px;
-  
+
   color: #d1d1d1;
   transition: color 0.2s;
   font-weight: 800;
@@ -54,6 +61,13 @@
   height: 30px;
   right: 36px;
   top: 36px;
+  
+  @media screen and (max-width: 800px) {
+    width: 15px;
+    height: 15px;
+    top: 11.5px;
+    right: 9.7px;
+  }
 }
 
 .bm-burger-bars {
