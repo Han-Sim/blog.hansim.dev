@@ -75,8 +75,13 @@ const val = arr.map(add).reduce(sum, 0)
 console.log(val) //[ 2, 3, 4 ] --> add them up --> so it's 9!
 ```
 
-Imagine I didn't follow the functional programming style. The code will be more explicit, less abstract, and with bunch of lines. This is because **functional programming uses `expressions`(`Functional Approach`) instead of `statements`(`Imperative Approach`)**. 
+Imagine I didn't follow the functional programming style. The code will be more explicit, less abstract, and with bunch of lines. This is because **functional programming uses `expressions`(`Declarative Approach`) instead of `statements`(`Imperative Approach`)**. 
 
+> `Declarative programming` is a programming paradigm … that expresses the logic of a computation without describing its control flow.
+> `Imperative programming` is a programming paradigm that uses statements that change a program’s state.
+> https://codeburst.io/declarative-vs-imperative-programming-a8a7c93d9ad2
+
+> React components are declarative and specify *what* should be rendered. `<MainPage />`
 ```JavaScript
 const arr = [1, 2, 3]
 

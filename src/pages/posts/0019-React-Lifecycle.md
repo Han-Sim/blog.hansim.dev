@@ -9,6 +9,7 @@ tags:
   - Lifecycle
 ---
 
+
 # React Lifecycle Methods
 
 Before the explanation, note that React Lifecycel Methods has been changed many times. I'll explain the current React Lifecycle Methods after `React v16.4`.
@@ -21,7 +22,7 @@ This is where the component initially renders.
 
 ### 1. constructor
 
-- It is to set an initial state. 
+- It is to set an initial state.
   - This is the only method that we can use `this.state={}`
 - `constructor` runs only once during the initial phase.
 
@@ -31,6 +32,9 @@ This is where the component initially renders.
 - Why is this `static`?
   - Because `this` shouldn't be allowed here. Which means, you cannot directly set state using `this.state`.
   - Then, how we change the state? We simply return a `new state` or `null`.
+
+> `getDerivedStateFromProps(props, state)` is invoked right before calling the render method, both on the initial mount and on subsequent updates. It should return an object to update the state, or null to update nothing.
+> This method exists for rare use cases where the state depends on changes in props over time. For example, it might be handy for implementing a `<Transition>` component that compares its previous and next children to decide which of them to animate in and out.
 
 ### 3. render
 
@@ -59,6 +63,8 @@ This is where something changes in your state or props and react component needs
   - If it doesn't need to be updated, we can return `false` here to tell React that the update should be skipped.
 - This method exists only for a `performance optimization`. For example, even though there is a change in the state, if the result is the same, we don't need to re-render the component. 
 
+> example: https://codepen.io/kevinptt/pen/OXBJWJ?editors=0110
+
 ### 3. render
 
 - It is the same as the mounting phase.
@@ -77,8 +83,9 @@ This is where something changes in your state or props and react component needs
 
 ### componentWillUnmount
 
-- If we want to do something just before the component unmounts, we can use this lifecycle hook.
+- If we want to do something just **before** the component unmounts, we can use this lifecycle hook.
 
 # Reference
 
-- [React API Document: lifecycle methods](https://reactjs.org/docs/react-component.html#commonly-used-lifecycle-methods)
+- https://reactjs.org/docs/react-component.html#commonly-used-lifecycle-methods)
+- https://reactjs.org/docs/react-component.html

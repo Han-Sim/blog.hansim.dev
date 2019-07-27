@@ -72,7 +72,7 @@ for (let key in person) {
 }
 ```
 
-## `for-of` loop with `Object.entries()`
+## `for-of` loop with `Object.entries(obj)`
 
 ```JavaScript
 const object1 = {
