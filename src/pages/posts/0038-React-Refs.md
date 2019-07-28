@@ -99,7 +99,45 @@ class CustomTextInput extends React.Component {
 
 You can use callback instead; the first argument represent the element you want to assign to your `ref`: `ref={element => this.inputRef = element}`
 
-# Don't overuse Refs!
+# `Uncontrolled Component` with `Ref`s
+
+https://reactjs.org/docs/uncontrolled-components.html
+
+To write an uncontrolled component, instead of writing an event handler for every state update, you can use a ref to get form values from the DOM.
+
+https://codepen.io/gaearon/pen/WooRWa?editors=0010
+
+```JavaScript
+class NameForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.input = React.createRef();
+  }
+
+  handleSubmit(event) {
+    alert('A name was submitted: ' + this.input.current.value);
+    event.preventDefault();
+  }
+
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          Name:
+          <input type="text" ref={this.input} />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+    );
+  }
+}
+```
+
+> Since an uncontrolled component keeps the source of truth in the DOM, it is sometimes easier to integrate React and non-React code when using uncontrolled components. **It can also be slightly less code if you want to be quick and dirty. Otherwise, you should usually use controlled components.**
+> More about Controlled Component: https://blog.hansim.dev/controlled-components-example
+
+## Don't overuse Refs!
 
 Refs are useful when we needs to use some raw DOM API. When it comes to input element and `focus()`, many developers just use `ref` because it is simple and handy.
 
