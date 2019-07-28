@@ -71,13 +71,13 @@ Planning to add more features
 - 'More Postings related to this post' kind of feature
 - Search Engine plugin
 
-## June 30, 2019
+## June 30
 
 - Added **Category** and **All Posts**
 - Updated SCSS files
 - Fixed minor design errors in mobile environment
 
-## July 3, 2019
+## July 3
 
 - Added line highlighting. https://www.gatsbyjs.org/packages/gatsby-remark-prismjs/
 
@@ -93,7 +93,7 @@ Planning to add more features
 }
 ```
 
-## July 10-18, 2019
+## July 10-18
 
 - Changed `post-header-area`: now each post has its own `category`!
 - Changed **Sidebar** component: changed Tags inline css property
@@ -101,7 +101,7 @@ Planning to add more features
 - Enhanced readibility of the `markdown-body` area
   - increased the font size and adjusted margins.
 
-## July 23, 2019
+## July 23
 
 ### Major update in `Pagination`
 
@@ -109,6 +109,9 @@ Planning to add more features
   - Four recent posts of all, and four recent posts of the same category.
   - Removed pagination from `ReactStrap`; there is no more pages in this blog.
 
+## July 28
+
+- Updated `Pagination` again; now user can access **every posts in this blog in** each post.
 
 --------------
 
