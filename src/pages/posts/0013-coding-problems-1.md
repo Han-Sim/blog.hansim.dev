@@ -18,11 +18,11 @@ Bonus: Can you do this in one pass?
 
 _Source: https://dev.to/awwsmm/java-daily-coding-problem-001-59pg_
 
-# Solution
+## Solution
 
 This is a very easy coding question, so I focused on **minimizing calculation**. In worst case, if there is four elements in the given array, we have to calculate for `3+2+1 = 6` times.
 
-## JavaScript
+### JavaScript
 
 ```JavaScript
 let arr = [10, 15, 3, 7]

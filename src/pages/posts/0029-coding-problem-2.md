@@ -15,7 +15,7 @@ tags:
 
 Effectively reverse the given string.
 
-# Solution: JavaScript
+## Solution: JavaScript
 
 I used `recursive function` here.
 
@@ -46,7 +46,7 @@ console.log(result) //misnah
 
 Time complexity is O(n) and space complexity is O(n)
 
-# using `Stack` data structure
+## using `Stack` data structure
 
 ```JavaScript
 function reverse(str) {

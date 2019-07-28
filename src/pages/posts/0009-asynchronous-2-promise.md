@@ -99,7 +99,7 @@ getData().then().catch(function (err) {
 });
 ```
 
-## Example1. Ajax Communication with Promise
+## Example: Ajax Communication with Promise
 
 ```JavaScript
 function getData() {
@@ -118,7 +118,7 @@ getData().then(function (data) {
 });
 ```
 
-## Example2. real code in Node.js
+## Example: my real code in Node.js
 
 This is from my full-stack web development project: https://blog.hansim.dev/full-stack-web-development-with-express-and-handlebars (**Node.js/Express**)
 
@@ -146,6 +146,19 @@ app.get('/employees', (req, res) => {
       res.render("employees", {message: "no results"});
   });
 });
+```
+
+## `Promise.all()` and `Promise.race()`
+
+```JavaScript
+const a = new Promise((resolve, reject) => resolve("a"))
+const b = new Promise((resolve, reject) => resolve("b"))
+const c = new Promise((resolve, reject) => resolve("c"))
+const d = new Promise((resolve, reject) => resolve("d"))
+const e = new Promise((resolve, reject) => resolve("e"))
+
+Promise.all([a, b, c, d, e]).then(data => console.log(data)) //[ 'a', 'b', 'c', 'd', 'e' ]
+Promise.race([a, b, c, d, e]).then(data => console.log(data)) //a
 ```
 
 # `async`/`await`
