@@ -1,9 +1,13 @@
 import React from "react"
 import { Link } from "gatsby"
-import { Row, Col, Button } from "reactstrap"
+import { Row, Col } from "reactstrap"
 import { slugify, findIndex } from "../util/helperFunctions"
 import PaginationCard from "./pagination-card"
 
+//I declared React.Component class here
+//  in case to implement more of page re-rendering feature in the future.
+//  for now, this component can be a functional component like others.
+//
 class Pagination extends React.Component {
   constructor(props) {
     super(props)
@@ -13,107 +17,73 @@ class Pagination extends React.Component {
     const indexInAll = findIndex(titlesOfAll, title)
     const thisCategory = categoriesOfAll[indexInAll]
 
+    //get recent posts+categories of ALL
+    const recentTitlesOfAll = []
+    const recentCategoriesOfAll = []
+    if (indexInAll > 3) {
+      for (let i = 0; i < 4; i++) {
+        recentTitlesOfAll.push(titlesOfAll[i])
+        recentCategoriesOfAll.push(categoriesOfAll[i])
+      }
+    } else {
+      for (let i = 0; i < 5; i++) {
+        if (i === indexInAll) continue
+        recentTitlesOfAll.push(titlesOfAll[i])
+        recentCategoriesOfAll.push(categoriesOfAll[i])
+      }
+    }
+
     //get recent posts+categories within this category
-    const titlesOfThisCategory = []
+    const recentTitlesOfThisCategory = []
     for (let i = 0; i < titlesOfAll.length; i++) {
       if (i === indexInAll) continue
-      else if (categoriesOfAll[i] === thisCategory)
-        titlesOfThisCategory.push(titlesOfAll[i])
+      else if (categoriesOfAll[i] === thisCategory) {
+        recentTitlesOfThisCategory.push(titlesOfAll[i])
+        if (recentTitlesOfThisCategory.length >= 4) break
+      }
     }
 
     this.state = {
+      recentTitlesOfAll,
+      recentCategoriesOfAll,
+      recentTitlesOfThisCategory,
       title,
-      thisCategory,
       categoriesOfAll,
+      thisCategory,
       titlesOfAll,
-      titlesOfThisCategory,
       indexInAll,
-      startIndexForAll: 0,
-      startIndexForThisCategory: 0,
     }
-  }
-
-  nextOfAll = event => {
-    event.preventDefault()
-    this.setState(prevState => {
-      let newStartIndex = prevState.startIndexForAll + 4
-      if (newStartIndex < prevState.titlesOfAll.length - 1)
-        return { startIndexForAll: newStartIndex }
-      else if (newStartIndex > prevState.titlesOfAll.length - 4)
-        return { startIndexForAll: prevState.titlesOfAll.length - 4 }
-    })
-  }
-
-  nextOfThisCategory = event => {
-    event.preventDefault()
-    this.setState(prevState => {
-      let newStartIndex = prevState.startIndexForThisCategory + 4
-      if (newStartIndex < prevState.titlesOfThisCategory.length - 1)
-        return { startIndexForThisCategory: newStartIndex }
-      else if (newStartIndex > prevState.titlesOfThisCategory.length - 4)
-        return {
-          startIndexForThisCategory: prevState.titlesOfThisCategory.length - 4,
-        }
-    })
-  }
-
-  prevOfAll = event => {
-    event.preventDefault()
-    this.setState(prevState => {
-      let newStartIndex = prevState.startIndexForAll - 4
-      if (newStartIndex >= 0) return { startIndexForAll: newStartIndex }
-      else if (newStartIndex < 4) return { startIndexForAll: 0 }
-    })
-  }
-
-  prevOfThisCategory = event => {
-    event.preventDefault()
-    this.setState(prevState => {
-      let newStartIndex = prevState.startIndexForThisCategory - 4
-      if (newStartIndex >= 0)
-        return { startIndexForThisCategory: newStartIndex }
-      else if (newStartIndex < 4) return { startIndexForThisCategory: 0 }
-    })
   }
 
   render() {
     const {
-      title,
+      recentTitlesOfAll,
+      recentCategoriesOfAll,
+      recentTitlesOfThisCategory,
       thisCategory,
-      categoriesOfAll,
       titlesOfAll,
-      titlesOfThisCategory,
       indexInAll,
-      startIndexForAll,
-      startIndexForThisCategory,
     } = this.state //destructurize this.state
 
-    //Recent Posts in All
+    //Recent Posts : All
     const cardsOfAll = []
-    for (let i = startIndexForAll; i < startIndexForAll + 4; i++) {
+    for (const [index, title] of recentTitlesOfAll.entries()) {
       cardsOfAll.push(
-        <Col sm="3" key={i}>
+        <Col sm="3" key={index}>
           <PaginationCard
-            title={titlesOfAll[i]}
-            category={categoriesOfAll[i]}
+            title={title}
+            category={recentCategoriesOfAll[index]}
           />{" "}
         </Col>
       )
     }
 
-    //Recent Posts in this category
+    //Recent Posts : All
     const cardsOfThisCategory = []
-    for (
-      let i = startIndexForThisCategory;
-      i < startIndexForThisCategory + 4;
-      i++
-    ) {
+    for (const [index, title] of recentTitlesOfThisCategory.entries()) {
       cardsOfThisCategory.push(
-        <Col sm="3" key={i}>
-          <PaginationCard
-            title={titlesOfThisCategory[i]}
-            category={thisCategory}
-          />{" "}
+        <Col sm="3" key={index}>
+          <PaginationCard title={title} category={thisCategory}/>{" "}
         </Col>
       )
     }
@@ -148,17 +118,10 @@ class Pagination extends React.Component {
           <h1>Recent Posts</h1>
         </Col>
         {cardsOfAll}
-        <Col sm="12">
-          <Button
-            size="sm"
-            className="float-right ml-3 mr-3"
-            onClick={this.nextOfAll}
-          >
-            Next
-          </Button>
-          <Button size="sm" className="float-right" onClick={this.prevOfAll}>
-            Previous
-          </Button>
+        <Col className="see-more text-right mb-3 pr-5">
+          <Link className="see-more" to={"/all-posts"}>
+            See More...
+          </Link>
         </Col>
         {cardsOfThisCategory.length > 0 && (
           <>
@@ -173,21 +136,13 @@ class Pagination extends React.Component {
             {cardsOfThisCategory}
             {cardsOfThisCategory.length === 4 && (
               <>
-                <Col sm="12">
-                  <Button
-                    size="sm"
-                    className="float-right ml-3 mr-3"
-                    onClick={this.nextOfThisCategory}
+                <Col className="see-more text-right mb-3 pr-5">
+                  <Link
+                    className="see-more"
+                    to={`/category/${slugify(thisCategory)}`}
                   >
-                    Next
-                  </Button>
-                  <Button
-                    size="sm"
-                    className="float-right"
-                    onClick={this.prevOfThisCategory}
-                  >
-                    Previous
-                  </Button>
+                    See More...
+                  </Link>
                 </Col>
               </>
             )}
