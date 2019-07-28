@@ -48,7 +48,7 @@ another.draw()
 
 # Closure
 
-A closure is simply a function defined within another function(Closure are nested function which has access to the outer scope). However, the power of closures is derived from the fact that the inner function remembers the environment in which it was created. In other words, the inner function has access to the outer function’s variables and parameters. 
+A closure is simply a function defined within another function(Closure are nested function which has access to the outer scope). However, the power of closures is derived from the fact that the inner function remembers the environment in which it was created. In other words, the inner function has access to the outer function’s variables and parameters.
 
 https://blog.hansim.dev/so-why-do-we-need-closure
 
@@ -73,9 +73,9 @@ var singleton = function(){
 console.log(singleton.get()); //0
 console.log(singleton.get()); //0
 
-singleton.increment(); 
+singleton.increment();
 console.log(singleton.get()); //1
-singleton.increment(); 
+singleton.increment();
 console.log(singleton.get()); //2
 ```
 
@@ -99,7 +99,7 @@ foo; // ReferenceError: foo is not defined
 ```JavaScript
 const uniqueId = (function() {
   let private = 0;
-  
+
   //return a function that has access to the variable in its outer scope
   return function() {
     ++private;
@@ -246,8 +246,7 @@ setName("han sim")
 console.log(profile.fName) //'han'
 ```
 
-> Find this document to understand `this` and context. I think this comes with a perfect explanation: [MDN doc](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this?source=post_page--------------------------)
-> [MDN: Lexical Scoping](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures?source=post_page---------------------------)
+> Find this document to understand `this` and context. I think this comes with a perfect explanation: [MDN doc](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this?source=post_page--------------------------) > [MDN: Lexical Scoping](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures?source=post_page---------------------------)
 
 ### Arrow Function cannot be a `constructor`
 
@@ -271,3 +270,13 @@ If there is one return line, we can simply remove `{}` and `return`.
 ```JavaScript
 let sumUp = (...args) => args.reduce((a,b) => a + b, 0)
 ```
+
+# First Class Function, High Order Function, and Callback
+
+> https://medium.com/@olinations/first-class-functions-higher-order-functions-callback-functions-4daad4856242
+
+A `first class function` is a function that was built with the intention of being passed around to other functions. It does one specific thing, does not have side effects, and is not intended to be called directly, but rather, to be used by ‘other functions.’
+
+Those ‘other functions’ which accept one of those `first class functions` as an argument are called higher order functions. Higher order functions also might be functions that return a function.
+
+In a higher order function, when one of the parameters passed in is a function, that function is a `callback` function because it will be called back and used within the higher order function.

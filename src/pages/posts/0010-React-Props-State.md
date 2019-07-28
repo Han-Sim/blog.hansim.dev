@@ -78,7 +78,7 @@ this.setstate({
 Because it runs asynchronously, `this.state.counter` may not have the value that we expected it to have; there is no guarantee that the old state has reflected any updates. That's why you should `callback` instead
 
 ```JavaScript
-this.setState((prevState, prevProps) => {
+this.setState((prevState, props) => {
   return {
     counter: prevState.counter + 1
   }
