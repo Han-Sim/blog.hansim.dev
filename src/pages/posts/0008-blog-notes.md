@@ -112,6 +112,7 @@ Planning to add more features
 ## July 28
 
 - Updated `Pagination` again; now user can access **every posts in this blog in** each post.
+  - *Codes need to be refactored and need to be conditional rendered for buttons.*
 
 --------------
 
