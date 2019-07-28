@@ -24,7 +24,9 @@ React is basically a client-side `JavaScript` library; which means we needs surr
 
 When you type `gatsby develop` on CLI, GatsbyJS does all the work to render every single possible page in your React application; **it goes through all the contents and generates every page beforehand**. So it can work with static web hostings such as GitHub Pages or AWS Amplify.
 
-Because it does all the job beforehand, it guarantees much faster performance. However, `GatsbyJS` is a solution that only perhaps few hundreds pages. I built this blog application with GatsbyJS because it is expected to have not a lot of pages. Think about a incredibly big web site such as Google. It'd be extremely inefficient to load every page beforehand. That's when `server-side rendering` is needed.
+Because it does all the job beforehand, it guarantees much faster performance. However, `GatsbyJS` is a solution that only perhaps few hundreds pages. I built this blog application with GatsbyJS because it is expected to have not a lot of pages. Think about a incredibly big web site. It'd be extremely inefficient to load every page beforehand. That's when `server-side rendering` is needed.
+
+> Also, there can be more benefits in `SSR`. Check my references.
 
 When user types URL for the firs time to your web application, we just serve pre-rendered static files.
 
@@ -51,5 +53,8 @@ Wherever you go with `GatsbyJS`, it has to be convertible to a static site in `G
 
 # References
 
+- I found this post very helpful to grasp the concept: [What is difference between Client-side Rendering vs SSR](https://medium.com/@swazza85/ssr-with-react-9cb197cfe380)
 - [YouTube: How Next.js and Gatsby work and their differences](https://www.youtube.com/watch?v=xC4Yq_mXvPM)
 - [Client-side vs Server-side rendering in React](https://stackoverflow.com/questions/27290354/reactjs-server-side-rendering-vs-client-side-rendering)
+- Reddit Post: https://www.reddit.com/r/reactjs/comments/992n2r/next_vs_gatsby/e4lrffl/
+- 

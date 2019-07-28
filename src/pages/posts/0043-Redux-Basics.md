@@ -1,6 +1,6 @@
 ---
 title: "Redux Basics"
-date: "2019-07-26 18:37:00"
+date: "2019-07-28 17:47:00"
 author: "Han Sim"
 category: "Redux"
 tags:
