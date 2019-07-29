@@ -10,6 +10,30 @@ tags:
   - Inheritance
 ---
 
+```JavaScript
+function Person(name) {
+    this.name = name
+}
+
+han = new Person("han")
+james = new Person("james")
+
+//han is not an instance (like Java), it is an OBJECT!
+han.getName = function() {
+    console.log(this.name)
+}
+han.getName() //"han"
+
+console.log(james)  // Person { name: 'james' }
+//it doesn't have 'getName()'
+
+//to add methods to every so-called instance, we need 'prototype chain'
+Person.prototype.greeting = function() {
+    console.log(this.name + " says Hi")
+}
+james.greeting()
+```
+
 # Does JavaScript has `class`?
 
 The answer can be yes and no.
@@ -53,8 +77,7 @@ console.log(mySecondMac.getModel()); //"Macbook Air"
 
 I can rewrite this code using `prototype`. `prototype` works with a constructor this way.
 
-> When a `function` is created in JavaScript, the JavaScript engine adds a `prototype property` to the function. This prototype property is an object (called as `prototype object`) which has a `constructor property` by default. The constructor property points back to the function on which prototype object is a property. We can access the function’s prototype property using `functionName.prototype.`
-> https://medium.com/better-programming/prototypes-in-javascript-5bba2990e04b
+> When a `function` is created in JavaScript, the JavaScript engine adds a `prototype property` to the function. This prototype property is an object (called as `prototype object`) which has a `constructor property` by default. The constructor property points back to the function on which prototype object is a property. We can access the function’s prototype property using `functionName.prototype.` > https://medium.com/better-programming/prototypes-in-javascript-5bba2990e04b
 
 ```JavaScript
 var Macbook = function(year, model) {
@@ -71,7 +94,7 @@ Macbook.prototype.getModel = function() {
 
 ```JavaScript
 console.log(myFirstMac.getModel === mySecondMac.getModel)
-//true, because getModel() method is on the prototype chain. 
+//true, because getModel() method is on the prototype chain.
 //  'getModel' property is not their own property
 
 console.log(myFirstMac.hasOwnProperty('getModel')) //false
