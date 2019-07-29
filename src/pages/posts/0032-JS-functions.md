@@ -30,7 +30,7 @@ const funcE = function() {
 ```
 
 1. `Function Expression` follows its variable scope; which means, if it is `let` or `const`, it is not going to be hoisted. `Function Declaration` is always hoisted though.
-2. If we want to pass the function to other function, we have to use `Function Expression` instead of `Function Declaration`. Because `Function Expression` is a variable. **Treating function as value** is one of the feature of JavaScript as a `Functional Programming` Language. https://blog.hansim.dev/functional-programming-in-simple-english
+2. If we want to pass the function to other function(`high order function`), we have to use `Function Expression` instead of `Function Declaration`. Because `Function Expression` is a variable. **Treating function as value** is one of the feature of JavaScript as a `Functional Programming` Language. https://blog.hansim.dev/functional-programming-in-simple-english
 3. `Function Expression` is essentially a `constructor function`. https://blog.hansim.dev/object-oriented-programming-syntax-in-javascript
 
 ```JavaScript
@@ -250,7 +250,7 @@ console.log(profile.fName) //'han'
 
 ### Arrow Function cannot be a `constructor`
 
-Because it has not `prototype` prototype so it can't be used with `new`.
+Because it doesn't have the `prototype` property so it can't be used with `new`.
 
 ### Arrow Function does not have a `arguments`
 

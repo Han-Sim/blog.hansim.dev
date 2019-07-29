@@ -18,13 +18,11 @@ The latest ECMAScript standard defines `eight data types`. https://developer.moz
   - Boolean
   - Null
   - Undefined
-  - Number
-    - the number type has three symbolic values: `+Infinity`, `-Infinity`, and `NaN` (not-a-number).
-  - BigInt
-    - The BigInt type is a numeric primitive in JavaScript that can represent integers with arbitrary precision. With BigInts, you can safely store and operate on large integers even beyond the safe integer limit for Numbers. A BigInt is created by appending n to the end of an integer or by calling the constructor. \*[Link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#BigInt_type)
+  - Number: the number type has three symbolic values: `+Infinity`, `-Infinity`, and `NaN` (not-a-number).
+  - BigInt: The BigInt type is a numeric primitive in JavaScript that can represent integers with arbitrary precision. With BigInts, you can safely store and operate on large integers even beyond the safe integer limit for Numbers. A BigInt is created by appending n to the end of an integer or by calling the constructor. \*[Link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#BigInt_type)
   - String
   - Symbol
-- and `Object`
+- and `Object` (reference type)
 
 # `truthy` and `falsy`
 
