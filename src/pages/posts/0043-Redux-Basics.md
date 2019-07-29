@@ -240,6 +240,9 @@ export default connect(
 
 ### 1st Parameter: `mapStateToProps`
 
+**It is to `subscribe` state from the store; so that if there is a change on the state, UI can be updated.
+**
+
 ```JavaScript
 const mapStateToProps = state => ({
   posts: state.postReducer.items
@@ -261,7 +264,6 @@ And in this `postReducer`, the state looks like this:
 ```JavaScript
 const initialState = {
   items: [], //array of post objects
-  item: {} //single post
 }
 ```
 
@@ -285,7 +287,17 @@ We want to display this `items`. That's why we want pass `state.postReducer.item
 
 ## 2nd Parameter: `mapDispatchToProps`
 
-This is related to `action`s; **which actions should be passed as props?**
+This is to update the state. Since the only way to update the state is by firing `dispatch(action)`, `connect()` passes down `dispatch` as props. 
+
+Example:
+
+```JavaScript
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onNumberUp: () => dispatch({type:'AGE_UP', payload: 1})
+  }
+}
+```
 
 Because our action creators return a function that includes `dispatch()`, we just add them into the `connect()` instead of mapping them and add `dispatch()`.
 

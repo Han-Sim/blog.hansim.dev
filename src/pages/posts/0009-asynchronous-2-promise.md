@@ -17,6 +17,82 @@ tags:
 
 Previous Post: http://blog.hansim.dev/asynchronous-javascript-and-callback-function
 
+```JavaScript
+//Asynchronous operation with Promise
+function delay(msg) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => resolve(msg), 1000)
+  })
+}
+
+delay("a")
+  .then(result => {
+    console.log(result)
+    return delay("b")
+  })
+  .then(result => {
+    console.log(result)
+    return "end"
+  })
+  .then(result => {
+    console.log(result)
+  })
+
+/*
+  a
+  b
+  end
+*/
+
+/* 
+
+async/await
+
+1. await can be used in async function
+2. async function returns Promise by default. (we can explicitly put Promise)
+3. await --> waiting for its promise to be resolved.
+4. JS doesn't throw any errors even though await keyword is used without Promise; 
+     if that's the case, it'll still work as same as without wait.
+
+*/
+
+async function myAsync() {
+  const result = await delay("hi") //I'm waiting until 'resolve'
+  return result //that is why I'm not 'undefined' anymore!
+}
+
+myAsync().then(result => console.log(result))
+
+/*
+    to throw error, we do 'throw' with try-catch
+*/
+
+function wait(msg) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => reject("Error HAPPENED"), 1000)
+  })
+}
+
+async function myAsync2() {
+  try {
+    let result = await wait("Are you there?")
+    return result
+  } catch (e) {
+    return e;
+  }
+}
+
+myAsync2()
+  .then(result => console.log(result))
+  .catch(err => console.log(err))
+
+/*
+even though it was a syntax error for example, 
+we can't catch myAsync2()'s error with try-catch
+Still need to use .catch() as it still returns Promise!
+*/
+```
+
 # Promise API
 
 > The Promise object represents the eventual completion (or failure) of an asynchronous operation, and its resulting value.
@@ -181,7 +257,7 @@ result.then(x => console.log(x)); //"success"
 foo().then(x => console.log(x));
 ```
 
-for the readibility, we can explicitly write the code this way:
+for the readability, we can explicitly write the code this way:
 
 ```JavaScript
 async function foo2() {
