@@ -9,58 +9,145 @@ class Pagination extends React.Component {
     super(props)
 
     const { titlesOfAll, categoriesOfAll, title } = this.props
+    const titles = titlesOfAll.slice(0, 4)
 
     const indexOfAll = findIndex(titlesOfAll, title)
     const thisCategory = categoriesOfAll[indexOfAll]
 
-    const titlesRelated = []
+    let titlesRelatedAll = []
     categoriesOfAll.forEach((val, i) => {
-      if (val === thisCategory) titlesRelated.push(titlesOfAll[i])
+      if (val === thisCategory) titlesRelatedAll.push(titlesOfAll[i])
     })
-    console.log(titlesRelated)
+    const titlesRelated = titlesRelatedAll.slice(0, 4)
 
     this.state = {
       title,
-      categoriesOfAll,
       thisCategory,
+      categoriesOfAll,
       titlesOfAll,
+      titles,
+      titlesRelatedAll,
       titlesRelated,
       indexOfAll,
+      startIndex: 0,
+      startIndexRelated: 0,
     }
+  }
+
+  next = e => {
+    e.preventDefault()
+
+    //if titlesOfAll.length == 10 --> [0,....,9]
+    //  newIndex = prevIndex + 4
+    //  if newIndex > (9-3) --> newIndex = 9-3 = 6 ---> [6,7,8,9]
+    //  if newIndex <= (9-3) --> leave it alone
+    this.setState(prevState => {
+      let newIndex
+      const lastIndex = prevState.titlesOfAll.length - 1
+
+      if (prevState.startIndex + 4 > lastIndex - 3)
+        newIndex = prevState.titlesOfAll.length - 4
+      else if (prevState.startIndex + 4 <= lastIndex - 3)
+        newIndex = prevState.startIndex + 4
+
+      return {
+        startIndex: newIndex,
+        titles: prevState.titlesOfAll.slice(newIndex, newIndex + 4),
+      }
+    })
+  }
+
+  nextRel = e => {
+    e.preventDefault()
+
+    this.setState(prevState => {
+      let newIndex
+      const lastIndex = prevState.titlesRelatedAll.length - 1
+
+      if (prevState.startIndexRelated + 4 > lastIndex - 3)
+        newIndex = prevState.titlesRelatedAll.length - 4
+      else if (prevState.startIndex + 4 <= lastIndex - 3)
+        newIndex = prevState.startIndexRelated + 4
+
+      return {
+        startIndexRelated: newIndex,
+        titlesRelated: prevState.titlesRelatedAll.slice(newIndex, newIndex + 4),
+      }
+    })
+  }
+
+  prev = e => {
+    e.preventDefault()
+
+    //if titlesOfAll.length == 10 --> [0,....,9]
+    //  newIndex = prevIndex - 4
+    //  if newIndex < 0 --> newIndex = 0
+    //  otherwise, newIndex = prevIndex - 4
+    this.setState(prevState => {
+      let newIndex
+      const lastIndex = prevState.titlesOfAll.length - 1
+
+      if (prevState.startIndex - 4 < 0) newIndex = 0
+      else newIndex = prevState.startIndex - 4
+
+      return {
+        startIndex: newIndex,
+        titles: prevState.titlesOfAll.slice(newIndex, newIndex + 4),
+      }
+    })
+  }
+
+  prevRel = e => {
+    e.preventDefault()
+
+    //if titlesOfAll.length == 10 --> [0,....,9]
+    //  newIndex = prevIndex - 4
+    //  if newIndex < 0 --> newIndex = 0
+    //  otherwise, newIndex = prevIndex - 4
+    this.setState(prevState => {
+      let newIndex
+      const lastIndex = prevState.titlesRelatedAll.length - 1
+
+      if (prevState.startIndexRelated - 4 < 0) newIndex = 0
+      else newIndex = prevState.startIndexRelated - 4
+
+      return {
+        startIndexRelated: newIndex,
+        titlesRelated: prevState.titlesRelatedAll.slice(newIndex, newIndex + 4),
+      }
+    })
   }
 
   render() {
     const {
       title,
-      categoriesOfAll,
       thisCategory,
+      categoriesOfAll,
       titlesOfAll,
+      titles,
+      titlesRelatedAll,
       titlesRelated,
       indexOfAll,
+      startIndex,
+      startIndexRelated,
     } = this.state //destructurize this.state
 
     //Posts : All
     const cardsOfAll = []
-    titlesOfAll.forEach((val, i) => {
+    titles.forEach((val, i) => {
       cardsOfAll.push(
         <Col sm="3" key={i}>
-          <PaginationCard
-            title={val}
-            category={categoriesOfAll[i]}
-          />{" "}
+          <PaginationCard title={val} category={categoriesOfAll[i]} />{" "}
         </Col>
       )
     })
 
-    //Posts : All
+    //Posts : Related
     const cardsRelated = []
     titlesRelated.forEach((val, i) => {
       cardsRelated.push(
         <Col sm="3" key={i}>
-          <PaginationCard
-            title={val}
-            category={thisCategory}
-          />{" "}
+          <PaginationCard title={val} category={thisCategory} />{" "}
         </Col>
       )
     })
@@ -70,7 +157,7 @@ class Pagination extends React.Component {
         <Col sm="6" className="markdown-body previous-next-post">
           <h1>Previous Post</h1>
           <div className="title">
-            {indexOfAll === titlesOfAll.length - 1 ? (
+            {indexOfAll === titles.length - 1 ? (
               <a>There is no previous post</a>
             ) : (
               <Link to={slugify(titlesOfAll[indexOfAll + 1])}>
@@ -96,11 +183,11 @@ class Pagination extends React.Component {
         </Col>
         {cardsOfAll}
         <Col className="see-more text-right mb-3 pr-5">
-          <Link className="see-more mr-4" to={"/all-posts"}>
-            See Less...
+          <Link className="see-more mr-4" onClick={this.prev}>
+            Prev...
           </Link>
-          <Link className="see-more" to={"/all-posts"}>
-            See More...
+          <Link className="see-more" onClick={this.next}>
+            Next...
           </Link>
         </Col>
         {cardsRelated.length > 0 && (
@@ -117,11 +204,11 @@ class Pagination extends React.Component {
             {cardsRelated.length === 4 && (
               <>
                 <Col className="see-more text-right mb-3 pr-5">
-                  <Link
-                    className="see-more"
-                    to={`/category/${slugify(thisCategory)}`}
-                  >
-                    See More...
+                  <Link className="see-more mr-4" onClick={this.prevRel}>
+                    Prev...
+                  </Link>
+                  <Link className="see-more" onClick={this.nextRel}>
+                    Next...
                   </Link>
                 </Col>
               </>
