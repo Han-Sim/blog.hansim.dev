@@ -3,14 +3,17 @@ import { Link } from "gatsby"
 import { Row, Col } from "reactstrap"
 import { slugify, findIndex } from "../util/helperFunctions"
 import PaginationCard from "./pagination-card"
+import PaginationSection from "./pagination-section"
+import PaginationIndicator from "./pagination-indicator"
 
 class Pagination extends React.Component {
   constructor(props) {
     super(props)
 
     const { titlesOfAll, categoriesOfAll, title } = this.props
-    const titles = titlesOfAll.slice(0, 4)
 
+    const titles = titlesOfAll.slice(0, 4)
+    const categories = categoriesOfAll.slice(0,4)
     const indexOfAll = findIndex(titlesOfAll, title)
     const thisCategory = categoriesOfAll[indexOfAll]
 
@@ -26,6 +29,7 @@ class Pagination extends React.Component {
       categoriesOfAll,
       titlesOfAll,
       titles,
+      categories,
       titlesRelatedAll,
       titlesRelated,
       indexOfAll,
@@ -53,6 +57,7 @@ class Pagination extends React.Component {
       return {
         startIndex: newIndex,
         titles: prevState.titlesOfAll.slice(newIndex, newIndex + 4),
+        categories: prevState.categoriesOfAll.slice(newIndex, newIndex + 4)
       }
     })
   }
@@ -118,101 +123,39 @@ class Pagination extends React.Component {
 
   render() {
     const {
-      title,
       thisCategory,
-      categoriesOfAll,
       titlesOfAll,
       titles,
-      titlesRelatedAll,
+      categories,
       titlesRelated,
       indexOfAll,
-      startIndex,
-      startIndexRelated,
     } = this.state //destructurize this.state
 
-    //Posts : All
-    const cardsOfAll = []
-    titles.forEach((val, i) => {
-      cardsOfAll.push(
-        <Col sm="3" key={i}>
-          <PaginationCard title={val} category={categoriesOfAll[i]} />{" "}
-        </Col>
-      )
-    })
-
-    //Posts : Related
-    const cardsRelated = []
-    titlesRelated.forEach((val, i) => {
-      cardsRelated.push(
-        <Col sm="3" key={i}>
-          <PaginationCard title={val} category={thisCategory} />{" "}
-        </Col>
-      )
-    })
+    const morePostTitle = []
+    morePostTitle.push(
+      <>
+        More Posts in{" "}
+        <Link to={`/category/${slugify(thisCategory)}`}>{thisCategory}</Link>
+      </>
+    )
 
     return (
       <Row className="pagination mt-3 mb-5">
-        <Col sm="6" className="markdown-body previous-next-post">
-          <h1>Previous Post</h1>
-          <div className="title">
-            {indexOfAll === titlesOfAll.length - 1 ? (
-              <a>There is no previous post</a>
-            ) : (
-              <Link to={slugify(titlesOfAll[indexOfAll + 1])}>
-                {titlesOfAll[indexOfAll + 1]}
-              </Link>
-            )}
-          </div>
-        </Col>
-        <Col sm="6" className="markdown-body previous-next-post text-right">
-          <h1 className="text-right">Next Post</h1>
-          <div className="title">
-            {indexOfAll === 0 ? (
-              <a>There is no next post</a>
-            ) : (
-              <Link to={slugify(titlesOfAll[indexOfAll - 1])}>
-                {titlesOfAll[indexOfAll - 1]}
-              </Link>
-            )}
-          </div>
-        </Col>
-        <Col sm="12" className="markdown-body pagination-section mb-4">
-          <h1>Recent Posts</h1>
-        </Col>
-        {cardsOfAll}
-        <Col className="see-more text-right mb-3 pr-5">
-          <Link className="see-more mr-4" onClick={this.prev}>
-            Prev...
-          </Link>
-          <Link className="see-more" onClick={this.next}>
-            Next...
-          </Link>
-        </Col>
-        {cardsRelated.length > 0 && (
-          <>
-            <Col sm="12" className="markdown-body pagination-section mb-4">
-              <h1>
-                More Posts in{" "}
-                <Link to={`/category/${slugify(thisCategory)}`}>
-                  {thisCategory}
-                </Link>
-              </h1>
-            </Col>
-            {cardsRelated}
-            {cardsRelated.length === 4 && (
-              <>
-                <Col className="see-more text-right mb-3 pr-5">
-                  <Link className="see-more mr-4" onClick={this.prevRel}>
-                    Prev...
-                  </Link>
-                  <Link className="see-more" onClick={this.nextRel}>
-                    Next...
-                  </Link>
-                </Col>
-              </>
-            )}
-          </>
-        )}
+        <PaginationIndicator index={indexOfAll} titles={titlesOfAll} />
+        <PaginationSection
+          sectionTitle={"Recent Posts"}
+          titles={titles}
+          categories={categories}
+          next={this.next}
+          prev={this.prev}
+        />
+        <PaginationSection
+          sectionTitle={morePostTitle}
+          titles={titlesRelated}
+          category={thisCategory}
+          next={this.nextRel}
+          prev={this.prevRel}
+        />
       </Row>
     )
   }
