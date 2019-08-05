@@ -85,7 +85,6 @@ class Pagination extends React.Component {
     //  otherwise, newIndex = prevIndex - 4
     this.setState(prevState => {
       let newIndex
-      const lastIndex = prevState.titlesOfAll.length - 1
 
       if (prevState.startIndex - 4 < 0) newIndex = 0
       else newIndex = prevState.startIndex - 4
@@ -106,7 +105,6 @@ class Pagination extends React.Component {
     //  otherwise, newIndex = prevIndex - 4
     this.setState(prevState => {
       let newIndex
-      const lastIndex = prevState.titlesRelatedAll.length - 1
 
       if (prevState.startIndexRelated - 4 < 0) newIndex = 0
       else newIndex = prevState.startIndexRelated - 4
@@ -157,7 +155,7 @@ class Pagination extends React.Component {
         <Col sm="6" className="markdown-body previous-next-post">
           <h1>Previous Post</h1>
           <div className="title">
-            {indexOfAll === titles.length - 1 ? (
+            {indexOfAll === titlesOfAll.length - 1 ? (
               <a>There is no previous post</a>
             ) : (
               <Link to={slugify(titlesOfAll[indexOfAll + 1])}>
