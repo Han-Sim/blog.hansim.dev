@@ -4,6 +4,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import PostList from "../components/post-list"
 import SEO from "../components/seo"
+import { slugify } from "../util/helperFunctions"
 
 const CategoryPost = ({ data, pageContext }) => {
   // { data } <----- props.data [destructured]
@@ -34,7 +35,7 @@ const CategoryPost = ({ data, pageContext }) => {
             key={node.id}
             title={node.frontmatter.title}
             author={node.frontmatter.author}
-            slug={node.fields.slug}
+            slug={slugify(node.frontmatter.title)}
             date={node.frontmatter.date}
             body={node.excerpt}
             tags={node.frontmatter.tags}
@@ -61,9 +62,6 @@ export const CategoryQuery = graphql`
             author
             category
             tags
-          }
-          fields {
-            slug
           }
           excerpt
         }
