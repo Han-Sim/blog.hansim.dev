@@ -7,13 +7,11 @@ const PaginationCard = ({ title, category }) => {
   return (
     <Card>
       <Link to={slugify(title)}>
-        <CardBody>
-          {title}
-        </CardBody>
+        <CardBody>{title}</CardBody>
       </Link>
-      <Link to={`/category/${slugify(category)}`}>
-        <div className="category-badge text-center">{category}</div>
-      </Link>
+      <div className="category-badge text-center">
+        <Link to={`/category/${slugify(category)}`}>{category}</Link>
+      </div>
     </Card>
   )
 }
