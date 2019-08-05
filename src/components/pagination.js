@@ -153,7 +153,7 @@ class Pagination extends React.Component {
           next={this.next}
           prev={this.prev}
           isFirst={startIndex === 0}
-          isLast={startIndex > titlesOfAll.length - 4}
+          isLast={startIndex >= titlesOfAll.length - 4}
         />
         <PaginationSection
           sectionTitle={morePostTitle}
@@ -162,7 +162,7 @@ class Pagination extends React.Component {
           next={this.nextRel}
           prev={this.prevRel}
           isFirst={startIndexRelated === 0}
-          isLast={startIndexRelated > titlesRelatedAll.length - 4}
+          isLast={startIndexRelated >= titlesRelatedAll.length - 4}
         />
       </Row>
     )
