@@ -13,7 +13,7 @@ class Pagination extends React.Component {
     const { titlesOfAll, categoriesOfAll, title } = this.props
 
     const titles = titlesOfAll.slice(0, 4)
-    const categories = categoriesOfAll.slice(0,4)
+    const categories = categoriesOfAll.slice(0, 4)
     const indexOfAll = findIndex(titlesOfAll, title)
     const thisCategory = categoriesOfAll[indexOfAll]
 
@@ -57,7 +57,7 @@ class Pagination extends React.Component {
       return {
         startIndex: newIndex,
         titles: prevState.titlesOfAll.slice(newIndex, newIndex + 4),
-        categories: prevState.categoriesOfAll.slice(newIndex, newIndex + 4)
+        categories: prevState.categoriesOfAll.slice(newIndex, newIndex + 4),
       }
     })
   }
@@ -97,6 +97,7 @@ class Pagination extends React.Component {
       return {
         startIndex: newIndex,
         titles: prevState.titlesOfAll.slice(newIndex, newIndex + 4),
+        categories: prevState.categoriesOfAll.slice(newIndex, newIndex + 4),
       }
     })
   }
@@ -128,7 +129,10 @@ class Pagination extends React.Component {
       titles,
       categories,
       titlesRelated,
+      titlesRelatedAll,
       indexOfAll,
+      startIndex,
+      startIndexRelated,
     } = this.state //destructurize this.state
 
     const morePostTitle = []
@@ -148,6 +152,8 @@ class Pagination extends React.Component {
           categories={categories}
           next={this.next}
           prev={this.prev}
+          isFirst={startIndex === 0}
+          isLast={startIndex > titlesOfAll.length - 4}
         />
         <PaginationSection
           sectionTitle={morePostTitle}
@@ -155,6 +161,8 @@ class Pagination extends React.Component {
           category={thisCategory}
           next={this.nextRel}
           prev={this.prevRel}
+          isFirst={startIndexRelated === 0}
+          isLast={startIndexRelated > titlesRelatedAll.length - 4}
         />
       </Row>
     )
