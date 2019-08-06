@@ -56,7 +56,13 @@ const Post = ({
       </div>
       <div className="container">
         {children}
-        <div className="post-tags mb-2">
+        <div className="edit mb-3">
+          <img src={pencilIcon} width="20px" className="mr-2" />{" "}
+          <a href={`${gitHubUrl}/${filename}`} className="edit" target="_blank">
+            Edit this post on GitHub
+          </a>
+        </div>
+        <div className="post-tags mb-5">
           <img src={tagIcon} alt="TAGS : " width="16px" />
           {tags.map(tag => (
             <Button
@@ -69,12 +75,6 @@ const Post = ({
               {tag}
             </Button>
           ))}
-        </div>
-        <div className="edit mb-5 text-right">
-          <img src={pencilIcon} width="20px" className="mr-2" />{" "}
-          <a href={`${gitHubUrl}/${filename}`} className="edit" target="_blank">
-            Edit this post on GitHub
-          </a>
         </div>
         <Pagination
           titlesOfAll={titlesOfAll}
