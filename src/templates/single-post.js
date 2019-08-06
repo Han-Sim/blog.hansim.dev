@@ -4,9 +4,11 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Post from "../components/post"
+import { getFilename } from "../util/helperFunctions"
 
 const SinglePost = ({ data, pageContext }) => {
   const post = data.markdownRemark.frontmatter
+  console.log(data.markdownRemark.fileAbsolutePath)
   
   return (
     <Layout>
@@ -22,6 +24,7 @@ const SinglePost = ({ data, pageContext }) => {
         titlesOfAll={pageContext.titlesOfAll}
         categoriesOfAll={pageContext.categoriesOfAll}
         isSinglePage={true}
+        filename={getFilename(data.markdownRemark.fileAbsolutePath)}
       >
         <div
           className="markdown-body"
@@ -45,6 +48,7 @@ export const postQuery = graphql`
         category
       }
       excerpt
+      fileAbsolutePath
     }
   }
 `

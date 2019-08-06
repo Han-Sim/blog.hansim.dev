@@ -20,16 +20,6 @@
     padding-bottom: 0px;
   }
 
-  a.see-more {
-    position: relative;
-    top: -90%;
-
-    &:hover {
-      font-weight: 800;
-      text-decoration: underline;
-    }
-  }
-
   .card {
     border-color: $dark-gray;
     min-height: 155px;
@@ -67,5 +57,15 @@
       background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQYV2NkQALXzx3/zwjjgziaRpaMYAEYB8RmROaABAD6pQ9wraGMiQAAAABJRU5ErkJggg==)
         repeat;
     }
+  }
+}
+
+a.see-more {
+  position: relative;
+  top: -90%;
+
+  &:hover {
+    font-weight: 800;
+    text-decoration: underline;
   }
 }

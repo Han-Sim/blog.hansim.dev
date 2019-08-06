@@ -2,11 +2,13 @@ import React from "react"
 import { Button, Badge } from "reactstrap"
 import { slugify } from "../util/helperFunctions"
 import { DiscussionEmbed } from "disqus-react"
+import { Link } from "gatsby"
 
 import Pagination from "./pagination"
 
 /* import icons */
 import tagIcon from "../images/tags.png"
+import pencilIcon from "../images/pencil.png"
 
 //this is a single post page
 const Post = ({
@@ -20,6 +22,7 @@ const Post = ({
   tags,
   id,
   slug,
+  filename,
 }) => {
   //DisQus plugin
   const baseUrl = "https://dev.hansim.dev"
@@ -29,6 +32,11 @@ const Post = ({
     identifier: id,
     title: title,
   }
+
+  //github post url
+  const gitHubUrl =
+    "https://github.com/Han-Sim/blog.hansim.dev/tree/master/src/pages/posts"
+
   return (
     <>
       <div className="post-header-area">
@@ -48,8 +56,8 @@ const Post = ({
       </div>
       <div className="container">
         {children}
-        <div className="post-tags mb-5">
-          <img src={tagIcon} alt="TAGS : " />
+        <div className="post-tags mb-2">
+          <img src={tagIcon} alt="TAGS : " width="16px" />
           {tags.map(tag => (
             <Button
               key={tag}
@@ -61,6 +69,12 @@ const Post = ({
               {tag}
             </Button>
           ))}
+        </div>
+        <div className="edit mb-5 text-right">
+          <img src={pencilIcon} width="20px" className="mr-2" />{" "}
+          <a href={`${gitHubUrl}/${filename}`} className="edit" target="_blank">
+            Edit this post on GitHub
+          </a>
         </div>
         <Pagination
           titlesOfAll={titlesOfAll}

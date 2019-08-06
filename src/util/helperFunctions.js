@@ -18,6 +18,17 @@ const findIndex = function(array, key) {
   return -1
 }
 
-module.exports = { slugify, findIndex }
+const getFilename = function(absolutePath) {
+  let charArr = absolutePath.split("")
+  charArr = charArr.reverse()
+  let result = []
+  for (let char of charArr) {
+    if (char === "/") break
+    result.unshift(char)
+  }
+  return result.join("")
+}
+
+module.exports = { slugify, findIndex, getFilename }
 //Node.js syntax export (not ES6)
 // this module is to be used in gatsby-node.js, because gatsby-node.js is run by Node as well.
