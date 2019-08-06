@@ -111,8 +111,14 @@ Planning to add more features
 
 ## July 28
 
-- Updated `Pagination` again; now user can access **every posts in this blog in** each post.
+- Updated `Pagination` again; now user can access **every posts in this blog** each post.
   - *Codes need to be refactored and need to be conditional rendered for buttons.*
+
+## August 5
+
+- Upgraded `Pagination` page design
+- Added `Edit this post on GitHub` feature
+  - Used `fileAbsolutePath` from the GraphQL query and parsed it
 
 --------------
 
