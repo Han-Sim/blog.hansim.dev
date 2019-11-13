@@ -1,16 +1,16 @@
-import React from "react"
-import { graphql } from "gatsby"
+import React from "react";
+import { graphql } from "gatsby";
 
-import Layout from "../components/layout"
-import PostList from "../components/post-list"
-import SEO from "../components/seo"
+import Layout from "../components/layout";
+import PostList from "../components/post-list";
+import SEO from "../components/seo";
 
 const AllPosts = ({ data }) => {
-  const { totalCount } = data.allMarkdownRemark
+  const { totalCount } = data.allMarkdownRemark;
 
-  const pageTitle = `${totalCount} post${totalCount === 1 ? "" : "s"} in total`
-  const seoTitle = `All Posts`
-  
+  const pageTitle = `${totalCount} post${totalCount === 1 ? "" : "s"} in total`;
+  const seoTitle = `All Posts`;
+
   return (
     <Layout>
       <SEO title={seoTitle} />
@@ -38,8 +38,8 @@ const AllPosts = ({ data }) => {
         ))}
       </div>
     </Layout>
-  )
-}
+  );
+};
 
 export const AllPostsQuery = graphql`
   query {
@@ -63,6 +63,6 @@ export const AllPostsQuery = graphql`
       }
     }
   }
-`
+`;
 
-export default AllPosts
+export default AllPosts;

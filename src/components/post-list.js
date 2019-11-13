@@ -1,5 +1,5 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from "react";
+import { Link } from "gatsby";
 import {
   Card,
   CardTitle,
@@ -7,9 +7,9 @@ import {
   CardSubtitle,
   CardBody,
   Badge,
-} from "reactstrap"
+} from "reactstrap";
 //import Img from "gatsby-image"
-import { slugify } from "../util/helperFunctions"
+import { slugify } from "../util/helperFunctions";
 
 const PostList = ({ title, author, slug, date, body, tags }) => {
   return (
@@ -28,9 +28,11 @@ const PostList = ({ title, author, slug, date, body, tags }) => {
           <CardText className="mt-3 post-contents">{body}</CardText>
           <div className="post-tags mt-5">
             {tags.map(tag => (
-                <Link to={`/tag/${slugify(tag)}`}>
-                  <Badge color="primary" className="mr-1">{tag}</Badge>
-                </Link>
+              <Link to={`/tag/${slugify(tag)}`}>
+                <Badge color="primary" className="mr-1">
+                  {tag}
+                </Badge>
+              </Link>
             ))}
           </div>
           <Link to={slug} className="btn btn-outline-primary float-right mt-3">
@@ -38,8 +40,8 @@ const PostList = ({ title, author, slug, date, body, tags }) => {
           </Link>
         </CardBody>
       </Card>
-  </Link>
-  )
-}
+    </Link>
+  );
+};
 
-export default PostList
+export default PostList;

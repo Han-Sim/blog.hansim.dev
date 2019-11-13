@@ -1,9 +1,9 @@
-import React from "react"
-import { Badge } from "reactstrap"
-import { graphql, useStaticQuery } from "gatsby"
-import { slugify } from "../util/helperFunctions"
-import _ from "lodash"
-import { stack as Menu } from "react-burger-menu"
+import React from "react";
+import { Badge } from "reactstrap";
+import { graphql, useStaticQuery } from "gatsby";
+import { slugify } from "../util/helperFunctions";
+import _ from "lodash";
+import { stack as Menu } from "react-burger-menu";
 
 const Sidebar = () => {
   const data = useStaticQuery(graphql`
@@ -24,50 +24,50 @@ const Sidebar = () => {
         }
       }
     }
-  `)
+  `);
 
-  const edges = data.allMarkdownRemark.edges
+  const edges = data.allMarkdownRemark.edges;
 
   //gather tags/category from each nodes
-  let tags = []
+  let tags = [];
   _.each(edges, edge => {
     if (_.get(edge, "node.frontmatter.tags")) {
-      tags = tags.concat(edge.node.frontmatter.tags)
+      tags = tags.concat(edge.node.frontmatter.tags);
     }
-  })
-  let categories = []
+  });
+  let categories = [];
   _.each(edges, edge => {
     if (_.get(edge, "node.frontmatter.category")) {
-      categories = categories.concat(edge.node.frontmatter.category)
+      categories = categories.concat(edge.node.frontmatter.category);
     }
-  })
+  });
 
   //count tags/categories
   // {JavaScript:5, Javs: 12 ...}
-  let tagPostCount = {}
+  let tagPostCount = {};
   tags.forEach(tag => {
-    tagPostCount[tag] = (tagPostCount[tag] || 0) + 1
+    tagPostCount[tag] = (tagPostCount[tag] || 0) + 1;
     //This is to prevent 'NaN'
     //  if tagPostCount[tag] === undefined, it will be 0 + 1
-  })
-  let categoryCount = {}
+  });
+  let categoryCount = {};
   categories.forEach(category => {
-    categoryCount[category] = (categoryCount[category] || 0) + 1
-  })
+    categoryCount[category] = (categoryCount[category] || 0) + 1;
+  });
 
-  tags = _.uniq(tags) //remove duplicate tags
-  categories = _.uniq(categories) //remove duplicate categories
+  tags = _.uniq(tags); //remove duplicate tags
+  categories = _.uniq(categories); //remove duplicate categories
 
   //take titles from each node.frontmatter
-  let titles = []
+  let titles = [];
   _.each(edges, edge => {
     if (_.get(edge, "node.frontmatter.title")) {
-      titles = titles.concat(edge.node.frontmatter.title)
+      titles = titles.concat(edge.node.frontmatter.title);
     }
-  })
+  });
 
-  const numOfRecentPosts = 6
-  titles = titles.slice(0, numOfRecentPosts)
+  const numOfRecentPosts = 6;
+  titles = titles.slice(0, numOfRecentPosts);
 
   return (
     <Menu right>
@@ -123,7 +123,7 @@ const Sidebar = () => {
         </a>
       ))}
     </Menu>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;

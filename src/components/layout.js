@@ -5,15 +5,15 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
-import PropTypes from "prop-types"
-import { Link } from "gatsby"
+import React from "react";
+import PropTypes from "prop-types";
+import { Link } from "gatsby";
 
-import Footer from "./footer"
-import Sidebar from "./sidebar"
+import Footer from "./footer";
+import Sidebar from "./sidebar";
 
-import logo from "../images/logo.jpg"
-import "../styles/index.scss"
+import logo from "../images/logo.jpg";
+import "../styles/index.scss";
 
 const Layout = ({ children }) => {
   return (
@@ -29,11 +29,11 @@ const Layout = ({ children }) => {
       </div>
       <Footer />
     </>
-  )
-}
+  );
+};
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-}
+};
 
-export default Layout
+export default Layout;

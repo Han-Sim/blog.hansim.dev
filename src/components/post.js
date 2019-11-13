@@ -1,14 +1,13 @@
-import React from "react"
-import { Button, Badge } from "reactstrap"
-import { slugify } from "../util/helperFunctions"
-import { DiscussionEmbed } from "disqus-react"
-import { Link } from "gatsby"
+import React from "react";
+import { Button, Badge } from "reactstrap";
+import { slugify } from "../util/helperFunctions";
+import { DiscussionEmbed } from "disqus-react";
 
-import Pagination from "./pagination"
+import Pagination from "./pagination";
 
 /* import icons */
-import tagIcon from "../images/tags.png"
-import pencilIcon from "../images/pencil.png"
+import tagIcon from "../images/tags.png";
+import pencilIcon from "../images/pencil.png";
 
 //this is a single post page
 const Post = ({
@@ -25,17 +24,17 @@ const Post = ({
   filename,
 }) => {
   //DisQus plugin
-  const baseUrl = "https://dev.hansim.dev"
-  const disqusShortname = "blog-hansim-dev"
+  const baseUrl = "https://dev.hansim.dev";
+  const disqusShortname = "blog-hansim-dev";
   const disqusConfig = {
     url: baseUrl + slug,
     identifier: id,
     title: title,
-  }
+  };
 
   //github post url
   const gitHubUrl =
-    "https://github.com/Han-Sim/blog.hansim.dev/tree/master/src/pages/posts"
+    "https://github.com/Han-Sim/blog.hansim.dev/tree/master/src/pages/posts";
 
   return (
     <>
@@ -86,7 +85,7 @@ const Post = ({
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Post
+export default Post;

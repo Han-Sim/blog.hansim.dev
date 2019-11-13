@@ -1,9 +1,9 @@
-import React from "react"
-import { Link } from "gatsby"
-import { Col } from "reactstrap"
-import { slugify } from "../util/helperFunctions"
+import React from "react";
+import { Link } from "gatsby";
+import { Col } from "reactstrap";
+import { slugify } from "../util/helperFunctions";
 
-const PaginationSection = ({index, titles}) => {
+const PaginationSection = ({ index, titles }) => {
   return (
     <>
       <Col sm="6" className="markdown-body previous-next-post">
@@ -12,9 +12,7 @@ const PaginationSection = ({index, titles}) => {
           {index === titles.length - 1 ? (
             <a>There is no previous post</a>
           ) : (
-            <Link to={slugify(titles[index + 1])}>
-              {titles[index + 1]}
-            </Link>
+            <Link to={slugify(titles[index + 1])}>{titles[index + 1]}</Link>
           )}
         </div>
       </Col>
@@ -24,14 +22,12 @@ const PaginationSection = ({index, titles}) => {
           {index === 0 ? (
             <a>There is no next post</a>
           ) : (
-            <Link to={slugify(titles[index - 1])}>
-              {titles[index - 1]}
-            </Link>
+            <Link to={slugify(titles[index - 1])}>{titles[index - 1]}</Link>
           )}
         </div>
       </Col>
     </>
-  )
-}
+  );
+};
 
-export default PaginationSection
+export default PaginationSection;

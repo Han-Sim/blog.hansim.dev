@@ -1,15 +1,15 @@
-import React from "react"
-import { graphql } from "gatsby"
+import React from "react";
+import { graphql } from "gatsby";
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import Post from "../components/post"
-import { getFilename } from "../util/helperFunctions"
+import Layout from "../components/layout";
+import SEO from "../components/seo";
+import Post from "../components/post";
+import { getFilename } from "../util/helperFunctions";
 
 const SinglePost = ({ data, pageContext }) => {
-  const post = data.markdownRemark.frontmatter
-  console.log(data.markdownRemark.fileAbsolutePath)
-  
+  const post = data.markdownRemark.frontmatter;
+  console.log(data.markdownRemark.fileAbsolutePath);
+
   return (
     <Layout>
       <SEO title={post.title} />
@@ -32,8 +32,8 @@ const SinglePost = ({ data, pageContext }) => {
         />
       </Post>
     </Layout>
-  )
-}
+  );
+};
 
 export const postQuery = graphql`
   query($slug: String!) {
@@ -51,8 +51,8 @@ export const postQuery = graphql`
       fileAbsolutePath
     }
   }
-`
+`;
 //String! --> Exclamation Mark means it MUST receive this
 //  gatsby-node will pass 'slug' when it calls single-post.js
 
-export default SinglePost
+export default SinglePost;

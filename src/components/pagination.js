@@ -1,27 +1,26 @@
-import React from "react"
-import { Link } from "gatsby"
-import { Row, Col } from "reactstrap"
-import { slugify, findIndex } from "../util/helperFunctions"
-import PaginationCard from "./pagination-card"
-import PaginationSection from "./pagination-section"
-import PaginationIndicator from "./pagination-indicator"
+import React from "react";
+import { Link } from "gatsby";
+import { Row } from "reactstrap";
+import { slugify, findIndex } from "../util/helperFunctions";
+import PaginationSection from "./pagination-section";
+import PaginationIndicator from "./pagination-indicator";
 
 class Pagination extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
-    const { titlesOfAll, categoriesOfAll, title } = this.props
+    const { titlesOfAll, categoriesOfAll, title } = this.props;
 
-    const titles = titlesOfAll.slice(0, 4)
-    const categories = categoriesOfAll.slice(0, 4)
-    const indexOfAll = findIndex(titlesOfAll, title)
-    const thisCategory = categoriesOfAll[indexOfAll]
+    const titles = titlesOfAll.slice(0, 4);
+    const categories = categoriesOfAll.slice(0, 4);
+    const indexOfAll = findIndex(titlesOfAll, title);
+    const thisCategory = categoriesOfAll[indexOfAll];
 
-    let titlesRelatedAll = []
+    let titlesRelatedAll = [];
     categoriesOfAll.forEach((val, i) => {
-      if (val === thisCategory) titlesRelatedAll.push(titlesOfAll[i])
-    })
-    const titlesRelated = titlesRelatedAll.slice(0, 4)
+      if (val === thisCategory) titlesRelatedAll.push(titlesOfAll[i]);
+    });
+    const titlesRelated = titlesRelatedAll.slice(0, 4);
 
     this.state = {
       title,
@@ -35,92 +34,92 @@ class Pagination extends React.Component {
       indexOfAll,
       startIndex: 0,
       startIndexRelated: 0,
-    }
+    };
   }
 
   next = e => {
-    e.preventDefault()
+    e.preventDefault();
 
     //if titlesOfAll.length == 10 --> [0,....,9]
     //  newIndex = prevIndex + 4
     //  if newIndex > (9-3) --> newIndex = 9-3 = 6 ---> [6,7,8,9]
     //  if newIndex <= (9-3) --> leave it alone
     this.setState(prevState => {
-      let newIndex
-      const lastIndex = prevState.titlesOfAll.length - 1
+      let newIndex;
+      const lastIndex = prevState.titlesOfAll.length - 1;
 
       if (prevState.startIndex + 4 > lastIndex - 3)
-        newIndex = prevState.titlesOfAll.length - 4
+        newIndex = prevState.titlesOfAll.length - 4;
       else if (prevState.startIndex + 4 <= lastIndex - 3)
-        newIndex = prevState.startIndex + 4
+        newIndex = prevState.startIndex + 4;
 
       return {
         startIndex: newIndex,
         titles: prevState.titlesOfAll.slice(newIndex, newIndex + 4),
         categories: prevState.categoriesOfAll.slice(newIndex, newIndex + 4),
-      }
-    })
-  }
+      };
+    });
+  };
 
   nextRel = e => {
-    e.preventDefault()
+    e.preventDefault();
 
     this.setState(prevState => {
-      let newIndex
-      const lastIndex = prevState.titlesRelatedAll.length - 1
+      let newIndex;
+      const lastIndex = prevState.titlesRelatedAll.length - 1;
 
       if (prevState.startIndexRelated + 4 > lastIndex - 3)
-        newIndex = prevState.titlesRelatedAll.length - 4
+        newIndex = prevState.titlesRelatedAll.length - 4;
       else if (prevState.startIndex + 4 <= lastIndex - 3)
-        newIndex = prevState.startIndexRelated + 4
+        newIndex = prevState.startIndexRelated + 4;
 
       return {
         startIndexRelated: newIndex,
         titlesRelated: prevState.titlesRelatedAll.slice(newIndex, newIndex + 4),
-      }
-    })
-  }
+      };
+    });
+  };
 
   prev = e => {
-    e.preventDefault()
+    e.preventDefault();
 
     //if titlesOfAll.length == 10 --> [0,....,9]
     //  newIndex = prevIndex - 4
     //  if newIndex < 0 --> newIndex = 0
     //  otherwise, newIndex = prevIndex - 4
     this.setState(prevState => {
-      let newIndex
+      let newIndex;
 
-      if (prevState.startIndex - 4 < 0) newIndex = 0
-      else newIndex = prevState.startIndex - 4
+      if (prevState.startIndex - 4 < 0) newIndex = 0;
+      else newIndex = prevState.startIndex - 4;
 
       return {
         startIndex: newIndex,
         titles: prevState.titlesOfAll.slice(newIndex, newIndex + 4),
         categories: prevState.categoriesOfAll.slice(newIndex, newIndex + 4),
-      }
-    })
-  }
+      };
+    });
+  };
 
   prevRel = e => {
-    e.preventDefault()
+    e.preventDefault();
 
     //if titlesOfAll.length == 10 --> [0,....,9]
     //  newIndex = prevIndex - 4
     //  if newIndex < 0 --> newIndex = 0
     //  otherwise, newIndex = prevIndex - 4
     this.setState(prevState => {
-      let newIndex
+      let newIndex;
 
-      if (prevState.startIndexRelated - 4 < 0) newIndex = 0
-      else newIndex = prevState.startIndexRelated - 4
+      if (prevState.startIndexRelated - 4 < 0) newIndex = 0;
+      else newIndex = prevState.startIndexRelated - 4;
 
       return {
         startIndexRelated: newIndex,
         titlesRelated: prevState.titlesRelatedAll.slice(newIndex, newIndex + 4),
-      }
-    })
-  }
+      };
+    });
+  };
 
   render() {
     const {
@@ -133,15 +132,15 @@ class Pagination extends React.Component {
       indexOfAll,
       startIndex,
       startIndexRelated,
-    } = this.state //destructurize this.state
+    } = this.state; //destructurize this.state
 
-    const morePostTitle = []
+    const morePostTitle = [];
     morePostTitle.push(
       <>
         More Posts in{" "}
         <Link to={`/category/${slugify(thisCategory)}`}>{thisCategory}</Link>
       </>
-    )
+    );
 
     return (
       <Row className="pagination mt-3 mb-5">
@@ -165,8 +164,8 @@ class Pagination extends React.Component {
           isLast={startIndexRelated >= titlesRelatedAll.length - 4}
         />
       </Row>
-    )
+    );
   }
 }
 
-export default Pagination
+export default Pagination;

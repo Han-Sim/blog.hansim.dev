@@ -1,20 +1,22 @@
-import React from "react"
-import { graphql } from "gatsby"
+import React from "react";
+import { graphql } from "gatsby";
 
-import Layout from "../components/layout"
-import PostList from "../components/post-list"
-import SEO from "../components/seo"
-import { slugify } from "../util/helperFunctions"
+import Layout from "../components/layout";
+import PostList from "../components/post-list";
+import SEO from "../components/seo";
+import { slugify } from "../util/helperFunctions";
 
 const CategoryPost = ({ data, pageContext }) => {
   // { data } <----- props.data [destructured]
 
-  const { category } = pageContext
-  const { totalCount } = data.allMarkdownRemark
+  const { category } = pageContext;
+  const { totalCount } = data.allMarkdownRemark;
 
-  const pageTitle = `${totalCount} post${totalCount === 1 ? "" : "s"} found in `
+  const pageTitle = `${totalCount} post${
+    totalCount === 1 ? "" : "s"
+  } found in `;
 
-  const seoTitle = `Posts in ${category}`
+  const seoTitle = `Posts in ${category}`;
   return (
     <Layout>
       <SEO title={seoTitle} />
@@ -43,8 +45,8 @@ const CategoryPost = ({ data, pageContext }) => {
         ))}
       </div>
     </Layout>
-  )
-}
+  );
+};
 
 export const CategoryQuery = graphql`
   query($category: String!) {
@@ -68,6 +70,6 @@ export const CategoryQuery = graphql`
       }
     }
   }
-`
+`;
 
-export default CategoryPost
+export default CategoryPost;

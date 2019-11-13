@@ -1,10 +1,10 @@
-import React from "react"
-import { graphql, useStaticQuery } from "gatsby"
-import _ from "lodash"
+import React from "react";
+import { graphql, useStaticQuery } from "gatsby";
+import _ from "lodash";
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import Post from "../components/post"
+import Layout from "../components/layout";
+import SEO from "../components/seo";
+import Post from "../components/post";
 
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
@@ -30,23 +30,23 @@ const IndexPage = () => {
         }
       }
     }
-  `)
+  `);
 
-  const latestPost = data.allMarkdownRemark.edges[0].node
+  const latestPost = data.allMarkdownRemark.edges[0].node;
 
-  let titlesOfAll = []
+  let titlesOfAll = [];
   _.each(data.allMarkdownRemark.edges, edge => {
     if (_.get(edge, "node.frontmatter.title")) {
-      titlesOfAll = titlesOfAll.concat(edge.node.frontmatter.title)
+      titlesOfAll = titlesOfAll.concat(edge.node.frontmatter.title);
     }
-  })
+  });
 
-  let categoriesOfAll = []
+  let categoriesOfAll = [];
   _.each(data.allMarkdownRemark.edges, edge => {
     if (_.get(edge, "node.frontmatter.category")) {
-      categoriesOfAll = categoriesOfAll.concat(edge.node.frontmatter.category)
+      categoriesOfAll = categoriesOfAll.concat(edge.node.frontmatter.category);
     }
-  })
+  });
 
   return (
     <Layout>
@@ -70,7 +70,7 @@ const IndexPage = () => {
         />
       </Post>
     </Layout>
-  )
-}
+  );
+};
 
-export default IndexPage
+export default IndexPage;

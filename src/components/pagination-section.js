@@ -1,15 +1,15 @@
-import React from "react"
-import { Link } from "gatsby"
-import { Col, Button } from "reactstrap"
-import PaginationCard from "./pagination-card"
+import React from "react";
+import { Link } from "gatsby";
+import { Col } from "reactstrap";
+import PaginationCard from "./pagination-card";
 
-import leftArrow from "../images/left-arrow.png"
-import leftArrowDisabled from "../images/left-arrow-disabled.png"
-import rightArrow from "../images/right-arrow.png"
-import rightArrowDisabled from "../images/right-arrow-disabled.png"
+import leftArrow from "../images/left-arrow.png";
+import leftArrowDisabled from "../images/left-arrow-disabled.png";
+import rightArrow from "../images/right-arrow.png";
+import rightArrowDisabled from "../images/right-arrow-disabled.png";
 
 const PaginationSection = props => {
-  const cards = []
+  const cards = [];
   props.titles.forEach((val, i) => {
     cards.push(
       <Col sm="3" key={i}>
@@ -18,8 +18,8 @@ const PaginationSection = props => {
           category={props.categories ? props.categories[i] : props.category}
         />{" "}
       </Col>
-    )
-  })
+    );
+  });
 
   return (
     <>
@@ -55,7 +55,7 @@ const PaginationSection = props => {
       </Col>
       {cards}
     </>
-  )
-}
+  );
+};
 
-export default PaginationSection
+export default PaginationSection;

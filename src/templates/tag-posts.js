@@ -1,28 +1,31 @@
-import React from "react"
-import { graphql } from "gatsby"
+import React from "react";
+import { graphql } from "gatsby";
 
-import Layout from "../components/layout"
-import PostList from "../components/post-list"
-import SEO from "../components/seo"
+import Layout from "../components/layout";
+import PostList from "../components/post-list";
+import SEO from "../components/seo";
 
 const TagPosts = ({ data, pageContext }) => {
   // { data } <----- props.data [destructured]
 
-  const { tag } = pageContext
-  const { totalCount } = data.allMarkdownRemark
+  const { tag } = pageContext;
+  const { totalCount } = data.allMarkdownRemark;
 
   const pageTitle = `${totalCount} post${
     totalCount === 1 ? "" : "s"
-  } tagged with `
+  } tagged with `;
 
-  const seoTitle = `Posts about ${tag}`
+  const seoTitle = `Posts about ${tag}`;
   return (
     <Layout>
       <SEO title={seoTitle} />
       <div className="post-header-area">
         <div className="post-header">
           <div className="post-title">
-            <h1>{pageTitle}<strong>{tag}</strong></h1>
+            <h1>
+              {pageTitle}
+              <strong>{tag}</strong>
+            </h1>
           </div>
         </div>
       </div>
@@ -40,8 +43,8 @@ const TagPosts = ({ data, pageContext }) => {
         ))}
       </div>
     </Layout>
-  )
-}
+  );
+};
 
 export const TagQuery = graphql`
   query($tag: String!) {
@@ -67,6 +70,6 @@ export const TagQuery = graphql`
       }
     }
   }
-`
+`;
 
-export default TagPosts
+export default TagPosts;

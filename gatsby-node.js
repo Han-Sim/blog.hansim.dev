@@ -1,32 +1,32 @@
 //Make a post path by slugifying the title of each post
 
-const { slugify } = require("./src/util/helperFunctions")
-const path = require("path")
-const _ = require("lodash")
+const { slugify } = require("./src/util/helperFunctions");
+const path = require("path");
+const _ = require("lodash");
 
 exports.onCreateNode = ({ node, actions }) => {
-  const { createNodeField } = actions
+  const { createNodeField } = actions;
 
   //check if this node is a post(markdown file)
   if (node.internal.type === "MarkdownRemark") {
-    const slugFromTitle = slugify(node.frontmatter.title)
+    const slugFromTitle = slugify(node.frontmatter.title);
     createNodeField({
       node,
       name: "slug",
       value: slugFromTitle,
-    })
+    });
   }
-}
+};
 
 exports.createPages = ({ actions, graphql }) => {
-  const { createPage } = actions
+  const { createPage } = actions;
   const templates = {
     singlePost: path.resolve("src/templates/single-post.js"),
     tagPosts: path.resolve("src/templates/tag-posts.js"),
     categoryPosts: path.resolve("src/templates/category-posts.js"),
     allPosts: path.resolve("src/templates/all-posts.js"),
     pageList: path.resolve("src/templates/page-list.js"),
-  }
+  };
 
   return graphql(`
     {
@@ -48,21 +48,23 @@ exports.createPages = ({ actions, graphql }) => {
       }
     }
   `).then(res => {
-    if (res.errors) return Promise.reject(res.errors)
+    if (res.errors) return Promise.reject(res.errors);
 
-    const edges = res.data.allMarkdownRemark.edges
-    let titlesOfAll = []
+    const edges = res.data.allMarkdownRemark.edges;
+    let titlesOfAll = [];
     _.each(edges, edge => {
       if (_.get(edge, "node.frontmatter.title")) {
-        titlesOfAll = titlesOfAll.concat(edge.node.frontmatter.title)
+        titlesOfAll = titlesOfAll.concat(edge.node.frontmatter.title);
       }
-    })
-    let categoriesOfAll = []
+    });
+    let categoriesOfAll = [];
     _.each(edges, edge => {
       if (_.get(edge, "node.frontmatter.category")) {
-        categoriesOfAll = categoriesOfAll.concat(edge.node.frontmatter.category)
+        categoriesOfAll = categoriesOfAll.concat(
+          edge.node.frontmatter.category
+        );
       }
-    })
+    });
 
     /***** Post *****/
 
@@ -76,29 +78,29 @@ exports.createPages = ({ actions, graphql }) => {
           titlesOfAll, //titles array
           categoriesOfAll, //categories
         },
-      })
-    })
+      });
+    });
 
     /***** Tags *****/
 
     //gather tags from each nodes
-    let tags = []
+    let tags = [];
     _.each(edges, edge => {
       if (_.get(edge, "node.frontmatter.tags")) {
-        tags = tags.concat(edge.node.frontmatter.tags)
+        tags = tags.concat(edge.node.frontmatter.tags);
       }
-    })
+    });
 
     //count tags
     // {JavaScript:5, Javs: 12 ...}
-    let tagPostCount = {}
+    let tagPostCount = {};
     tags.forEach(tag => {
-      tagPostCount[tag] = (tagPostCount[tag] || 0) + 1
+      tagPostCount[tag] = (tagPostCount[tag] || 0) + 1;
       //This is to prevent 'NaN'
       //  if tagPostCount[tag] === undefined, it will be 0 + 1
-    })
+    });
 
-    tags = _.uniq(tags)
+    tags = _.uniq(tags);
 
     //Create a page with the given tag
     tags.forEach(tag => {
@@ -108,33 +110,33 @@ exports.createPages = ({ actions, graphql }) => {
         context: {
           tag,
         },
-      })
-    })
+      });
+    });
 
     /***** All Posts *****/
     createPage({
       path: `/all-posts`,
       component: templates.allPosts,
-    })
+    });
 
     /***** Category *****/
 
     //gather category from each nodes
-    let categories = []
+    let categories = [];
     _.each(edges, edge => {
       if (_.get(edge, "node.frontmatter.category")) {
-        categories = categories.concat(edge.node.frontmatter.category)
+        categories = categories.concat(edge.node.frontmatter.category);
       }
-    })
+    });
 
     //count categories
     // {JavaScript:5, Javs: 12 ...}
-    let categoryCount = {}
+    let categoryCount = {};
     categories.forEach(category => {
-      categoryCount[category] = (categoryCount[category] || 0) + 1
-    })
+      categoryCount[category] = (categoryCount[category] || 0) + 1;
+    });
 
-    categories = _.uniq(categories)
+    categories = _.uniq(categories);
 
     //Create a page with the given category
     categories.forEach(category => {
@@ -144,7 +146,8 @@ exports.createPages = ({ actions, graphql }) => {
         context: {
           category,
         },
-      })
-    })
-  })
-}
+      });
+    });
+  });
+};
+g

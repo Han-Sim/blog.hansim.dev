@@ -1,7 +1,7 @@
-import React from "react"
-import { Link } from "gatsby"
-import { Card, CardBody, CardTitle } from "reactstrap"
-import { slugify } from "../util/helperFunctions"
+import React from "react";
+import { Link } from "gatsby";
+import { Card, CardBody } from "reactstrap";
+import { slugify } from "../util/helperFunctions";
 
 const PaginationCard = ({ title, category }) => {
   return (
@@ -13,7 +13,7 @@ const PaginationCard = ({ title, category }) => {
         <Link to={`/category/${slugify(category)}`}>{category}</Link>
       </div>
     </Card>
-  )
-}
+  );
+};
 
-export default PaginationCard
+export default PaginationCard;
