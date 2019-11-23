@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 import { Col } from "reactstrap";
-import { slugify } from "../util/helperFunctions";
+import { slugify } from "../../util/helperFunctions";
 
 const PaginationSection = ({ index, titles }) => {
   return (

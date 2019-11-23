@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 import { Row } from "reactstrap";
-import { slugify, findIndex } from "../util/helperFunctions";
+import { slugify, findIndex } from "../../util/helperFunctions";
 import PaginationSection from "./pagination-section";
 import PaginationIndicator from "./pagination-indicator";
 
@@ -132,7 +132,7 @@ class Pagination extends React.Component {
       indexOfAll,
       startIndex,
       startIndexRelated,
-    } = this.state; //destructurize this.state
+    } = this.state;
 
     const morePostTitle = [];
     morePostTitle.push(

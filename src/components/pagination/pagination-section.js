@@ -3,10 +3,10 @@ import { Link } from "gatsby";
 import { Col } from "reactstrap";
 import PaginationCard from "./pagination-card";
 
-import leftArrow from "../images/left-arrow.png";
-import leftArrowDisabled from "../images/left-arrow-disabled.png";
-import rightArrow from "../images/right-arrow.png";
-import rightArrowDisabled from "../images/right-arrow-disabled.png";
+import leftArrow from "../../images/left-arrow.png";
+import leftArrowDisabled from "../../images/left-arrow-disabled.png";
+import rightArrow from "../../images/right-arrow.png";
+import rightArrowDisabled from "../../images/right-arrow-disabled.png";
 
 const PaginationSection = props => {
   const cards = [];

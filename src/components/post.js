@@ -3,7 +3,7 @@ import { Button, Badge } from "reactstrap";
 import { slugify } from "../util/helperFunctions";
 import { DiscussionEmbed } from "disqus-react";
 
-import Pagination from "./pagination";
+import Pagination from "./pagination/pagination";
 
 /* import icons */
 import tagIcon from "../images/tags.png";

@@ -50,9 +50,9 @@ const Footer = () => (
             href="https://www.linkedin.com/in/han-dev/"
             target="_blank"
             rel="noopener noreferrer"
-            className="linkedin"
+            className="linkedIn"
           >
-            <img src={linkedin} width="32px" alt="linkedin" />
+            <img src={linkedIn} width="32px" alt="linkedIn" />
           </a>
         </li>
         <li>
