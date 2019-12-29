@@ -7,7 +7,7 @@ const _ = require("lodash");
 exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions;
 
-  //check if this node is a post(markdown file)
+  // check if this node is a post(markdown file)
   if (node.internal.type === "MarkdownRemark") {
     const slugFromTitle = slugify(node.frontmatter.title);
     createNodeField({
@@ -68,7 +68,7 @@ exports.createPages = ({ actions, graphql }) => {
 
     /***** Post *****/
 
-    //Create a post page with a single-post.js component as a template
+    // Create a post page with a single-post.js component as a template
     edges.forEach(({ node }) => {
       createPage({
         path: node.fields.slug,
@@ -83,7 +83,7 @@ exports.createPages = ({ actions, graphql }) => {
 
     /***** Tags *****/
 
-    //gather tags from each nodes
+    // gather tags from each nodes
     let tags = [];
     _.each(edges, edge => {
       if (_.get(edge, "node.frontmatter.tags")) {
@@ -91,18 +91,18 @@ exports.createPages = ({ actions, graphql }) => {
       }
     });
 
-    //count tags
-    // {JavaScript:5, Javs: 12 ...}
+    // count tags
+    // i.e. {JavaScript: 5, Java: 12 ...}
     let tagPostCount = {};
     tags.forEach(tag => {
       tagPostCount[tag] = (tagPostCount[tag] || 0) + 1;
-      //This is to prevent 'NaN'
-      //  if tagPostCount[tag] === undefined, it will be 0 + 1
+      // This is to prevent 'NaN'
+      // if tagPostCount[tag] === undefined, it will be 0 + 1
     });
 
     tags = _.uniq(tags);
 
-    //Create a page with the given tag
+    // Create a page with the given tag
     tags.forEach(tag => {
       createPage({
         path: `/tag/${slugify(tag)}`,
@@ -114,6 +114,7 @@ exports.createPages = ({ actions, graphql }) => {
     });
 
     /***** All Posts *****/
+
     createPage({
       path: `/all-posts`,
       component: templates.allPosts,
@@ -121,7 +122,7 @@ exports.createPages = ({ actions, graphql }) => {
 
     /***** Category *****/
 
-    //gather category from each nodes
+    // gather category from each nodes
     let categories = [];
     _.each(edges, edge => {
       if (_.get(edge, "node.frontmatter.category")) {
@@ -129,8 +130,8 @@ exports.createPages = ({ actions, graphql }) => {
       }
     });
 
-    //count categories
-    // {JavaScript:5, Javs: 12 ...}
+    // count categories
+    // i.e. {JavaScript: 5, Java: 12 ...}
     let categoryCount = {};
     categories.forEach(category => {
       categoryCount[category] = (categoryCount[category] || 0) + 1;
@@ -138,7 +139,7 @@ exports.createPages = ({ actions, graphql }) => {
 
     categories = _.uniq(categories);
 
-    //Create a page with the given category
+    // Create a page with the given category
     categories.forEach(category => {
       createPage({
         path: `/category/${slugify(category)}`,

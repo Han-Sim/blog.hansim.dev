@@ -3,8 +3,11 @@ import { Badge } from "reactstrap";
 import { graphql, useStaticQuery } from "gatsby";
 import { slugify } from "../util/helperFunctions";
 import _ from "lodash";
-import { stack as Menu } from "react-burger-menu";
+import { push as Menu } from "react-burger-menu";
 
+/**
+ * Sidebar component based on react-burger-menu.
+ */
 const Sidebar = () => {
   const data = useStaticQuery(graphql`
     query {
@@ -42,13 +45,13 @@ const Sidebar = () => {
     }
   });
 
-  //count tags/categories
-  // {JavaScript:5, Javs: 12 ...}
+  // count tags/categories
+  // {JavaScript:5, Java: 12 ...}
   let tagPostCount = {};
   tags.forEach(tag => {
     tagPostCount[tag] = (tagPostCount[tag] || 0) + 1;
-    //This is to prevent 'NaN'
-    //  if tagPostCount[tag] === undefined, it will be 0 + 1
+    // This is to prevent 'NaN'
+    // if tagPostCount[tag] === undefined, it will be 0 + 1
   });
   let categoryCount = {};
   categories.forEach(category => {
@@ -70,19 +73,19 @@ const Sidebar = () => {
   titles = titles.slice(0, numOfRecentPosts);
 
   return (
-    <Menu right>
+    <Menu right width={'40%'}>
       <a href="/markdown-blog-with-gatsbygraphql">
         <h3>
           <strong className="up-link">About this blog</strong>
         </h3>
       </a>
-      <a href="https://hansim.dev" target="_blank" rel="noopener noreferrer">
+      {/* <a href="https://hansim.dev" target="_blank" rel="noopener noreferrer">
         <h3>
           <strong className="up-link">About me</strong>
         </h3>
-      </a>
+      </a> */}
       <div className="menu-between" />
-      <h3 className="menu-title m-4">Categories</h3>
+      <span className="menu-title m-4">Categories</span>
       <a href={`/all-posts`} className="menu-item">
         All Posts{" "}
         <Badge color="light" className="ml-1">
@@ -102,14 +105,14 @@ const Sidebar = () => {
         </a>
       ))}
       <div className="menu-between" />
-      <h3 className="menu-title m-4">Recent Posts</h3>
+      <span className="menu-title m-4">Recent Posts</span>
       {titles.map(title => (
         <a key={title} className="menu-item" href={`/${slugify(title)}`}>
           {title}
         </a>
       ))}
       <div className="menu-between" />
-      <h3 className="menu-title m-4">Tags</h3>
+      <span className="menu-title m-4">Tags</span>
       {tags.map(tag => (
         <a
           key={tag}

@@ -56,13 +56,13 @@ const Post = ({
       <div className="container">
         {children}
         <div className="edit mb-3">
-          <img src={pencilIcon} width="20px" className="mr-2" />{" "}
+          <img src={pencilIcon} width="20px" className="mr-2" alt=""/>{" "}
           <a href={`${gitHubUrl}/${filename}`} className="edit" target="_blank">
             Edit this post on GitHub
           </a>
         </div>
         <div className="post-tags mb-5">
-          <img src={tagIcon} alt="TAGS : " width="16px" />
+          <img src={tagIcon} alt="TAGS : " width="16px" alt=""/>
           {tags.map(tag => (
             <Button
               key={tag}
