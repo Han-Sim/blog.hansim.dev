@@ -21,11 +21,10 @@ const slugify = function(text) {
 
 /**
  * Returns an index.
- * TODO: replace this with lodash.
  */
-const findIndex = function(array, key) {
-  for (let i = 0; i < array.length; i++) {
-    if (key === array[i]) return i;
+const findIndex = function(arr, elem) {
+  for (let i = 0; i < arr.length; i++) {
+    if (elem === arr[i]) return i;
   }
 
   return -1;

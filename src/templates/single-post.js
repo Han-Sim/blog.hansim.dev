@@ -20,6 +20,7 @@ const SinglePost = ({ data, pageContext }) => {
         author={post.author}
         tags={post.tags}
         id={data.markdownRemark.id}
+        key={data.markdownRemark.id}
         slug={pageContext.slug}
         titlesOfAll={pageContext.titlesOfAll}
         categoriesOfAll={pageContext.categoriesOfAll}

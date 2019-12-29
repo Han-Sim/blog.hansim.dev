@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "gatsby";
+import { Link } from "gatsby"; // TODO - update arrow buttons with Mui icon button.
 import { Col } from "reactstrap";
 import PaginationCard from "./pagination-card";
 
@@ -14,6 +14,7 @@ const PaginationSection = props => {
     cards.push(
       <Col sm="3" key={i}>
         <PaginationCard
+          key={val}
           title={val}
           category={props.categories ? props.categories[i] : props.category}
         />{" "}
