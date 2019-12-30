@@ -5,6 +5,8 @@
   "version": "0.1.0",
   "author": "Han Sim <han.sim.dev@gmail.com>",
   "dependencies": {
+    "@material-ui/core": "^4.8.1",
+    "@material-ui/icons": "^4.5.1",
     "bootstrap": "^4.3.1",
     "disqus-react": "^1.0.5",
     "gatsby": "^2.9.11",

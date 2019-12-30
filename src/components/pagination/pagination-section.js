@@ -1,12 +1,9 @@
 import React from "react";
-import { Link } from "gatsby"; // TODO - update arrow buttons with Mui icon button.
 import { Col } from "reactstrap";
 import PaginationCard from "./pagination-card";
-
-import leftArrow from "../../images/left-arrow.png";
-import leftArrowDisabled from "../../images/left-arrow-disabled.png";
-import rightArrow from "../../images/right-arrow.png";
-import rightArrowDisabled from "../../images/right-arrow-disabled.png";
+import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import IconButton from '@material-ui/core/IconButton';
 
 const PaginationSection = props => {
   const cards = [];
@@ -27,32 +24,13 @@ const PaginationSection = props => {
       <Col sm="10" className="markdown-body pagination-section mb-4">
         <h1>{props.sectionTitle}</h1>
       </Col>
-      <Col sm="2" className="mb-3 mt-1 pr-5 text-right">
-        <Link onClick={props.prev} className="mr-4">
-          {props.isFirst ? (
-            <img src={leftArrowDisabled} width="24px" alt="Prev" />
-          ) : (
-            <img
-              className="left-arrow"
-              src={leftArrow}
-              width="24px"
-              alt="Prev"
-            />
-          )}
-        </Link>
-        <Link onClick={props.next}>
-          {props.isLast ? (
-            <img src={rightArrowDisabled} width="24px" alt="Next" />
-          ) : (
-            <img
-              className="right-arrow"
-              src={rightArrow}
-              width="24px"
-              alt="Next"
-              onClick={props.next}
-            />
-          )}
-        </Link>
+      <Col sm="2" className="mb-3 mt-1 text-right">
+          <IconButton aria-label="before" disabled={props.isFirst} onClick={props.prev} >
+            <NavigateBeforeIcon />
+          </IconButton>
+          <IconButton aria-label="next" disabled={props.isLast} onClick={props.next}>
+            <NavigateNextIcon />
+          </IconButton>
       </Col>
       {cards}
     </>
