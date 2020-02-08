@@ -11,7 +11,7 @@ tags:
 
 **Instead of using the own state of `input`, `textarea` or `select`, React gets the entire control over these form elements. This is a `controlled component`.**
 
-This is possible because `React` or using virtual DOM is super FAST! Every single moment an user inputs text into `input` or `textarea`, this event invokes `this.state()` to change the state and read it to display (using `value={this.state.....}`).
+This is possible because `React` or using virtual DOM is super FAST! Every single moment an user inputs text into `input` or `textarea`, this event executes `this.state()` to change the state and read it to display (using `value={this.state.....}`).
 
 # Example
 

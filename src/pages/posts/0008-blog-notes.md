@@ -23,7 +23,7 @@ Welcome to my dev blog!
 
 **Source Code**: https://github.com/Han-Sim/blog.hansim.dev
 
-# How I built the blog
+# Info.
 
 ## Frameworks/libraries
 
@@ -33,6 +33,7 @@ Welcome to my dev blog!
 - `React`
 - `GraphQL`
 - `Bootstrap/ReactStrap`
+- `Material-UI`
 
 ## Key Features
 
@@ -57,7 +58,7 @@ This is a fully featured blog
 
 ## June 28, 2019
 
-Finished deploying the final version
+Finished deploying a final deliverable version.
 
 - Completed redesigning to achieve modern UI
   - Removed 'index' page: **`Post` and `PostList` components are the only pages now!**
@@ -119,13 +120,3 @@ Planning to add more features
 - Upgraded `Pagination` page design
 - Added `Edit this post on GitHub` feature
   - Used `fileAbsolutePath` from the GraphQL query and parsed it
-
---------------
-
-# Needs to be done
-
-- *Planning to have `subcategory` as well if it gets too complex*
-- `Tags` gets messier: build an independent 'tags' page.
-- `More posts` (relate to this post) component
-- `Search` plug-in
-- Better readibility in markdown-body.
