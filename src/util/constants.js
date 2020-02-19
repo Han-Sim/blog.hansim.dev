@@ -1,6 +1,4 @@
-/**
- * Defines a rule for the menu hierarchy of this application.
- */
+// Defines a rule for the menu hierarchy of this application.
 const MENU_HIERARCHY = {
   "Web Development": [
     "javascript",

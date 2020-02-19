@@ -27,13 +27,13 @@
     "prismjs": "^1.16.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
-    "react-burger-menu": "^2.6.13",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
     "react-markdown": "^4.1.0",
     "reactstrap": "^8.0.0"
   },
   "devDependencies": {
+    "postcss-scss": "^2.0.0",
     "prettier": "^1.18.2"
   },
   "keywords": [

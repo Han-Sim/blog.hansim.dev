@@ -5,18 +5,16 @@
 const { MENU_HIERARCHY } = require("./constants");
 
 /**
- * slugify text to create user friendly url for tags
- * TODO bug fix: toLowerCase doesn't work properly for sidebar menu.
+ * This function counts the occurrences of each element and return its result as object.
+ * i.e. { JavaScript: 5, Java: 12, ...}
  */
-const slugify = function(text) {
-  return text
-    .toString()
-    .toLowerCase()
-    .replace(/\s+/g, "-") // Replace spaces with -
-    .replace(/[^\w-]+/g, "") // Remove all non-word chars
-    .replace(/--+/g, "-") // Replace multiple - with single -
-    .replace(/^-+/, "") // Trim - from start of text
-    .replace(/-+$/, ""); // Trim - from end of text
+const countEach = arr => {
+  let result = {};
+  arr.forEach(elem => {
+    result[elem] = (result[elem] || 0) + 1;
+  });
+
+  return result;
 };
 
 /**
@@ -57,6 +55,27 @@ const getMenu = category => {
   }
 };
 
+/**
+ * slugify text to create user friendly url for tags
+ * TODO bug fix: toLowerCase doesn't work properly for sidebar menu.
+ */
+const slugify = function(text) {
+  return text
+    .toString()
+    .toLowerCase()
+    .replace(/\s+/g, "-") // Replace spaces with -
+    .replace(/[^\w-]+/g, "") // Remove all non-word chars
+    .replace(/--+/g, "-") // Replace multiple - with single -
+    .replace(/^-+/, "") // Trim - from start of text
+    .replace(/-+$/, ""); // Trim - from end of text
+};
+
 // Node.js syntax export (not ES6)
 // this module is to be used in gatsby-node.js, because gatsby-node.js is run by Node as well.
-module.exports = { slugify, findIndex, getFilename, getMenu };
+module.exports = {
+  countEach,
+  findIndex,
+  getFilename,
+  getMenu,
+  slugify,
+};
