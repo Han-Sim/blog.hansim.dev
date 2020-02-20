@@ -8,13 +8,11 @@ import "../styles/index.scss";
 
 const Layout = ({ children }) => {
   return (
-    <>
-      <div id="content">
-        <Menu />
-        {children}
-      </div>
+    <div>
+      <Menu />
+      {children}
       <Footer />
-    </>
+    </div>
   );
 };
 

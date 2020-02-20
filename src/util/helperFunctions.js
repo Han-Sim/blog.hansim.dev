@@ -2,7 +2,6 @@
  * This file contains helper functions.
  * It is used for gatsby-node.js thus should use the node.js syntax only.
  */
-const { MENU_HIERARCHY } = require("./constants");
 
 /**
  * This function counts the occurrences of each element and return its result as object.
@@ -43,19 +42,6 @@ const getFilename = function(absolutePath) {
 };
 
 /**
- * This is to get a matching upper-level menu for a given category.
- */
-const getMenu = category => {
-  for (let [key, value] of Object.entries(MENU_HIERARCHY)) {
-    if (value.contains(slugify(category))) {
-      return key;
-    }
-
-    return;
-  }
-};
-
-/**
  * slugify text to create user friendly url for tags
  * TODO bug fix: toLowerCase doesn't work properly for sidebar menu.
  */
@@ -76,6 +62,5 @@ module.exports = {
   countEach,
   findIndex,
   getFilename,
-  getMenu,
   slugify,
 };

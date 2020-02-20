@@ -3,3 +3,21 @@
   justify-content: space-between;
   padding: 2px;
 }
+
+.drawerContainer {
+  width: 400px;
+  font-size: 20px;
+
+  .drawerHeader {
+    padding: 2px;
+  }
+
+  .subMenuContainer {
+    padding: 10px;
+  }
+}
+
+// Override MuiListItemIcon styles.
+.menuIcon {
+  min-width: 40px !important;
+}
