@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
@@ -22,13 +23,27 @@ import {
 
 import style from "./menu.module.scss";
 
+const ListItemForSubMenu = ({ subMenu }) => (
+  <ListItem
+    button
+    key={subMenu}
+    classes={{
+      root: style.listItem,
+    }}
+  >
+    <ListItemText>{subMenu}</ListItemText>
+  </ListItem>
+);
+
+ListItemForSubMenu.propTypes = {
+  subMenu: PropTypes.string,
+};
+
 const MenuList = ({ open, toggleMenu, recentTitles, ...others }) => {
   console.log(others);
   console.log(MENU_HIERARCHY);
 
   // TODO:
-  // 1. Create child components for each List.
-  // 2. Style override for sub menu - lower the padding.
   // 3. Font size, etc.
   // 4. href link (slugify), post count, etc.
   // 5. Recent Post should be different ... it looks like a category.
@@ -55,9 +70,7 @@ const MenuList = ({ open, toggleMenu, recentTitles, ...others }) => {
           <Divider />
           <div className={style.subMenuContainer}>
             {MENU_HIERARCHY[MENU_WEB_DEVELOPMENT].map(subMenu => (
-              <ListItem button key={subMenu}>
-                <ListItemText>{subMenu}</ListItemText>
-              </ListItem>
+              <ListItemForSubMenu subMenu={subMenu} />
             ))}
           </div>
         </List>
@@ -76,9 +89,7 @@ const MenuList = ({ open, toggleMenu, recentTitles, ...others }) => {
           <Divider />
           <div className={style.subMenuContainer}>
             {MENU_HIERARCHY[MENU_BASICS].map(subMenu => (
-              <ListItem button key={subMenu}>
-                <ListItemText>{subMenu}</ListItemText>
-              </ListItem>
+              <ListItemForSubMenu subMenu={subMenu} />
             ))}
           </div>
         </List>
@@ -97,9 +108,7 @@ const MenuList = ({ open, toggleMenu, recentTitles, ...others }) => {
           <Divider />
           <div className={style.subMenuContainer}>
             {recentTitles.map(title => (
-              <ListItem button key={title}>
-                <ListItemText>{title}</ListItemText>
-              </ListItem>
+              <ListItemForSubMenu subMenu={title} />
             ))}
           </div>
         </List>
