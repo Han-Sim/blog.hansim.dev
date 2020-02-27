@@ -1,20 +1,12 @@
-/* 
-header area background pattern: 
-  http://www.patternify.com/
-*/
+// header area background pattern:
+// http://www.patternify.com/
 .post-header-area {
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAKklEQVQYV2O8fu74fwYo0DC0YGCECYA4N86fgAjAOCCFjP////8PkoEBACBrF0J+c/9EAAAAAElFTkSuQmCC)
     repeat;
   height: 100vh;
-  //position: absolute;
-
-  .post-header {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 60%;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   h1 {
     font-size: 6vw;

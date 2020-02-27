@@ -30,6 +30,8 @@ const MenuList = ({ open, toggleMenu, recentTitles, ...others }) => {
   // 1. Create child components for each List.
   // 2. Style override for sub menu - lower the padding.
   // 3. Font size, etc.
+  // 4. href link (slugify), post count, etc.
+  // 5. Recent Post should be different ... it looks like a category.
   return (
     <Drawer open={open} anchor="right" variant="persistent">
       <div className={style.drawerContainer}>

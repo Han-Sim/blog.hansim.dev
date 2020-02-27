@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import uniq from "lodash/uniq";
 
@@ -9,7 +9,7 @@ import MenuList from "./MenuList";
 
 const NUM_OF_RECENT_POSTS = 6;
 
-const MenuContainer = () => {
+const MenuContainer = ({ toggleMenu, isMenuOpen }) => {
   const data = useStaticQuery(graphql`
     query {
       allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
@@ -32,8 +32,6 @@ const MenuContainer = () => {
   const edges = useMemo(() => data.allMarkdownRemark.edges, [
     data.allMarkdownRemark.edges,
   ]);
-
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Array of tags.
   const tags = useMemo(() => {
@@ -68,13 +66,6 @@ const MenuContainer = () => {
     const titles = edges.map(edge => edge.node.frontmatter.title);
     return titles.slice(0, NUM_OF_RECENT_POSTS);
   });
-
-  /**
-   * On click handler for Menu button.
-   */
-  const toggleMenu = (value) => event => {
-    setIsMenuOpen(value);
-  };
 
   return (
     <>

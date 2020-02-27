@@ -39,7 +39,7 @@ const Post = ({
   return (
     <>
       <div className="post-header-area">
-        <div className="post-header">
+        <div>
           <div className="post-title">
             <h1>{title}</h1>
           </div>
