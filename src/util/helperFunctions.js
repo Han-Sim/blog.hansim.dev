@@ -57,7 +57,7 @@ const slugify = function(text) {
 };
 
 // Node.js syntax export (not ES6)
-// this module is to be used in gatsby-node.js, because gatsby-node.js is run by Node as well.
+// this module is to be used in gatsby-node.js that is run by Node as well.
 module.exports = {
   countEach,
   findIndex,

@@ -1,6 +1,22 @@
-// Defines a rule for the menu hierarchy of this application.
-export const MENU_HIERARCHY = {
-  "Web Development": [
+const NUM_OF_SUB_MENUS = 10;
+
+const MENU_WEB_DEVELOPMENT = "Web Development";
+const MENU_BASICS = "Basics";
+
+const SUB_MENU_JAVASCRIPT = "JavaScript";
+const SUB_MENU_REACT = "React";
+const SUB_MENU_REDUX = "Redux";
+const SUB_MENU_NODEJS = "Node.js"; // nodejs
+const SUB_MENU_ANGULAR_TYPESCRIPT = "Angular | TypeScript"; 
+const SUB_MENU_CSS = "CSS";
+
+const SUB_MENU_CODING_PROBLEMS = "Coding Problems";
+const SUB_MENU_PROGRAMMING_BASICS = "Programming Basics";
+const SUB_MENU_JAVA = "Java";
+const SUB_MENU_SDLC = "SDLC";
+
+const MENU_HIERARCHY = {
+  [MENU_WEB_DEVELOPMENT]: [
     "JavaScript",
     "React",
     "Redux",
@@ -8,7 +24,7 @@ export const MENU_HIERARCHY = {
     "Angular | TypeScript", // angular|typescript
     "CSS",
   ],
-  Basics: [
+  [MENU_BASICS]: [
     "Coding Problems", // coding-problems
     "Programming Basics", // programming-basics
     "Java",
@@ -16,16 +32,33 @@ export const MENU_HIERARCHY = {
   ],
 };
 
-export const MENU_WEB_DEVELOPMENT = "Web Development";
-export const MENU_BASICS = "Basics";
+const REVERSE_MENU_HIERARCHY = {
+  [SUB_MENU_JAVASCRIPT]: MENU_WEB_DEVELOPMENT,
+  [SUB_MENU_REACT]: MENU_WEB_DEVELOPMENT,
+  [SUB_MENU_REDUX]: MENU_WEB_DEVELOPMENT,
+  [SUB_MENU_NODEJS]: MENU_WEB_DEVELOPMENT,
+  [SUB_MENU_ANGULAR_TYPESCRIPT]: MENU_WEB_DEVELOPMENT,
+  [SUB_MENU_CSS]: MENU_WEB_DEVELOPMENT,
+  [SUB_MENU_CODING_PROBLEMS]: MENU_BASICS,
+  [SUB_MENU_PROGRAMMING_BASICS]: MENU_BASICS,
+  [SUB_MENU_JAVA]: MENU_BASICS,
+  [SUB_MENU_SDLC]: MENU_BASICS,
+};
 
-export const SUB_MENU_JAVASCRIPT = "JavaScript";
-export const SUB_MENU_REACT = "React";
-export const SUB_MENU_NODEJS = "Node.js"; // nodejs
-export const SUB_MENU_ANGULAR_TYPESCRIPT = "Angular | TypeScript"; 
-export const SUB_MENU_CSS = "CSS";
-
-export const SUB_MENU_CODING_PROBLEMS = "Coding Problems";
-export const SUB_MENU_PROGRAMMING_BASICS = "Programming Basics";
-export const SUB_MENU_JAVA = "Java";
-export const SUB_MENU_SDLC = "SDLC";
+module.exports = {
+  NUM_OF_SUB_MENUS,
+  MENU_WEB_DEVELOPMENT,
+  MENU_BASICS,
+  SUB_MENU_JAVASCRIPT,
+  SUB_MENU_REACT,
+  SUB_MENU_REDUX,
+  SUB_MENU_NODEJS,
+  SUB_MENU_ANGULAR_TYPESCRIPT,
+  SUB_MENU_CSS,
+  SUB_MENU_CODING_PROBLEMS,
+  SUB_MENU_PROGRAMMING_BASICS,
+  SUB_MENU_JAVA,
+  SUB_MENU_SDLC,
+  MENU_HIERARCHY,
+  REVERSE_MENU_HIERARCHY,
+};
