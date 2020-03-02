@@ -3,11 +3,6 @@
 const path = require("path");
 const _ = require("lodash");
 const { slugify } = require("./src/util/helperFunctions");
-const {
-  REVERSE_MENU_HIERARCHY,
-  MENU_WEB_DEVELOPMENT,
-  MENU_BASICS,
-} = require("./src/util/constants");
 
 exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions;
@@ -28,7 +23,7 @@ exports.createPages = ({ actions, graphql }) => {
   const templates = {
     singlePost: path.resolve("src/templates/single-post.js"),
     tagPosts: path.resolve("src/templates/tag-posts.js"),
-    subMenuPosts: path.resolve("src/templates/sub-menu-posts.js"),
+    categoryPosts: path.resolve("src/templates/category-posts.js"),
     allPosts: path.resolve("src/templates/all-posts.js"),
     pageList: path.resolve("src/templates/page-list.js"),
   };
@@ -125,49 +120,36 @@ exports.createPages = ({ actions, graphql }) => {
       component: templates.allPosts,
     });
 
-    /***** Sub Menu Posts *****/
+    /***** Category Posts *****/
 
     // gather category from each nodes
-    let subMenus = [];
+    let categories = [];
     _.each(edges, edge => {
       if (_.get(edge, "node.frontmatter.category")) {
-        subMenus = subMenus.concat(edge.node.frontmatter.category);
+        categories = categories.concat(edge.node.frontmatter.category);
       }
     });
 
-    // count subMenus
+    // count categories
     // i.e. {JavaScript: 5, Java: 12 ...}
-    let subMenuPostsCount = {};
-    subMenus.forEach(category => {
-      subMenuPostsCount[category] = (subMenuPostsCount[category] || 0) + 1;
+    let categoriesPostsCount = {};
+    categories.forEach(category => {
+      categoriesPostsCount[category] = (categoriesPostsCount[category] || 0) + 1;
     });
 
-    // Make subMenus unique after counting.
-    subMenus = _.uniq(subMenus);
+    // Make categories unique after counting.
+    categories = _.uniq(categories);
 
     // Create a page with the given category
-    subMenus.forEach(category => {
+    categories.forEach(category => {
       createPage({
         path: `/category/${slugify(category)}`,
-        component: templates.subMenuPosts,
+        component: templates.categoryPosts,
         context: {
-          category: subMenus,
-          totalCount: subMenuPostsCount[category],
+          category,
+          totalCount: categoriesPostsCount[category],
         },
       });
     });
-
-    /***** Menu Posts *****/
-    // // Create a page with the given category
-    // subMenus.forEach(category => {
-    //   createPage({
-    //     path: `/category/${slugify(category)}`,
-    //     component: templates.subMenuPosts,
-    //     context: {
-    //       category,
-    //       totalCount: subMenuPostsCount[category],
-    //     },
-    //   });
-    // });
   });
 };

@@ -8,7 +8,6 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import { Badge } from "reactstrap";
 
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ComputerIcon from "@material-ui/icons/Computer";
@@ -23,26 +22,23 @@ import {
 
 import style from "./menu.module.scss";
 
-const ListItemForSubMenu = ({ subMenu }) => (
+const CustomListItem = ({ title }) => (
   <ListItem
     button
-    key={subMenu}
+    key={title}
     classes={{
       root: style.listItem,
     }}
   >
-    <ListItemText>{subMenu}</ListItemText>
+    <ListItemText>{title}</ListItemText>
   </ListItem>
 );
 
-ListItemForSubMenu.propTypes = {
-  subMenu: PropTypes.string,
+CustomListItem.propTypes = {
+  title: PropTypes.string,
 };
 
 const MenuList = ({ open, toggleMenu, recentTitles, ...others }) => {
-  console.log(others);
-  console.log(MENU_HIERARCHY);
-
   // TODO:
   // 3. Font size, etc.
   // 4. href link (slugify), post count, etc.
@@ -68,9 +64,9 @@ const MenuList = ({ open, toggleMenu, recentTitles, ...others }) => {
             <ListItemText>{MENU_WEB_DEVELOPMENT}</ListItemText>
           </ListItem>
           <Divider />
-          <div className={style.subMenuContainer}>
-            {MENU_HIERARCHY[MENU_WEB_DEVELOPMENT].map(subMenu => (
-              <ListItemForSubMenu subMenu={subMenu} />
+          <div className={style.categoryContainer}>
+            {MENU_HIERARCHY[MENU_WEB_DEVELOPMENT].map(category => (
+              <CustomListItem title={category} />
             ))}
           </div>
         </List>
@@ -87,9 +83,9 @@ const MenuList = ({ open, toggleMenu, recentTitles, ...others }) => {
             <ListItemText>{MENU_BASICS}</ListItemText>
           </ListItem>
           <Divider />
-          <div className={style.subMenuContainer}>
-            {MENU_HIERARCHY[MENU_BASICS].map(subMenu => (
-              <ListItemForSubMenu subMenu={subMenu} />
+          <div className={style.categoryContainer}>
+            {MENU_HIERARCHY[MENU_BASICS].map(category => (
+              <CustomListItem title={category} />
             ))}
           </div>
         </List>
@@ -106,9 +102,9 @@ const MenuList = ({ open, toggleMenu, recentTitles, ...others }) => {
             <ListItemText>Recent Posts</ListItemText>
           </ListItem>
           <Divider />
-          <div className={style.subMenuContainer}>
+          <div className={style.categoryContainer}>
             {recentTitles.map(title => (
-              <ListItemForSubMenu subMenu={title} />
+              <CustomListItem title={title} />
             ))}
           </div>
         </List>

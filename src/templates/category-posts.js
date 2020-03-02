@@ -6,7 +6,7 @@ import PostList from "../components/post-list";
 import SEO from "../components/seo";
 import { slugify } from "../util/helperFunctions";
 
-const SubMenuPosts = ({ data, pageContext }) => {
+const CategoryPosts = ({ data, pageContext }) => {
   const { category, totalCount } = pageContext;
 
   const pageTitle = `${totalCount} post${
@@ -69,4 +69,4 @@ export const CategoryQuery = graphql`
   }
 `;
 
-export default SubMenuPosts;
+export default CategoryPosts;
