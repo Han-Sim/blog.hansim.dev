@@ -1,4 +1,5 @@
-const NUM_OF_CATEGORYS = 10;
+const NUM_OF_CATEGORIES = 10;
+const NUM_OF_MENUS = 2;
 
 const MENU_WEB_DEVELOPMENT = "Web Development";
 const MENU_BASICS = "Basics";
@@ -46,7 +47,8 @@ const REVERSE_MENU_HIERARCHY = {
 };
 
 module.exports = {
-  NUM_OF_CATEGORYS,
+  NUM_OF_CATEGORIES,
+  NUM_OF_MENUS,
   MENU_WEB_DEVELOPMENT,
   MENU_BASICS,
   CATEGORY_JAVASCRIPT,
