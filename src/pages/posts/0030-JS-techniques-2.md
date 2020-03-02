@@ -2,6 +2,7 @@
 title: "JavaScript Techniques #2"
 date: "2019-07-25 02:39:00"
 author: "Han Sim"
+menu: "Web Development"
 category: "JavaScript"
 tags:
   - JavaScript

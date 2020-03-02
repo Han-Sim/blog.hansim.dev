@@ -2,6 +2,7 @@
 title: "JavaScript Functions in Brief"
 date: "2019-07-25 15:17:00"
 author: "Han Sim"
+menu: "Web Development"
 category: "JavaScript"
 tags:
   - JavaScript

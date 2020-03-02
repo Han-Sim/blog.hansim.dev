@@ -2,6 +2,7 @@
 title: "JavaScript: When to Use Const and Let"
 date: "2019-07-17 16:33:00"
 author: "Han Sim"
+menu: "Web Development"
 category: "JavaScript"
 tags:
   - JavaScript

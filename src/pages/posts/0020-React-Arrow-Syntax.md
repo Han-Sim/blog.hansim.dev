@@ -2,6 +2,7 @@
 title: "Why Do We Use Arrow Function Syntax in React?"
 date: "2019-07-18 14:19:00"
 author: "Han Sim"
+menu: "Web Development"
 category: "React"
 tags:
   - JavaScript

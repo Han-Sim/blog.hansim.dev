@@ -2,6 +2,7 @@
 title: "LinkedList vs Array"
 date: "2019-07-21 11:55:00"
 author: "Han Sim"
+menu: "Basics"
 category: "Java"
 tags:
   - Java

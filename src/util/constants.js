@@ -6,7 +6,7 @@ const MENU_BASICS = "Basics";
 const SUB_MENU_JAVASCRIPT = "JavaScript";
 const SUB_MENU_REACT = "React";
 const SUB_MENU_REDUX = "Redux";
-const SUB_MENU_NODEJS = "Node.js"; // nodejs
+const SUB_MENU_NODEJS = "Nodejs"; // nodejs
 const SUB_MENU_ANGULAR_TYPESCRIPT = "Angular | TypeScript"; 
 const SUB_MENU_CSS = "CSS";
 

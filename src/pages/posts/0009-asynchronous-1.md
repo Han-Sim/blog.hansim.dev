@@ -2,6 +2,7 @@
 title: "Asynchronous JavaScript and Callback Function"
 date: "2019-07-03 11:27:00"
 author: "Han Sim"
+menu: "Web Development"
 category: "JavaScript"
 tags:
   - JavaScript

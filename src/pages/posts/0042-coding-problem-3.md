@@ -2,6 +2,7 @@
 title: "Coding Problem #003"
 date: "2019-07-28 01:19:00"
 author: "Han Sim"
+menu: "Basics"
 category: "Coding Problems"
 tags:
   - Problem-Solving

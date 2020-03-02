@@ -2,6 +2,7 @@
 title: "Promise API and Async/Await"
 date: "2019-07-03 11:30:00"
 author: "Han Sim"
+menu: "Web Development"
 category: "JavaScript"
 tags:
   - JavaScript
