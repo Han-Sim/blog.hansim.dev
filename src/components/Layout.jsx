@@ -1,7 +1,7 @@
 import React, { createContext, useState } from "react";
 import PropTypes from "prop-types";
 
-import Footer from "./footer";
+import Footer from "./Footer";
 import Menu from "./menu";
 
 import "../styles/index.scss";

@@ -2,7 +2,7 @@ import React from "react";
 import { graphql } from "gatsby";
 
 import Layout from "../components/Layout";
-import PostList from "../components/post-list";
+import PostList from "../components/PostList";
 import SEO from "../components/seo";
 
 const AllPosts = ({ data }) => {

@@ -3,7 +3,7 @@ import { graphql } from "gatsby";
 
 import Layout from "../components/Layout";
 import SEO from "../components/seo";
-import Post from "../components/post";
+import Post from "../components/Post";
 import { getFilename } from "../util/helperFunctions";
 
 const SinglePost = ({ data, pageContext }) => {
