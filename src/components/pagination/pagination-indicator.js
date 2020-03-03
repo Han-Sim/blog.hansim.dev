@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "gatsby";
 import { Col } from "reactstrap";
 import { slugify } from "../../util/helperFunctions";
 
@@ -12,7 +11,7 @@ const PaginationSection = ({ index, titles }) => {
           {index === titles.length - 1 ? (
             <div className="no-link">There is no previous post</div>
           ) : (
-            <Link to={slugify(titles[index + 1])}>{titles[index + 1]}</Link>
+            <a href={`/${slugify(titles[index + 1])}`}>{titles[index + 1]}</a>
           )}
         </div>
       </Col>
@@ -22,7 +21,7 @@ const PaginationSection = ({ index, titles }) => {
           {index === 0 ? (
             <div className="no-link">There is no next post</div>
           ) : (
-            <Link to={slugify(titles[index - 1])}>{titles[index - 1]}</Link>
+            <a href={`/${slugify(titles[index - 1])}`}>{titles[index - 1]}</a>
           )}
         </div>
       </Col>
