@@ -8,7 +8,6 @@ import { getFilename } from "../util/helperFunctions";
 
 const SinglePost = ({ data, pageContext }) => {
   const post = data.markdownRemark.frontmatter;
-  console.log(data.markdownRemark.fileAbsolutePath);
 
   return (
     <Layout>

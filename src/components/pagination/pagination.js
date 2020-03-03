@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "gatsby";
 import { Row } from "reactstrap";
 import { slugify, findIndex } from "../../util/helperFunctions";
 import PaginationSection from "./pagination-section";
@@ -138,7 +137,9 @@ class Pagination extends React.Component {
     morePostTitle.push(
       <>
         More Posts in{" "}
-        <Link to={`/category/${slugify(thisCategory)}`}>{thisCategory}</Link>
+        <a href={`/category/${slugify(thisCategory)}`}>
+          {thisCategory}
+        </a>
       </>
     );
 

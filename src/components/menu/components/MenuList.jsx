@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "gatsby";
 
 import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
@@ -24,18 +23,20 @@ import {
 
 import style from "./menu.module.scss";
 
-const CustomListItem = ({ title, link }) => (
-  <Link to={link}>
+const CustomListItem = ({ index, title, link }) => (
+  <a href={link}>
     <ListItem
       button
-      key={title}
+      key={`ListItem-${index}-${title}`}
       classes={{
         root: style.listItem,
       }}
     >
-      <ListItemText>{title}</ListItemText>
+      <ListItemText>
+        {title}
+      </ListItemText>
     </ListItem>
-  </Link>
+  </a>
 );
 
 CustomListItem.propTypes = {
@@ -57,7 +58,7 @@ const MenuList = ({ open, toggleMenu, recentTitles }) => {
         </div>
         <Divider />
         <List disablePadding>
-          <Link to={`/menu/${slugify(MENU_WEB_DEVELOPMENT)}`}>
+          <a href={`/menu/${slugify(MENU_WEB_DEVELOPMENT)}`}>
             <ListItem button key={MENU_WEB_DEVELOPMENT}>
               <ListItemIcon
                 classes={{
@@ -68,20 +69,21 @@ const MenuList = ({ open, toggleMenu, recentTitles }) => {
               </ListItemIcon>
               <ListItemText>{MENU_WEB_DEVELOPMENT}</ListItemText>
             </ListItem>
-          </Link>
+          </a>
           <Divider />
           <div className={style.categoryContainer}>
-            {MENU_HIERARCHY[MENU_WEB_DEVELOPMENT].map(category => (
+            {MENU_HIERARCHY[MENU_WEB_DEVELOPMENT].map((category, index) => (
               <CustomListItem
                 title={category}
                 link={`/category/${slugify(category)}`}
+                key={index}
               />
             ))}
           </div>
         </List>
         <Divider />
         <List disablePadding>
-          <Link to={`/menu/${slugify(MENU_BASICS)}`}>
+          <a href={`/menu/${slugify(MENU_BASICS)}`}>
             <ListItem button key={MENU_BASICS}>
               <ListItemIcon
                 classes={{
@@ -92,20 +94,21 @@ const MenuList = ({ open, toggleMenu, recentTitles }) => {
               </ListItemIcon>
               <ListItemText>{MENU_BASICS}</ListItemText>
             </ListItem>
-          </Link>
+          </a>
           <Divider />
           <div className={style.categoryContainer}>
-            {MENU_HIERARCHY[MENU_BASICS].map(category => (
+            {MENU_HIERARCHY[MENU_BASICS].map((category, index) => (
               <CustomListItem
                 title={category}
                 link={`/category/${slugify(category)}`}
+                key={index}
               />
             ))}
           </div>
         </List>
         <Divider />
         <List disablePadding>
-          <Link to="/all-posts">
+          <a href="/all-posts">
             <ListItem button key={MENU_BASICS}>
               <ListItemIcon
                 classes={{
@@ -116,11 +119,15 @@ const MenuList = ({ open, toggleMenu, recentTitles }) => {
               </ListItemIcon>
               <ListItemText>Recent Posts</ListItemText>
             </ListItem>
-          </Link>
+          </a>
           <Divider />
           <div className={style.categoryContainer}>
-            {recentTitles.map(title => (
-              <CustomListItem title={title} link={slugify(title)} />
+            {recentTitles.map((title, index) => (
+              <CustomListItem
+                title={title}
+                link={`/${slugify(title)}`}
+                key={index}
+              />
             ))}
           </div>
         </List>
