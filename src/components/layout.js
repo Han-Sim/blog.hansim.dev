@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { createContext, useState } from "react";
 import PropTypes from "prop-types";
 
 import Footer from "./footer";
@@ -7,25 +7,30 @@ import Menu from "./menu";
 import "../styles/index.scss";
 import style from "./layout.module.scss";
 
+// Create a context for menu bar status.
+// This is just to maintain the menu bar open status even when <Layout /> gets reconstructed,
+// So there is no need to globally provide this context.
+const MenuBarStatusContext = createContext();
+
+/**
+ * The very fundamental layout component for the application.
+ */
 const Layout = ({ children }) => {
-  // TODO: this has to be a react context to be a cached value.
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [open, toggleOpen] = useState(true);
 
   /**
    * On click handler for Menu button.
    */
-  const toggleMenu = (value) => event => {
-    setIsMenuOpen(value);
-  };
+  const handleMenuBarClick = value => event => toggleOpen(!open);
 
   return (
-    <>
-      <Menu toggleMenu={toggleMenu} isMenuOpen={isMenuOpen} />
-      <div className={isMenuOpen ? style.shiftToLeft : style.shiftToRight}>
+    <MenuBarStatusContext.Provider value={{ open, toggleOpen }}>
+      <Menu toggleMenu={handleMenuBarClick} isMenuOpen={open} />
+      <div className={open ? style.shiftToLeft : style.shiftToRight}>
         {children}
         <Footer />
       </div>
-    </>
+    </MenuBarStatusContext.Provider>
   );
 };
 
