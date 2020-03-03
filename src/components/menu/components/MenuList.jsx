@@ -105,7 +105,7 @@ const MenuList = ({ open, toggleMenu, recentTitles }) => {
         </List>
         <Divider />
         <List disablePadding>
-          <Link to="/all-post">
+          <Link to="/all-posts">
             <ListItem button key={MENU_BASICS}>
               <ListItemIcon
                 classes={{
