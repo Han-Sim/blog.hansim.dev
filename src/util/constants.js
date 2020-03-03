@@ -7,7 +7,7 @@ const MENU_BASICS = "Basics";
 const CATEGORY_JAVASCRIPT = "JavaScript";
 const CATEGORY_REACT = "React";
 const CATEGORY_REDUX = "Redux";
-const CATEGORY_NODEJS = "Nodejs"; // nodejs
+const CATEGORY_NODEJS = "NodeJS";
 const CATEGORY_ANGULAR_TYPESCRIPT = "Angular | TypeScript"; 
 const CATEGORY_CSS = "CSS";
 
