@@ -8,6 +8,7 @@ import "../styles/index.scss";
 import style from "./layout.module.scss";
 
 const Layout = ({ children }) => {
+  // TODO: this has to be a react context to be a cached value.
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   /**

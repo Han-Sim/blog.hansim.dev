@@ -165,7 +165,7 @@ exports.createPages = ({ actions, graphql }) => {
     });
     if (menus.length !== NUM_OF_MENUS) {
       console.error(
-        "There is uncontrolled menu. Please fix the post or update the application"
+        "There is uncontrolled menus. Please fix the post or update the application"
       );
     }
 

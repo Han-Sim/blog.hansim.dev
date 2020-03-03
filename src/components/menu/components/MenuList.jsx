@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "gatsby";
 
 import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
@@ -14,6 +15,7 @@ import ComputerIcon from "@material-ui/icons/Computer";
 import LanguageIcon from "@material-ui/icons/Language";
 import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
 
+import { slugify } from "../../../util/helperFunctions";
 import {
   MENU_BASICS,
   MENU_HIERARCHY,
@@ -22,23 +24,25 @@ import {
 
 import style from "./menu.module.scss";
 
-const CustomListItem = ({ title }) => (
-  <ListItem
-    button
-    key={title}
-    classes={{
-      root: style.listItem,
-    }}
-  >
-    <ListItemText>{title}</ListItemText>
-  </ListItem>
+const CustomListItem = ({ title, link }) => (
+  <Link to={link}>
+    <ListItem
+      button
+      key={title}
+      classes={{
+        root: style.listItem,
+      }}
+    >
+      <ListItemText>{title}</ListItemText>
+    </ListItem>
+  </Link>
 );
 
 CustomListItem.propTypes = {
   title: PropTypes.string,
 };
 
-const MenuList = ({ open, toggleMenu, recentTitles, ...others }) => {
+const MenuList = ({ open, toggleMenu, recentTitles }) => {
   // TODO:
   // 3. Font size, etc.
   // 4. href link (slugify), post count, etc.
@@ -53,58 +57,70 @@ const MenuList = ({ open, toggleMenu, recentTitles, ...others }) => {
         </div>
         <Divider />
         <List disablePadding>
-          <ListItem button key={MENU_WEB_DEVELOPMENT}>
-            <ListItemIcon
-              classes={{
-                root: style.menuIcon,
-              }}
-            >
-              <LanguageIcon />
-            </ListItemIcon>
-            <ListItemText>{MENU_WEB_DEVELOPMENT}</ListItemText>
-          </ListItem>
+          <Link to={`/menu/${slugify(MENU_WEB_DEVELOPMENT)}`}>
+            <ListItem button key={MENU_WEB_DEVELOPMENT}>
+              <ListItemIcon
+                classes={{
+                  root: style.menuIcon,
+                }}
+              >
+                <LanguageIcon />
+              </ListItemIcon>
+              <ListItemText>{MENU_WEB_DEVELOPMENT}</ListItemText>
+            </ListItem>
+          </Link>
           <Divider />
           <div className={style.categoryContainer}>
             {MENU_HIERARCHY[MENU_WEB_DEVELOPMENT].map(category => (
-              <CustomListItem title={category} />
+              <CustomListItem
+                title={category}
+                link={`/category/${slugify(category)}`}
+              />
             ))}
           </div>
         </List>
         <Divider />
         <List disablePadding>
-          <ListItem button key={MENU_BASICS}>
-            <ListItemIcon
-              classes={{
-                root: style.menuIcon,
-              }}
-            >
-              <ComputerIcon />
-            </ListItemIcon>
-            <ListItemText>{MENU_BASICS}</ListItemText>
-          </ListItem>
+          <Link to={`/menu/${slugify(MENU_BASICS)}`}>
+            <ListItem button key={MENU_BASICS}>
+              <ListItemIcon
+                classes={{
+                  root: style.menuIcon,
+                }}
+              >
+                <ComputerIcon />
+              </ListItemIcon>
+              <ListItemText>{MENU_BASICS}</ListItemText>
+            </ListItem>
+          </Link>
           <Divider />
           <div className={style.categoryContainer}>
             {MENU_HIERARCHY[MENU_BASICS].map(category => (
-              <CustomListItem title={category} />
+              <CustomListItem
+                title={category}
+                link={`/category/${slugify(category)}`}
+              />
             ))}
           </div>
         </List>
         <Divider />
         <List disablePadding>
-          <ListItem button key={MENU_BASICS}>
-            <ListItemIcon
-              classes={{
-                root: style.menuIcon,
-              }}
-            >
-              <CalendarTodayIcon />
-            </ListItemIcon>
-            <ListItemText>Recent Posts</ListItemText>
-          </ListItem>
+          <Link to="/all-post">
+            <ListItem button key={MENU_BASICS}>
+              <ListItemIcon
+                classes={{
+                  root: style.menuIcon,
+                }}
+              >
+                <CalendarTodayIcon />
+              </ListItemIcon>
+              <ListItemText>Recent Posts</ListItemText>
+            </ListItem>
+          </Link>
           <Divider />
           <div className={style.categoryContainer}>
             {recentTitles.map(title => (
-              <CustomListItem title={title} />
+              <CustomListItem title={title} link={slugify(title)} />
             ))}
           </div>
         </List>
@@ -113,46 +129,15 @@ const MenuList = ({ open, toggleMenu, recentTitles, ...others }) => {
   );
 };
 
+MenuList.propTypes = {
+  open: PropTypes.bool,
+  toggleMenu: PropTypes.func,
+  recentTitles: PropTypes.arrayOf(PropTypes.string),
+};
+
 export default MenuList;
 
-// <a href="/markdown-blog-with-gatsbygraphql">
-//   <h3>
-//     <strong className="up-link">About this blog</strong>
-//   </h3>
-// </a>
-// {/* <a href="https://hansim.dev" target="_blank" rel="noopener noreferrer">
-//   <h3>
-//     <strong className="up-link">About me</strong>
-//   </h3>
-// </a> */}
-// <div className="menu-between" />
-// <span className="menu-title m-4">Categories</span>
-// <a href={`/all-posts`} className="menu-item">
-//   All Posts{" "}
-//   <Badge color="light" className="ml-1">
-//     {data.allMarkdownRemark.totalCount}
-//   </Badge>
-// </a>
-// {categories.map(category => (
-//   <a
-//     key={category}
-//     className="menu-item"
-//     href={`/category/${slugify(category)}`}
-//   >
-//     {category}{" "}
-//     <Badge color="light" className="ml-1">
-//       {categoryCount[category]}
-//     </Badge>
-//   </a>
-// ))}
-// <div className="menu-between" />
-// <span className="menu-title m-4">Recent Posts</span>
-// {titles.map(title => (
-//   <a key={title} className="menu-item" href={`/${slugify(title)}`}>
-//     {title}
-//   </a>
-// ))}
-// <div className="menu-between" />
+// TODO: tags. (or maybe need a dedicated page for tags.)
 // <span className="menu-title m-4">Tags</span>
 // {tags.map(tag => (
 //   <a
