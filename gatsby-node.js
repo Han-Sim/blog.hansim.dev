@@ -27,12 +27,12 @@ exports.onCreateNode = ({ node, actions }) => {
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions;
   const templates = {
-    singlePost: path.resolve("src/templates/single-post.js"),
-    tagPosts: path.resolve("src/templates/tag-posts.js"),
-    menuPosts: path.resolve("src/templates/menu-posts.js"),
-    categoryPosts: path.resolve("src/templates/category-posts.js"),
-    allPosts: path.resolve("src/templates/all-posts.js"),
-    pageList: path.resolve("src/templates/page-list.js"),
+    singlePost: path.resolve("src/templates/single-post.jsx"),
+    tagPosts: path.resolve("src/templates/tag-posts.jsx"),
+    menuPosts: path.resolve("src/templates/menu-posts.jsx"),
+    categoryPosts: path.resolve("src/templates/category-posts.jsx"),
+    allPosts: path.resolve("src/templates/all-posts.jsx"),
+    pageList: path.resolve("src/templates/page-list.jsx"),
   };
 
   return graphql(`
@@ -76,7 +76,7 @@ exports.createPages = ({ actions, graphql }) => {
 
     /***** Post *****/
 
-    // Create a post page with a single-post.js component as a template
+    // Create a post page with a single-post.jsx component as a template
     edges.forEach(({ node }) => {
       createPage({
         path: node.fields.slug,
@@ -163,9 +163,11 @@ exports.createPages = ({ actions, graphql }) => {
         menus.push(edge.node.frontmatter.menu);
       }
     });
-    if (menus.length !== NUM_OF_MENUS) {
+
+    if (_.uniq(menus.length) !== NUM_OF_MENUS) {
       console.error(
-        "There is uncontrolled menus. Please fix the post or update the application"
+        "There is uncontrolled menus. Please fix the post or update the application",
+        menus
       );
     }
 

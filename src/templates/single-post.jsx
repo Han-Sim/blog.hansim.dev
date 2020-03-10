@@ -53,6 +53,6 @@ export const postQuery = graphql`
   }
 `;
 //String! --> Exclamation Mark means it MUST receive this
-//  gatsby-node will pass 'slug' when it calls single-post.js
+//  gatsby-node will pass 'slug' when it calls single-post.jsx
 
 export default SinglePost;
