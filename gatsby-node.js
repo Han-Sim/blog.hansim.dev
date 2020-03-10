@@ -164,10 +164,10 @@ exports.createPages = ({ actions, graphql }) => {
       }
     });
 
-    if (_.uniq(menus.length) !== NUM_OF_MENUS) {
+    if (_.uniq(menus).length !== NUM_OF_MENUS) {
       console.error(
         "There is uncontrolled menus. Please fix the post or update the application",
-        menus
+        _.uniq(menus)
       );
     }
 
