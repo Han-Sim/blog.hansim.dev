@@ -1,9 +1,9 @@
 import React from "react";
 import { Col } from "reactstrap";
-import PaginationCard from "./pagination-card";
 import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import IconButton from "@material-ui/core/IconButton";
+import PaginationCard from "./Pagination-card";
 
 const PaginationSection = props => {
   const cards = [];

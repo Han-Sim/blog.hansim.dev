@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, CardBody } from "reactstrap";
-import { slugify } from "../../util/helperFunctions";
+import { slugify } from "../../../util/helperFunctions";
 
 const PaginationCard = ({ title, category }) => {
   return (

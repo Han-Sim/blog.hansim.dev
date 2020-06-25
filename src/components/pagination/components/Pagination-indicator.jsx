@@ -1,6 +1,6 @@
 import React from "react";
 import { Col } from "reactstrap";
-import { slugify } from "../../util/helperFunctions";
+import { slugify } from "../../../util/helperFunctions";
 
 const PaginationSection = ({ index, titles }) => {
   return (

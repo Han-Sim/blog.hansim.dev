@@ -1,13 +1,15 @@
 import React from "react";
 import { Button, Badge } from "reactstrap";
-import { slugify } from "../util/helperFunctions";
 import { DiscussionEmbed } from "disqus-react";
 
-import Pagination from "./pagination/pagination";
+import { slugify } from "../../../util/helperFunctions";
+import Pagination from "../../pagination";
 
 /* import icons */
-import tagIcon from "../images/tags.png";
-import pencilIcon from "../images/pencil.png";
+import tagIcon from "../../../images/tags.png";
+import pencilIcon from "../../../images/pencil.png";
+
+import style from "./post.module.scss";
 
 //this is a single post page
 const Post = ({
