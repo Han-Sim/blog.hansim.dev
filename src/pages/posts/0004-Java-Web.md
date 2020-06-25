@@ -2,6 +2,7 @@
 title: "Forum Web Application with Java/JSP"
 date: "2019-06-28 04:32:00"
 author: "Han Sim"
+menu: "Basics"
 category: "Java"
 tags:
   - Portfolio

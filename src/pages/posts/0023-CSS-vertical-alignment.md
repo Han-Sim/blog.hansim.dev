@@ -2,6 +2,7 @@
 title: "How to Vertically Align a Block Element"
 date: "2019-07-18 18:29:00"
 author: "Han Sim"
+menu: "Web Development"
 category: "CSS"
 tags:
   - CSS

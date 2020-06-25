@@ -2,6 +2,7 @@
 title: "Full-stack web development with Express and Handlebars"
 date: "2019-06-28 05:47:00"
 author: "Han Sim"
+menu: "Web Development"
 category: "NodeJS"
 tags:
   - Portfolio

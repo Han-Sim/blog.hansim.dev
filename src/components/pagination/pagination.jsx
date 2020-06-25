@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "gatsby";
 import { Row } from "reactstrap";
 import { slugify, findIndex } from "../../util/helperFunctions";
 import PaginationSection from "./pagination-section";
@@ -9,7 +8,7 @@ class Pagination extends React.Component {
   constructor(props) {
     super(props);
 
-    const { titlesOfAll, categoriesOfAll, title } = this.props;
+    const { titlesOfAll, categoriesOfAll, title } = props;
 
     const titles = titlesOfAll.slice(0, 4);
     const categories = categoriesOfAll.slice(0, 4);
@@ -40,7 +39,7 @@ class Pagination extends React.Component {
   next = e => {
     e.preventDefault();
 
-    //if titlesOfAll.length == 10 --> [0,....,9]
+    // if titlesOfAll.length == 10 --> [0,....,9]
     //  newIndex = prevIndex + 4
     //  if newIndex > (9-3) --> newIndex = 9-3 = 6 ---> [6,7,8,9]
     //  if newIndex <= (9-3) --> leave it alone
@@ -83,7 +82,7 @@ class Pagination extends React.Component {
   prev = e => {
     e.preventDefault();
 
-    //if titlesOfAll.length == 10 --> [0,....,9]
+    // if titlesOfAll.length == 10 --> [0,....,9]
     //  newIndex = prevIndex - 4
     //  if newIndex < 0 --> newIndex = 0
     //  otherwise, newIndex = prevIndex - 4
@@ -104,7 +103,7 @@ class Pagination extends React.Component {
   prevRel = e => {
     e.preventDefault();
 
-    //if titlesOfAll.length == 10 --> [0,....,9]
+    // if titlesOfAll.length == 10 --> [0,....,9]
     //  newIndex = prevIndex - 4
     //  if newIndex < 0 --> newIndex = 0
     //  otherwise, newIndex = prevIndex - 4
@@ -138,7 +137,9 @@ class Pagination extends React.Component {
     morePostTitle.push(
       <>
         More Posts in{" "}
-        <Link to={`/category/${slugify(thisCategory)}`}>{thisCategory}</Link>
+        <a href={`/category/${slugify(thisCategory)}`}>
+          {thisCategory}
+        </a>
       </>
     );
 

@@ -2,6 +2,7 @@
 title: "We Use Generator Because It Pauses"
 date: "2019-07-18 17:22:00"
 author: "Han Sim"
+menu: "Web Development"
 category: "JavaScript"
 tags:
   - JavaScript

@@ -2,6 +2,7 @@
 title: "Scrum in a nutshell"
 date: "2019-07-17 15:18:00"
 author: "Han Sim"
+menu: "Basics"
 category: "SDLC"
 tags:
   - Agile

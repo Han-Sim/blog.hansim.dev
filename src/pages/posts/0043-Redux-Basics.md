@@ -2,6 +2,7 @@
 title: "Redux Basics"
 date: "2019-07-28 17:47:00"
 author: "Han Sim"
+menu: "Web Development"
 category: "Redux"
 tags:
   - JavaScript

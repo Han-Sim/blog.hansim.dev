@@ -39,7 +39,7 @@ const Post = ({
   return (
     <>
       <div className="post-header-area">
-        <div className="post-header">
+        <div>
           <div className="post-title">
             <h1>{title}</h1>
           </div>
@@ -56,8 +56,8 @@ const Post = ({
       <div className="container">
         {children}
         <div className="edit mb-3">
-          <img src={pencilIcon} width="20px" className="mr-2" />{" "}
-          <a href={`${gitHubUrl}/${filename}`} className="edit" target="_blank">
+          <img src={pencilIcon} width="20px" className="mr-2" alt=""/>{" "}
+          <a href={`${gitHubUrl}/${filename}`} className="edit" target="_blank" rel="noopener noreferrer">
             Edit this post on GitHub
           </a>
         </div>

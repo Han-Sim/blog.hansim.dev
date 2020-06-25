@@ -2,6 +2,7 @@
 title: "Markdown Blog with Gatsby/GraphQL"
 date: "2019-07-01 02:13:00"
 author: "Han Sim"
+menu: "Web Development"
 category: "React"
 tags:
   - Portfolio

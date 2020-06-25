@@ -1,16 +1,20 @@
 import React from "react";
 import { graphql } from "gatsby";
 
-import Layout from "../components/layout";
-import PostList from "../components/post-list";
+import Layout from "../components/Layout";
+import PostList from "../components/PostList";
 import SEO from "../components/seo";
+import { slugify } from "../util/helperFunctions";
 
-const AllPosts = ({ data }) => {
-  const { totalCount } = data.allMarkdownRemark;
+// TODO: this is same UI with CategoryPosts. Should be refactored.
+const MenuPosts = ({ data, pageContext }) => {
+  const { menu, totalCount } = pageContext;
 
-  const pageTitle = `${totalCount} post${totalCount === 1 ? "" : "s"} in total`;
-  const seoTitle = `All Posts`;
+  const pageTitle = `${totalCount} post${
+    totalCount === 1 ? "" : "s"
+  } found in `;
 
+  const seoTitle = `Posts in ${menu}`;
   return (
     <Layout>
       <SEO title={seoTitle} />
@@ -20,6 +24,7 @@ const AllPosts = ({ data }) => {
             <h1>
               {pageTitle}
               <br />
+              <strong>{menu}</strong>
             </h1>
           </div>
         </div>
@@ -30,7 +35,7 @@ const AllPosts = ({ data }) => {
             key={node.id}
             title={node.frontmatter.title}
             author={node.frontmatter.author}
-            slug={node.fields.slug}
+            slug={slugify(node.frontmatter.title)}
             date={node.frontmatter.date}
             body={node.excerpt}
             tags={node.frontmatter.tags}
@@ -41,9 +46,12 @@ const AllPosts = ({ data }) => {
   );
 };
 
-export const AllPostsQuery = graphql`
-  query {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+export const MenuQuery = graphql`
+  query($menu: String!) {
+    allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { frontmatter: { menu: { in: [$menu] } } }
+    ) {
       totalCount
       edges {
         node {
@@ -53,10 +61,8 @@ export const AllPostsQuery = graphql`
             date(formatString: "MMM Do YYYY")
             author
             category
+            menu
             tags
-          }
-          fields {
-            slug
           }
           excerpt
         }
@@ -65,4 +71,4 @@ export const AllPostsQuery = graphql`
   }
 `;
 
-export default AllPosts;
+export default MenuPosts;

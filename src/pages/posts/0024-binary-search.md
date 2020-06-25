@@ -2,6 +2,7 @@
 title: "Binary Search"
 date: "2019-07-19 20:29:00"
 author: "Han Sim"
+menu: "Basics"
 category: "Programming Basics"
 tags:
   - Binary-Search

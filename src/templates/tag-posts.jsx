@@ -1,22 +1,21 @@
 import React from "react";
 import { graphql } from "gatsby";
 
-import Layout from "../components/layout";
-import PostList from "../components/post-list";
+import Layout from "../components/Layout";
+import PostList from "../components/PostList";
 import SEO from "../components/seo";
-import { slugify } from "../util/helperFunctions";
 
-const CategoryPost = ({ data, pageContext }) => {
+const TagPosts = ({ data, pageContext }) => {
   // { data } <----- props.data [destructured]
 
-  const { category } = pageContext;
+  const { tag } = pageContext;
   const { totalCount } = data.allMarkdownRemark;
 
   const pageTitle = `${totalCount} post${
     totalCount === 1 ? "" : "s"
-  } found in `;
+  } tagged with `;
 
-  const seoTitle = `Posts in ${category}`;
+  const seoTitle = `Posts about ${tag}`;
   return (
     <Layout>
       <SEO title={seoTitle} />
@@ -25,8 +24,7 @@ const CategoryPost = ({ data, pageContext }) => {
           <div className="post-title">
             <h1>
               {pageTitle}
-              <br />
-              <strong>{category}</strong>
+              <strong>{tag}</strong>
             </h1>
           </div>
         </div>
@@ -37,7 +35,7 @@ const CategoryPost = ({ data, pageContext }) => {
             key={node.id}
             title={node.frontmatter.title}
             author={node.frontmatter.author}
-            slug={slugify(node.frontmatter.title)}
+            slug={node.fields.slug}
             date={node.frontmatter.date}
             body={node.excerpt}
             tags={node.frontmatter.tags}
@@ -48,11 +46,11 @@ const CategoryPost = ({ data, pageContext }) => {
   );
 };
 
-export const CategoryQuery = graphql`
-  query($category: String!) {
+export const TagQuery = graphql`
+  query($tag: String!) {
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { category: { in: [$category] } } }
+      filter: { frontmatter: { tags: { in: [$tag] } } }
     ) {
       totalCount
       edges {
@@ -62,8 +60,10 @@ export const CategoryQuery = graphql`
             title
             date(formatString: "MMM Do YYYY")
             author
-            category
             tags
+          }
+          fields {
+            slug
           }
           excerpt
         }
@@ -72,4 +72,4 @@ export const CategoryQuery = graphql`
   }
 `;
 
-export default CategoryPost;
+export default TagPosts;

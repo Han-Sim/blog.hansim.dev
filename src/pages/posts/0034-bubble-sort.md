@@ -2,6 +2,7 @@
 title: "Bubble Sort"
 date: "2019-07-25 23:01:00"
 author: "Han Sim"
+menu: "Basics"
 category: "Programming Basics"
 tags:
   - Bubble-Sort

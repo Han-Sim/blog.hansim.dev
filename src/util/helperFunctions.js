@@ -1,23 +1,35 @@
-//slugify text to create user friendly url for tags
-const slugify = function(text) {
-  return text
-    .toString()
-    .toLowerCase()
-    .replace(/\s+/g, "-") // Replace spaces with -
-    .replace(/[^\w-]+/g, "") // Remove all non-word chars
-    .replace(/--+/g, "-") // Replace multiple - with single -
-    .replace(/^-+/, "") // Trim - from start of text
-    .replace(/-+$/, ""); // Trim - from end of text
+/**
+ * This file contains helper functions.
+ * It is used for gatsby-node.js thus should use the node.js syntax only.
+ */
+
+/**
+ * This function counts the occurrences of each element and return its result as object.
+ * i.e. { JavaScript: 5, Java: 12, ...}
+ */
+const countEach = arr => {
+  let result = {};
+  arr.forEach(elem => {
+    result[elem] = (result[elem] || 0) + 1;
+  });
+
+  return result;
 };
 
-const findIndex = function(array, key) {
-  for (let i = 0; i < array.length; i++) {
-    if (key === array[i]) return i;
+/**
+ * Returns an index.
+ */
+const findIndex = function(arr, elem) {
+  for (let i = 0; i < arr.length; i++) {
+    if (elem === arr[i]) return i;
   }
 
   return -1;
 };
 
+/**
+ * This is to get a file name.
+ */
 const getFilename = function(absolutePath) {
   let charArr = absolutePath.split("");
   charArr = charArr.reverse();
@@ -29,6 +41,26 @@ const getFilename = function(absolutePath) {
   return result.join("");
 };
 
-module.exports = { slugify, findIndex, getFilename };
-//Node.js syntax export (not ES6)
-// this module is to be used in gatsby-node.js, because gatsby-node.js is run by Node as well.
+/**
+ * slugify text to create user friendly url for tags
+ * TODO bug fix: toLowerCase doesn't work properly for sidebar menu.
+ */
+const slugify = function(text) {
+  return text
+    .toString()
+    .toLowerCase()
+    .replace(/\s+/g, "-") // Replace spaces with -
+    .replace(/[^\w-]+/g, "") // Remove all non-word chars
+    .replace(/--+/g, "-") // Replace multiple - with single -
+    .replace(/^-+/, "") // Trim - from start of text
+    .replace(/-+$/, ""); // Trim - from end of text
+};
+
+// Node.js syntax export (not ES6)
+// this module is to be used in gatsby-node.js that is run by Node as well.
+module.exports = {
+  countEach,
+  findIndex,
+  getFilename,
+  slugify,
+};

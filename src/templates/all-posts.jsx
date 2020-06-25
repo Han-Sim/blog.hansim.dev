@@ -1,21 +1,16 @@
 import React from "react";
 import { graphql } from "gatsby";
 
-import Layout from "../components/layout";
-import PostList from "../components/post-list";
+import Layout from "../components/Layout";
+import PostList from "../components/PostList";
 import SEO from "../components/seo";
 
-const TagPosts = ({ data, pageContext }) => {
-  // { data } <----- props.data [destructured]
-
-  const { tag } = pageContext;
+const AllPosts = ({ data }) => {
   const { totalCount } = data.allMarkdownRemark;
 
-  const pageTitle = `${totalCount} post${
-    totalCount === 1 ? "" : "s"
-  } tagged with `;
+  const pageTitle = `${totalCount} post${totalCount === 1 ? "" : "s"} in total`;
+  const seoTitle = `All Posts`;
 
-  const seoTitle = `Posts about ${tag}`;
   return (
     <Layout>
       <SEO title={seoTitle} />
@@ -24,7 +19,7 @@ const TagPosts = ({ data, pageContext }) => {
           <div className="post-title">
             <h1>
               {pageTitle}
-              <strong>{tag}</strong>
+              <br />
             </h1>
           </div>
         </div>
@@ -46,12 +41,9 @@ const TagPosts = ({ data, pageContext }) => {
   );
 };
 
-export const TagQuery = graphql`
-  query($tag: String!) {
-    allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { tags: { in: [$tag] } } }
-    ) {
+export const AllPostsQuery = graphql`
+  query {
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
       totalCount
       edges {
         node {
@@ -60,6 +52,7 @@ export const TagQuery = graphql`
             title
             date(formatString: "MMM Do YYYY")
             author
+            category
             tags
           }
           fields {
@@ -72,4 +65,4 @@ export const TagQuery = graphql`
   }
 `;
 
-export default TagPosts;
+export default AllPosts;

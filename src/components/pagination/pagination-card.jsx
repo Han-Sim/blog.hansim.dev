@@ -1,16 +1,15 @@
 import React from "react";
-import { Link } from "gatsby";
 import { Card, CardBody } from "reactstrap";
 import { slugify } from "../../util/helperFunctions";
 
 const PaginationCard = ({ title, category }) => {
   return (
     <Card>
-      <Link to={slugify(title)}>
+      <a href={`/${slugify(title)}`}>
         <CardBody>{title}</CardBody>
-      </Link>
+      </a>
       <div className="category-badge text-center">
-        <Link to={`/category/${slugify(category)}`}>{category}</Link>
+        <a href={`/category/${slugify(category)}`}>{category}</a>
       </div>
     </Card>
   );
