@@ -5,4 +5,6 @@
  */
 
 // You can delete this file if you're not using it
+
+// Include global style files.
 require("./src/styles/prism.css");

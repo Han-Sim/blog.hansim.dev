@@ -44,7 +44,7 @@ const MenuContainer = ({ toggleMenu, isMenuOpen }) => {
   }, [edges]);
 
   // Post count. i.e. { JavaScript: 5, Java: 12, ...}
-  const postCountByTag = useMemo(() => countEach(tags), [countEach, tags]);
+  const postCountByTag = useMemo(() => countEach(tags), [tags]);
 
   // List of unique tags.
   const tagList = useMemo(() => uniq(tags), [tags]);
@@ -57,15 +57,14 @@ const MenuContainer = ({ toggleMenu, isMenuOpen }) => {
 
   // Category count.
   const postCountByCategory = useMemo(() => countEach(categories), [
-    countEach,
-    tags,
+    categories,
   ]);
 
   // Get recent titles.
   const recentTitles = useMemo(() => {
     const titles = edges.map(edge => edge.node.frontmatter.title);
     return titles.slice(0, NUM_OF_RECENT_POSTS);
-  });
+  }, [edges]);
 
   return (
     <>
@@ -73,7 +72,7 @@ const MenuContainer = ({ toggleMenu, isMenuOpen }) => {
       <MenuList
         open={isMenuOpen}
         postCountByCategory={postCountByCategory}
-        postCountByTag={postCountByTag} 
+        postCountByTag={postCountByTag}
         recentTitles={recentTitles}
         tagList={tagList}
         toggleMenu={toggleMenu}

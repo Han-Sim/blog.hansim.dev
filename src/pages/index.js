@@ -4,7 +4,7 @@ import _ from "lodash";
 
 import Layout from "../components/Layout";
 import SEO from "../components/seo";
-import Post from "../components/Post";
+import Post from "../components/post";
 
 const IndexPage = () => {
   const data = useStaticQuery(graphql`

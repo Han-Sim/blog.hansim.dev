@@ -9,7 +9,7 @@ import Pagination from "../../pagination";
 import tagIcon from "../../../images/tags.png";
 import pencilIcon from "../../../images/pencil.png";
 
-import style from "./post.module.scss";
+// import style from "./post.module.scss";
 
 //this is a single post page
 const Post = ({
