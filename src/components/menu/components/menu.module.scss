@@ -1,7 +1,16 @@
 .container {
+  padding: 2px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 2px;
+  position: fixed;
+  top: 0;
+  transition: top 0.3s;
+  background-color: #fff;
+}
+
+.containerHidden {
+  top: -50px;
 }
 
 .drawerContainer {
