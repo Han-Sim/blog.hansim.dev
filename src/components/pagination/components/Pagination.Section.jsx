@@ -3,7 +3,7 @@ import { Col } from "reactstrap";
 import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import IconButton from "@material-ui/core/IconButton";
-import PaginationCard from "./Pagination-card";
+import PaginationCard from "./Pagination.Card";
 
 const PaginationSection = props => {
   const cards = [];
@@ -21,7 +21,7 @@ const PaginationSection = props => {
 
   return (
     <>
-      <Col sm="10" className="markdown-body pagination-section mb-4">
+      <Col sm="10" className="markdown-body pagination.section mb-4">
         <h1>{props.sectionTitle}</h1>
       </Col>
       <Col sm="2" className="mb-3 mt-1 text-right">

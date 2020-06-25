@@ -4,8 +4,8 @@ import uniq from "lodash/uniq";
 
 import { countEach } from "../../../util/helperFunctions";
 
-import MenuBar from "./MenuBar";
-import MenuList from "./MenuList";
+import MenuBar from "./Menu.Bar";
+import MenuList from "./Menu.List";
 
 const NUM_OF_RECENT_POSTS = 6;
 

@@ -1,8 +1,8 @@
 import React from "react";
 import { Row } from "reactstrap";
 import { slugify, findIndex } from "../../../util/helperFunctions";
-import PaginationSection from "./Pagination-section";
-import PaginationIndicator from "./Pagination-indicator";
+import PaginationSection from "./Pagination.Section";
+import PaginationIndicator from "./Pagination.Indicator";
 
 class Pagination extends React.Component {
   constructor(props) {
