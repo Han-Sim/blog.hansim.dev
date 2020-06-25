@@ -1,8 +1,8 @@
 import React from "react"
-import facebook from "../images/facebook.png"
-import instagram from "../images/instagram.png"
-import linkedIn from "../images/linkedIn.png"
-import github from "../images/github.png"
+import FacebookIcon from '@material-ui/icons/Facebook';
+import GitHubIcon from '@material-ui/icons/GitHub';
+import InstagramIcon from '@material-ui/icons/Instagram';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
 
 const Footer = () => (
   <div className="site-footer">
@@ -32,7 +32,7 @@ const Footer = () => (
             rel="noopener noreferrer"
             className="facebook"
           >
-            <img src={facebook} width="32px" alt="facebook" />
+            <FacebookIcon />
           </a>
         </li>
         <li>
@@ -42,7 +42,7 @@ const Footer = () => (
             rel="noopener noreferrer"
             className="instagram"
           >
-            <img src={instagram} width="32px" alt="instagram" />
+            <InstagramIcon />
           </a>
         </li>
         <li>
@@ -52,7 +52,7 @@ const Footer = () => (
             rel="noopener noreferrer"
             className="linkedIn"
           >
-            <img src={linkedIn} width="32px" alt="linkedIn" />
+            <LinkedInIcon />
           </a>
         </li>
         <li>
@@ -62,7 +62,7 @@ const Footer = () => (
             rel="noopener noreferrer"
             className="github"
           >
-            <img src={github} width="32px" alt="github" />
+            <GitHubIcon />
           </a>
         </li>
       </ul>
