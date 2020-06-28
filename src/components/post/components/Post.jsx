@@ -1,29 +1,29 @@
 import React from "react";
-import { Button, Badge } from "reactstrap";
+import { Button } from "reactstrap";
 import { DiscussionEmbed } from "disqus-react";
 
 import { slugify } from "../../../util/helperFunctions";
 import Pagination from "../../pagination";
+import PostHeader from "./Post.Header"; // TODO: replace with mui icons.
 
-/* import icons */
-import tagIcon from "../../../images/tags.png";
+/* import icons */ import tagIcon from "../../../images/tags.png";
 import pencilIcon from "../../../images/pencil.png";
 
-// import style from "./post.module.scss";
+import style from "./post.module.scss";
 
 //this is a single post page
 const Post = ({
-  children,
-  category,
-  title,
-  titlesOfAll,
-  categoriesOfAll,
   author,
+  categoriesOfAll,
+  category,
+  children,
   date,
-  tags,
+  filename,
   id,
   slug,
-  filename,
+  tags,
+  title,
+  titlesOfAll,
 }) => {
   //DisQus plugin
   const baseUrl = "https://dev.hansim.dev";
@@ -39,27 +39,23 @@ const Post = ({
     "https://github.com/Han-Sim/blog.hansim.dev/tree/master/src/pages/posts";
 
   return (
-    <>
-      <div className="post-header-area">
-        <div>
-          <div className="post-title">
-            <h1>{title}</h1>
-          </div>
-          <div className="text-center post-category mb-1">
-            <Badge href={`/category/${category}`} color="dark">
-              {category}
-            </Badge>
-          </div>
-          <div className="post-info text-center mt-5">
-            {date}, {author}
-          </div>
-        </div>
-      </div>
-      <div className="container">
+    <div className={style.root}>
+      <PostHeader
+        author={author}
+        category={category}
+        date={date}
+        title={title}
+      />
+      <div className={style.postBodyContainer}>
         {children}
         <div className="edit mb-3">
-          <img src={pencilIcon} width="20px" className="mr-2" alt=""/>{" "}
-          <a href={`${gitHubUrl}/${filename}`} className="edit" target="_blank" rel="noopener noreferrer">
+          <img src={pencilIcon} width="20px" className="mr-2" alt="" />{" "}
+          <a
+            href={`${gitHubUrl}/${filename}`}
+            className="edit"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Edit this post on GitHub
           </a>
         </div>
@@ -86,7 +82,7 @@ const Post = ({
           <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

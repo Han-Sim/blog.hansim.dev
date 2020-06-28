@@ -16,7 +16,7 @@ const MenuBarStatusContext = createContext();
  * The very fundamental layout component for the application.
  */
 const Layout = ({ children }) => {
-  const [open, toggleOpen] = useState(true);
+  const [open, toggleOpen] = useState(false);
 
   /**
    * On click handler for Menu button.

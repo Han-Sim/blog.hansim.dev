@@ -1,10 +1,6 @@
-.container#content {
-  margin-top: 60px;
-}
-
 body {
-  font-family: $site-font;
-  color: $dark-gray;
+  font-family: $body-font;
+  color: $color-black;
 }
 
 a, .no-link {
@@ -21,10 +17,6 @@ a, .no-link {
     font-weight: 700;
     text-decoration: none;
   }
-}
-h1 {
-  margin-bottom: 20px;
-  text-align: left;
 }
 
 .navbar {

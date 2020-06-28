@@ -1,9 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap');
-
-$site-font: "Roboto", sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap');
 
 $light-gray: #d7cec7;
-$dark-gray: #565656;
 $highlight-1: #76323f;
 $highlight-2: #c09f80;
 
@@ -19,4 +17,9 @@ $white: white;
 // https://www.designwizard.com/blog/design-trends/colour-combination
 $color-blue: #00539CFF; // Text with link.
 $color-peach: #EEA47FFF; // can be combined with $color-blue
-$color-black: black; // Basic text color.
+$color-black: rgba(0, 0, 0, 0.87); // Basic text color (Material-UI)
+$color-dark-gray: #565656;
+
+$body-font: "Roboto", sans-serif;
+$title-font: "Roboto Slab", sans-serif;
+
