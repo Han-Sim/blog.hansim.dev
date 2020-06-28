@@ -12,6 +12,26 @@ a {
   }
 }
 
+// #region browser psuedo classes styles.
+// Note that these should be always separate block.
+// https://stackoverflow.com/questions/48834555/how-can-i-change-text-selection-highlight-color-usually-selection-in-react
+
+::-moz-selection {
+  background: $color-soybean;
+  color: $color-eclipse;
+}
+
+::-webkit-selection {
+  background: $color-soybean;
+  color: $color-eclipse;
+}
+
+::selection {
+  background: $color-soybean;
+  color: $color-eclipse;
+}
+
+// #endregion
 
 // .navbar {
 //   background-color: white;
