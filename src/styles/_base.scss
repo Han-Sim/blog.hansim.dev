@@ -3,14 +3,7 @@ body {
   color: $color-black;
 }
 
-a {
-  color: $color-blue;
-  text-decoration: none;
-
-  &:hover {
-    color: $color-peach;
-  }
-}
+@include link-blue;
 
 // #region browser psuedo classes styles.
 // Note that these should be always separate block.

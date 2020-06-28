@@ -4,6 +4,8 @@ import { slugify, findIndex } from "../../../util/helperFunctions";
 import PaginationSection from "./Pagination.Section";
 import PaginationIndicator from "./Pagination.Indicator";
 
+import style from './pagination.module.scss';
+
 class Pagination extends React.Component {
   constructor(props) {
     super(props);
@@ -137,34 +139,34 @@ class Pagination extends React.Component {
     morePostTitle.push(
       <>
         More Posts in{" "}
-        <a href={`/category/${slugify(thisCategory)}`}>
-          {thisCategory}
-        </a>
+        <a href={`/category/${slugify(thisCategory)}`}>{thisCategory}</a>
       </>
     );
 
     return (
-      <Row className="pagination mt-3 mb-5">
-        <PaginationIndicator index={indexOfAll} titles={titlesOfAll} />
-        <PaginationSection
-          sectionTitle={"Recent Posts"}
-          titles={titles}
-          categories={categories}
-          next={this.next}
-          prev={this.prev}
-          isFirst={startIndex === 0}
-          isLast={startIndex >= titlesOfAll.length - 4}
-        />
-        <PaginationSection
-          sectionTitle={morePostTitle}
-          titles={titlesRelated}
-          category={thisCategory}
-          next={this.nextRel}
-          prev={this.prevRel}
-          isFirst={startIndexRelated === 0}
-          isLast={startIndexRelated >= titlesRelatedAll.length - 4}
-        />
-      </Row>
+      <div className={style.container}>
+        <Row className="pagination mt-3 mb-5">
+          <PaginationIndicator index={indexOfAll} titles={titlesOfAll} />
+          <PaginationSection
+            sectionTitle={"Recent Posts"}
+            titles={titles}
+            categories={categories}
+            next={this.next}
+            prev={this.prev}
+            isFirst={startIndex === 0}
+            isLast={startIndex >= titlesOfAll.length - 4}
+          />
+          <PaginationSection
+            sectionTitle={morePostTitle}
+            titles={titlesRelated}
+            category={thisCategory}
+            next={this.nextRel}
+            prev={this.prevRel}
+            isFirst={startIndexRelated === 0}
+            isLast={startIndexRelated >= titlesRelatedAll.length - 4}
+          />
+        </Row>
+      </div>
     );
   }
 }

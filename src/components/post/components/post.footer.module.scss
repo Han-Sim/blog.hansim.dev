@@ -1,0 +1,18 @@
+@import "../../../styles/index.scss";
+
+.postFooterContainer {
+  margin-top: 50px;
+
+  .editThisPage {
+    display: flex;
+    align-items: flex-end;
+
+    .editThisPageText {
+      @include link-black;
+
+      margin-left: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+  }
+}
