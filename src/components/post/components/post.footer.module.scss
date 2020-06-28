@@ -10,9 +10,23 @@
     .editThisPageText {
       @include link-black;
 
-      margin-left: 5px;
+      margin-left: 10px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
+    }
+  }
+
+  .tags {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+
+    .labelIcon {
+      margin-right: 10px;
+    }
+
+    .tag {
+      margin-right: 3px;
     }
   }
 }

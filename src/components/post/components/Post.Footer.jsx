@@ -1,16 +1,14 @@
 import React from "react";
-import Button from '@material-ui/core/Button';
+import Chip from "@material-ui/core/Chip";
+import EditIcon from "@material-ui/icons/Edit";
+import LabelIcon from "@material-ui/icons/Label";
 import { slugify } from "../../../util/helperFunctions";
-
-import EditIcon from '@material-ui/icons/Edit';
-import LabelIcon from '@material-ui/icons/Label';
 
 import style from "./post.footer.module.scss";
 
 const GIT_HUB_URL =
   "https://github.com/Han-Sim/blog.hansim.dev/tree/master/src/pages/posts";
 
-//this is a single post page
 const Post = ({ filename, tags }) => {
   return (
     <div className={style.postFooterContainer}>
@@ -25,20 +23,16 @@ const Post = ({ filename, tags }) => {
           Edit this post on GitHub
         </a>
       </div>
-      {/* <div className="post-tags mb-5">
-        <img src={tagIcon} alt="TAGS : " width="16px" />
+      <div className={style.tags}>
+        <div className={style.labelIcon}>
+          <LabelIcon />
+        </div>
         {tags.map(tag => (
-          <Button
-            key={tag}
-            size="sm"
-            color="primary"
-            href={`/tag/${slugify(tag)}`}
-            className="m-1 tags"
-          >
-            {tag}
-          </Button>
+          <a href={`/tag/${slugify(tag)}`} key={tag} className={style.tag}>
+            <Chip label={tag} clickable />
+          </a>
         ))}
-      </div> */}
+      </div>
     </div>
   );
 };
