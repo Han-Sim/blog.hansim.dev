@@ -192,10 +192,6 @@
   display: list-item;
 }
 
-.markdown-body a {
-  background-color: transparent;
-}
-
 .markdown-body a:active,
 .markdown-body a:hover {
   outline-width: 0;
@@ -250,15 +246,6 @@
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
-}
-
-.markdown-body a {
-  color: #0366d6;
-  text-decoration: none;
-}
-
-.markdown-body a:hover {
-  text-decoration: underline;
 }
 
 .markdown-body strong {

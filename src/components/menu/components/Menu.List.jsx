@@ -24,7 +24,7 @@ import {
 import style from "./menu.module.scss";
 
 const CustomListItem = ({ index, title, link }) => (
-  <a href={link}>
+  <a href={link} className={style.link}>
     <ListItem
       button
       key={`ListItem-${index}-${title}`}
@@ -58,7 +58,7 @@ const MenuList = ({ open, toggleMenu, recentTitles }) => {
         </div>
         <Divider />
         <List disablePadding>
-          <a href={`/menu/${slugify(MENU_WEB_DEVELOPMENT)}`}>
+          <a href={`/menu/${slugify(MENU_WEB_DEVELOPMENT)}`} className={style.link}>
             <ListItem button key={MENU_WEB_DEVELOPMENT}>
               <ListItemIcon
                 classes={{
@@ -83,7 +83,7 @@ const MenuList = ({ open, toggleMenu, recentTitles }) => {
         </List>
         <Divider />
         <List disablePadding>
-          <a href={`/menu/${slugify(MENU_BASICS)}`}>
+          <a href={`/menu/${slugify(MENU_BASICS)}`} className={style.link}>
             <ListItem button key={MENU_BASICS}>
               <ListItemIcon
                 classes={{
@@ -108,7 +108,7 @@ const MenuList = ({ open, toggleMenu, recentTitles }) => {
         </List>
         <Divider />
         <List disablePadding>
-          <a href="/all-posts">
+          <a href="/all-posts" className={style.link}>
             <ListItem button key={MENU_BASICS}>
               <ListItemIcon
                 classes={{
