@@ -1,32 +1,47 @@
-import React from "react";
-import { Col } from "reactstrap";
+import React, { useMemo } from "react";
+import Grid from "@material-ui/core/Grid";
 import { slugify } from "../../../util/helperFunctions";
+import style from "./pagination.indicator.module.scss";
 
-const PaginationSection = ({ index, titles }) => {
+const PaginationIndicator = ({ index, titles }) => {
+  const hasPrevPost = useMemo(() => index < titles.length - 1, [index, titles]);
+  const hasNextPost = useMemo(() => index > 0, [index, titles]);
+
   return (
-    <>
-      <Col sm="6" className="markdown-body previous-next-post">
-        <h1>Previous Post</h1>
-        <div className="title">
-          {index === titles.length - 1 ? (
-            <div className="no-link">There is no previous post</div>
+    <div className={style.container}>
+      <Grid container spacing={3}>
+        <Grid item xs={6}>
+          <div className={style.previousPostText}>Previous Post</div>
+          {hasPrevPost ? (
+            <a href={`/${slugify(titles[index + 1])}`}>
+              <div className={style.previous}>
+                <div className={style.postTitle}>{titles[index + 1]}</div>
+              </div>
+            </a>
           ) : (
-            <a href={`/${slugify(titles[index + 1])}`}>{titles[index + 1]}</a>
+            <div className={`${style.previous} ${style.previousNone}`}>
+              <div className={style.textInd}>Previous Post</div>
+              <div className={style.postTitle}>no more previous post</div>
+            </div>
           )}
-        </div>
-      </Col>
-      <Col sm="6" className="markdown-body previous-next-post text-right">
-        <h1 className="text-right">Next Post</h1>
-        <div className="title">
-          {index === 0 ? (
-            <div className="no-link">There is no next post</div>
+        </Grid>
+        <Grid item xs={6}>
+          <div className={style.nextPostText}>Next Post</div>
+          {hasNextPost ? (
+            <a href={`/${slugify(titles[index - 1])}`}>
+              <div className={style.next}>
+                <div className={style.postTitle}>{titles[index - 1]}</div>
+              </div>
+            </a>
           ) : (
-            <a href={`/${slugify(titles[index - 1])}`}>{titles[index - 1]}</a>
+            <div className={`${style.next} ${style.nextNone}`}>
+              <div className={style.postTitle}>no more next post</div>
+            </div>
           )}
-        </div>
-      </Col>
-    </>
+        </Grid>
+      </Grid>
+    </div>
   );
 };
 
-export default PaginationSection;
+export default PaginationIndicator;

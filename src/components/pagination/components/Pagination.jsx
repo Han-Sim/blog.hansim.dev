@@ -142,7 +142,7 @@ class Pagination extends React.Component {
         <a href={`/category/${slugify(thisCategory)}`}>{thisCategory}</a>
       </>
     );
-
+    
     return (
       <div className={style.container}>
         <Row className="pagination mt-3 mb-5">
