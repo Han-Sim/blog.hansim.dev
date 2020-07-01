@@ -17,20 +17,24 @@ const MenuBarStatusContext = createContext();
  */
 const Layout = ({ children }) => {
   const [open, toggleOpen] = useState(false);
-
-  /**
-   * On click handler for Menu button.
-   */
-  const handleMenuBarClick = value => event => toggleOpen(!open);
+  const handleElsewhereClick = () => {
+    open && toggleOpen(false);
+  };
+  const handleMenuBarClick = value => event => {
+    toggleOpen(!open);
+  };
 
   return (
-    <MenuBarStatusContext.Provider value={{ open, toggleOpen }}>
-      <Menu toggleMenu={handleMenuBarClick} isMenuOpen={open} />
-      <div className={open ? style.shiftToLeft : style.shiftToRight}>
-        {children}
-        <Footer />
-      </div>
-    </MenuBarStatusContext.Provider>
+    <>
+      {open && <div className={style.layer} onClick={handleElsewhereClick} />}
+      <MenuBarStatusContext.Provider value={{ open, toggleOpen }}>
+        <Menu toggleMenu={handleMenuBarClick} isMenuOpen={open} />
+        <div>
+          {children}
+          <Footer />
+        </div>
+      </MenuBarStatusContext.Provider>
+    </>
   );
 };
 

@@ -1,11 +1,12 @@
-// This transition animation speeds are the same with Mui Drawer's
-// https://codesandbox.io/s/material-demo-wfiyj
-.shiftToLeft {
-  transition: margin-right 450ms cubic-bezier(0.23, 1, 0.32, 1);
-  margin-right: 400px;
-}
+@import "../styles/index.scss";
 
-.shiftToRight {
-  transition: margin 195ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;
-  margin-right: 0;
+.layer {
+  background-color: $color-black;
+  opacity: 0.5;
+  min-height: 100%;
+  min-width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
 }
