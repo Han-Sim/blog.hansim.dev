@@ -13,6 +13,28 @@
   transition: top 0.3s;
   background-color: $color-soybean;
   z-index: 999;
+
+  .left {
+    display: flex;
+    align-items: center;
+
+    .menus {
+      color: $color-eclipse;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-left: 20px;
+
+      &:hover {
+        color: $color-white;
+      }
+    }
+
+    @media only screen and (max-width: 400px) {
+      .menus {
+        display: none;
+      }
+    }
+  }
 }
 
 .containerHidden {
@@ -49,4 +71,13 @@
 .homeIcon,
 .menuOpenIcon {
   color: $color-eclipse;
+
+  &:hover {
+    color: $color-white;
+  }
+}
+
+.verticalDivider {
+  height: 10px !important;
+  background-color: $color-eclipse !important;
 }

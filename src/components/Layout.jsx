@@ -63,7 +63,7 @@ const Layout = ({ children }) => {
       {open && <div className={style.layer} onClick={handleElsewhereClick} />}
       <MenuBarStatusContext.Provider value={{ open, toggleOpen }}>
         <Menu toggleMenu={handleMenuBarClick} isMenuOpen={open} ref={menuRef} />
-        <div>
+        <div className={style.container}>
           {children}
           <Footer />
         </div>

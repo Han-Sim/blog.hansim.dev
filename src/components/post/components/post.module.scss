@@ -1,8 +1,11 @@
 @import "../../../styles/index.scss";
 
 .root {
-  margin-top: 80px;
   padding: 0 !important;
   margin-right: auto;
   margin-left: auto;
+}
+
+.container {
+  margin-top: 80px;
 }
