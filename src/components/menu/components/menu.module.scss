@@ -8,8 +8,11 @@
   justify-content: space-between;
   position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   transition: top 0.3s;
-  background-color: $color-white;
+  background-color: $color-soybean;
+  z-index: 999;
 }
 
 .containerHidden {
@@ -41,4 +44,9 @@
 
 .link {
   @include link-no-change;
+}
+
+.homeIcon,
+.menuOpenIcon {
+  color: $color-eclipse;
 }

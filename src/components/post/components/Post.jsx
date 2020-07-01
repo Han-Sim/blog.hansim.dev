@@ -36,28 +36,29 @@ const Post = ({
     title: title,
   };
 
-
   return (
     <div className={style.root}>
       <Container maxWidth="lg">
-        <PostHeader
-          author={author}
-          category={category}
-          date={date}
-          title={title}
-        />
-        <div className={style.postBodyContainer}>{children}</div>
-        <PostFooter
-          filename={filename}
-          tags={tags}
-        />
-        <Pagination
-          titlesOfAll={titlesOfAll}
-          categoriesOfAll={categoriesOfAll}
-          title={title}
-        />
-        <div className="mt-3">
-          <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
+        <div className={style.container}>
+          <PostHeader
+            author={author}
+            category={category}
+            date={date}
+            title={title}
+          />
+          <div>{children}</div>
+          <PostFooter filename={filename} tags={tags} />
+          <Pagination
+            titlesOfAll={titlesOfAll}
+            categoriesOfAll={categoriesOfAll}
+            title={title}
+          />
+          <div className="mt-3">
+            <DiscussionEmbed
+              shortname={disqusShortname}
+              config={disqusConfig}
+            />
+          </div>
         </div>
       </Container>
     </div>
