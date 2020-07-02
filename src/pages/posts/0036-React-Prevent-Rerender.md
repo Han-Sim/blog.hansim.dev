@@ -2,8 +2,7 @@
 title: "Ways to Prevent Components from Re-rendering"
 date: "2019-07-26 14:55:00"
 author: "Han Sim"
-menu: "Web Development"
-category: "React"
+category: "Web Development"
 tags:
   - JavaScript
   - React
@@ -76,7 +75,7 @@ class CounterButton extends React.PureComponent {
 
 # 3. `React.memo` for function components
 
-This does same thing with `React.PureComponent` but this is for `Function Component`. 
+This does same thing with `React.PureComponent` but this is for `Function Component`.
 
 This sentence below is from React dev blog. [click](https://reactjs.org/blog/2018/10/23/react-v-16-6.html#reactmemo)
 

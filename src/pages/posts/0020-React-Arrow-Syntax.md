@@ -2,8 +2,7 @@
 title: "Why Do We Use Arrow Function Syntax in React?"
 date: "2019-07-18 14:19:00"
 author: "Han Sim"
-menu: "Web Development"
-category: "React"
+category: "Web Development"
 tags:
   - JavaScript
   - React
@@ -23,14 +22,14 @@ class Foo extends React.Component{
     super( props );
     this.handleClick = this.handleClick.bind(this);
   }
-  
+
   handleClick(event){
     // your event handling logic
   }
-  
+
   render(){
     return (
-      <button type="button" 
+      <button type="button"
       onClick={this.handleClick}>
       Click Me
       </button>

@@ -2,8 +2,7 @@
 title: "Redux Basics"
 date: "2019-07-28 17:47:00"
 author: "Han Sim"
-menu: "Web Development"
-category: "Redux"
+category: "Web Development"
 tags:
   - JavaScript
   - React
@@ -288,7 +287,7 @@ We want to display this `items`. That's why we want pass `state.postReducer.item
 
 ## 2nd Parameter: `mapDispatchToProps`
 
-This is to update the state. Since the only way to update the state is by firing `dispatch(action)`, `connect()` passes down `dispatch` as props. 
+This is to update the state. Since the only way to update the state is by firing `dispatch(action)`, `connect()` passes down `dispatch` as props.
 
 Example:
 

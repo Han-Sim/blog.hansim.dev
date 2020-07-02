@@ -2,8 +2,7 @@
 title: "Object-oriented Programming Syntax in JavaScript"
 date: "2019-07-17 20:16:00"
 author: "Han Sim"
-menu: "Web Development"
-category: "JavaScript"
+category: "Web Development"
 tags:
   - JavaScript
   - OOP
@@ -203,7 +202,7 @@ console.log(obj); //{value: 11}
 
 ### add
 
-#### 1. Dot Notation 
+#### 1. Dot Notation
 
 ```JavaScript
 circle.location = {
@@ -268,7 +267,7 @@ function Circle(radius) {
   this.computeOptimumLocation = function(factor) {
     //.....complex detailed codie
   };
-  
+
   this.draw = function() {
     this.computeOptimumLocation(0.1);
     console.log("drawing");

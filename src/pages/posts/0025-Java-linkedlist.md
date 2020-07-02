@@ -2,8 +2,7 @@
 title: "LinkedList vs Array"
 date: "2019-07-21 11:55:00"
 author: "Han Sim"
-menu: "Basics"
-category: "Java"
+category: "Basics"
 tags:
   - Java
   - Data-Structure
@@ -51,14 +50,14 @@ class LinkedListBasic {
 
 # `LinkedList` is more memory-efficient when we need `insertion`
 
-Because memory locations are consecutive and fixed in Array, `insertion` or `deletion` requires a lot of job by its nature. 
+Because memory locations are consecutive and fixed in Array, `insertion` or `deletion` requires a lot of job by its nature.
 
 However, `LinkedList` assigns memory in anywhere, it can insert or delete memory fast as it only needs to change some references.
 
 # More Differences
 
 - `LinkedList`: Memory is allocated at runtime when a new node is added (`Dynamic Memory Allocation`) - we can easily expand the size of `LinkedList` Also, memory are assigned in `Heap`.
-- `Array`: Memory is allocated as soon as the array is declared, at `compile time` (`Static Memory Allocation`).	Also, memory are assigned in `Stack`.
+- `Array`: Memory is allocated as soon as the array is declared, at `compile time` (`Static Memory Allocation`). Also, memory are assigned in `Stack`.
 
 ![Screen Shot 2019-07-21 at 12.34.54 PM.png](https://i.loli.net/2019/07/22/5d34944a0aa9b99734.png)
 

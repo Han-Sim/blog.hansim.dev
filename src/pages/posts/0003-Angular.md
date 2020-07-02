@@ -2,8 +2,7 @@
 title: "Angular: web application working with REST API"
 date: "2019-06-28 04:18:00"
 author: "Han Sim"
-menu: "Web Development"
-category: "Angular | TypeScript"
+category: "Web Development"
 tags:
   - Portfolio
   - JavaScript

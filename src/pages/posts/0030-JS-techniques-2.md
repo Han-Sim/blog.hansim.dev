@@ -2,8 +2,7 @@
 title: "JavaScript Techniques #2"
 date: "2019-07-25 02:39:00"
 author: "Han Sim"
-menu: "Web Development"
-category: "JavaScript"
+category: "Web Development"
 tags:
   - JavaScript
   - Closure
@@ -46,12 +45,11 @@ let arr = [ 1, 2, 2, 3 ]
 
 let obj = {}
 for (let x of arr) {
-  obj[x] = "whatever here"   
+  obj[x] = "whatever here"
 }
 
 console.log(Object.keys(obj))
 ```
-
 
 # make `var` not accessible from its outside of scope
 
@@ -96,7 +94,7 @@ console.log(normalFunc("hi")) // { '0': 'hi' }
 This is because `arguments` does not bind to `Arrow Function` variable. If we'd like to use something like `arguments` with arrow function, we can do this:
 
 ```JavaScript
-let arrowFunc = (...n) => { return n } 
+let arrowFunc = (...n) => { return n }
 console.log(arrowFunc("hi")) // [ 'hi' ]
 ```
 
@@ -106,7 +104,7 @@ This code below has an error. Because JavaScript put `;` automatically by each l
 
 ```JavaScript
 let x = function() {
-  return 
+  return
   {
     message: "hi"
   }
@@ -127,7 +125,7 @@ let x = function() {
 
 We can use `Object.freeze()`; user can't change the object at all including adding new properties or changing the existing property.
 
-There is also `Object.seal()`; user *can* change the existing properties, but they cannot add new properties.
+There is also `Object.seal()`; user _can_ change the existing properties, but they cannot add new properties.
 
 ```JavaScript
 let obj = {
@@ -140,7 +138,7 @@ console.log(obj) //{ name: "franz" }
 
 //trial to add property
 obj.age = 32
-console.log(obj) //{ name: "franz" } 
+console.log(obj) //{ name: "franz" }
 ```
 
 If we want to freeze only specific properties, we can use `Object.defineProperty()` when we define the properties that should be `writable: false`.
@@ -177,4 +175,3 @@ console.log(Math.max()) //-infinity
 ```
 
 This is related to how `Math.max()` works. It compares to numbers starting from `-infinity`. If it's `Math.max(1,2,3)`, it compares `1` to `-infinity` first. If there is none, it just returns `-infinity`.
-

@@ -2,8 +2,7 @@
 title: "Coding Problem #001"
 date: "2019-07-15 00:06:00"
 author: "Han Sim"
-menu: "Basics"
-category: "Coding Problems"
+category: "Basics"
 tags:
   - Problem-Solving
   - JavaScript

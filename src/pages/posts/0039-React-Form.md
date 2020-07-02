@@ -2,8 +2,7 @@
 title: "Controlled Components Example"
 date: "2019-07-26 17:39:00"
 author: "Han Sim"
-menu: "Web Development"
-category: "React"
+category: "Web Development"
 tags:
   - JavaScript
   - React

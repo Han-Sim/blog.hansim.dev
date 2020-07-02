@@ -2,8 +2,7 @@
 title: "hansim.dev: my first personal webpage"
 date: "2019-07-01 01:50:00"
 author: "Han Sim"
-menu: "Web Development"
-category: "JavaScript"
+category: "Web Development"
 tags:
   - Portfolio
   - JavaScript
@@ -76,7 +75,7 @@ This webpage is built with plain `CSS3` to implement responsive design.
     width: 90%;
     margin-top: 15%;
   }
-  
+
   .main-linkbox {
     font-size: 1.2rem;
     padding-left: 0.1em;
@@ -90,7 +89,7 @@ This webpage is built with plain `CSS3` to implement responsive design.
     background-image: url("/img/main-hero-bg-blurred-mobile.jpg");
   }
 }
-````
+```
 
 ### Portfolio
 

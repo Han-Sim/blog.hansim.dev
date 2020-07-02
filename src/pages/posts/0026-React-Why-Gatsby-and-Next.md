@@ -2,8 +2,7 @@
 title: "How Does GatsbyJS and NextJS Work?"
 date: "2019-07-24 10:46:00"
 author: "Han Sim"
-menu: "Web Development"
-category: "React"
+category: "Web Development"
 tags:
   - JavaScript
   - React
@@ -58,4 +57,4 @@ Wherever you go with `GatsbyJS`, it has to be convertible to a static site in `G
 - [YouTube: How Next.js and Gatsby work and their differences](https://www.youtube.com/watch?v=xC4Yq_mXvPM)
 - [Client-side vs Server-side rendering in React](https://stackoverflow.com/questions/27290354/reactjs-server-side-rendering-vs-client-side-rendering)
 - Reddit Post: https://www.reddit.com/r/reactjs/comments/992n2r/next_vs_gatsby/e4lrffl/
-- 
+-

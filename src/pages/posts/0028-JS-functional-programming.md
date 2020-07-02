@@ -2,8 +2,7 @@
 title: "Functional Programming in Simple English"
 date: "2019-07-25 00:18:00"
 author: "Han Sim"
-menu: "Web Development"
-category: "JavaScript"
+category: "Web Development"
 tags:
   - JavaScript
   - Functional-Programming
@@ -12,7 +11,7 @@ tags:
 # What is Functional Programming?
 
 - Functional programming is a programming paradigm in which we try to bind everything in pure mathematical functions style.
-- It uses `expressions` instead of `statements`. 
+- It uses `expressions` instead of `statements`.
   - An expression is evaluated to produce a value. The logics are hidden behind the scene; we just call the function to populate the value. i.e. `Array.prototype.map()`
   - A statement is executed to assign variables. i.e. `for-loop`
 - `Referential transparency` or `Immutability`: In functional programs variables once defined do not change their value throughout the program. Functional programs do not have assignment statements. **If we have to store some value, we define new variables instead of modifying the original**. This eliminates any chances of `side effects` because any variable can be replaced with its actual value at any point of execution. **State of any variable is constant at any instant.**
@@ -64,7 +63,7 @@ const arr2 = arr.map(add)
 console.log(arr2) //[ 2, 3, 4 ]
 ```
 
-Also, we can even chain those functions. This is going to make the code extremely simple. I chained `reduce()` function after `map()`. (*Array reduce() method[W3Schools](https://www.w3schools.com/jsref/jsref_reduce.asp)*)
+Also, we can even chain those functions. This is going to make the code extremely simple. I chained `reduce()` function after `map()`. (_Array reduce() method[W3Schools](https://www.w3schools.com/jsref/jsref_reduce.asp)_)
 
 ```JavaScript
 const arr = [1, 2, 3]
@@ -76,13 +75,14 @@ const val = arr.map(add).reduce(sum, 0)
 console.log(val) //[ 2, 3, 4 ] --> add them up --> so it's 9!
 ```
 
-Imagine I didn't follow the functional programming style. The code will be more explicit, less abstract, and with bunch of lines. This is because **functional programming uses `expressions`(`Declarative Approach`) instead of `statements`(`Imperative Approach`)**. 
+Imagine I didn't follow the functional programming style. The code will be more explicit, less abstract, and with bunch of lines. This is because **functional programming uses `expressions`(`Declarative Approach`) instead of `statements`(`Imperative Approach`)**.
 
 > `Declarative programming` is a programming paradigm … that expresses the logic of a computation without describing its control flow.
 > `Imperative programming` is a programming paradigm that uses statements that change a program’s state.
 > https://codeburst.io/declarative-vs-imperative-programming-a8a7c93d9ad2
 
-> React components are declarative and specify *what* should be rendered. `<MainPage />`
+> React components are declarative and specify _what_ should be rendered. `<MainPage />`
+
 ```JavaScript
 const arr = [1, 2, 3]
 

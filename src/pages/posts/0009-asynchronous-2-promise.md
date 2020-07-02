@@ -2,8 +2,7 @@
 title: "Promise API and Async/Await"
 date: "2019-07-03 11:30:00"
 author: "Han Sim"
-menu: "Web Development"
-category: "JavaScript"
+category: "Web Development"
 tags:
   - JavaScript
   - Asynchronous
@@ -45,14 +44,14 @@ delay("a")
   end
 */
 
-/* 
+/*
 
 async/await
 
 1. await can be used in async function
 2. async function returns Promise by default. (we can explicitly put Promise)
 3. await --> waiting for its promise to be resolved.
-4. JS doesn't throw any errors even though await keyword is used without Promise; 
+4. JS doesn't throw any errors even though await keyword is used without Promise;
      if that's the case, it'll still work as same as without wait.
 
 */
@@ -88,7 +87,7 @@ myAsync2()
   .catch(err => console.log(err))
 
 /*
-even though it was a syntax error for example, 
+even though it was a syntax error for example,
 we can't catch myAsync2()'s error with try-catch
 Still need to use .catch() as it still returns Promise!
 */

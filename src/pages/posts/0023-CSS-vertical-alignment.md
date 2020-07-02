@@ -2,8 +2,7 @@
 title: "How to Vertically Align a Block Element"
 date: "2019-07-18 18:29:00"
 author: "Han Sim"
-menu: "Web Development"
-category: "CSS"
+category: "Web Development"
 tags:
   - CSS
   - Design
@@ -24,7 +23,7 @@ https://codepen.io/han-sim/pen/JgoPqX
 
 ```HTML
 <div class="out">
-  <div class="in"> 
+  <div class="in">
     I wanna be centered
   </div>
 </div>

@@ -2,8 +2,7 @@
 title: "We Use Generator Because It Pauses"
 date: "2019-07-18 17:22:00"
 author: "Han Sim"
-menu: "Web Development"
-category: "JavaScript"
+category: "Web Development"
 tags:
   - JavaScript
   - Generator
@@ -11,7 +10,7 @@ tags:
 
 # Function Generator
 
-`Function Generator` is a function that returns an `iterator` object and can be exited and later re-entered; which means it pauses its execution until `.next()` is called. 
+`Function Generator` is a function that returns an `iterator` object and can be exited and later re-entered; which means it pauses its execution until `.next()` is called.
 
 This is powerful because **it pauses until its `iterator.next()` is called**. The code below doesn't make `stack overflow` because it is a function generator.
 

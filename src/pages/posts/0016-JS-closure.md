@@ -2,8 +2,7 @@
 title: "So... Why Do We Need Closure?"
 date: "2019-07-17 18:33:00"
 author: "Han Sim"
-menu: "Web Development"
-category: "JavaScript"
+category: "Web Development"
 tags:
   - JavaScript
   - Scope
@@ -93,9 +92,9 @@ var singleton = function(){
 console.log(singleton.get()); //0
 console.log(singleton.get()); //0
 
-singleton.increment(); 
+singleton.increment();
 console.log(singleton.get()); //1
-singleton.increment(); 
+singleton.increment();
 console.log(singleton.get()); //2
 ```
 
@@ -106,7 +105,7 @@ console.log(singleton.get()); //2
 - Lexical scope is created by a closure.
   - Closure is when a function is able to remember and access its `lexical scope` even when that function is executing outside its lexical scope.
 - **Functioanl scope of outer function === lexical scope of inner function**
-  
+
 ```JavaScript
 function foo() {  // 'scope of foo' aka lexical scope for bar
    var memory = 'hello closure';
@@ -114,12 +113,13 @@ function foo() {  // 'scope of foo' aka lexical scope for bar
       console.log(memory);
    }
 }
- 
+
 // returns the bar function and assigns it to the identifier 'closure’;
 const closure = foo();
- 
+
 closure(); // hello closure
 ```
+
 # References
 
 - https://www.codingame.com/playgrounds/6516/closures-in-javascript-for-beginners

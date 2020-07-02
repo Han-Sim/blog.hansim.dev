@@ -2,8 +2,7 @@
 title: "JavaScript Techniques #1"
 date: "2019-07-25 01:40:00"
 author: "Han Sim"
-menu: "Web Development"
-category: "JavaScript"
+category: "Web Development"
 tags:
   - JavaScript
   - Closure
@@ -63,7 +62,7 @@ console.log(person.getName()) //han
 
 ## It is because `stoleIdentity` is a new variable but not bound!
 
-We have to declare that **"Stick the `person` object onto this new variable `stoleIdentity`"**. We can do this by using `bind()` method(*this is why we 'bind' in React(more posts related to react: https://blog.hansim.dev/category/react-react-native)*)
+We have to declare that **"Stick the `person` object onto this new variable `stoleIdentity`"**. We can do this by using `bind()` method(_this is why we 'bind' in React(more posts related to react: https://blog.hansim.dev/category/react-react-native)_)
 
 ```JavaScript
 var stoleIdentity = person.getName.bind(person)
@@ -81,7 +80,7 @@ var module = {
 }
 
 var unboundGetX = module.getX;
-console.log(unboundGetX()); 
+console.log(unboundGetX());
 // The function gets invoked at the global scope
 // expected output: undefined
 
