@@ -7,6 +7,7 @@ import SEO from "../components/seo";
 import { slugify } from "../util/helperFunctions";
 
 const CategoryPosts = ({ data, pageContext }) => {
+  console.log("pageContext", pageContext);
   const { category, totalCount } = pageContext;
 
   const pageTitle = `${totalCount} post${

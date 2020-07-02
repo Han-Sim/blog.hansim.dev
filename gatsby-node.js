@@ -3,12 +3,6 @@
 const path = require("path");
 const _ = require("lodash");
 const { slugify } = require("./src/util/helperFunctions");
-const {
-  REVERSE_MENU_HIERARCHY,
-  NUM_OF_MENUS,
-  MENU_WEB_DEVELOPMENT,
-  MENU_BASICS,
-} = require("./src/util/constants");
 
 exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions;
@@ -29,7 +23,6 @@ exports.createPages = ({ actions, graphql }) => {
   const templates = {
     singlePost: path.resolve("src/templates/single-post.jsx"),
     tagPosts: path.resolve("src/templates/tag-posts.jsx"),
-    menuPosts: path.resolve("src/templates/menu-posts.jsx"),
     categoryPosts: path.resolve("src/templates/category-posts.jsx"),
     allPosts: path.resolve("src/templates/all-posts.jsx"),
     pageList: path.resolve("src/templates/page-list.jsx"),
@@ -46,7 +39,6 @@ exports.createPages = ({ actions, graphql }) => {
               author
               tags
               category
-              menu
             }
             fields {
               slug
@@ -74,7 +66,7 @@ exports.createPages = ({ actions, graphql }) => {
       }
     });
 
-    /***** Post *****/
+    // #region Post
 
     // Create a post page with a single-post.jsx component as a template
     edges.forEach(({ node }) => {
@@ -89,7 +81,9 @@ exports.createPages = ({ actions, graphql }) => {
       });
     });
 
-    /***** Tags *****/
+    // #endregion
+
+    // #region Tag
 
     // gather tags from each nodes
     let tags = [];
@@ -121,14 +115,18 @@ exports.createPages = ({ actions, graphql }) => {
       });
     });
 
-    /***** All Posts *****/
+    // #endregion
+
+    // #region All Post
 
     createPage({
       path: `/all-posts`,
       component: templates.allPosts,
     });
 
-    /***** Menu and Category Posts *****/
+    // #endregion
+
+    // #region Category
 
     // gather category from each node
     const categories = [];
@@ -156,39 +154,6 @@ exports.createPages = ({ actions, graphql }) => {
       });
     });
 
-    // gather menu from each node
-    const menus = [];
-    _.each(edges, edge => {
-      if (_.get(edge, "node.frontmatter.menu")) {
-        menus.push(edge.node.frontmatter.menu);
-      }
-    });
-
-    if (_.uniq(menus).length !== NUM_OF_MENUS) {
-      console.error(
-        "There is uncontrolled menus. Please fix the post or update the application",
-        _.uniq(menus)
-      );
-    }
-
-    const menuPostsCount = {
-      [MENU_WEB_DEVELOPMENT]: 0,
-      [MENU_BASICS]: 0,
-    };
-    menus.forEach(menu => {
-      menuPostsCount[menu]++;
-    });
-
-    // Create a page with a given menu.
-    menus.forEach(menu => {
-      createPage({
-        path: `/menu/${slugify(menu)}`,
-        component: templates.menuPosts,
-        context: {
-          menu,
-          totalCount: menuPostsCount[menu],
-        },
-      });
-    });
+    // #endregion
   });
 };

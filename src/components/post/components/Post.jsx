@@ -1,15 +1,10 @@
 import React from "react";
 import Container from "@material-ui/core/Container";
-import { Button } from "reactstrap";
 import { DiscussionEmbed } from "disqus-react";
 
-import { slugify } from "../../../util/helperFunctions";
 import Pagination from "../../pagination";
 import PostHeader from "./Post.Header";
 import PostFooter from "./Post.Footer";
-
-/* import icons */ import tagIcon from "../../../images/tags.png";
-import pencilIcon from "../../../images/pencil.png";
 
 import style from "./post.module.scss";
 

@@ -1,5 +1,6 @@
 import React from "react";
 
+import { slugify } from "../../../util/helperFunctions";
 import style from "./post.header.module.scss";
 
 const PostHeader = ({ author, category, date, title }) => {
@@ -8,11 +9,11 @@ const PostHeader = ({ author, category, date, title }) => {
       <div>
         <div className={style.info}>
           <div className={style.category}>
-            <a href={`/category/${category.toLowerCase()}`}>
+            <a href={`/category/${slugify(category)}`}>
               {category.toUpperCase()}
             </a>
           </div>
-          <div className={style.divider}/>
+          <div className={style.divider} />
           <div className={style.dateAndAuthor}>
             {date}, {author}
           </div>

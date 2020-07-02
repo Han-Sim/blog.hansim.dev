@@ -32,9 +32,7 @@ const CustomListItem = ({ index, title, link }) => (
         root: style.listItem,
       }}
     >
-      <ListItemText>
-        {title}
-      </ListItemText>
+      <ListItemText>{title}</ListItemText>
     </ListItem>
   </a>
 );
@@ -58,7 +56,10 @@ const MenuList = ({ open, toggleMenu, recentTitles }) => {
         </div>
         <Divider />
         <List disablePadding>
-          <a href={`/menu/${slugify(MENU_WEB_DEVELOPMENT)}`} className={style.link}>
+          <a
+            href={`/category/${slugify(MENU_WEB_DEVELOPMENT)}`}
+            className={style.link}
+          >
             <ListItem button key={MENU_WEB_DEVELOPMENT}>
               <ListItemIcon
                 classes={{
@@ -83,7 +84,7 @@ const MenuList = ({ open, toggleMenu, recentTitles }) => {
         </List>
         <Divider />
         <List disablePadding>
-          <a href={`/menu/${slugify(MENU_BASICS)}`} className={style.link}>
+          <a href={`/category/${slugify(MENU_BASICS)}`} className={style.link}>
             <ListItem button key={MENU_BASICS}>
               <ListItemIcon
                 classes={{

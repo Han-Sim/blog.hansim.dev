@@ -17,7 +17,7 @@ const MenuBar = forwardRef((props, ref) => (
           }}
         />
       </IconButton>
-      <a href={`/menu/${slugify(MENU_WEB_DEVELOPMENT)}`}>
+      <a href={`/category/${slugify(MENU_WEB_DEVELOPMENT)}`}>
         <div className={style.menus}>{MENU_WEB_DEVELOPMENT}</div>
       </a>
       <div className={style.menus}>
@@ -28,7 +28,7 @@ const MenuBar = forwardRef((props, ref) => (
           }}
         />
       </div>
-      <a href={`/menu/${slugify(MENU_BASICS)}`}>
+      <a href={`/category/${slugify(MENU_BASICS)}`}>
         <div className={style.menus}>{MENU_BASICS}</div>
       </a>
     </div>
