@@ -15,6 +15,7 @@ const CategoryPosts = ({ data, pageContext }) => {
   } found in `;
 
   const seoTitle = `Posts in ${category}`;
+
   return (
     <Layout>
       <SEO title={seoTitle} />

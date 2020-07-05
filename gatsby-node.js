@@ -1,6 +1,10 @@
 const path = require("path");
 const _ = require("lodash");
 const { countOccurrences, slugify } = require("./src/util/helperFunctions");
+const {
+  CATEGORY_WEB_DEVELOPMENT,
+  CATEGORY_BASICS,
+} = require("./src/util/constants");
 
 exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions;
@@ -66,7 +70,7 @@ exports.createPages = ({ actions, graphql }) => {
 
     if (_.uniq(categoriesOfAll).length !== 2) {
       console.error(
-        "There are unctrolled categories found in some posts: ",
+        "There are unctrolled categories: ",
         _.uniq(categoriesOfAll)
       );
     }
@@ -87,11 +91,21 @@ exports.createPages = ({ actions, graphql }) => {
 
     // #region Tag and Category
 
+    const categoryWithTags = {
+      [CATEGORY_WEB_DEVELOPMENT]: [],
+      [CATEGORY_BASICS]: [],
+    };
     let tags = [];
+
     edges.forEach(edge => {
       if (_.get(edge, "node.frontmatter.tags")) {
         // Note that each edge has an array of tags.
         tags = [...tags, ...edge.node.frontmatter.tags];
+
+        categoryWithTags[edge.node.frontmatter.category] = [
+          ...categoryWithTags[edge.node.frontmatter.category],
+          ...edge.node.frontmatter.tags,
+        ];
       }
     });
 
@@ -122,6 +136,8 @@ exports.createPages = ({ actions, graphql }) => {
         component: templates.categoryPosts,
         context: {
           category,
+          relatedTags: _.uniq(categoryWithTags[category]),
+          tagPostCount,
           totalCount: categoryPostsCount[category],
         },
       });
