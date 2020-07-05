@@ -2,7 +2,7 @@ import React, { forwardRef, useMemo } from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import uniq from "lodash/uniq";
 
-import { countEach } from "../../../util/helperFunctions";
+import { countOccurrences } from "../../../util/helperFunctions";
 
 import MenuBar from "./Menu.Bar";
 import MenuList from "./Menu.List";
@@ -44,7 +44,7 @@ const MenuContainer = forwardRef(({ toggleMenu, isMenuOpen }, ref) => {
   }, [edges]);
 
   // Post count. i.e. { JavaScript: 5, Java: 12, ...}
-  const postCountByTag = useMemo(() => countEach(tags), [tags]);
+  const postCountByTag = useMemo(() => countOccurrences(tags), [tags]);
 
   // List of unique tags.
   const tagList = useMemo(() => uniq(tags), [tags]);
@@ -56,7 +56,7 @@ const MenuContainer = forwardRef(({ toggleMenu, isMenuOpen }, ref) => {
   );
 
   // Category count.
-  const postCountByCategory = useMemo(() => countEach(categories), [
+  const postCountByCategory = useMemo(() => countOccurrences(categories), [
     categories,
   ]);
 

@@ -1,8 +1,6 @@
-//Make a post path by slugifying the title of each post
-
 const path = require("path");
 const _ = require("lodash");
-const { slugify } = require("./src/util/helperFunctions");
+const { countOccurrences, slugify } = require("./src/util/helperFunctions");
 
 exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions;
@@ -50,31 +48,35 @@ exports.createPages = ({ actions, graphql }) => {
   `).then(res => {
     if (res.errors) return Promise.reject(res.errors);
 
-    const edges = res.data.allMarkdownRemark.edges;
-    let titlesOfAll = [];
-    _.each(edges, edge => {
+    const { edges } = res.data.allMarkdownRemark;
+
+    // #region Single Post
+
+    const titlesOfAll = edges.map(edge => {
       if (_.get(edge, "node.frontmatter.title")) {
-        titlesOfAll = titlesOfAll.concat(edge.node.frontmatter.title);
+        return edge.node.frontmatter.title;
       }
     });
-    let categoriesOfAll = [];
-    _.each(edges, edge => {
+
+    const categoriesOfAll = edges.map(edge => {
       if (_.get(edge, "node.frontmatter.category")) {
-        categoriesOfAll = categoriesOfAll.concat(
-          edge.node.frontmatter.category
-        );
+        return edge.node.frontmatter.category;
       }
     });
 
-    // #region Post
+    if (_.uniq(categoriesOfAll).length !== 2) {
+      console.error(
+        "There are unctrolled categories found in some posts: ",
+        _.uniq(categoriesOfAll)
+      );
+    }
 
-    // Create a post page with a single-post.jsx component as a template
     edges.forEach(({ node }) => {
       createPage({
         path: node.fields.slug,
         component: templates.singlePost,
         context: {
-          slug: node.fields.slug, // Passing slug for the template to use to get posts.
+          slug: node.fields.slug, // Passing a slug for the template to use to get posts.
           titlesOfAll, // titles array
           categoriesOfAll, // categories
         },
@@ -83,34 +85,44 @@ exports.createPages = ({ actions, graphql }) => {
 
     // #endregion
 
-    // #region Tag
+    // #region Tag and Category
 
-    // gather tags from each nodes
     let tags = [];
-    _.each(edges, edge => {
+    edges.forEach(edge => {
       if (_.get(edge, "node.frontmatter.tags")) {
-        tags = tags.concat(edge.node.frontmatter.tags);
+        // Note that each edge has an array of tags.
+        tags = [...tags, ...edge.node.frontmatter.tags];
       }
     });
 
-    // count tags
-    // i.e. {JavaScript: 5, Java: 12 ...}
-    let tagPostCount = {};
-    tags.forEach(tag => {
-      tagPostCount[tag] = (tagPostCount[tag] || 0) + 1;
-      // This is to prevent 'NaN'
-      // if tagPostCount[tag] === undefined, it will be 0 + 1
-    });
+    const tagPostCount = countOccurrences(tags);
 
-    tags = _.uniq(tags);
-
-    // Create a page with the given tag
-    tags.forEach(tag => {
+    _.uniq(tags).forEach(tag => {
       createPage({
         path: `/tag/${slugify(tag)}`,
         component: templates.tagPosts,
         context: {
           tag,
+          totalCount: tagPostCount[tag],
+        },
+      });
+    });
+
+    const categories = edges.map(edge => {
+      if (_.get(edge, "node.frontmatter.category")) {
+        return edge.node.frontmatter.category;
+      }
+    });
+
+    const categoryPostsCount = countOccurrences(categories);
+
+    _.uniq(categories).forEach(category => {
+      createPage({
+        path: `/category/${slugify(category)}`,
+        component: templates.categoryPosts,
+        context: {
+          category,
+          totalCount: categoryPostsCount[category],
         },
       });
     });
@@ -122,36 +134,6 @@ exports.createPages = ({ actions, graphql }) => {
     createPage({
       path: `/all-posts`,
       component: templates.allPosts,
-    });
-
-    // #endregion
-
-    // #region Category
-
-    // gather category from each node
-    const categories = [];
-    _.each(edges, edge => {
-      if (_.get(edge, "node.frontmatter.category")) {
-        categories.push(edge.node.frontmatter.category);
-      }
-    });
-
-    // count the number of posts for each category
-    const categoryPostsCount = {};
-    categories.forEach(category => {
-      categoryPostsCount[category] = (categoryPostsCount[category] || 0) + 1;
-    });
-
-    // Create a page with a given category.
-    _.uniq(categories).forEach(category => {
-      createPage({
-        path: `/category/${slugify(category)}`,
-        component: templates.categoryPosts,
-        context: {
-          category,
-          totalCount: categoryPostsCount[category],
-        },
-      });
     });
 
     // #endregion
