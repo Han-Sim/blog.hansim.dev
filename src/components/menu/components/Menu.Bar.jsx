@@ -3,7 +3,10 @@ import IconButton from "@material-ui/core/IconButton";
 import HomeIcon from "@material-ui/icons/Home";
 import MenuOpenIcon from "@material-ui/icons/MenuOpen";
 import Divider from "@material-ui/core/Divider";
-import { MENU_WEB_DEVELOPMENT, MENU_BASICS } from "../../../util/constants";
+import {
+  CATEGORY_WEB_DEVELOPMENT,
+  CATEGORY_BASICS,
+} from "../../../util/constants";
 import { slugify } from "../../../util/helperFunctions";
 import style from "./menu.module.scss";
 
@@ -17,8 +20,8 @@ const MenuBar = forwardRef((props, ref) => (
           }}
         />
       </IconButton>
-      <a href={`/category/${slugify(MENU_WEB_DEVELOPMENT)}`}>
-        <div className={style.menus}>{MENU_WEB_DEVELOPMENT}</div>
+      <a href={`/category/${slugify(CATEGORY_WEB_DEVELOPMENT)}`}>
+        <div className={style.menus}>{CATEGORY_WEB_DEVELOPMENT}</div>
       </a>
       <div className={style.menus}>
         <Divider
@@ -28,8 +31,8 @@ const MenuBar = forwardRef((props, ref) => (
           }}
         />
       </div>
-      <a href={`/category/${slugify(MENU_BASICS)}`}>
-        <div className={style.menus}>{MENU_BASICS}</div>
+      <a href={`/category/${slugify(CATEGORY_BASICS)}`}>
+        <div className={style.menus}>{CATEGORY_BASICS}</div>
       </a>
     </div>
     <div>

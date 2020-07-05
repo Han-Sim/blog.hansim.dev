@@ -16,9 +16,8 @@ import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
 
 import { slugify } from "../../../util/helperFunctions";
 import {
-  MENU_BASICS,
-  MENU_HIERARCHY,
-  MENU_WEB_DEVELOPMENT,
+  CATEGORY_BASICS,
+  CATEGORY_WEB_DEVELOPMENT,
 } from "../../../util/constants";
 
 import style from "./menu.module.scss";
@@ -57,10 +56,10 @@ const MenuList = ({ open, toggleMenu, recentTitles }) => {
         <Divider />
         <List disablePadding>
           <a
-            href={`/category/${slugify(MENU_WEB_DEVELOPMENT)}`}
+            href={`/category/${slugify(CATEGORY_WEB_DEVELOPMENT)}`}
             className={style.link}
           >
-            <ListItem button key={MENU_WEB_DEVELOPMENT}>
+            <ListItem button key={CATEGORY_WEB_DEVELOPMENT}>
               <ListItemIcon
                 classes={{
                   root: style.menuIcon,
@@ -68,24 +67,27 @@ const MenuList = ({ open, toggleMenu, recentTitles }) => {
               >
                 <LanguageIcon />
               </ListItemIcon>
-              <ListItemText>{MENU_WEB_DEVELOPMENT}</ListItemText>
+              <ListItemText>{CATEGORY_WEB_DEVELOPMENT}</ListItemText>
             </ListItem>
           </a>
           <Divider />
           <div className={style.categoryContainer}>
-            {MENU_HIERARCHY[MENU_WEB_DEVELOPMENT].map((category, index) => (
+            {/* {MENU_HIERARCHY[MENU_WEB_DEVELOPMENT].map((category, index) => (
               <CustomListItem
                 title={category}
                 link={`/category/${slugify(category)}`}
                 key={index}
               />
-            ))}
+            ))} */}
           </div>
         </List>
         <Divider />
         <List disablePadding>
-          <a href={`/category/${slugify(MENU_BASICS)}`} className={style.link}>
-            <ListItem button key={MENU_BASICS}>
+          <a
+            href={`/category/${slugify(CATEGORY_BASICS)}`}
+            className={style.link}
+          >
+            <ListItem button key={CATEGORY_BASICS}>
               <ListItemIcon
                 classes={{
                   root: style.menuIcon,
@@ -93,24 +95,24 @@ const MenuList = ({ open, toggleMenu, recentTitles }) => {
               >
                 <ComputerIcon />
               </ListItemIcon>
-              <ListItemText>{MENU_BASICS}</ListItemText>
+              <ListItemText>{CATEGORY_BASICS}</ListItemText>
             </ListItem>
           </a>
           <Divider />
           <div className={style.categoryContainer}>
-            {MENU_HIERARCHY[MENU_BASICS].map((category, index) => (
+            {/* {MENU_HIERARCHY[MENU_BASICS].map((category, index) => (
               <CustomListItem
                 title={category}
                 link={`/category/${slugify(category)}`}
                 key={index}
               />
-            ))}
+            ))} */}
           </div>
         </List>
         <Divider />
         <List disablePadding>
           <a href="/all-posts" className={style.link}>
-            <ListItem button key={MENU_BASICS}>
+            <ListItem button key="Recent Posts">
               <ListItemIcon
                 classes={{
                   root: style.menuIcon,
