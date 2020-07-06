@@ -5,7 +5,7 @@ import { slugify } from "../../../util/helperFunctions";
 
 import style from "./tag.module.scss";
 
-const Tag = ({ count, tag, ...otherProps }) => {
+const Tag = ({ classes, count, tag, ...otherProps }) => {
   const label = useMemo(() => {
     if (count) {
       return `${tag} (${count})`;
@@ -19,6 +19,7 @@ const Tag = ({ count, tag, ...otherProps }) => {
         label={label}
         classes={{
           root: style.root,
+          ...classes,
         }}
         clickable
         {...otherProps}
@@ -28,6 +29,7 @@ const Tag = ({ count, tag, ...otherProps }) => {
 };
 
 Tag.propTypes = {
+  classes: PropTypes.shape({}),
   count: PropTypes.number,
   tag: PropTypes.string,
 };

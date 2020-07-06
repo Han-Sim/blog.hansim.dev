@@ -6,16 +6,26 @@ import React, {
   useEffect,
 } from "react";
 import PropTypes from "prop-types";
-
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import Footer from "./Footer";
 import Menu from "./menu";
-
 import "../styles/index.scss";
 import style from "./layout.module.scss";
 
-// Create a context for menu bar status.
-// This is just to maintain the menu bar open status even when <Layout /> gets reconstructed,
-// So there is no need to globally provide this context.
+const colorBlue = "#00539c";
+const colorSoybean = "#343148";
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: colorBlue,
+    },
+    secondary: {
+      main: colorSoybean,
+    },
+  },
+});
+
 const MenuBarStatusContext = createContext();
 
 /**
@@ -66,7 +76,7 @@ const Layout = ({ children }) => {
   }, []);
 
   return (
-    <>
+    <MuiThemeProvider theme={theme}>
       {open && <div className={style.layer} onClick={handleElsewhereClick} />}
       <MenuBarStatusContext.Provider value={{ open, toggleOpen }}>
         <Menu toggleMenu={handleMenuBarClick} isMenuOpen={open} ref={menuRef} />
@@ -75,7 +85,7 @@ const Layout = ({ children }) => {
           <Footer />
         </div>
       </MenuBarStatusContext.Provider>
-    </>
+    </MuiThemeProvider>
   );
 };
 

@@ -9,7 +9,11 @@ const MenuTags = ({ tags, postCountByTagDescOrder }) => {
     const arr = [];
     for (const [tag, count] of Object.entries(postCountByTagDescOrder)) {
       if (tags.includes(tag)) {
-        arr.push(<Tag tag={tag} count={count} />);
+        if (count >= 5) {
+          arr.push(<Tag tag={tag} count={count} color="primary" />);
+        } else {
+          arr.push(<Tag tag={tag} count={count} variant="outlined" />);
+        }
       }
     }
     return arr;
