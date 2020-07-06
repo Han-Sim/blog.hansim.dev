@@ -41,16 +41,18 @@ const Layout = ({ children }) => {
   const handleMenuBarClick = useCallback(
     value => event => {
       toggleOpen(!open);
-
-      // Enable/disable the body level scroll-bar.
-      if (!open) {
-        document.body.style.overflow = "hidden";
-      } else {
-        document.body.style.overflow = "visible";
-      }
     },
     [toggleOpen, open]
   );
+
+  useEffect(() => {
+    // Enable/disable the body level scroll-bar.
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "visible";
+    }
+  }, [open]);
 
   const menuRef = createRef();
 
