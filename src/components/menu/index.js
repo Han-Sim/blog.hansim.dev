@@ -1,3 +1,3 @@
-import component from './components/Menu.container';
+import component from "./components/Menu";
 
 export default component;

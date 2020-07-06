@@ -12,7 +12,7 @@ import MenuList from "./Menu.List";
 
 const NUM_OF_RECENT_POSTS = 6;
 
-const MenuContainer = forwardRef(({ toggleMenu, isMenuOpen }, ref) => {
+const Menu = forwardRef(({ toggleMenu, isMenuOpen }, ref) => {
   const data = useStaticQuery(graphql`
     query {
       allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
@@ -99,4 +99,4 @@ const MenuContainer = forwardRef(({ toggleMenu, isMenuOpen }, ref) => {
   );
 });
 
-export default MenuContainer;
+export default Menu;
