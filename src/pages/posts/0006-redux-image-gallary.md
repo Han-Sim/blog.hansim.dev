@@ -8,7 +8,7 @@ tags:
   - JavaScript
   - React
   - Redux
-  - Redux-Saga
+  - Redux Saga
   - Frontend
 ---
 

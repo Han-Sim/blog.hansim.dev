@@ -4,10 +4,10 @@ date: "2019-07-25 01:19:00"
 author: "Han Sim"
 category: "Basics"
 tags:
-  - Problem-Solving
+  - Problem Solving
   - JavaScript
   - Recursion
-  - JavaScript-Techniques
+  - JavaScript Technique
   - Data-Structure
 ---
 

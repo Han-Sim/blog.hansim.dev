@@ -6,7 +6,7 @@ category: "Web Development"
 tags:
   - JavaScript
   - React
-  - Controlled-Component
+  - Controlled Component
 ---
 
 **Instead of using the own state of `input`, `textarea` or `select`, React gets the entire control over these form elements. This is a `controlled component`.**

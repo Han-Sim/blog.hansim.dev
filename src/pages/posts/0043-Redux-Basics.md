@@ -7,8 +7,8 @@ tags:
   - JavaScript
   - React
   - Redux
-  - Redux-Thunk
-  - Redux-Middleware
+  - Redux Thunk
+  - Redux Middleware
 ---
 
 This app is based on this course: https://www.youtube.com/watch?v=93p3LxR9xfM, I also added more components just for practicing.

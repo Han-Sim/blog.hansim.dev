@@ -5,7 +5,7 @@ author: "Han Sim"
 category: "Web Development"
 tags:
   - JavaScript
-  - JavaScript-Technique
+  - JavaScript Technique
 ---
 
 This is about JavaScript coding problems, techniques, and tricky but basic fundamentals of JavaScript. This is the list of the related posts(https://blog.hansim.dev/tag/JavaScript-Technique).

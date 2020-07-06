@@ -11,8 +11,8 @@ tags:
   - TypeScript
   - Angular
   - Bootstrap
-  - REST-API
-  - Web-Service
+  - REST API
+  - Web Service
 ---
 
 # Modern Web Application with Angular/TypeScript

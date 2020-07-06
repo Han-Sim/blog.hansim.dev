@@ -7,7 +7,7 @@ tags:
   - JavaScript
   - Loop
   - Iterable
-  - JavaScript-Technique
+  - JavaScript Technique
 ---
 
 # Different Kinds of Loop

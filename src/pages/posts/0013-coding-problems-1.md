@@ -4,7 +4,7 @@ date: "2019-07-15 00:06:00"
 author: "Han Sim"
 category: "Basics"
 tags:
-  - Problem-Solving
+  - Problem Solving
   - JavaScript
 ---
 

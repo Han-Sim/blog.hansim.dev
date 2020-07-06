@@ -6,7 +6,7 @@ category: "Web Development"
 tags:
   - JavaScript
   - Function
-  - Arrow-Function
+  - Arrow Function
   - This
   - React
   - Scope

@@ -9,12 +9,12 @@ tags:
   - Web
   - Node.js
   - Fullstack
-  - Template-Engine
+  - Template Engine
   - Handlebars.js
   - Express
   - Bootstrap
-  - REST-API
-  - Web-Service
+  - REST API
+  - Web Service
 ---
 
 This is a final project from the WEB322 course @ Seneca College.
