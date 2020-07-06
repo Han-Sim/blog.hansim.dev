@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-
 import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
 import IconButton from "@material-ui/core/IconButton";
@@ -8,7 +7,6 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ComputerIcon from "@material-ui/icons/Computer";
 import LanguageIcon from "@material-ui/icons/Language";
@@ -19,6 +17,7 @@ import {
   CATEGORY_BASICS,
   CATEGORY_WEB_DEVELOPMENT,
 } from "../../../util/constants";
+import MenuTags from "./Menu.Tags";
 
 import style from "./menu.module.scss";
 
@@ -79,13 +78,10 @@ const MenuList = ({
           </a>
           <Divider />
           <div className={style.categoryContainer}>
-            {/* {MENU_HIERARCHY[MENU_WEB_DEVELOPMENT].map((category, index) => (
-              <CustomListItem
-                title={category}
-                link={`/category/${slugify(category)}`}
-                key={index}
-              />
-            ))} */}
+            <MenuTags
+              tags={categoryWithTags[CATEGORY_WEB_DEVELOPMENT]}
+              postCountByTag={postCountByTag}
+            />
           </div>
         </List>
         <Divider />
@@ -152,8 +148,10 @@ MenuList.propTypes = {
     [CATEGORY_BASICS]: PropTypes.array,
   }),
   open: PropTypes.bool,
-  toggleMenu: PropTypes.func,
+  postCountByCategory: PropTypes.shape({}),
+  postCountByTag: PropTypes.shape({}),
   recentTitles: PropTypes.arrayOf(PropTypes.string),
+  toggleMenu: PropTypes.func,
 };
 
 export default MenuList;

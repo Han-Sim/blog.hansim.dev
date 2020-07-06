@@ -1,8 +1,7 @@
 import React from "react";
-import Chip from "@material-ui/core/Chip";
 import EditIcon from "@material-ui/icons/Edit";
 import LabelIcon from "@material-ui/icons/Label";
-import { slugify } from "../../../util/helperFunctions";
+import Tag from "../../tag";
 
 import style from "./post.footer.module.scss";
 
@@ -28,9 +27,7 @@ const Post = ({ filename, tags }) => {
           <LabelIcon />
         </div>
         {tags.map(tag => (
-          <a href={`/tag/${slugify(tag)}`} key={tag} className={style.tag}>
-            <Chip label={tag} clickable />
-          </a>
+          <Tag tag={tag} />
         ))}
       </div>
     </div>
