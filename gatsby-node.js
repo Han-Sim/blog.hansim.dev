@@ -23,11 +23,10 @@ exports.onCreateNode = ({ node, actions }) => {
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions;
   const templates = {
-    singlePost: path.resolve("src/templates/single-post.jsx"),
-    tagPosts: path.resolve("src/templates/tag-posts.jsx"),
-    categoryPosts: path.resolve("src/templates/category-posts.jsx"),
-    allPosts: path.resolve("src/templates/all-posts.jsx"),
-    pageList: path.resolve("src/templates/page-list.jsx"),
+    singlePost: path.resolve("src/templates/SinglePost.jsx"),
+    tagPosts: path.resolve("src/templates/TagPosts.jsx"),
+    categoryPosts: path.resolve("src/templates/CategoryPosts.jsx"),
+    allPosts: path.resolve("src/templates/AllPosts.jsx"),
   };
 
   return graphql(`
