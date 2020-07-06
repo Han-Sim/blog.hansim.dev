@@ -6,8 +6,10 @@ import style from "./menu.tags.module.scss";
 
 const MenuTags = ({ tags, postCountByTag }) => {
   return (
-    <div>
-      <Tag tag={tags[0]} count={postCountByTag[tags[0]]} />
+    <div className={style.container}>
+      {tags.map(tag => (
+        <Tag tag={tag} count={postCountByTag[tag]} />
+      ))}
     </div>
   );
 };

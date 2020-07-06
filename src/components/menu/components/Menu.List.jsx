@@ -103,13 +103,10 @@ const MenuList = ({
           </a>
           <Divider />
           <div className={style.categoryContainer}>
-            {/* {MENU_HIERARCHY[MENU_BASICS].map((category, index) => (
-              <CustomListItem
-                title={category}
-                link={`/category/${slugify(category)}`}
-                key={index}
-              />
-            ))} */}
+            <MenuTags
+              tags={categoryWithTags[CATEGORY_BASICS]}
+              postCountByTag={postCountByTag}
+            />
           </div>
         </List>
         <Divider />

@@ -9,7 +9,7 @@ tags:
   - jQuery
   - Web
   - Frontend
-  - CSS3
+  - CSS
   - Design
 ---
 

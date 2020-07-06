@@ -6,7 +6,7 @@ category: "Web Development"
 tags:
   - JavaScript
   - React
-  - Dirty-Checking
+  - Dirty Checking
   - VirtualDOM
 ---
 

@@ -5,7 +5,7 @@ import { slugify } from "../../../util/helperFunctions";
 
 import style from "./tag.module.scss";
 
-const Tag = ({ count, tag }) => {
+const Tag = ({ count, tag, ...otherProps }) => {
   const label = useMemo(() => {
     if (count) {
       return `${tag} (${count})`;
@@ -15,7 +15,14 @@ const Tag = ({ count, tag }) => {
 
   return (
     <a href={`/tag/${slugify(tag)}`} key={tag} className={style.tag}>
-      <Chip label={label} clickable />
+      <Chip
+        label={label}
+        classes={{
+          root: style.root,
+        }}
+        clickable
+        {...otherProps}
+      />
     </a>
   );
 };

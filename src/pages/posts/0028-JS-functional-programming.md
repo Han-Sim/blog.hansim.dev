@@ -5,7 +5,7 @@ author: "Han Sim"
 category: "Web Development"
 tags:
   - JavaScript
-  - Functional-Programming
+  - Functional Programming
 ---
 
 # What is Functional Programming?

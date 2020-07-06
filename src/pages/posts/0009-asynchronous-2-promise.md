@@ -10,7 +10,7 @@ tags:
   - Callback
   - Ajax
   - Async-Await
-  - Functional-Programming
+  - Functional Programming
 ---
 
 > “A promise is an object that may produce a single value some time in the future”

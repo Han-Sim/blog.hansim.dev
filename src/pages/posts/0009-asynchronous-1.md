@@ -10,7 +10,7 @@ tags:
   - Callback
   - Ajax
   - Async-Await
-  - Functional-Programming
+  - Functional Programming
 ---
 
 > Asynchronous programming means that the engine runs in an `event loop`. When a blocking operation(that takes time to finish i.e. fetch) is needed, instead of blocking the event loop, the request is just started while the code keeps running without blocking for the result. When the response is ready, an interrupt is fired, which causes an event handler to be run, where the control flow continues.
