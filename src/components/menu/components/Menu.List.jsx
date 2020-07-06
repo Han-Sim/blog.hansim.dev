@@ -40,7 +40,14 @@ CustomListItem.propTypes = {
   title: PropTypes.string,
 };
 
-const MenuList = ({ open, toggleMenu, recentTitles }) => {
+const MenuList = ({
+  categoryWithTags,
+  open,
+  toggleMenu,
+  recentTitles,
+  postCountByCategory,
+  postCountByTag,
+}) => {
   // TODO:
   // 3. Font size, etc.
   // 4. href link (slugify), post count, etc.
@@ -140,24 +147,13 @@ const MenuList = ({ open, toggleMenu, recentTitles }) => {
 };
 
 MenuList.propTypes = {
+  categoryWithTags: PropTypes.shape({
+    [CATEGORY_WEB_DEVELOPMENT]: PropTypes.array,
+    [CATEGORY_BASICS]: PropTypes.array,
+  }),
   open: PropTypes.bool,
   toggleMenu: PropTypes.func,
   recentTitles: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default MenuList;
-
-// TODO: tags. (or maybe need a dedicated page for tags.)
-// <span className="menu-title m-4">Tags</span>
-// {tags.map(tag => (
-//   <a
-//     key={tag}
-//     className="menu-item tag-item mr-4"
-//     href={`/tag/${slugify(tag)}`}
-//   >
-//     {tag}
-//     <Badge color="light" className="ml-1">
-//       {tagPostCount[tag]}
-//     </Badge>
-//   </a>
-// ))}

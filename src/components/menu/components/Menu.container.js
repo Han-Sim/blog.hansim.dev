@@ -3,7 +3,10 @@ import { graphql, useStaticQuery } from "gatsby";
 import uniq from "lodash/uniq";
 
 import { countOccurrences } from "../../../util/helperFunctions";
-
+import {
+  CATEGORY_WEB_DEVELOPMENT,
+  CATEGORY_BASICS,
+} from "../../../util/constants";
 import MenuBar from "./Menu.Bar";
 import MenuList from "./Menu.List";
 
@@ -33,32 +36,47 @@ const MenuContainer = forwardRef(({ toggleMenu, isMenuOpen }, ref) => {
     data.allMarkdownRemark.edges,
   ]);
 
-  // Array of tags.
-  const tags = useMemo(() => {
-    let result = [];
+  const categoryTags = useMemo(() => {
+    const obj = {
+      tags: [],
+      categories: [],
+      categoryWithTags: {
+        [CATEGORY_WEB_DEVELOPMENT]: [],
+        [CATEGORY_BASICS]: [],
+      },
+    };
+
     edges.forEach(edge => {
-      edge.node.frontmatter.tags.forEach(tag => result.push(tag));
+      obj.tags = [...obj.tags, ...edge.node.frontmatter.tags];
+      obj.categories.push(edge.node.frontmatter.category);
+      obj.categoryWithTags[edge.node.frontmatter.category] = [
+        ...obj.categoryWithTags[edge.node.frontmatter.category],
+        ...edge.node.frontmatter.tags,
+      ];
     });
 
-    return result;
+    // uniq for categoryWithTags
+    obj.categoryWithTags[CATEGORY_WEB_DEVELOPMENT] = uniq(
+      obj.categoryWithTags[CATEGORY_WEB_DEVELOPMENT]
+    );
+    obj.categoryWithTags[CATEGORY_BASICS] = uniq(
+      obj.categoryWithTags[CATEGORY_BASICS]
+    );
+
+    return obj;
   }, [edges]);
 
   // Post count. i.e. { JavaScript: 5, Java: 12, ...}
-  const postCountByTag = useMemo(() => countOccurrences(tags), [tags]);
-
-  // List of unique tags.
-  const tagList = useMemo(() => uniq(tags), [tags]);
-
-  // Array of categories.
-  const categories = useMemo(
-    () => edges.map(edge => edge.node.frontmatter.category),
-    [edges]
-  );
+  const postCountByTag = useMemo(() => countOccurrences(categoryTags.tags), [
+    categoryTags.tags,
+    countOccurrences,
+  ]);
 
   // Category count.
-  const postCountByCategory = useMemo(() => countOccurrences(categories), [
-    categories,
-  ]);
+  const postCountByCategory = useMemo(
+    () => countOccurrences(categoryTags.categories),
+    [categoryTags.categories, countOccurrences]
+  );
 
   // Get recent titles.
   const recentTitles = useMemo(() => {
@@ -74,8 +92,8 @@ const MenuContainer = forwardRef(({ toggleMenu, isMenuOpen }, ref) => {
         postCountByCategory={postCountByCategory}
         postCountByTag={postCountByTag}
         recentTitles={recentTitles}
-        tagList={tagList}
         toggleMenu={toggleMenu}
+        categoryWithTags={categoryTags.categoryWithTags}
       />
     </>
   );
