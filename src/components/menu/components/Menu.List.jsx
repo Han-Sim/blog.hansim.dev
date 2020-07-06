@@ -48,7 +48,9 @@ const MenuList = ({
   postCountByTagDescOrder,
 }) => {
   // TODO:
-  // need a new tag page such as /category/basics/javascript.
+  // Don't create a new page, but just use global context.
+  // Create a tab to see each post on given list of post always.
+  // If user clicks a tag under CATEGORY_BASICS, then CATEGORY_BASICS will be the default tab.
   return (
     <Drawer open={open} anchor="right" variant="persistent">
       <div className={style.drawerContainer}>
@@ -71,7 +73,9 @@ const MenuList = ({
               >
                 <LanguageIcon />
               </ListItemIcon>
-              <ListItemText>{CATEGORY_WEB_DEVELOPMENT}</ListItemText>
+              <ListItemText>
+                {`${CATEGORY_WEB_DEVELOPMENT} (${postCountByCategory[CATEGORY_WEB_DEVELOPMENT]})`}
+              </ListItemText>
             </ListItem>
           </a>
           <Divider />

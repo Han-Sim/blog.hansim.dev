@@ -42,10 +42,10 @@
 }
 
 .drawerContainer {
-  width: 500px;
+  width: 600px;
   font-size: 20px;
 
-  @media only screen and (max-width: 515px) {
+  @media only screen and (max-width: 620px) {
     width: 100%;
   }
 
