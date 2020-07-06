@@ -2,7 +2,10 @@ import React, { forwardRef, useMemo } from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import uniq from "lodash/uniq";
 
-import { countOccurrences } from "../../../util/helperFunctions";
+import {
+  countOccurrences,
+  sortObjectByValueDescOrder,
+} from "../../../util/helperFunctions";
 import {
   CATEGORY_WEB_DEVELOPMENT,
   CATEGORY_BASICS,
@@ -67,10 +70,10 @@ const Menu = forwardRef(({ toggleMenu, isMenuOpen }, ref) => {
   }, [edges]);
 
   // Post count. i.e. { JavaScript: 5, Java: 12, ...}
-  const postCountByTag = useMemo(() => countOccurrences(categoryTags.tags), [
-    categoryTags.tags,
-    countOccurrences,
-  ]);
+  const postCountByTagDescOrder = useMemo(() => {
+    const obj = countOccurrences(categoryTags.tags);
+    return sortObjectByValueDescOrder(obj);
+  }, [categoryTags.tags, countOccurrences, sortObjectByValueDescOrder]);
 
   // Category count.
   const postCountByCategory = useMemo(
@@ -90,7 +93,7 @@ const Menu = forwardRef(({ toggleMenu, isMenuOpen }, ref) => {
       <MenuList
         open={isMenuOpen}
         postCountByCategory={postCountByCategory}
-        postCountByTag={postCountByTag}
+        postCountByTagDescOrder={postCountByTagDescOrder}
         recentTitles={recentTitles}
         toggleMenu={toggleMenu}
         categoryWithTags={categoryTags.categoryWithTags}

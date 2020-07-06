@@ -45,12 +45,10 @@ const MenuList = ({
   toggleMenu,
   recentTitles,
   postCountByCategory,
-  postCountByTag,
+  postCountByTagDescOrder,
 }) => {
   // TODO:
-  // 3. Font size, etc.
-  // 4. href link (slugify), post count, etc.
-  // 5. Recent Post should be different ... it looks like a category.
+  // need a new tag page such as /category/basics/javascript.
   return (
     <Drawer open={open} anchor="right" variant="persistent">
       <div className={style.drawerContainer}>
@@ -80,7 +78,7 @@ const MenuList = ({
           <div className={style.categoryContainer}>
             <MenuTags
               tags={categoryWithTags[CATEGORY_WEB_DEVELOPMENT]}
-              postCountByTag={postCountByTag}
+              postCountByTagDescOrder={postCountByTagDescOrder}
             />
           </div>
         </List>
@@ -105,7 +103,7 @@ const MenuList = ({
           <div className={style.categoryContainer}>
             <MenuTags
               tags={categoryWithTags[CATEGORY_BASICS]}
-              postCountByTag={postCountByTag}
+              postCountByTagDescOrder={postCountByTagDescOrder}
             />
           </div>
         </List>
@@ -146,7 +144,7 @@ MenuList.propTypes = {
   }),
   open: PropTypes.bool,
   postCountByCategory: PropTypes.shape({}),
-  postCountByTag: PropTypes.shape({}),
+  postCountByTagDescOrder: PropTypes.shape({}),
   recentTitles: PropTypes.arrayOf(PropTypes.string),
   toggleMenu: PropTypes.func,
 };

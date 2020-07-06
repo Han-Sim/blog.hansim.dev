@@ -19,6 +19,28 @@ const countOccurrences = arr => {
 };
 
 /**
+ * Sorts object property by values in descending order.
+ * i.e. { JavaScript: 10, Java: 7, ...}
+ */
+const sortObjectByValueDescOrder = obj => {
+  const sortable = [];
+  for (let property in obj) {
+    sortable.push([property, obj[property]]);
+  }
+  sortable.sort((a, b) => {
+    return b[1] - a[1];
+  });
+
+  console.log("sortable", sortable);
+
+  const objSorted = {};
+  sortable.forEach(item => {
+    objSorted[item[0]] = item[1];
+  });
+  return objSorted;
+};
+
+/**
  * Returns an index.
  */
 const findIndex = function(arr, elem) {
@@ -65,4 +87,5 @@ module.exports = {
   findIndex,
   getFilename,
   slugify,
+  sortObjectByValueDescOrder,
 };
