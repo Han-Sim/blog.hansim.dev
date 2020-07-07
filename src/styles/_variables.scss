@@ -16,33 +16,21 @@ $white: white;
 // Remove unused variables later above.
 // https://www.designwizard.com/blog/design-trends/colour-combination
 $color-blue: #00539c; // Text with link.
+$color-peach: #eea47f;
 $color-soybean: #343148;
 $color-eclipse: #d7c49e;
-$color-peach: #eea47f;
 $color-yellow: #ffd662;
 $color-black: rgba(0, 0, 0, 0.87); // Basic text color (Material-UI)
 $color-dark-gray: #565656;
 $color-light-gray: #bfbfbf;
 $color-white: #fff;
 
-$body-font: "Roboto", sans-serif;
-$title-font: "Roboto Slab", sans-serif;
+$serif-font: "Roboto Slab", sans-serif;
+$sans-serif-font: "Roboto", sans-serif;
 
-// basic link style with blue color.
-@mixin link-blue {
-  a {
-    color: $color-blue;
-    text-decoration: none;
-
-    &:hover {
-      color: $color-eclipse;
-    }
-  }
-}
-
-// link style with black and eclipse.
-@mixin link-black {
-  color: $color-black;
+// link style with dark gray and eclipse.
+@mixin link-style($color) {
+  color: $color;
   text-decoration: none;
 
   &:hover {

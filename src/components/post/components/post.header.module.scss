@@ -12,6 +12,7 @@
     .category {
       font-size: 16px;
       font-weight: 500;
+      font-family: $sans-serif-font;
     }
 
     .divider {
@@ -32,6 +33,6 @@
     border-left: 8px solid $color-blue;
     font-size: 50px;
     font-weight: 700;
-    font-family: $title-font;
+    font-family: $serif-font;
   }
 }

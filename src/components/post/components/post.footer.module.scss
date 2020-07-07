@@ -8,7 +8,7 @@
     align-items: flex-end;
 
     .editThisPageText {
-      @include link-black;
+      @include link-style($color-black);
 
       margin-left: 10px;
       text-transform: uppercase;

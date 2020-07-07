@@ -1,9 +1,11 @@
 body {
-  font-family: $body-font;
+  font-family: $serif-font;
   color: $color-black;
 }
 
-@include link-blue;
+a {
+  @include link-style($color-blue);
+}
 
 // #region browser psuedo classes styles.
 // Note that these should be always separate block.
