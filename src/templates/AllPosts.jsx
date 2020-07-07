@@ -2,7 +2,7 @@ import React from "react";
 import { graphql } from "gatsby";
 
 import Layout from "../components/Layout";
-import PostList from "../components/PostList";
+import PostCard from "../components/PostCard";
 import SEO from "../components/seo";
 
 const AllPosts = ({ data }) => {
@@ -26,7 +26,7 @@ const AllPosts = ({ data }) => {
       </div>
       <div className="container py-5 post-list">
         {data.allMarkdownRemark.edges.map(({ node }) => (
-          <PostList
+          <PostCard
             key={node.id}
             title={node.frontmatter.title}
             author={node.frontmatter.author}
@@ -58,7 +58,7 @@ export const AllPostsQuery = graphql`
           fields {
             slug
           }
-          excerpt
+          excerpt(format: HTML)
         }
       }
     }
