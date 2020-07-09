@@ -8,16 +8,11 @@ import { getFilename } from "../util/helperFunctions";
 
 const SinglePost = ({ data, pageContext }) => {
   const post = data.markdownRemark.frontmatter;
-  const { state, dispatch } = useContext(Context);
+  const { setActiveMenu } = useContext(Context);
 
   useEffect(() => {
-    const setActiveMenu = payload =>
-      dispatch({ type: "setActiveMenu", payload });
-
-    setActiveMenu({
-      payload: post.category,
-    });
-  }, []);
+    setActiveMenu(post.category);
+  }, [setActiveMenu, post.category]);
 
   return (
     <Layout>
