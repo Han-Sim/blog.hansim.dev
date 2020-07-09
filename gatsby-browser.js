@@ -6,5 +6,10 @@
 
 // You can delete this file if you're not using it
 
-// Include global style files.
+const React = require("react");
+const { ContextProvider } = require("./src/context");
 require("./src/styles/prism.css");
+
+exports.wrapRootElement = ({ element }) => {
+  return <ContextProvider>{element}</ContextProvider>;
+};

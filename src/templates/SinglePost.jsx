@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { graphql } from "gatsby";
-
+import { Context } from "../context";
 import Layout from "../components/Layout";
 import SEO from "../components/seo";
 import Post from "../components/post";
@@ -8,6 +8,16 @@ import { getFilename } from "../util/helperFunctions";
 
 const SinglePost = ({ data, pageContext }) => {
   const post = data.markdownRemark.frontmatter;
+  const { state, dispatch } = useContext(Context);
+
+  useEffect(() => {
+    const setActiveMenu = payload =>
+      dispatch({ type: "setActiveMenu", payload });
+
+    setActiveMenu({
+      payload: post.category,
+    });
+  }, []);
 
   return (
     <Layout>

@@ -62,7 +62,7 @@ export const AllPostsQuery = graphql`
           fields {
             slug
           }
-          excerpt(format: HTML)
+          excerpt
         }
       }
     }
