@@ -11,10 +11,8 @@ const SinglePost = ({ data, pageContext }) => {
   const { activeMenu, setActiveMenu } = useContext(Context);
 
   useEffect(() => {
-    if (activeMenu !== post.category) {
-      setActiveMenu(post.category);
-    }
-  }, [activeMenu, setActiveMenu, post.category]);
+    setActiveMenu(post.category);
+  }, [setActiveMenu, post.category]);
 
   return (
     <Layout>

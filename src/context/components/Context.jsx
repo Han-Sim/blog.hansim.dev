@@ -1,13 +1,10 @@
 import React, { createContext, useState, useEffect } from "react";
+import { CATEGORY_WEB_DEVELOPMENT } from "../../util/constants";
 
 const Context = createContext();
 
 const ContextProvider = props => {
-  const [activeMenu, setActiveMenu] = useState("test");
-
-  useEffect(() => {
-    console.log("activeMenu", activeMenu);
-  }, [activeMenu]);
+  const [activeMenu, setActiveMenu] = useState(CATEGORY_WEB_DEVELOPMENT);
 
   return (
     <Context.Provider
@@ -22,6 +19,3 @@ const ContextProvider = props => {
 };
 
 export { Context, ContextProvider };
-
-// Reference:
-// https://dev.to/oieduardorabelo/react-hooks-how-to-create-and-update-contextprovider-1f68

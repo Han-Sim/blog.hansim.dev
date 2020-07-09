@@ -9,15 +9,10 @@ import {
   CATEGORY_WEB_DEVELOPMENT,
   CATEGORY_BASICS,
 } from "../../../util/constants";
-import { slugify } from "../../../util/helperFunctions";
 import style from "./menu.bar.module.scss";
 
 const MenuBar = forwardRef((props, ref) => {
   const { activeMenu, setActiveMenu } = useContext(Context);
-
-  useEffect(() => {
-    console.log(activeMenu);
-  }, [activeMenu]);
 
   const HandleMenuOnClick = useCallback(
     menu => {

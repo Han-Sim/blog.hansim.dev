@@ -23,7 +23,6 @@
     .menu {
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      margin-left: 20px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -39,19 +38,31 @@
     .menuInactive {
       color: $color-white;
       background-color: $color-soybean;
+
+      &:hover {
+        color: $color-soybean;
+        background-color: $color-eclipse;
+      }
     }
 
     .menuActive {
       color: $color-soybean;
       background-color: $color-white;
+
+      &:hover {
+        color: $color-soybean;
+        background-color: $color-eclipse;
+      }
     }
 
     .webDevelopment {
       width: 220px;
+      margin-left: 20px;
     }
 
     .basics {
       width: 90px;
+      margin-left: 8px;
     }
   }
 }
