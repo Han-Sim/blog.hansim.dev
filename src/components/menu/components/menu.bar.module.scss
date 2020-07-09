@@ -13,7 +13,8 @@
   transition: top 0.3s;
   background-color: $color-soybean;
   z-index: 999;
-  font-family: $sans-serif-font;
+  font-family: $serif-font;
+  box-sizing: border-box;
 
   .left {
     display: flex;
@@ -23,14 +24,35 @@
       text-transform: uppercase;
       letter-spacing: 0.08em;
       margin-left: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      top: 100%;
+      transform: translateY(19%);
     }
 
     .menuInactive {
       color: $color-white;
+      background-color: $color-soybean;
+    }
 
-      &:hover {
-        color: $color-eclipse;
-      }
+    .menuActive {
+      color: $color-soybean;
+      background-color: $color-white;
+      min-height: 38px;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+      font-weight: 700;
+    }
+
+    .webDevelopment {
+      width: 220px;
+    }
+
+    .basics {
+      width: 90px;
     }
   }
 }

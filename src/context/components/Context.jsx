@@ -1,10 +1,13 @@
-import React, { createContext, useReducer } from "react";
-import { useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 
 const Context = createContext();
 
 const ContextProvider = props => {
-  const [activeMenu, setActiveMenu] = useState();
+  const [activeMenu, setActiveMenu] = useState("test");
+
+  useEffect(() => {
+    console.log("activeMenu", activeMenu);
+  }, [activeMenu]);
 
   return (
     <Context.Provider

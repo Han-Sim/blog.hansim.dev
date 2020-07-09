@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import Footer from "./Footer";
 import Menu from "./menu";
-import { ContextProvider } from "../context";
 import "../styles/index.scss";
 import style from "./layout.module.scss";
 
@@ -71,16 +70,14 @@ const Layout = ({ children }) => {
   }, []);
 
   return (
-    <ContextProvider>
-      <MuiThemeProvider theme={theme}>
-        {open && <div className={style.layer} onClick={handleElsewhereClick} />}
-        <Menu toggleMenu={handleMenuBarClick} isMenuOpen={open} ref={menuRef} />
-        <div className={style.bodyContainer}>
-          {children}
-          <Footer />
-        </div>
-      </MuiThemeProvider>
-    </ContextProvider>
+    <MuiThemeProvider theme={theme}>
+      {open && <div className={style.layer} onClick={handleElsewhereClick} />}
+      <Menu toggleMenu={handleMenuBarClick} isMenuOpen={open} ref={menuRef} />
+      <div className={style.bodyContainer}>
+        {children}
+        <Footer />
+      </div>
+    </MuiThemeProvider>
   );
 };
 

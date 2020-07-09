@@ -1,9 +1,8 @@
-import React, { forwardRef, useContext } from "react";
+import React, { forwardRef, useContext, useEffect } from "react";
 import IconButton from "@material-ui/core/IconButton";
 import { Context } from "../../../context";
 import HomeIcon from "@material-ui/icons/Home";
 import MenuOpenIcon from "@material-ui/icons/MenuOpen";
-import Divider from "@material-ui/core/Divider";
 import classnames from "classnames";
 import {
   CATEGORY_WEB_DEVELOPMENT,
@@ -13,33 +12,45 @@ import { slugify } from "../../../util/helperFunctions";
 import style from "./menu.bar.module.scss";
 
 const MenuBar = forwardRef((props, ref) => {
-  const { activeMenu } = useContext(Context);
+  const { activeMenu, setActiveMenu } = useContext(Context);
+
+  useEffect(() => {
+    console.log(activeMenu);
+  }, [activeMenu]);
 
   return (
     <div className={style.container} ref={ref}>
       <div className={style.left}>
-        <IconButton href="/" title="Latest Post">
+        {/* <IconButton href="/" title="Latest Post">
           <HomeIcon
             classes={{
               root: style.homeIcon,
             }}
           />
-        </IconButton>
+        </IconButton> */}
         <a href={`/category/${slugify(CATEGORY_WEB_DEVELOPMENT)}`}>
-          <div className={classnames(style.menu, style.menuInactive)}>
+          <div
+            className={
+              activeMenu === CATEGORY_WEB_DEVELOPMENT
+                ? classnames(style.menu, style.menuActive, style.webDevelopment)
+                : classnames(
+                    style.menu,
+                    style.menuInactive,
+                    style.webDevelopment
+                  )
+            }
+          >
             {CATEGORY_WEB_DEVELOPMENT}
           </div>
         </a>
-        <div className={classnames(style.menu)}>
-          <Divider
-            orientation="vertical"
-            classes={{
-              vertical: style.verticalDivider,
-            }}
-          />
-        </div>
         <a href={`/category/${slugify(CATEGORY_BASICS)}`}>
-          <div className={classnames(style.menu, style.menuInactive)}>
+          <div
+            className={
+              activeMenu === CATEGORY_BASICS
+                ? classnames(style.menu, style.menuActive, style.basics)
+                : classnames(style.menu, style.menuInactive, style.basics)
+            }
+          >
             {CATEGORY_BASICS}
           </div>
         </a>
