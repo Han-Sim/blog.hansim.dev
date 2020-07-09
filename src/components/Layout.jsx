@@ -26,8 +26,6 @@ const theme = createMuiTheme({
   },
 });
 
-const MenuBarStatusContext = createContext();
-
 /**
  * The very fundamental layout component for the application.
  */
@@ -80,13 +78,11 @@ const Layout = ({ children }) => {
   return (
     <MuiThemeProvider theme={theme}>
       {open && <div className={style.layer} onClick={handleElsewhereClick} />}
-      <MenuBarStatusContext.Provider value={{ open, toggleOpen }}>
-        <Menu toggleMenu={handleMenuBarClick} isMenuOpen={open} ref={menuRef} />
-        <div className={style.bodyContainer}>
-          {children}
-          <Footer />
-        </div>
-      </MenuBarStatusContext.Provider>
+      <Menu toggleMenu={handleMenuBarClick} isMenuOpen={open} ref={menuRef} />
+      <div className={style.bodyContainer}>
+        {children}
+        <Footer />
+      </div>
     </MuiThemeProvider>
   );
 };

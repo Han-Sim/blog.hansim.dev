@@ -31,8 +31,6 @@ const sortObjectByValueDescOrder = obj => {
     return b[1] - a[1];
   });
 
-  console.log("sortable", sortable);
-
   const objSorted = {};
   sortable.forEach(item => {
     objSorted[item[0]] = item[1];
