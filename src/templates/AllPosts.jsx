@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { graphql } from "gatsby";
+import { Context } from "../context";
 
 import Layout from "../components/Layout";
 import PostCard from "../components/PostCard";
@@ -8,6 +9,7 @@ import style from "./allPost.module.scss";
 
 const AllPosts = ({ data }) => {
   const { totalCount } = data.allMarkdownRemark;
+  const { activeMenu } = useContext(Context);
 
   const pageTitle = `${totalCount} post${totalCount === 1 ? "" : "s"} in total`;
   const seoTitle = `All Posts`;
@@ -16,16 +18,7 @@ const AllPosts = ({ data }) => {
     <Layout>
       <SEO title={seoTitle} />
       <div className={style.root}>
-        {/* <div className="post-header-area">
-          <div className="post-header">
-            <div className="post-title">
-              <h1>
-                {pageTitle}
-                <br />
-              </h1>
-            </div>
-          </div>
-        </div> */}
+        {/* TODO: header part */}
         <div>
           {data.allMarkdownRemark.edges.map(({ node }, index) => (
             <PostCard

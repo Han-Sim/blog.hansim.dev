@@ -1,0 +1,36 @@
+@import "../../../styles/index.scss";
+
+.containerHidden {
+  top: -50px;
+}
+
+.drawerContainer {
+  width: 600px;
+  font-size: 20px;
+
+  @media only screen and (max-width: 620px) {
+    width: 100%;
+  }
+
+  .drawerHeader {
+    padding: 2px;
+  }
+
+  .subMenuContainer {
+    padding: 10px;
+  }
+}
+
+// Override MuiListItemIcon styles.
+.menuIcon {
+  min-width: 40px !important;
+}
+
+.listItem {
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+}
+
+.link {
+  @include link-no-change;
+}

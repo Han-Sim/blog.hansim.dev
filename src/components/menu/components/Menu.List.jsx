@@ -19,7 +19,7 @@ import {
 } from "../../../util/constants";
 import MenuTags from "./Menu.Tags";
 
-import style from "./menu.module.scss";
+import style from "./menu.list.module.scss";
 
 const CustomListItem = ({ index, title, link }) => (
   <a href={link} className={style.link}>

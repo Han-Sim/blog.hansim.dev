@@ -19,58 +19,20 @@
     display: flex;
     align-items: center;
 
-    .menus {
-      color: $color-white;
+    .menu {
       text-transform: uppercase;
       letter-spacing: 0.08em;
       margin-left: 20px;
+    }
+
+    .menuInactive {
+      color: $color-white;
 
       &:hover {
         color: $color-eclipse;
       }
     }
-
-    @media only screen and (max-width: 400px) {
-      .menus {
-        display: none;
-      }
-    }
   }
-}
-
-.containerHidden {
-  top: -50px;
-}
-
-.drawerContainer {
-  width: 600px;
-  font-size: 20px;
-
-  @media only screen and (max-width: 620px) {
-    width: 100%;
-  }
-
-  .drawerHeader {
-    padding: 2px;
-  }
-
-  .subMenuContainer {
-    padding: 10px;
-  }
-}
-
-// Override MuiListItemIcon styles.
-.menuIcon {
-  min-width: 40px !important;
-}
-
-.listItem {
-  padding-top: 4px !important;
-  padding-bottom: 4px !important;
-}
-
-.link {
-  @include link-no-change;
 }
 
 .homeIcon,
@@ -84,5 +46,5 @@
 
 .verticalDivider {
   height: 10px !important;
-  background-color: $color-eclipse !important;
+  background-color: $color-white !important;
 }
