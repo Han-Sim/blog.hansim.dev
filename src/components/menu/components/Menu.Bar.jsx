@@ -1,4 +1,5 @@
-import React, { forwardRef, useContext, useEffect } from "react";
+import React, { forwardRef, useContext, useEffect, useCallback } from "react";
+import { navigate } from "gatsby";
 import IconButton from "@material-ui/core/IconButton";
 import { Context } from "../../../context";
 import HomeIcon from "@material-ui/icons/Home";
@@ -18,6 +19,14 @@ const MenuBar = forwardRef((props, ref) => {
     console.log(activeMenu);
   }, [activeMenu]);
 
+  const HandleMenuOnClick = useCallback(
+    menu => {
+      setActiveMenu(menu);
+      navigate(`/all-posts`);
+    },
+    [setActiveMenu]
+  );
+
   return (
     <div className={style.container} ref={ref}>
       <div className={style.left}>
@@ -28,32 +37,26 @@ const MenuBar = forwardRef((props, ref) => {
             }}
           />
         </IconButton> */}
-        <a href={`/category/${slugify(CATEGORY_WEB_DEVELOPMENT)}`}>
-          <div
-            className={
-              activeMenu === CATEGORY_WEB_DEVELOPMENT
-                ? classnames(style.menu, style.menuActive, style.webDevelopment)
-                : classnames(
-                    style.menu,
-                    style.menuInactive,
-                    style.webDevelopment
-                  )
-            }
-          >
-            {CATEGORY_WEB_DEVELOPMENT}
-          </div>
-        </a>
-        <a href={`/category/${slugify(CATEGORY_BASICS)}`}>
-          <div
-            className={
-              activeMenu === CATEGORY_BASICS
-                ? classnames(style.menu, style.menuActive, style.basics)
-                : classnames(style.menu, style.menuInactive, style.basics)
-            }
-          >
-            {CATEGORY_BASICS}
-          </div>
-        </a>
+        <div
+          className={
+            activeMenu === CATEGORY_WEB_DEVELOPMENT
+              ? classnames(style.menu, style.menuActive, style.webDevelopment)
+              : classnames(style.menu, style.menuInactive, style.webDevelopment)
+          }
+          onClick={() => HandleMenuOnClick(CATEGORY_WEB_DEVELOPMENT)}
+        >
+          {CATEGORY_WEB_DEVELOPMENT}
+        </div>
+        <div
+          className={
+            activeMenu === CATEGORY_BASICS
+              ? classnames(style.menu, style.menuActive, style.basics)
+              : classnames(style.menu, style.menuInactive, style.basics)
+          }
+          onClick={() => HandleMenuOnClick(CATEGORY_BASICS)}
+        >
+          {CATEGORY_BASICS}
+        </div>
       </div>
       <div>
         <IconButton onClick={props.onClick(true)}>
