@@ -2,7 +2,6 @@ import React, { forwardRef, useContext, useEffect, useCallback } from "react";
 import { navigate } from "gatsby";
 import IconButton from "@material-ui/core/IconButton";
 import { Context } from "../../../context";
-import HomeIcon from "@material-ui/icons/Home";
 import MenuOpenIcon from "@material-ui/icons/MenuOpen";
 import classnames from "classnames";
 import {
@@ -25,13 +24,6 @@ const MenuBar = forwardRef((props, ref) => {
   return (
     <div className={style.container} ref={ref}>
       <div className={style.left}>
-        {/* <IconButton href="/" title="Latest Post">
-          <HomeIcon
-            classes={{
-              root: style.homeIcon,
-            }}
-          />
-        </IconButton> */}
         <div
           className={
             activeMenu === CATEGORY_WEB_DEVELOPMENT

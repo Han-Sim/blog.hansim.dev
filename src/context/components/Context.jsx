@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState } from "react";
 import { CATEGORY_WEB_DEVELOPMENT } from "../../util/constants";
 
 const Context = createContext();

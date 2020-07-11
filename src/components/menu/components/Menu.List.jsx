@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useCallback, useContext } from "react";
 import PropTypes from "prop-types";
+import { navigate } from "gatsby";
 import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
 import IconButton from "@material-ui/core/IconButton";
@@ -11,7 +12,7 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ComputerIcon from "@material-ui/icons/Computer";
 import LanguageIcon from "@material-ui/icons/Language";
 import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
-
+import { Context } from "../../../context";
 import { slugify } from "../../../util/helperFunctions";
 import {
   CATEGORY_BASICS,
@@ -47,6 +48,15 @@ const MenuList = ({
   postCountByCategory,
   postCountByTagDescOrder,
 }) => {
+  const { setActiveMenu } = useContext(Context);
+  const handleCategoryOnClick = useCallback(
+    category => {
+      setActiveMenu(category);
+      navigate(`/all-posts`);
+    },
+    [navigate]
+  );
+
   // TODO:
   // Don't create a new page, but just use global context.
   // Create a tab to see each post on given list of post always.
@@ -61,23 +71,22 @@ const MenuList = ({
         </div>
         <Divider />
         <List disablePadding>
-          <a
-            href={`/category/${slugify(CATEGORY_WEB_DEVELOPMENT)}`}
-            className={style.link}
+          <ListItem
+            button
+            key={CATEGORY_WEB_DEVELOPMENT}
+            // onClick={handleCategoryOnClick(CATEGORY_WEB_DEVELOPMENT)}
           >
-            <ListItem button key={CATEGORY_WEB_DEVELOPMENT}>
-              <ListItemIcon
-                classes={{
-                  root: style.menuIcon,
-                }}
-              >
-                <LanguageIcon />
-              </ListItemIcon>
-              <ListItemText>
-                {`${CATEGORY_WEB_DEVELOPMENT} (${postCountByCategory[CATEGORY_WEB_DEVELOPMENT]})`}
-              </ListItemText>
-            </ListItem>
-          </a>
+            <ListItemIcon
+              classes={{
+                root: style.menuIcon,
+              }}
+            >
+              <LanguageIcon />
+            </ListItemIcon>
+            <ListItemText>
+              {`${CATEGORY_WEB_DEVELOPMENT} (${postCountByCategory[CATEGORY_WEB_DEVELOPMENT]})`}
+            </ListItemText>
+          </ListItem>
           <Divider />
           <div className={style.categoryContainer}>
             <MenuTags
@@ -88,21 +97,20 @@ const MenuList = ({
         </List>
         <Divider />
         <List disablePadding>
-          <a
-            href={`/category/${slugify(CATEGORY_BASICS)}`}
-            className={style.link}
+          <ListItem
+            button
+            key={CATEGORY_BASICS}
+            // onClick={handleCategoryOnClick(CATEGORY_BASICS)}
           >
-            <ListItem button key={CATEGORY_BASICS}>
-              <ListItemIcon
-                classes={{
-                  root: style.menuIcon,
-                }}
-              >
-                <ComputerIcon />
-              </ListItemIcon>
-              <ListItemText>{CATEGORY_BASICS}</ListItemText>
-            </ListItem>
-          </a>
+            <ListItemIcon
+              classes={{
+                root: style.menuIcon,
+              }}
+            >
+              <ComputerIcon />
+            </ListItemIcon>
+            <ListItemText>{CATEGORY_BASICS}</ListItemText>
+          </ListItem>
           <Divider />
           <div className={style.categoryContainer}>
             <MenuTags
