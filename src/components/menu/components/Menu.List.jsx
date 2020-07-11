@@ -54,7 +54,7 @@ const MenuList = ({
       setActiveMenu(category);
       navigate(`/all-posts`);
     },
-    [navigate]
+    [setActiveMenu]
   );
 
   // TODO:
@@ -74,7 +74,7 @@ const MenuList = ({
           <ListItem
             button
             key={CATEGORY_WEB_DEVELOPMENT}
-            // onClick={handleCategoryOnClick(CATEGORY_WEB_DEVELOPMENT)}
+            onClick={handleCategoryOnClick(CATEGORY_WEB_DEVELOPMENT)}
           >
             <ListItemIcon
               classes={{
@@ -100,7 +100,7 @@ const MenuList = ({
           <ListItem
             button
             key={CATEGORY_BASICS}
-            // onClick={handleCategoryOnClick(CATEGORY_BASICS)}
+            onClick={handleCategoryOnClick(CATEGORY_BASICS)}
           >
             <ListItemIcon
               classes={{

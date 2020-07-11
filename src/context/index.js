@@ -1,7 +1,3 @@
-import {
-  Context,
-  ContextConsumer,
-  ContextProvider,
-} from "./components/Context";
+import { Context, ContextProvider } from "./components/Context";
 
-export { Context, ContextConsumer, ContextProvider };
+export { Context, ContextProvider };

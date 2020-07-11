@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import Tag from "../../tag";
 import style from "./postCard.module.scss";
 

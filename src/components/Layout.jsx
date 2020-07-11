@@ -48,30 +48,16 @@ const Layout = ({ children }) => {
 
   const menuRef = createRef();
 
-  let prevScrollpos = window.pageYOffset;
-  const handleScroll = () => {
-    if (menuRef.current && window.innerWidth <= 760) {
-      const currentScrollPos = window.pageYOffset;
-      if (prevScrollpos > currentScrollPos) {
-        menuRef.current.style.top = "0";
-      } else {
-        menuRef.current.style.top = "-52px";
-      }
-      prevScrollpos = currentScrollPos;
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll, true);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   return (
     <MuiThemeProvider theme={theme}>
-      {open && <div className={style.layer} onClick={handleElsewhereClick} />}
+      {open && (
+        <div
+          className={style.layer}
+          onClick={handleElsewhereClick}
+          role="button"
+          aria-label="Close the sidebar"
+        />
+      )}
       <Menu toggleMenu={handleMenuBarClick} isMenuOpen={open} ref={menuRef} />
       <div className={style.bodyContainer}>
         {children}

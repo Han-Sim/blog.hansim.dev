@@ -60,7 +60,7 @@ const AllPosts = ({ data }) => {
         );
       }),
     };
-  }, [data.allMarkdownRemark.edges, PostCard]);
+  }, [data.allMarkdownRemark.edges]);
 
   return (
     <Layout>

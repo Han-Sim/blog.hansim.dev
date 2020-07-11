@@ -5,7 +5,7 @@ import style from "./pagination.indicator.module.scss";
 
 const PaginationIndicator = ({ index, titles }) => {
   const hasPrevPost = useMemo(() => index < titles.length - 1, [index, titles]);
-  const hasNextPost = useMemo(() => index > 0, [index, titles]);
+  const hasNextPost = useMemo(() => index > 0, [index]);
 
   return (
     <div className={style.container}>

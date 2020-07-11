@@ -1,4 +1,4 @@
-import React, { forwardRef, useContext, useEffect, useCallback } from "react";
+import React, { forwardRef, useContext, useCallback } from "react";
 import { navigate } from "gatsby";
 import IconButton from "@material-ui/core/IconButton";
 import { Context } from "../../../context";
@@ -31,6 +31,8 @@ const MenuBar = forwardRef((props, ref) => {
               : classnames(style.menu, style.menuInactive, style.webDevelopment)
           }
           onClick={() => HandleMenuOnClick(CATEGORY_WEB_DEVELOPMENT)}
+          role="button"
+          tabindex={0}
         >
           {CATEGORY_WEB_DEVELOPMENT}
         </div>
@@ -41,6 +43,8 @@ const MenuBar = forwardRef((props, ref) => {
               : classnames(style.menu, style.menuInactive, style.basics)
           }
           onClick={() => HandleMenuOnClick(CATEGORY_BASICS)}
+          role="button"
+          tabindex={0}
         >
           {CATEGORY_BASICS}
         </div>

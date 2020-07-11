@@ -73,15 +73,15 @@ const Menu = forwardRef(({ toggleMenu, isMenuOpen }, ref) => {
   const postCountByTagDescOrder = useMemo(() => {
     const obj = countOccurrences(categoryTags.tags);
     return sortObjectByValueDescOrder(obj);
-  }, [categoryTags.tags, countOccurrences, sortObjectByValueDescOrder]);
+  }, [categoryTags.tags]);
 
   // Category count.
   const postCountByCategory = useMemo(
     () => countOccurrences(categoryTags.categories),
-    [categoryTags.categories, countOccurrences]
+    [categoryTags.categories]
   );
 
-  // Get recent titles.
+  // Get recent titles.'
   const recentTitles = useMemo(() => {
     const titles = edges.map(edge => edge.node.frontmatter.title);
     return titles.slice(0, NUM_OF_RECENT_POSTS);
