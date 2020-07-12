@@ -10,7 +10,8 @@
     .editThisPageText {
       @include link-style($color-black);
 
-      margin-left: 10px;
+      font-family: $sans-serif-font;
+      margin-left: 12px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
     }

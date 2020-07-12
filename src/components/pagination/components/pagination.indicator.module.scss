@@ -39,6 +39,7 @@
 
 .previousPostText,
 .nextPostText {
+  font-family: $sans-serif-font;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: $color-dark-gray;
