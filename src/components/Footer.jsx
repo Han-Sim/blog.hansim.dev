@@ -1,12 +1,12 @@
-import React from "react"
-import facebook from "../images/facebook.png"
-import instagram from "../images/instagram.png"
-import linkedIn from "../images/linkedIn.png"
-import github from "../images/github.png"
+import React from "react";
+// import facebook from "../images/facebook.png"
+// import instagram from "../images/instagram.png"
+// import linkedIn from "../images/linkedIn.png"
+// import github from "../images/github.png"
 
 const Footer = () => (
   <div className="site-footer">
-    <div className="footer-social-links">
+    {/* <div className="footer-social-links">
       <p className="text-center">
         Copyright © 2019 — Han Sim. All Rights Reserved.{" "}
         <span className="footer-link">
@@ -66,8 +66,8 @@ const Footer = () => (
           </a>
         </li>
       </ul>
-    </div>
+    </div> */}
   </div>
-)
+);
 
-export default Footer
+export default Footer;

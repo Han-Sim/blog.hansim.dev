@@ -1,13 +1,10 @@
 import React, { forwardRef, useContext, useCallback } from "react";
 import { navigate } from "gatsby";
 import IconButton from "@material-ui/core/IconButton";
-import { Context } from "../../../context";
 import MenuOpenIcon from "@material-ui/icons/MenuOpen";
 import classnames from "classnames";
-import {
-  CATEGORY_WEB_DEVELOPMENT,
-  CATEGORY_BASICS,
-} from "../../../util/constants";
+import { Context } from "src/context";
+import { CATEGORY_WEB_DEVELOPMENT, CATEGORY_BASICS } from "src/util/constants";
 import style from "./menu.bar.module.scss";
 
 const MenuBar = forwardRef((props, ref) => {

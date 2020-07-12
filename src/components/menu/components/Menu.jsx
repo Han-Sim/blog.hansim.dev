@@ -5,11 +5,8 @@ import uniq from "lodash/uniq";
 import {
   countOccurrences,
   sortObjectByValueDescOrder,
-} from "../../../util/helperFunctions";
-import {
-  CATEGORY_WEB_DEVELOPMENT,
-  CATEGORY_BASICS,
-} from "../../../util/constants";
+} from "src/util/helperFunctions";
+import { CATEGORY_WEB_DEVELOPMENT, CATEGORY_BASICS } from "src/util/constants";
 import MenuBar from "./Menu.Bar";
 import MenuList from "./Menu.List";
 

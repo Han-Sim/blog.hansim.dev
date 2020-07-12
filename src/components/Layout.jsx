@@ -56,6 +56,7 @@ const Layout = ({ children }) => {
           onClick={handleElsewhereClick}
           role="button"
           aria-label="Close the sidebar"
+          tabindex={0}
         />
       )}
       <Menu toggleMenu={handleMenuBarClick} isMenuOpen={open} ref={menuRef} />
