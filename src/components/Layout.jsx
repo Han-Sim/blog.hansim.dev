@@ -1,5 +1,6 @@
 import React, { createRef, useCallback, useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import classnames from "classnames";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import Footer from "./Footer";
 import Menu from "./menu";
@@ -58,16 +59,16 @@ const Layout = ({ children }) => {
 
   return (
     <MuiThemeProvider theme={theme}>
-      {open && (
-        <div
-          className={style.layer}
-          onClick={handleElsewhereClick}
-          onKeyDown={handleElsewhereOnKeyDown}
-          role="button"
-          aria-label="Close the sidebar"
-          tabindex={0}
-        />
-      )}
+      <div
+        className={
+          open ? style.layer : classnames(style.layer, style.layerHidden)
+        }
+        onClick={handleElsewhereClick}
+        onKeyDown={handleElsewhereOnKeyDown}
+        role="button"
+        aria-label="Close the sidebar"
+        tabindex={0}
+      />
       <Menu toggleMenu={handleMenuBarClick} isMenuOpen={open} ref={menuRef} />
       <div className={style.bodyContainer}>
         {children}

@@ -75,7 +75,8 @@ exports.createPages = ({ actions, graphql }) => {
 
     // #region Tag Posts.
 
-    const tags = edges.map(edge => {
+    let tags = [];
+    edges.forEach(edge => {
       if (_.get(edge, "node.frontmatter.tags")) {
         // Note that each edge has an array of tags.
         tags = [...tags, ...edge.node.frontmatter.tags];

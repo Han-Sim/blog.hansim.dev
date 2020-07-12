@@ -9,7 +9,6 @@ import style from "./allPost.module.scss";
 
 const AllPosts = ({ data }) => {
   const seoTitle = useMemo(() => "All Posts", []);
-  // const { totalCount } = data.allMarkdownRemark;
   const { activeMenu } = useContext(Context);
 
   const listOfPostsToRender = useMemo(() => {
@@ -66,7 +65,6 @@ const AllPosts = ({ data }) => {
     <Layout>
       <SEO title={seoTitle} />
       <div className={style.root}>
-        {/* TODO: header part */}
         <div>{listOfPostsToRender[activeMenu]}</div>
       </div>
     </Layout>
