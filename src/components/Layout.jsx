@@ -2,7 +2,7 @@ import React, { createRef, useCallback, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
-import Footer from "./Footer";
+import Footer from "./footer";
 import Menu from "./menu";
 import style from "./layout.module.scss";
 
