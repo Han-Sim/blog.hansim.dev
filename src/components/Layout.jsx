@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import Footer from "./Footer";
 import Menu from "./menu";
-import "../styles/index.scss";
+import "src/styles/index.scss";
 import style from "./layout.module.scss";
 
 const colorBlue = "#00539c";

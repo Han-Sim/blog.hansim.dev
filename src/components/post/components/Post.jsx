@@ -2,7 +2,7 @@ import React from "react";
 import Container from "@material-ui/core/Container";
 import { DiscussionEmbed } from "disqus-react";
 
-import Pagination from "../../pagination";
+import Pagination from "src/pagination";
 import PostHeader from "./Post.Header";
 import PostFooter from "./Post.Footer";
 

@@ -7,7 +7,7 @@ import {
   CardBody,
   Badge,
 } from "reactstrap";
-import { slugify } from "../util/helperFunctions";
+import { slugify } from "src/util/helperFunctions";
 
 const PostList = ({ title, author, slug, date, body, tags }) => {
   return (
@@ -32,7 +32,10 @@ const PostList = ({ title, author, slug, date, body, tags }) => {
             </a>
           ))}
         </div>
-        <a href={`/${slug}`} className="btn btn-outline-primary float-right mt-3">
+        <a
+          href={`/${slug}`}
+          className="btn btn-outline-primary float-right mt-3"
+        >
           Read More
         </a>
       </CardBody>

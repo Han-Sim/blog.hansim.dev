@@ -12,14 +12,10 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ComputerIcon from "@material-ui/icons/Computer";
 import LanguageIcon from "@material-ui/icons/Language";
 import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
-import { Context } from "../../../context";
-import { slugify } from "../../../util/helperFunctions";
-import {
-  CATEGORY_BASICS,
-  CATEGORY_WEB_DEVELOPMENT,
-} from "../../../util/constants";
+import { Context } from "src/context";
+import { slugify } from "src/util/helperFunctions";
+import { CATEGORY_BASICS, CATEGORY_WEB_DEVELOPMENT } from "src/util/constants";
 import MenuTags from "./Menu.Tags";
-
 import style from "./menu.list.module.scss";
 
 const CustomListItem = ({ index, title, link }) => (

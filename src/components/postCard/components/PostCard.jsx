@@ -1,5 +1,5 @@
 import React from "react";
-import Tag from "../../tag";
+import Tag from "src/tag";
 import style from "./postCard.module.scss";
 
 const PostCard = ({ title, author, slug, date, body, tags, index }) => {

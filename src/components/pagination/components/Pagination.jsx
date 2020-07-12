@@ -1,10 +1,10 @@
 import React from "react";
 import { Row } from "reactstrap";
-import { slugify, findIndex } from "../../../util/helperFunctions";
+import { slugify, findIndex } from "src/util/helperFunctions";
 import PaginationSection from "./Pagination.Section";
 import PaginationIndicator from "./Pagination.Indicator";
 
-import style from './pagination.module.scss';
+import style from "./pagination.module.scss";
 
 class Pagination extends React.Component {
   constructor(props) {
@@ -142,7 +142,7 @@ class Pagination extends React.Component {
         <a href={`/category/${slugify(thisCategory)}`}>{thisCategory}</a>
       </>
     );
-    
+
     return (
       <div className={style.container}>
         <Row className="pagination mt-3 mb-5">

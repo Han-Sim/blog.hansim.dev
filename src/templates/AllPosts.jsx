@@ -1,10 +1,10 @@
 import React, { useContext, useMemo } from "react";
 import { graphql } from "gatsby";
-import { Context } from "../context";
-import Layout from "../components/Layout";
-import PostCard from "../components/PostCard";
-import SEO from "../components/seo";
-import { CATEGORY_WEB_DEVELOPMENT, CATEGORY_BASICS } from "../util/constants";
+import { Context } from "src/context";
+import Layout from "src/components/Layout";
+import PostCard from "src/components/PostCard";
+import SEO from "src/components/seo";
+import { CATEGORY_WEB_DEVELOPMENT, CATEGORY_BASICS } from "src/util/constants";
 import style from "./allPost.module.scss";
 
 const AllPosts = ({ data }) => {

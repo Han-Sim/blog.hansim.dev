@@ -1,8 +1,8 @@
 import React from "react";
-// import facebook from "../images/facebook.png"
-// import instagram from "../images/instagram.png"
-// import linkedIn from "../images/linkedIn.png"
-// import github from "../images/github.png"
+// import facebook from "src/images/facebook.png"
+// import instagram from "src/images/instagram.png"
+// import linkedIn from "src/images/linkedIn.png"
+// import github from "src/images/github.png"
 
 const Footer = () => (
   <div className="site-footer">

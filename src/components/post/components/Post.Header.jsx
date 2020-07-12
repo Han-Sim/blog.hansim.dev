@@ -1,6 +1,6 @@
 import React from "react";
 
-import { slugify } from "../../../util/helperFunctions";
+import { slugify } from "src/util/helperFunctions";
 import style from "./post.header.module.scss";
 
 const PostHeader = ({ author, category, date, title }) => {

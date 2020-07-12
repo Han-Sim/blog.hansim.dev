@@ -1,9 +1,9 @@
 import React from "react";
 import { graphql } from "gatsby";
 
-import Layout from "../components/Layout";
-import PostList from "../components/PostList";
-import SEO from "../components/seo";
+import Layout from "src/components/Layout";
+import PostList from "src/components/PostList";
+import SEO from "src/components/seo";
 
 const TagPosts = ({ data, pageContext }) => {
   // { data } <----- props.data [destructured]

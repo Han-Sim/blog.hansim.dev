@@ -1,10 +1,10 @@
 import React from "react";
 import { graphql } from "gatsby";
 
-import Layout from "../components/Layout";
-import PostList from "../components/PostList";
-import SEO from "../components/seo";
-import { slugify } from "../util/helperFunctions";
+import Layout from "src/components/Layout";
+import PostList from "src/components/PostList";
+import SEO from "src/components/seo";
+import { slugify } from "src/util/helperFunctions";
 
 const CategoryPosts = ({ data, pageContext }) => {
   console.log("pageContext", pageContext);
