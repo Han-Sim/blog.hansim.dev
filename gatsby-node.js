@@ -25,7 +25,6 @@ exports.createPages = ({ actions, graphql }) => {
   const templates = {
     singlePost: path.resolve("src/templates/SinglePost.jsx"),
     tagPosts: path.resolve("src/templates/TagPosts.jsx"),
-    categoryPosts: path.resolve("src/templates/CategoryPosts.jsx"),
     allPosts: path.resolve("src/templates/AllPosts.jsx"),
   };
 
@@ -88,23 +87,12 @@ exports.createPages = ({ actions, graphql }) => {
 
     // #endregion
 
-    // #region Tag and Category
+    // #region Tag
 
-    const categoryWithTags = {
-      [CATEGORY_WEB_DEVELOPMENT]: [],
-      [CATEGORY_BASICS]: [],
-    };
-    let tags = [];
-
-    edges.forEach(edge => {
+    const tags = edges.map(edge => {
       if (_.get(edge, "node.frontmatter.tags")) {
         // Note that each edge has an array of tags.
         tags = [...tags, ...edge.node.frontmatter.tags];
-
-        categoryWithTags[edge.node.frontmatter.category] = [
-          ...categoryWithTags[edge.node.frontmatter.category],
-          ...edge.node.frontmatter.tags,
-        ];
       }
     });
 
@@ -117,27 +105,6 @@ exports.createPages = ({ actions, graphql }) => {
         context: {
           tag,
           totalCount: tagPostCount[tag],
-        },
-      });
-    });
-
-    const categories = edges.map(edge => {
-      if (_.get(edge, "node.frontmatter.category")) {
-        return edge.node.frontmatter.category;
-      }
-    });
-
-    const categoryPostsCount = countOccurrences(categories);
-
-    _.uniq(categories).forEach(category => {
-      createPage({
-        path: `/category/${slugify(category)}`,
-        component: templates.categoryPosts,
-        context: {
-          category,
-          relatedTags: _.uniq(categoryWithTags[category]),
-          tagPostCount,
-          totalCount: categoryPostsCount[category],
         },
       });
     });
