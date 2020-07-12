@@ -57,10 +57,6 @@ const MenuList = ({
     [setActiveMenu]
   );
 
-  // TODO:
-  // Don't create a new page, but just use global context.
-  // Create a tab to see each post on given list of post always.
-  // If user clicks a tag under CATEGORY_BASICS, then CATEGORY_BASICS will be the default tab.
   return (
     <Drawer open={open} anchor="right" variant="persistent">
       <div className={style.drawerContainer}>
@@ -71,22 +67,24 @@ const MenuList = ({
         </div>
         <Divider />
         <List disablePadding>
-          <ListItem
-            button
-            key={CATEGORY_WEB_DEVELOPMENT}
-            onClick={handleCategoryOnClick(CATEGORY_WEB_DEVELOPMENT)}
+          <div
+            onClick={() => handleCategoryOnClick(CATEGORY_WEB_DEVELOPMENT)}
+            role="button"
+            tabindex={0}
           >
-            <ListItemIcon
-              classes={{
-                root: style.menuIcon,
-              }}
-            >
-              <LanguageIcon />
-            </ListItemIcon>
-            <ListItemText>
-              {`${CATEGORY_WEB_DEVELOPMENT} (${postCountByCategory[CATEGORY_WEB_DEVELOPMENT]})`}
-            </ListItemText>
-          </ListItem>
+            <ListItem button key={CATEGORY_WEB_DEVELOPMENT}>
+              <ListItemIcon
+                classes={{
+                  root: style.menuIcon,
+                }}
+              >
+                <LanguageIcon />
+              </ListItemIcon>
+              <ListItemText>
+                {`${CATEGORY_WEB_DEVELOPMENT} (${postCountByCategory[CATEGORY_WEB_DEVELOPMENT]})`}
+              </ListItemText>
+            </ListItem>
+          </div>
           <Divider />
           <div className={style.categoryContainer}>
             <MenuTags
@@ -97,20 +95,22 @@ const MenuList = ({
         </List>
         <Divider />
         <List disablePadding>
-          <ListItem
-            button
-            key={CATEGORY_BASICS}
-            onClick={handleCategoryOnClick(CATEGORY_BASICS)}
+          <div
+            onClick={() => handleCategoryOnClick(CATEGORY_BASICS)}
+            role="button"
+            tabindex={0}
           >
-            <ListItemIcon
-              classes={{
-                root: style.menuIcon,
-              }}
-            >
-              <ComputerIcon />
-            </ListItemIcon>
-            <ListItemText>{CATEGORY_BASICS}</ListItemText>
-          </ListItem>
+            <ListItem button key={CATEGORY_BASICS}>
+              <ListItemIcon
+                classes={{
+                  root: style.menuIcon,
+                }}
+              >
+                <ComputerIcon />
+              </ListItemIcon>
+              <ListItemText>{CATEGORY_BASICS}</ListItemText>
+            </ListItem>
+          </div>
           <Divider />
           <div className={style.categoryContainer}>
             <MenuTags

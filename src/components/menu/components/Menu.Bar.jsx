@@ -13,9 +13,9 @@ import style from "./menu.bar.module.scss";
 const MenuBar = forwardRef((props, ref) => {
   const { activeMenu, setActiveMenu } = useContext(Context);
 
-  const HandleMenuOnClick = useCallback(
-    menu => {
-      setActiveMenu(menu);
+  const handleCategoryOnClick = useCallback(
+    category => {
+      setActiveMenu(category);
       navigate(`/all-posts`);
     },
     [setActiveMenu]
@@ -30,7 +30,7 @@ const MenuBar = forwardRef((props, ref) => {
               ? classnames(style.menu, style.menuActive, style.webDevelopment)
               : classnames(style.menu, style.menuInactive, style.webDevelopment)
           }
-          onClick={() => HandleMenuOnClick(CATEGORY_WEB_DEVELOPMENT)}
+          onClick={() => handleCategoryOnClick(CATEGORY_WEB_DEVELOPMENT)}
           role="button"
           tabindex={0}
         >
@@ -42,7 +42,7 @@ const MenuBar = forwardRef((props, ref) => {
               ? classnames(style.menu, style.menuActive, style.basics)
               : classnames(style.menu, style.menuInactive, style.basics)
           }
-          onClick={() => HandleMenuOnClick(CATEGORY_BASICS)}
+          onClick={() => handleCategoryOnClick(CATEGORY_BASICS)}
           role="button"
           tabindex={0}
         >
