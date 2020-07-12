@@ -14,7 +14,11 @@ import LanguageIcon from "@material-ui/icons/Language";
 import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
 import { Context } from "src/context";
 import { slugify } from "src/util/helperFunctions";
-import { CATEGORY_BASICS, CATEGORY_WEB_DEVELOPMENT } from "src/util/constants";
+import {
+  CATEGORY_BASICS,
+  CATEGORY_WEB_DEVELOPMENT,
+  KEY_ENTER,
+} from "src/util/constants";
 import MenuTags from "./Menu.Tags";
 import style from "./menu.list.module.scss";
 
@@ -45,10 +49,21 @@ const MenuList = ({
   postCountByTagDescOrder,
 }) => {
   const { setActiveMenu } = useContext(Context);
+
   const handleCategoryOnClick = useCallback(
     category => {
       setActiveMenu(category);
       navigate(`/all-posts`);
+    },
+    [setActiveMenu]
+  );
+
+  const handleCategoryOnKeyDown = useCallback(
+    (category, event) => {
+      if (event.keyCode === KEY_ENTER) {
+        setActiveMenu(category);
+        navigate(`/all-posts`);
+      }
     },
     [setActiveMenu]
   );
@@ -65,6 +80,9 @@ const MenuList = ({
         <List disablePadding>
           <div
             onClick={() => handleCategoryOnClick(CATEGORY_WEB_DEVELOPMENT)}
+            onKeyDown={event =>
+              handleCategoryOnKeyDown(CATEGORY_WEB_DEVELOPMENT, event)
+            }
             role="button"
             tabindex={0}
           >
@@ -93,6 +111,7 @@ const MenuList = ({
         <List disablePadding>
           <div
             onClick={() => handleCategoryOnClick(CATEGORY_BASICS)}
+            onKeyDown={event => handleCategoryOnKeyDown(CATEGORY_BASICS, event)}
             role="button"
             tabindex={0}
           >

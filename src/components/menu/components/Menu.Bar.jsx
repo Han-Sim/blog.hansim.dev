@@ -4,7 +4,11 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuOpenIcon from "@material-ui/icons/MenuOpen";
 import classnames from "classnames";
 import { Context } from "src/context";
-import { CATEGORY_WEB_DEVELOPMENT, CATEGORY_BASICS } from "src/util/constants";
+import {
+  CATEGORY_WEB_DEVELOPMENT,
+  CATEGORY_BASICS,
+  KEY_ENTER,
+} from "src/util/constants";
 import style from "./menu.bar.module.scss";
 
 const MenuBar = forwardRef((props, ref) => {
@@ -14,6 +18,16 @@ const MenuBar = forwardRef((props, ref) => {
     category => {
       setActiveMenu(category);
       navigate(`/all-posts`);
+    },
+    [setActiveMenu]
+  );
+
+  const handleCategoryOnKeyDown = useCallback(
+    (category, event) => {
+      if (event.keyCode === KEY_ENTER) {
+        setActiveMenu(category);
+        navigate(`/all-posts`);
+      }
     },
     [setActiveMenu]
   );
@@ -28,6 +42,9 @@ const MenuBar = forwardRef((props, ref) => {
               : classnames(style.menu, style.menuInactive, style.webDevelopment)
           }
           onClick={() => handleCategoryOnClick(CATEGORY_WEB_DEVELOPMENT)}
+          onKeyDown={event =>
+            handleCategoryOnKeyDown(CATEGORY_WEB_DEVELOPMENT, event)
+          }
           role="button"
           tabindex={0}
         >
@@ -40,6 +57,7 @@ const MenuBar = forwardRef((props, ref) => {
               : classnames(style.menu, style.menuInactive, style.basics)
           }
           onClick={() => handleCategoryOnClick(CATEGORY_BASICS)}
+          onKeyDown={event => handleCategoryOnKeyDown(CATEGORY_BASICS, event)}
           role="button"
           tabindex={0}
         >

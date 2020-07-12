@@ -25,10 +25,6 @@ const theme = createMuiTheme({
 const Layout = ({ children }) => {
   const [open, toggleOpen] = useState(false);
 
-  const handleElsewhereClick = useCallback(() => {
-    open && toggleOpen(false);
-  }, [toggleOpen, open]);
-
   const handleMenuBarClick = useCallback(
     value => event => {
       toggleOpen(!open);
@@ -47,12 +43,26 @@ const Layout = ({ children }) => {
 
   const menuRef = createRef();
 
+  const handleElsewhereClick = useCallback(() => {
+    open && toggleOpen(false);
+  }, [toggleOpen, open]);
+
+  const handleElsewhereOnKeyDown = useCallback(
+    event => {
+      if (open && event.keyCode === 13) {
+        toggleOpen(false);
+      }
+    },
+    [toggleOpen, open]
+  );
+
   return (
     <MuiThemeProvider theme={theme}>
       {open && (
         <div
           className={style.layer}
           onClick={handleElsewhereClick}
+          onKeyDown={handleElsewhereOnKeyDown}
           role="button"
           aria-label="Close the sidebar"
           tabindex={0}
