@@ -8,6 +8,7 @@
 
 const React = require("react");
 const { ContextProvider } = require("./src/context");
+require("./src/styles/index.scss");
 require("./src/styles/prism.css");
 
 exports.wrapRootElement = ({ element }) => {

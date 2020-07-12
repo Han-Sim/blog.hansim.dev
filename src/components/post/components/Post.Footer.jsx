@@ -1,7 +1,7 @@
 import React from "react";
 import EditIcon from "@material-ui/icons/Edit";
 import LabelIcon from "@material-ui/icons/Label";
-import Tag from "src/tag";
+import Tag from "src/components/tag";
 
 import style from "./post.footer.module.scss";
 

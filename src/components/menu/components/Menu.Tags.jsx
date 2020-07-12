@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import PropTypes from "prop-types";
-import Tag from "src/tag";
+import Tag from "src/components/tag";
 
 import style from "./menu.tags.module.scss";
 
