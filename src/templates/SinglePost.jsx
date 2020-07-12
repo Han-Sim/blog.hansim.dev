@@ -27,7 +27,6 @@ const SinglePost = ({ data, pageContext }) => {
         key={data.markdownRemark.id}
         slug={pageContext.slug}
         titlesOfAll={pageContext.titlesOfAll}
-        categoriesOfAll={pageContext.categoriesOfAll}
         isSinglePage={true}
         filename={getFilename(data.markdownRemark.fileAbsolutePath)}
       >

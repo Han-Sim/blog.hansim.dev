@@ -11,7 +11,6 @@ import style from "./post.module.scss";
 //this is a single post page
 const Post = ({
   author,
-  categoriesOfAll,
   category,
   children,
   date,
@@ -43,11 +42,7 @@ const Post = ({
           />
           <div>{children}</div>
           <PostFooter filename={filename} tags={tags} />
-          <Pagination
-            titlesOfAll={titlesOfAll}
-            categoriesOfAll={categoriesOfAll}
-            title={title}
-          />
+          <Pagination titlesOfAll={titlesOfAll} title={title} />
           <div className="mt-3">
             <DiscussionEmbed
               shortname={disqusShortname}

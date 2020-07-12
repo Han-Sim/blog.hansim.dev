@@ -1,10 +1,17 @@
 import React, { useMemo } from "react";
 import Grid from "@material-ui/core/Grid";
-import { slugify } from "src/util/helperFunctions";
+import { slugify, findIndex } from "src/util/helperFunctions";
 import style from "./pagination.module.scss";
 
-const Pagination = ({ index, titles }) => {
-  const hasPrevPost = useMemo(() => index < titles.length - 1, [index, titles]);
+const Pagination = ({ title, titlesOfAll }) => {
+  const index = useMemo(() => findIndex(titlesOfAll, title), [
+    title,
+    titlesOfAll,
+  ]);
+  const hasPrevPost = useMemo(() => index < titlesOfAll.length - 1, [
+    index,
+    titlesOfAll,
+  ]);
   const hasNextPost = useMemo(() => index > 0, [index]);
 
   return (
@@ -13,9 +20,9 @@ const Pagination = ({ index, titles }) => {
         <Grid item xs={6}>
           <div className={style.previousPostText}>Previous Post</div>
           {hasPrevPost ? (
-            <a href={`/${slugify(titles[index + 1])}`}>
+            <a href={`/${slugify(titlesOfAll[index + 1])}`}>
               <div className={style.previous}>
-                <div className={style.postTitle}>{titles[index + 1]}</div>
+                <div className={style.postTitle}>{titlesOfAll[index + 1]}</div>
               </div>
             </a>
           ) : (
@@ -28,9 +35,9 @@ const Pagination = ({ index, titles }) => {
         <Grid item xs={6}>
           <div className={style.nextPostText}>Next Post</div>
           {hasNextPost ? (
-            <a href={`/${slugify(titles[index - 1])}`}>
+            <a href={`/${slugify(titlesOfAll[index - 1])}`}>
               <div className={style.next}>
-                <div className={style.postTitle}>{titles[index - 1]}</div>
+                <div className={style.postTitle}>{titlesOfAll[index - 1]}</div>
               </div>
             </a>
           ) : (

@@ -60,19 +60,6 @@ exports.createPages = ({ actions, graphql }) => {
       }
     });
 
-    const categoriesOfAll = edges.map(edge => {
-      if (_.get(edge, "node.frontmatter.category")) {
-        return edge.node.frontmatter.category;
-      }
-    });
-
-    if (_.uniq(categoriesOfAll).length !== 2) {
-      console.error(
-        "There are unctrolled categories: ",
-        _.uniq(categoriesOfAll)
-      );
-    }
-
     edges.forEach(({ node }) => {
       createPage({
         path: node.fields.slug,
@@ -80,14 +67,13 @@ exports.createPages = ({ actions, graphql }) => {
         context: {
           slug: node.fields.slug, // Passing a slug for the template to use to get posts.
           titlesOfAll, // titles array
-          categoriesOfAll, // categories
         },
       });
     });
 
     // #endregion
 
-    // #region Tag
+    // #region Tag Posts.
 
     const tags = edges.map(edge => {
       if (_.get(edge, "node.frontmatter.tags")) {
@@ -111,7 +97,7 @@ exports.createPages = ({ actions, graphql }) => {
 
     // #endregion
 
-    // #region All Post
+    // #region All Posts
 
     createPage({
       path: `/all-posts`,
