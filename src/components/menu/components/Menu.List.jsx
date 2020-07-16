@@ -68,6 +68,13 @@ const MenuList = ({
     [setActiveMenu]
   );
 
+  const handleTagOnClick = useCallback(
+    category => {
+      setActiveMenu(category);
+    },
+    [setActiveMenu]
+  );
+
   return (
     <Drawer open={open} anchor="right" variant="persistent">
       <div className={style.drawerContainer}>
@@ -106,6 +113,7 @@ const MenuList = ({
               postCountByTagDescOrder={
                 postCountByTagAndCategory[[CATEGORY_WEB_DEVELOPMENT]]
               }
+              onClick={() => handleTagOnClick(CATEGORY_WEB_DEVELOPMENT)}
             />
           </div>
         </List>
@@ -135,6 +143,7 @@ const MenuList = ({
               postCountByTagDescOrder={
                 postCountByTagAndCategory[CATEGORY_BASICS]
               }
+              onClick={() => handleTagOnClick(CATEGORY_BASICS)}
             />
           </div>
         </List>

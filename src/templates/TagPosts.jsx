@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from "react";
+import React, { useMemo } from "react";
 import { graphql } from "gatsby";
 import Layout from "src/components/Layout";
 import PostList from "src/components/PostList";
@@ -8,6 +8,7 @@ const TagPosts = ({ data, pageContext }) => {
   const { tag } = pageContext;
   const { totalCount } = data.allMarkdownRemark;
 
+  // not total count, also take category in consideration when calculating.
   const pageTitleText = `${totalCount} post${
     totalCount === 1 ? "" : "s"
   } related to ${tag} in this category`;

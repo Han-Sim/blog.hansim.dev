@@ -1,11 +1,12 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useCallback } from "react";
 import PropTypes from "prop-types";
+import { navigate } from "gatsby";
 import Chip from "@material-ui/core/Chip";
 import { slugify } from "src/util/helperFunctions";
 
 import style from "./tag.module.scss";
 
-const Tag = ({ classes, count, tag, ...otherProps }) => {
+const Tag = ({ classes, count, tag, onClick, ...otherProps }) => {
   const label = useMemo(() => {
     if (count) {
       return `${tag} (${count})`;
@@ -13,8 +14,13 @@ const Tag = ({ classes, count, tag, ...otherProps }) => {
     return tag;
   }, [count, tag]);
 
+  const handleTagOnClick = useCallback(() => {
+    navigate(`/tag/${slugify(tag)}`);
+    onClick && onClick();
+  }, [onClick, tag]);
+
   return (
-    <a href={`/tag/${slugify(tag)}`} key={tag} className={style.tag}>
+    <span className={style.tag}>
       <Chip
         label={label}
         classes={{
@@ -22,9 +28,10 @@ const Tag = ({ classes, count, tag, ...otherProps }) => {
           ...classes,
         }}
         clickable
+        onClick={handleTagOnClick}
         {...otherProps}
       />
-    </a>
+    </span>
   );
 };
 
@@ -32,6 +39,7 @@ Tag.propTypes = {
   classes: PropTypes.shape({}),
   count: PropTypes.number,
   tag: PropTypes.string,
+  onClick: PropTypes.func,
 };
 
 export default Tag;
