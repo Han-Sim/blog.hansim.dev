@@ -16,7 +16,9 @@ const Footer = () => {
   return (
     <div className={style.container}>
       <div className={style.left}>
-        Copyright © 2020 — Han Sim. han.sim.dev@gmail.com
+        <div>Copyright © 2020 — Han Sim</div>
+        <div className={style.divider}></div>
+        <a href="mailto:han.sim.dev@gmail.com">han.sim.dev@gmail.com</a>
       </div>
       <div className={style.right}>
         <IconButton onClick={handleEmailOnClick}>
