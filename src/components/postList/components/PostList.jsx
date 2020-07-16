@@ -4,7 +4,7 @@ import PostCard from "src/components/PostCard";
 import { CATEGORY_WEB_DEVELOPMENT, CATEGORY_BASICS } from "src/util/constants";
 import style from "./postList.module.scss";
 
-const PostList = ({ data }) => {
+const PostList = ({ data, pageTitleText }) => {
   const { activeMenu } = useContext(Context);
 
   const listOfPostsToRender = useMemo(() => {
@@ -59,6 +59,9 @@ const PostList = ({ data }) => {
 
   return (
     <div className={style.root}>
+      {pageTitleText && (
+        <div className={style.pageTitleText}>{pageTitleText}</div>
+      )}
       <div>{listOfPostsToRender[activeMenu]}</div>
     </div>
   );

@@ -1,47 +1,26 @@
-import React from "react";
+import React, { useContext, useMemo } from "react";
 import { graphql } from "gatsby";
-
 import Layout from "src/components/Layout";
 import PostList from "src/components/PostList";
 import SEO from "src/components/seo";
 
 const TagPosts = ({ data, pageContext }) => {
-  // { data } <----- props.data [destructured]
-
   const { tag } = pageContext;
   const { totalCount } = data.allMarkdownRemark;
 
-  const pageTitle = `${totalCount} post${
+  const pageTitleText = `${totalCount} post${
     totalCount === 1 ? "" : "s"
-  } tagged with `;
+  } related to ${tag} in this category`;
 
-  const seoTitle = `Posts about ${tag}`;
+  const seoTitle = useMemo(() => `Posts about ${tag}`, [tag]);
   return (
     <Layout>
       <SEO title={seoTitle} />
-      <div className="post-header-area">
-        <div className="post-header">
-          <div className="post-title">
-            <h1>
-              {pageTitle}
-              <strong>{tag}</strong>
-            </h1>
-          </div>
-        </div>
-      </div>
-      <div className="container py-5 post-list">
-        {data.allMarkdownRemark.edges.map(({ node }) => (
-          <PostList
-            key={node.id}
-            title={node.frontmatter.title}
-            author={node.frontmatter.author}
-            slug={node.fields.slug}
-            date={node.frontmatter.date}
-            body={node.excerpt}
-            tags={node.frontmatter.tags}
-          />
-        ))}
-      </div>
+      <PostList
+        data={data}
+        pageTitleText={pageTitleText}
+        totalCount={totalCount}
+      />
     </Layout>
   );
 };
@@ -57,6 +36,7 @@ export const TagQuery = graphql`
         node {
           id
           frontmatter {
+            category
             title
             date(formatString: "MMM Do YYYY")
             author
