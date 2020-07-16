@@ -133,7 +133,9 @@ const MenuList = ({
               >
                 <ComputerIcon />
               </ListItemIcon>
-              <ListItemText>{CATEGORY_BASICS}</ListItemText>
+              <ListItemText>
+                {`${CATEGORY_BASICS} (${postCountByCategory[CATEGORY_BASICS]})`}
+              </ListItemText>
             </ListItem>
           </div>
           <Divider />
