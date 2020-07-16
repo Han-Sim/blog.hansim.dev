@@ -38,16 +38,18 @@ const Menu = forwardRef(({ toggleMenu, isMenuOpen }, ref) => {
 
   const categoryTags = useMemo(() => {
     const obj = {
-      tags: [],
       categories: [],
       categoryWithTags: {
+        [CATEGORY_WEB_DEVELOPMENT]: [],
+        [CATEGORY_BASICS]: [],
+      },
+      categoryWithTagsUniq: {
         [CATEGORY_WEB_DEVELOPMENT]: [],
         [CATEGORY_BASICS]: [],
       },
     };
 
     edges.forEach(edge => {
-      obj.tags = [...obj.tags, ...edge.node.frontmatter.tags];
       obj.categories.push(edge.node.frontmatter.category);
       obj.categoryWithTags[edge.node.frontmatter.category] = [
         ...obj.categoryWithTags[edge.node.frontmatter.category],
@@ -56,21 +58,32 @@ const Menu = forwardRef(({ toggleMenu, isMenuOpen }, ref) => {
     });
 
     // uniq for categoryWithTags
-    obj.categoryWithTags[CATEGORY_WEB_DEVELOPMENT] = uniq(
+    obj.categoryWithTagsUniq[CATEGORY_WEB_DEVELOPMENT] = uniq(
       obj.categoryWithTags[CATEGORY_WEB_DEVELOPMENT]
     );
-    obj.categoryWithTags[CATEGORY_BASICS] = uniq(
+    obj.categoryWithTagsUniq[CATEGORY_BASICS] = uniq(
       obj.categoryWithTags[CATEGORY_BASICS]
     );
 
     return obj;
   }, [edges]);
 
-  // Post count. i.e. { JavaScript: 5, Java: 12, ...}
-  const postCountByTagDescOrder = useMemo(() => {
-    const obj = countOccurrences(categoryTags.tags);
-    return sortObjectByValueDescOrder(obj);
-  }, [categoryTags.tags]);
+  // Post count by tag and category.
+  // Sort it by desc order.
+  const postCountByTagAndCategory = useMemo(() => {
+    const postCountByTagAndCategory = {
+      [CATEGORY_WEB_DEVELOPMENT]: sortObjectByValueDescOrder(
+        countOccurrences(
+          categoryTags.categoryWithTags[CATEGORY_WEB_DEVELOPMENT]
+        )
+      ),
+      [CATEGORY_BASICS]: sortObjectByValueDescOrder(
+        countOccurrences(categoryTags.categoryWithTags[CATEGORY_BASICS])
+      ),
+    };
+
+    return postCountByTagAndCategory;
+  }, [categoryTags.categoryWithTags]);
 
   // Category count.
   const postCountByCategory = useMemo(
@@ -90,7 +103,7 @@ const Menu = forwardRef(({ toggleMenu, isMenuOpen }, ref) => {
       <MenuList
         open={isMenuOpen}
         postCountByCategory={postCountByCategory}
-        postCountByTagDescOrder={postCountByTagDescOrder}
+        postCountByTagAndCategory={postCountByTagAndCategory}
         recentTitles={recentTitles}
         toggleMenu={toggleMenu}
         categoryWithTags={categoryTags.categoryWithTags}

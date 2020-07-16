@@ -46,7 +46,7 @@ const MenuList = ({
   toggleMenu,
   recentTitles,
   postCountByCategory,
-  postCountByTagDescOrder,
+  postCountByTagAndCategory,
 }) => {
   const { setActiveMenu } = useContext(Context);
 
@@ -103,7 +103,9 @@ const MenuList = ({
           <div className={style.categoryContainer}>
             <MenuTags
               tags={categoryWithTags[CATEGORY_WEB_DEVELOPMENT]}
-              postCountByTagDescOrder={postCountByTagDescOrder}
+              postCountByTagDescOrder={
+                postCountByTagAndCategory[[CATEGORY_WEB_DEVELOPMENT]]
+              }
             />
           </div>
         </List>
@@ -130,7 +132,9 @@ const MenuList = ({
           <div className={style.categoryContainer}>
             <MenuTags
               tags={categoryWithTags[CATEGORY_BASICS]}
-              postCountByTagDescOrder={postCountByTagDescOrder}
+              postCountByTagDescOrder={
+                postCountByTagAndCategory[CATEGORY_BASICS]
+              }
             />
           </div>
         </List>
@@ -171,7 +175,10 @@ MenuList.propTypes = {
   }),
   open: PropTypes.bool,
   postCountByCategory: PropTypes.shape({}),
-  postCountByTagDescOrder: PropTypes.shape({}),
+  postCountByTagAndCategory: PropTypes.shape({
+    [CATEGORY_WEB_DEVELOPMENT]: PropTypes.shape({}),
+    [CATEGORY_BASICS]: PropTypes.shape({}),
+  }),
   recentTitles: PropTypes.arrayOf(PropTypes.string),
   toggleMenu: PropTypes.func,
 };

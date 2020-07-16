@@ -27,7 +27,7 @@ const Post = ({ filename, tags }) => {
           <LabelIcon />
         </div>
         {tags.map(tag => (
-          <Tag tag={tag} />
+          <Tag tag={tag} key={tag} />
         ))}
       </div>
     </div>
