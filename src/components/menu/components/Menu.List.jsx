@@ -42,13 +42,12 @@ CustomListItem.propTypes = {
 
 const MenuList = ({
   categoryWithTags,
-  open,
   toggleMenu,
   recentTitles,
   postCountByCategory,
   postCountByTagAndCategory,
 }) => {
-  const { setActiveMenu } = useContext(Context);
+  const { setActiveMenu, isMenuOpen } = useContext(Context);
 
   const handleCategoryOnClick = useCallback(
     category => {
@@ -76,7 +75,7 @@ const MenuList = ({
   );
 
   return (
-    <Drawer open={open} anchor="right" variant="persistent">
+    <Drawer open={isMenuOpen} anchor="right" variant="persistent">
       <div className={style.drawerContainer}>
         <div className={style.drawerHeader}>
           <IconButton onClick={toggleMenu(false)}>
@@ -184,7 +183,6 @@ MenuList.propTypes = {
     [CATEGORY_WEB_DEVELOPMENT]: PropTypes.array,
     [CATEGORY_BASICS]: PropTypes.array,
   }),
-  open: PropTypes.bool,
   postCountByCategory: PropTypes.shape({}),
   postCountByTagAndCategory: PropTypes.shape({
     [CATEGORY_WEB_DEVELOPMENT]: PropTypes.shape({}),

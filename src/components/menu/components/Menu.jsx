@@ -1,7 +1,6 @@
 import React, { forwardRef, useMemo } from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import uniq from "lodash/uniq";
-
 import {
   countOccurrences,
   sortObjectByValueDescOrder,
@@ -12,7 +11,7 @@ import MenuList from "./Menu.List";
 
 const NUM_OF_RECENT_POSTS = 6;
 
-const Menu = forwardRef(({ toggleMenu, isMenuOpen }, ref) => {
+const Menu = forwardRef(({ toggleMenu }, ref) => {
   const data = useStaticQuery(graphql`
     query {
       allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
@@ -101,7 +100,6 @@ const Menu = forwardRef(({ toggleMenu, isMenuOpen }, ref) => {
     <>
       <MenuBar onClick={toggleMenu} ref={ref} />
       <MenuList
-        open={isMenuOpen}
         postCountByCategory={postCountByCategory}
         postCountByTagAndCategory={postCountByTagAndCategory}
         recentTitles={recentTitles}

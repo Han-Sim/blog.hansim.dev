@@ -1,7 +1,8 @@
-import React, { createRef, useCallback, useState, useEffect } from "react";
+import React, { createRef, useCallback, useContext, useEffect } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import { Context } from "src/context";
 import Footer from "./footer";
 import Menu from "./menu";
 import style from "./layout.module.scss";
@@ -24,44 +25,44 @@ const theme = createMuiTheme({
  * The very fundamental layout component for the application.
  */
 const Layout = ({ children }) => {
-  const [open, toggleOpen] = useState(false);
+  const { isMenuOpen, setIsMenuOpen } = useContext(Context);
 
   const handleMenuBarClick = useCallback(
     value => event => {
-      toggleOpen(!open);
+      setIsMenuOpen(!isMenuOpen);
     },
-    [toggleOpen, open]
+    [isMenuOpen, setIsMenuOpen]
   );
 
   useEffect(() => {
     // Enable/disable the body level scroll-bar.
-    if (open) {
+    if (isMenuOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "visible";
     }
-  }, [open]);
+  }, [isMenuOpen]);
 
   const menuRef = createRef();
 
   const handleElsewhereClick = useCallback(() => {
-    open && toggleOpen(false);
-  }, [toggleOpen, open]);
+    isMenuOpen && setIsMenuOpen(false);
+  }, [isMenuOpen, setIsMenuOpen]);
 
   const handleElsewhereOnKeyDown = useCallback(
     event => {
-      if (open && event.keyCode === 13) {
-        toggleOpen(false);
+      if (isMenuOpen && event.keyCode === 13) {
+        isMenuOpen(false);
       }
     },
-    [toggleOpen, open]
+    [isMenuOpen, isMenuOpen]
   );
 
   return (
     <MuiThemeProvider theme={theme}>
       <div
         className={
-          open ? style.layer : classnames(style.layer, style.layerHidden)
+          isMenuOpen ? style.layer : classnames(style.layer, style.layerHidden)
         }
         onClick={handleElsewhereClick}
         onKeyDown={handleElsewhereOnKeyDown}
@@ -69,7 +70,7 @@ const Layout = ({ children }) => {
         aria-label="Close the sidebar"
         tabindex={0}
       />
-      <Menu toggleMenu={handleMenuBarClick} isMenuOpen={open} ref={menuRef} />
+      <Menu toggleMenu={handleMenuBarClick} ref={menuRef} />
       <div className={style.bodyContainer}>
         {children}
         <Footer />
