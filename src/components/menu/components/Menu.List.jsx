@@ -45,7 +45,7 @@ const MenuList = ({
         navigate(`/all-posts`);
       }
     },
-    [setActiveMenu]
+    [setActiveMenu, setIsMenuOpen]
   );
 
   const handleTagOnClick = useCallback(
@@ -53,7 +53,7 @@ const MenuList = ({
       setActiveMenu(category);
       setIsMenuOpen(false);
     },
-    [setActiveMenu]
+    [setActiveMenu, setIsMenuOpen]
   );
 
   return (

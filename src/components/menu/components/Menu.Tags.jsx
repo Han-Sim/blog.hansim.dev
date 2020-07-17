@@ -21,7 +21,7 @@ const MenuTags = ({ tags, postCountByTagDescOrder, onClick }) => {
       }
     }
     return arr;
-  }, [tags, postCountByTagDescOrder]);
+  }, [tags, postCountByTagDescOrder, onClick]);
 
   return <div className={style.container}>{tagsToRender}</div>;
 };

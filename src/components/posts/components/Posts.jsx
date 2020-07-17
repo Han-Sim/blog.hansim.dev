@@ -2,9 +2,9 @@ import React, { useContext, useMemo } from "react";
 import { Context } from "src/context";
 import PostCard from "src/components/PostCard";
 import { CATEGORY_WEB_DEVELOPMENT, CATEGORY_BASICS } from "src/util/constants";
-import style from "./postList.module.scss";
+import style from "./posts.module.scss";
 
-const PostList = ({ data, pageTitleText }) => {
+const Posts = ({ data, pageTitleText }) => {
   const { activeMenu } = useContext(Context);
 
   const listOfPostsToRender = useMemo(() => {
@@ -67,4 +67,4 @@ const PostList = ({ data, pageTitleText }) => {
   );
 };
 
-export default PostList;
+export default Posts;

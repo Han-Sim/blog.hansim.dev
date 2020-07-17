@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import { graphql } from "gatsby";
 import Layout from "src/components/Layout";
-import PostList from "src/components/PostList";
+import Posts from "src/components/posts";
 import SEO from "src/components/seo";
 
 const TagPosts = ({ data, pageContext }) => {
@@ -17,7 +17,7 @@ const TagPosts = ({ data, pageContext }) => {
   return (
     <Layout>
       <SEO title={seoTitle} />
-      <PostList
+      <Posts
         data={data}
         pageTitleText={pageTitleText}
         totalCount={totalCount}

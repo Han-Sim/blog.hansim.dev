@@ -9,8 +9,6 @@ import { CATEGORY_WEB_DEVELOPMENT, CATEGORY_BASICS } from "src/util/constants";
 import MenuBar from "./Menu.Bar";
 import MenuList from "./Menu.List";
 
-const NUM_OF_RECENT_POSTS = 6;
-
 const Menu = forwardRef(({ toggleMenu }, ref) => {
   const data = useStaticQuery(graphql`
     query {

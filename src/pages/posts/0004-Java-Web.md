@@ -8,7 +8,7 @@ tags:
   - Java
   - JSP
   - JDBC
-  - Apache-Tomcat
+  - Apache Tomcat
 ---
 
 # Java: Basic Forum Web Application

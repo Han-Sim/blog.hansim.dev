@@ -55,7 +55,7 @@ const Layout = ({ children }) => {
         isMenuOpen(false);
       }
     },
-    [isMenuOpen, isMenuOpen]
+    [isMenuOpen]
   );
 
   return (

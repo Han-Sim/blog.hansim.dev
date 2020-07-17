@@ -1,7 +1,8 @@
 import React, { useMemo } from "react";
+import { graphql } from "gatsby";
 import SEO from "src/components/seo";
 import Layout from "src/components/Layout";
-import PostList from "src/components/postList";
+import Posts from "src/components/posts";
 
 const AllPosts = ({ data }) => {
   const seoTitle = useMemo(() => "All Posts", []);
@@ -9,7 +10,7 @@ const AllPosts = ({ data }) => {
   return (
     <Layout>
       <SEO title={seoTitle} />
-      <PostList data={data} />
+      <Posts data={data} />
     </Layout>
   );
 };

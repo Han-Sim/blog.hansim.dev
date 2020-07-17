@@ -4,7 +4,7 @@ date: "2019-07-25 23:01:00"
 author: "Han Sim"
 category: "Basics"
 tags:
-  - Bubble-Sort
+  - Bubble Sort
   - Algorithm
   - JavaScript
 ---
