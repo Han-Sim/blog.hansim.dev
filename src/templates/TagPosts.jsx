@@ -10,7 +10,7 @@ const TagPosts = ({ data, pageContext }) => {
 
   // not total count, also take category in consideration when calculating.
   const pageTitleText = `${totalCount} post${
-    totalCount === 1 ? "" : "s"
+    totalCount === 1 ? " is" : "s are"
   } related to ${tag} in this category`;
 
   const seoTitle = useMemo(() => `Posts about ${tag}`, [tag]);
