@@ -90,19 +90,12 @@ const Menu = forwardRef(({ toggleMenu }, ref) => {
     [categoryTags.categories]
   );
 
-  // Get recent titles.'
-  const recentTitles = useMemo(() => {
-    const titles = edges.map(edge => edge.node.frontmatter.title);
-    return titles.slice(0, NUM_OF_RECENT_POSTS);
-  }, [edges]);
-
   return (
     <>
       <MenuBar onClick={toggleMenu} ref={ref} />
       <MenuList
         postCountByCategory={postCountByCategory}
         postCountByTagAndCategory={postCountByTagAndCategory}
-        recentTitles={recentTitles}
         toggleMenu={toggleMenu}
         categoryWithTags={categoryTags.categoryWithTags}
       />

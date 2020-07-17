@@ -11,9 +11,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ComputerIcon from "@material-ui/icons/Computer";
 import LanguageIcon from "@material-ui/icons/Language";
-import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
 import { Context } from "src/context";
-import { slugify } from "src/util/helperFunctions";
 import {
   CATEGORY_BASICS,
   CATEGORY_WEB_DEVELOPMENT,
@@ -22,45 +20,28 @@ import {
 import MenuTags from "./Menu.Tags";
 import style from "./menu.list.module.scss";
 
-const CustomListItem = ({ index, title, link }) => (
-  <a href={link} className={style.link}>
-    <ListItem
-      button
-      key={`ListItem-${index}-${title}`}
-      classes={{
-        root: style.listItem,
-      }}
-    >
-      <ListItemText>{title}</ListItemText>
-    </ListItem>
-  </a>
-);
-
-CustomListItem.propTypes = {
-  title: PropTypes.string,
-};
-
 const MenuList = ({
   categoryWithTags,
   toggleMenu,
-  recentTitles,
   postCountByCategory,
   postCountByTagAndCategory,
 }) => {
-  const { setActiveMenu, isMenuOpen } = useContext(Context);
+  const { setActiveMenu, isMenuOpen, setIsMenuOpen } = useContext(Context);
 
   const handleCategoryOnClick = useCallback(
     category => {
       setActiveMenu(category);
+      setIsMenuOpen(false);
       navigate(`/all-posts`);
     },
-    [setActiveMenu]
+    [setActiveMenu, setIsMenuOpen]
   );
 
   const handleCategoryOnKeyDown = useCallback(
     (category, event) => {
       if (event.keyCode === KEY_ENTER) {
         setActiveMenu(category);
+        setIsMenuOpen(false);
         navigate(`/all-posts`);
       }
     },
@@ -70,6 +51,7 @@ const MenuList = ({
   const handleTagOnClick = useCallback(
     category => {
       setActiveMenu(category);
+      setIsMenuOpen(false);
     },
     [setActiveMenu]
   );
@@ -148,31 +130,6 @@ const MenuList = ({
             />
           </div>
         </List>
-        <Divider />
-        <List disablePadding>
-          <a href="/all-posts" className={style.link}>
-            <ListItem button key="Recent Posts">
-              <ListItemIcon
-                classes={{
-                  root: style.menuIcon,
-                }}
-              >
-                <CalendarTodayIcon />
-              </ListItemIcon>
-              <ListItemText>Recent Posts</ListItemText>
-            </ListItem>
-          </a>
-          <Divider />
-          <div className={style.categoryContainer}>
-            {recentTitles.map((title, index) => (
-              <CustomListItem
-                title={title}
-                link={`/${slugify(title)}`}
-                key={index}
-              />
-            ))}
-          </div>
-        </List>
       </div>
     </Drawer>
   );
@@ -188,7 +145,6 @@ MenuList.propTypes = {
     [CATEGORY_WEB_DEVELOPMENT]: PropTypes.shape({}),
     [CATEGORY_BASICS]: PropTypes.shape({}),
   }),
-  recentTitles: PropTypes.arrayOf(PropTypes.string),
   toggleMenu: PropTypes.func,
 };
 
