@@ -4,7 +4,7 @@ import PostCard from "src/components/PostCard";
 import { CATEGORY_WEB_DEVELOPMENT, CATEGORY_BASICS } from "src/util/constants";
 import style from "./posts.module.scss";
 
-const Posts = ({ data, pageTitleText }) => {
+const Posts = ({ data, tag }) => {
   const { activeMenu } = useContext(Context);
 
   const listOfPostsToRender = useMemo(() => {
@@ -57,11 +57,17 @@ const Posts = ({ data, pageTitleText }) => {
     };
   }, [data.allMarkdownRemark.edges]);
 
+  const tagPostsTitleText = useMemo(() => {
+    const totalCount = listOfPostsToRender[activeMenu].length;
+
+    return `${totalCount} post${
+      totalCount === 1 ? " is" : "s are"
+    } related to ${tag} in this category`;
+  }, [activeMenu, listOfPostsToRender, tag]);
+
   return (
     <div className={style.root}>
-      {pageTitleText && (
-        <div className={style.pageTitleText}>{pageTitleText}</div>
-      )}
+      {tag && <div className={style.pageTitleText}>{tagPostsTitleText}</div>}
       <div>{listOfPostsToRender[activeMenu]}</div>
     </div>
   );

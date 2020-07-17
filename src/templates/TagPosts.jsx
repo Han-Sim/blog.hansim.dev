@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useContext, useMemo } from "react";
 import { graphql } from "gatsby";
 import Layout from "src/components/Layout";
 import Posts from "src/components/posts";
@@ -8,20 +8,11 @@ const TagPosts = ({ data, pageContext }) => {
   const { tag } = pageContext;
   const { totalCount } = data.allMarkdownRemark;
 
-  // not total count, also take category in consideration when calculating.
-  const pageTitleText = `${totalCount} post${
-    totalCount === 1 ? " is" : "s are"
-  } related to ${tag} in this category`;
-
   const seoTitle = useMemo(() => `Posts about ${tag}`, [tag]);
   return (
     <Layout>
       <SEO title={seoTitle} />
-      <Posts
-        data={data}
-        pageTitleText={pageTitleText}
-        totalCount={totalCount}
-      />
+      <Posts data={data} totalCount={totalCount} tag={tag} />
     </Layout>
   );
 };
