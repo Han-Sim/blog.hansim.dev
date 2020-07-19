@@ -5,7 +5,7 @@ author: "Han Sim"
 category: "Basics"
 tags:
   - Java
-  - Data-Structure
+  - Data Structure
   - LinkedList
   - Array
 ---

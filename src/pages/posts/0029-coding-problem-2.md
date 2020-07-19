@@ -8,7 +8,7 @@ tags:
   - JavaScript
   - Recursion
   - JavaScript Technique
-  - Data-Structure
+  - Data Structure
 ---
 
 # Problem

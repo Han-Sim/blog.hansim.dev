@@ -7,7 +7,7 @@ tags:
   - Problem Solving
   - JavaScript
   - Sets
-  - Data-Structure
+  - Data Structure
 ---
 
 # Problem

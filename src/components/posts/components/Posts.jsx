@@ -4,7 +4,7 @@ import PostCard from "src/components/PostCard";
 import { CATEGORY_WEB_DEVELOPMENT, CATEGORY_BASICS } from "src/util/constants";
 import style from "./posts.module.scss";
 
-const Posts = ({ data, tag }) => {
+const Posts = ({ data, tag, setTotalCount }) => {
   const { activeMenu } = useContext(Context);
 
   const listOfPostsToRender = useMemo(() => {
@@ -23,7 +23,7 @@ const Posts = ({ data, tag }) => {
       }
     });
 
-    return {
+    const listOfPosts = {
       [CATEGORY_WEB_DEVELOPMENT]: obj[CATEGORY_WEB_DEVELOPMENT].map(
         (node, index) => {
           return (
@@ -55,15 +55,20 @@ const Posts = ({ data, tag }) => {
         );
       }),
     };
+
+    return listOfPosts;
   }, [data.allMarkdownRemark.edges]);
 
   const tagPostsTitleText = useMemo(() => {
-    const totalCount = listOfPostsToRender[activeMenu].length;
+    if (tag && setTotalCount) {
+      const totalCount = listOfPostsToRender[activeMenu].length;
+      setTotalCount(totalCount);
 
-    return `${totalCount} post${
-      totalCount === 1 ? " is" : "s are"
-    } related to ${tag} in this category`;
-  }, [activeMenu, listOfPostsToRender, tag]);
+      return `${totalCount} post${
+        totalCount === 1 ? " is" : "s are"
+      } related to ${tag} in this category`;
+    }
+  }, [activeMenu, listOfPostsToRender, tag, setTotalCount]);
 
   return (
     <div className={style.root}>
