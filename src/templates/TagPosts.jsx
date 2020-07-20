@@ -4,28 +4,91 @@ import { graphql } from "gatsby";
 import { CATEGORY_WEB_DEVELOPMENT, CATEGORY_BASICS } from "src/util/constants";
 import Layout from "src/components/Layout";
 import Posts from "src/components/posts";
+import PostCard from "src/components/PostCard";
 import SEO from "src/components/seo";
 
-const TagPosts = ({ data, pageContext }) => {
+const TagPosts = ({ data, pageContext, ...otherProps }) => {
   const { activeMenu, setActiveMenu } = useContext(Context);
   const { tag } = pageContext;
   const [totalCount, setTotalCount] = useState();
 
   const seoTitle = useMemo(() => `Posts about ${tag}`, [tag]);
 
+  console.log(otherProps);
+
+  const listOfPostsToRender = useMemo(() => {
+    const obj = {
+      [CATEGORY_WEB_DEVELOPMENT]: [],
+      [CATEGORY_BASICS]: [],
+    };
+
+    data.allMarkdownRemark.edges.forEach(({ node }) => {
+      if (node.frontmatter.category === CATEGORY_WEB_DEVELOPMENT) {
+        obj[CATEGORY_WEB_DEVELOPMENT].push(node);
+      }
+
+      if (node.frontmatter.category === CATEGORY_BASICS) {
+        obj[CATEGORY_BASICS].push(node);
+      }
+    });
+
+    const listOfPosts = {
+      [CATEGORY_WEB_DEVELOPMENT]: obj[CATEGORY_WEB_DEVELOPMENT].map(
+        (node, index) => {
+          return (
+            <PostCard
+              key={node.id}
+              title={node.frontmatter.title}
+              author={node.frontmatter.author}
+              slug={node.fields.slug}
+              date={node.frontmatter.date}
+              body={node.excerpt}
+              tags={node.frontmatter.tags}
+              index={index}
+            />
+          );
+        }
+      ),
+      [CATEGORY_BASICS]: obj[CATEGORY_BASICS].map((node, index) => {
+        return (
+          <PostCard
+            key={node.id}
+            title={node.frontmatter.title}
+            author={node.frontmatter.author}
+            slug={node.fields.slug}
+            date={node.frontmatter.date}
+            body={node.excerpt}
+            tags={node.frontmatter.tags}
+            index={index}
+          />
+        );
+      }),
+    };
+
+    const totalCount = listOfPosts[activeMenu].length;
+    setTotalCount(totalCount);
+
+    return listOfPosts;
+  }, [data.allMarkdownRemark.edges, setTotalCount, activeMenu]);
+
   // Check if there are some posts found here in this tap (web development).
   // If there is none, set it to the another category.
   // This entry happens when user enters this tag posts page directly, since web development is default.
+  // So run this only when its construction.
   useEffect(() => {
     if (totalCount === 0 && activeMenu === CATEGORY_WEB_DEVELOPMENT) {
       setActiveMenu(CATEGORY_BASICS);
     }
-  }, [totalCount, activeMenu, setActiveMenu]);
+  }, []); // pass an empty array as its dependency in order to make this running only on its construction.
 
   return (
     <Layout>
       <SEO title={seoTitle} />
-      <Posts data={data} tag={tag} setTotalCount={setTotalCount} />
+      <Posts
+        tag={tag}
+        setTotalCount={setTotalCount}
+        listOfPostsToRender={listOfPostsToRender}
+      />
     </Layout>
   );
 };
