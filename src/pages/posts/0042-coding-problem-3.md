@@ -14,7 +14,7 @@ tags:
 
 There are two num arrays. Find if there can be a pair of numbers which adds up to the given number exactly.
 
-## Solution: JavaScrip
+## Solution: JavaScript
 
 To reduce time complexity, we can use `Set` data structure which has `Set.prototype.has()` method.
 
