@@ -958,7 +958,25 @@
   margin-left: -1em;
   padding-right: 1em;
   padding-left: 0.75em;
-  border-left: 0.25em solid $color-blue;
+  border-left: 0.25em solid $color-soybean;
+}
+
+.markdown-body {
+  line-height: 1.7;
+}
+
+li > p {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 35px;
 }
 
 // #endregion

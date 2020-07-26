@@ -32,7 +32,7 @@ const Post = ({
 
   return (
     <div className={style.root}>
-      <Container maxWidth="lg">
+      <Container maxWidth="md">
         <div className={style.container}>
           <PostHeader
             author={author}
