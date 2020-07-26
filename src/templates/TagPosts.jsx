@@ -8,7 +8,7 @@ import PostCard from "src/components/PostCard";
 import SEO from "src/components/seo";
 import style from "./tagPosts.module.scss";
 
-const TagPosts = ({ data, pageContext, ...otherProps }) => {
+const TagPosts = ({ data, pageContext }) => {
   const { activeMenu, setActiveMenu } = useContext(Context);
   const { tag } = pageContext;
   const [totalCount, setTotalCount] = useState();
@@ -84,8 +84,8 @@ const TagPosts = ({ data, pageContext, ...otherProps }) => {
   const postsTitleToRender = useMemo(() => {
     return (
       <div className={style.postTitleContainer}>
-        {totalCount} post{totalCount === 1 ? " is" : "s are"} related to
-        {tag} in this category
+        <div className={style.tag}>{tag}</div>found {totalCount} post
+        {totalCount === 1 ? "" : "s"} in this category.
       </div>
     );
   }, [tag, totalCount]);
