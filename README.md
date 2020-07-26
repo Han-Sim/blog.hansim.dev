@@ -1,24 +1,21 @@
 # https://blog.hansim.dev
 
-This is my personal blog to post some useful codes snippets, programming concepts, etc.
-
-To see the full note of this project, visit here: https://blog.hansim.dev/markdown-blog-with-gatsbygraphql
+Personal blog to post about some useful codes snippets, programming concepts, etc.
 
 ## Frameworks/libraries
 
-- `GatsbyJS`
-- `React`
+- `Gatsby`
 - `GraphQL`
-- `Bootstrap/ReactStrap`
+- `React`
+- `Material-UI`
 
 ## Key Features
 
 This is a fully featured blog which supports these features.
 
 - Markdown Language
-- Recent Post
 - Tags
-- Comments using Social Media (DisQus Plugin)
+- Categories
+- Comments using Social Media w/ DisQus
 - SPA (Single Page Application)
-- user-friendly paths('Post Slug') to each post
-
+- User-friendly paths to each post
