@@ -9,7 +9,7 @@ import SEO from "src/components/seo";
 import style from "./tagPosts.module.scss";
 
 const TagPosts = ({ data, pageContext }) => {
-  const { activeMenu, setActiveMenu } = useContext(Context) || {};
+  const { activeMenu, setActiveMenu } = useContext(Context);
   const { tag } = pageContext;
   const [totalCount, setTotalCount] = useState();
 
