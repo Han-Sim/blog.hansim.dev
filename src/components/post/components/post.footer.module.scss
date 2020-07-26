@@ -1,0 +1,29 @@
+@import "src/styles/index.scss";
+
+.postFooterContainer {
+  margin-top: 50px;
+
+  .editThisPage {
+    display: flex;
+    align-items: flex-end;
+
+    .editThisPageText {
+      @include link-style($color-black);
+
+      font-family: $sans-serif-font;
+      margin-left: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+  }
+
+  .tags {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+
+    .labelIcon {
+      margin-right: 10px;
+    }
+  }
+}

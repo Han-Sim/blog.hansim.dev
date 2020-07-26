@@ -1,0 +1,62 @@
+@import "src/styles/index.scss";
+
+.container {
+  margin-bottom: 50px;
+  padding: 5px 0 5px 50px;
+  color: $color-dark-gray;
+  border-left: 8px solid $color-soybean;
+
+  .header {
+    display: flex;
+    align-items: center;
+
+    .title {
+      font-size: 50px;
+      font-weight: 900;
+      padding-right: 13px;
+      margin-right: 13px;
+
+      a {
+        @include link-style($color-black);
+      }
+    }
+  }
+
+  .body {
+    margin-top: 30px;
+
+    .bodyHtml {
+      font-size: 14px !important;
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
+        font-size: 14px !important;
+      }
+
+      blockquote {
+        margin: 0;
+      }
+    }
+  }
+
+  .footer {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+
+    .dateAndAuthor {
+      margin-bottom: 5px;
+      margin-left: 20px;
+      padding-left: 20px;
+      font-size: 12px;
+      border-left: 1px solid $color-dark-gray;
+    }
+  }
+}
+
+.otherBorderColor {
+  border-left: 8px solid $color-eclipse;
+}

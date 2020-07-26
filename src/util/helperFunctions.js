@@ -7,13 +7,35 @@
  * This function counts the occurrences of each element and return its result as object.
  * i.e. { JavaScript: 5, Java: 12, ...}
  */
-const countEach = arr => {
+const countOccurrences = arr => {
   let result = {};
   arr.forEach(elem => {
     result[elem] = (result[elem] || 0) + 1;
+    // This is to prevent 'NaN'
+    // if tagPostCount[tag] === undefined, it will be 0 + 1
   });
 
   return result;
+};
+
+/**
+ * Sorts object property by values in descending order.
+ * i.e. { JavaScript: 10, Java: 7, ...}
+ */
+const sortObjectByValueDescOrder = obj => {
+  const sortable = [];
+  for (let property in obj) {
+    sortable.push([property, obj[property]]);
+  }
+  sortable.sort((a, b) => {
+    return b[1] - a[1];
+  });
+
+  const objSorted = {};
+  sortable.forEach(item => {
+    objSorted[item[0]] = item[1];
+  });
+  return objSorted;
 };
 
 /**
@@ -59,8 +81,9 @@ const slugify = function(text) {
 // Node.js syntax export (not ES6)
 // this module is to be used in gatsby-node.js that is run by Node as well.
 module.exports = {
-  countEach,
+  countOccurrences,
   findIndex,
   getFilename,
   slugify,
+  sortObjectByValueDescOrder,
 };

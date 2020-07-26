@@ -2,8 +2,7 @@
 title: "Web app built with Knockout.js (MVVM design pattern)"
 date: "2019-06-28 04:11:00"
 author: "Han Sim"
-menu: "Web Development"
-category: "JavaScript"
+category: "Web Development"
 tags:
   - Portfolio
   - JavaScript

@@ -2,10 +2,9 @@
 title: "Bubble Sort"
 date: "2019-07-25 23:01:00"
 author: "Han Sim"
-menu: "Basics"
-category: "Programming Basics"
+category: "Basics"
 tags:
-  - Bubble-Sort
+  - Bubble Sort
   - Algorithm
   - JavaScript
 ---

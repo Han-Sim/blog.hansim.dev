@@ -2,8 +2,7 @@
 title: "Refs and the DOM in React"
 date: "2019-07-26 15:39:00"
 author: "Han Sim"
-menu: "Web Development"
-category: "React"
+category: "Web Development"
 tags:
   - JavaScript
   - React
@@ -102,7 +101,7 @@ You can use callback instead; the first argument represent the element you want 
 
 # `Uncontrolled Component` with `Ref`s
 
-https://reactjs.org/docs/uncontrolled-components.html
+https://reactjs.org/docs/unControlled Components.html
 
 To write an uncontrolled component, instead of writing an event handler for every state update, you can use a ref to get form values from the DOM.
 
@@ -136,7 +135,7 @@ class NameForm extends React.Component {
 ```
 
 > Since an uncontrolled component keeps the source of truth in the DOM, it is sometimes easier to integrate React and non-React code when using uncontrolled components. **It can also be slightly less code if you want to be quick and dirty. Otherwise, you should usually use controlled components.**
-> More about Controlled Component: https://blog.hansim.dev/controlled-components-example
+> More about Controlled Component: https://blog.hansim.dev/Controlled Components-example
 
 ## Don't overuse Refs!
 

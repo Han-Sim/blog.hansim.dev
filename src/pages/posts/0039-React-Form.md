@@ -2,12 +2,11 @@
 title: "Controlled Components Example"
 date: "2019-07-26 17:39:00"
 author: "Han Sim"
-menu: "Web Development"
-category: "React"
+category: "Web Development"
 tags:
   - JavaScript
   - React
-  - Controlled-Component
+  - Controlled Component
 ---
 
 **Instead of using the own state of `input`, `textarea` or `select`, React gets the entire control over these form elements. This is a `controlled component`.**

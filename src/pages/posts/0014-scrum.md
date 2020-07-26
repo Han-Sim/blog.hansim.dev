@@ -2,8 +2,7 @@
 title: "Scrum in a nutshell"
 date: "2019-07-17 15:18:00"
 author: "Han Sim"
-menu: "Basics"
-category: "SDLC"
+category: "Basics"
 tags:
   - Agile
   - Scrum
@@ -14,14 +13,14 @@ tags:
 **Scrum is an `agile process framework` that is `lightweight` and `iterative`.**
 
 - Scrum is from the idea that **the traditional software development methodology such as `Waterfall` is not suitable since there can be a lot of unpredictable requests from stakeholders.**
-- Scrum breaks down the entire big project into smaller pieces that can be done within a short period time. That piece is called `Sprint`. 
+- Scrum breaks down the entire big project into smaller pieces that can be done within a short period time. That piece is called `Sprint`.
 
 # Sprints
 
 Sprint is an software development iteration of few weeks length.
 
-- `Sprint` starts off from the planning phase where a `product owner` populates `product backlogs`, which is about what is needed to be built to improve the product immediately. 
-- `Team` works together for implementing these product backlogs and a `Scrum Master` organizes this building process. 
+- `Sprint` starts off from the planning phase where a `product owner` populates `product backlogs`, which is about what is needed to be built to improve the product immediately.
+- `Team` works together for implementing these product backlogs and a `Scrum Master` organizes this building process.
 - `Sprint` is done when the product is deliverable and ready to be deployed.
 
 # Why Scrum?

@@ -1,0 +1,82 @@
+@import "src/styles/index.scss";
+
+.container {
+  padding: 2px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transition: top 0.3s;
+  background-color: $color-soybean;
+  z-index: 99;
+  font-family: $serif-font;
+  height: 60px;
+
+  .left {
+    display: flex;
+    align-items: center;
+
+    .menu {
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transform: translateY(14%);
+      min-height: 50px;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+      font-weight: 400;
+      cursor: pointer;
+    }
+
+    .menuInactive {
+      color: $color-white;
+      background-color: $color-soybean;
+
+      &:hover {
+        color: $color-soybean;
+        background-color: $color-eclipse;
+      }
+    }
+
+    .menuActive {
+      color: $color-soybean;
+      background-color: $color-white;
+
+      &:hover {
+        color: $color-soybean;
+        background-color: $color-eclipse;
+      }
+    }
+
+    .webDevelopment {
+      width: 220px;
+      margin-left: 20px;
+    }
+
+    .basics {
+      width: 90px;
+      margin-left: 8px;
+    }
+  }
+}
+
+.homeIcon,
+.menuOpenIcon {
+  color: $color-white;
+
+  &:hover {
+    color: $color-eclipse;
+  }
+}
+
+.verticalDivider {
+  height: 10px !important;
+  background-color: $color-white !important;
+}

@@ -2,13 +2,12 @@
 title: "JavaScript Loops and Iterables"
 date: "2019-07-26 00:48:00"
 author: "Han Sim"
-menu: "Web Development"
-category: "JavaScript"
+category: "Web Development"
 tags:
   - JavaScript
   - Loop
   - Iterable
-  - JavaScript-Technique
+  - JavaScript Technique
 ---
 
 # Different Kinds of Loop

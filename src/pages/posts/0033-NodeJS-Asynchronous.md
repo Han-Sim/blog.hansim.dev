@@ -2,8 +2,7 @@
 title: "Node.js and Asynchronous JavaScript"
 date: "2019-07-25 19:45:00"
 author: "Han Sim"
-menu: "Web Development"
-category: "NodeJS"
+category: "Web Development"
 tags:
   - JavaScript
   - Asynchronous
@@ -51,7 +50,7 @@ Of course, we can write asynchronous code with `ASP.NET`, but it requires a bunc
 
 > NodeJS is single threaded, but this is a half truth, actually it is event-driven and single-threaded with background workers. The main event loop is single-threaded but most of the I/O works run on separate threads, because the I/O APIs in Node.js are asynchronous/non-blocking by design, in order to accommodate the event loop. [Click...](https://codeburst.io/how-node-js-single-thread-mechanism-work-understanding-event-loop-in-nodejs-230f7440b0ea)
 
-Back to the previous example, we needed to fetch data upon request, which takes quite some time. Instead of waiting for fetching, Node application put a message in `message queue`. Node.js is continuously watching and listening on this `message queue`; when Node hear back from `message queue` that the data is ready, it takes the result out and process the request again. 
+Back to the previous example, we needed to fetch data upon request, which takes quite some time. Instead of waiting for fetching, Node application put a message in `message queue`. Node.js is continuously watching and listening on this `message queue`; when Node hear back from `message queue` that the data is ready, it takes the result out and process the request again.
 
 > In this process, it doesn't block `event loop` at all; it just interrupts the loop when the data is ready.
 

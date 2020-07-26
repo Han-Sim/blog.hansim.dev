@@ -2,8 +2,7 @@
 title: "Multithreaded Programming: Chat Application with Java"
 date: "2019-06-28 03:17:00"
 author: "Han Sim"
-menu: "Basics"
-category: "Java"
+category: "Basics"
 tags:
   - Portfolio
   - Java

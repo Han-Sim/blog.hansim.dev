@@ -2,14 +2,13 @@
 title: "Binary Search"
 date: "2019-07-19 20:29:00"
 author: "Han Sim"
-menu: "Basics"
-category: "Programming Basics"
+category: "Basics"
 tags:
-  - Binary-Search
+  - Binary Search
   - Algorithm
   - JavaScript
-  - Recursive-Function
-  - Time-Complexity
+  - Recursive Function
+  - Time Complexity
 ---
 
 > `Binary search` is an efficient algorithm for **finding an item from a sorted list of items**. It works by repeatedly dividing in half the portion of the list that could contain the item, until you've narrowed down the possible locations to just one. [Link: what is binary search](https://www.khanacademy.org/computing/computer-science/algorithms/binary-search/a/binary-search)

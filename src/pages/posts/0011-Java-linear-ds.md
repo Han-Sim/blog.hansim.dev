@@ -2,11 +2,10 @@
 title: "Java: Linear Data Structures"
 date: "2019-07-05 10:22:00"
 author: "Han Sim"
-menu: "Basics"
-category: "Java"
+category: "Basics"
 tags:
   - Java
-  - Data-Structure
+  - Data Structure
 ---
 
 # What is `Data Structure`

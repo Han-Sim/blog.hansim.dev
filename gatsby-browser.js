@@ -5,4 +5,12 @@
  */
 
 // You can delete this file if you're not using it
+
+const React = require("react");
+const { ContextProvider } = require("./src/context");
+require("./src/styles/index.scss");
 require("./src/styles/prism.css");
+
+exports.wrapRootElement = ({ element }) => {
+  return <ContextProvider>{element}</ContextProvider>;
+};

@@ -2,11 +2,10 @@
 title: "JavaScript Techniques #3"
 date: "2019-07-25 11:56:00"
 author: "Han Sim"
-menu: "Web Development"
-category: "JavaScript"
+category: "Web Development"
 tags:
   - JavaScript
-  - JavaScript-Technique
+  - JavaScript Technique
 ---
 
 This is about JavaScript coding problems, techniques, and tricky but basic fundamentals of JavaScript. This is the list of the related posts(https://blog.hansim.dev/tag/JavaScript-Technique).

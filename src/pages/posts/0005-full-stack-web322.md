@@ -2,20 +2,19 @@
 title: "Full-stack web development with Express and Handlebars"
 date: "2019-06-28 05:47:00"
 author: "Han Sim"
-menu: "Web Development"
-category: "NodeJS"
+category: "Web Development"
 tags:
   - Portfolio
   - JavaScript
   - Web
   - Node.js
   - Fullstack
-  - Template-Engine
+  - Template Engine
   - Handlebars.js
   - Express
   - Bootstrap
-  - REST-API
-  - Web-Service
+  - REST API
+  - Web Service
 ---
 
 This is a final project from the WEB322 course @ Seneca College.

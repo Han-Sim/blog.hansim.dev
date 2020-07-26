@@ -2,14 +2,13 @@
 title: "Redux Basics"
 date: "2019-07-28 17:47:00"
 author: "Han Sim"
-menu: "Web Development"
-category: "Redux"
+category: "Web Development"
 tags:
   - JavaScript
   - React
   - Redux
-  - Redux-Thunk
-  - Redux-Middleware
+  - Redux Thunk
+  - Redux Middleware
 ---
 
 This app is based on this course: https://www.youtube.com/watch?v=93p3LxR9xfM, I also added more components just for practicing.
@@ -140,7 +139,7 @@ export const fetchPosts = () => {
 ### `/reducers/postReducer.js`
 
 ```JavaScript
-import { FETCH_POST, NEW_POST } from "../actions/types" //those constants are representing action "type"
+import { FETCH_POST, NEW_POST } from "src/actions/types" //those constants are representing action "type"
 
 const initialState = {
   items: [], //array of post objects
@@ -215,7 +214,7 @@ It returns a function that connects our react component to the redux store.
 import React, { Component } from "react"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
-import { fetchPosts } from "../store/actions/postAction"
+import { fetchPosts } from "src/store/actions/postAction"
 
 class Post extends Component {
   //.....
@@ -288,7 +287,7 @@ We want to display this `items`. That's why we want pass `state.postReducer.item
 
 ## 2nd Parameter: `mapDispatchToProps`
 
-This is to update the state. Since the only way to update the state is by firing `dispatch(action)`, `connect()` passes down `dispatch` as props. 
+This is to update the state. Since the only way to update the state is by firing `dispatch(action)`, `connect()` passes down `dispatch` as props.
 
 Example:
 
@@ -363,7 +362,7 @@ export default function(state = initialState, action) {
 import React, { Component } from "react"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
-import { createPost } from "../store/actions/postAction"
+import { createPost } from "src/store/actions/postAction"
 
 class PostForm extends Component {
   constructor(props) {

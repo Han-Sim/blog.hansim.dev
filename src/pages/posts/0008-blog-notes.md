@@ -2,8 +2,7 @@
 title: "Markdown Blog with Gatsby/GraphQL"
 date: "2019-07-01 02:13:00"
 author: "Han Sim"
-menu: "Web Development"
-category: "React"
+category: "Web Development"
 tags:
   - Portfolio
   - JavaScript
@@ -114,7 +113,7 @@ Planning to add more features
 ## July 28
 
 - Updated `Pagination` again; now user can access **every posts in this blog** each post.
-  - *Codes need to be refactored and need to be conditional rendered for buttons.*
+  - _Codes need to be refactored and need to be conditional rendered for buttons._
 
 ## August 5
 

@@ -2,25 +2,24 @@
 title: "Forum Web Application with Java/JSP"
 date: "2019-06-28 04:32:00"
 author: "Han Sim"
-menu: "Basics"
-category: "Java"
+category: "Basics"
 tags:
   - Portfolio
   - Java
   - JSP
   - JDBC
-  - Apache-Tomcat
+  - Apache Tomcat
 ---
 
-# Java: Basic Forum Web Application 
+# Java: Basic Forum Web Application
 
 This is a basic forum web application built with JSP, JDBC and Apache Tomcat
 
 **Source Code**: https://github.com/Han-Sim/java-jsp-forum-web
 
-*I'm planning to deploy this applcation soon*
+_I'm planning to deploy this applcation soon_
 
-## Techniques and features of the web application 
+## Techniques and features of the web application
 
 - Authentication: Sign up / Sign in
 - Handling of user `session`
@@ -54,7 +53,7 @@ public int signIn(String userID, String userPassword) {
 `signInAction.jsp`
 
 ```Java
-<%	
+<%
     //Check if user has already signed in
     String userID = null;
     if(session.getAttribute("userID") != null) {
@@ -67,8 +66,8 @@ public int signIn(String userID, String userPassword) {
         script.println("alert('You've already signed in')");
         script.println("location.href = 'main.jsp'");
         script.println("</script>");
-    } 
-    
+    }
+
     //if user has not signed in
     UserDAO userDAO = new UserDAO();
     int result = userDAO.signIn(user.getUserID(), user.getUserPassword());
@@ -90,7 +89,7 @@ public int signIn(String userID, String userPassword) {
         script.println("<script>");
         script.println("alert('Wrong ID')");
         script.println("history.back()");
-        script.println("</script>"); 
+        script.println("</script>");
     } else if (result == -2) {
         PrintWriter script = response.getWriter();
         script.println("<script>");

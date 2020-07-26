@@ -2,8 +2,7 @@
 title: "JavaScript: When to Use Const and Let"
 date: "2019-07-17 16:33:00"
 author: "Han Sim"
-menu: "Web Development"
-category: "JavaScript"
+category: "Web Development"
 tags:
   - JavaScript
   - Scope
@@ -40,7 +39,7 @@ Reference: https://www.w3schools.com/js/js_hoisting.asp
 
 ## `const` is a signal that the identifier won’t be reassigned.
 
-**It doesn't mean that `const` is `immutable`, because for example, we can change `properties` of const object.
+\*\*It doesn't mean that `const` is `immutable`, because for example, we can change `properties` of const object.
 
 Reference: [const variables not immutable](https://ponyfoo.com/articles/const-variables-not-immutable)
 
@@ -57,11 +56,11 @@ console.log(JS_CONST_2);
 Object.freeze(JS_CONST_2); //now JS_CONST_2 is immutable and not extensible
 ```
 
-**Therefore, if we don't need to reassign the identifier, it is always most safe to declare variables with `const`** 
+**Therefore, if we don't need to reassign the identifier, it is always most safe to declare variables with `const`**
 
 # `let`
 
-When we use `let` other than `const`, it means this variable will be reassigned within its `block scope`. 
+When we use `let` other than `const`, it means this variable will be reassigned within its `block scope`.
 
 One of the most common example would be a counter in a loop
 
@@ -82,16 +81,16 @@ var callbacks = [];
 
 (function() {
   for (var i = 0; i < 5; i++) {
-    callbacks.push(function() { 
-      return i; 
+    callbacks.push(function() {
+      return i;
     });
   }
 })();
 
-console.log(callbacks.map( 
-  function(cb) { 
-    return cb(); 
-  } 
+console.log(callbacks.map(
+  function(cb) {
+    return cb();
+  }
 ));
 ```
 
@@ -100,4 +99,3 @@ Because the counter `i` is declared with `var`, it is hoisted to the top of the 
 # Reference
 
 - [Why you shouldn't use var anymore](https://hackernoon.com/why-you-shouldnt-use-var-anymore-f109a58b9b70)
-

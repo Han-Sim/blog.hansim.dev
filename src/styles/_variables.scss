@@ -1,9 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap');
-
-$site-font: "Roboto", sans-serif;
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap");
 
 $light-gray: #d7cec7;
-$dark-gray: #565656;
 $highlight-1: #76323f;
 $highlight-2: #c09f80;
 
@@ -13,3 +11,38 @@ $background-pink: rgba(245, 106, 159, 0.16);
 $background-yellow: rgba(226, 199, 64, 0.25);
 
 $white: white;
+
+// This is a new color theme for the new design.
+// Remove unused variables later above.
+// https://www.designwizard.com/blog/design-trends/colour-combination
+$color-blue: #00539c; // Text with link.
+$color-peach: #eea47f;
+$color-soybean: #343148;
+$color-eclipse: #d7c49e;
+$color-yellow: #ffd662;
+$color-black: rgba(0, 0, 0, 0.87); // Basic text color (Material-UI)
+$color-dark-gray: #565656;
+$color-light-gray: #bfbfbf;
+$color-white: #fff;
+
+$serif-font: "Roboto Slab", sans-serif;
+$sans-serif-font: "Roboto", sans-serif;
+
+@mixin link-style($color) {
+  color: $color;
+  text-decoration: none;
+
+  &:hover {
+    color: $color-eclipse;
+  }
+}
+
+// link style with no change.
+@mixin link-no-change {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    color: inherit;
+  }
+}

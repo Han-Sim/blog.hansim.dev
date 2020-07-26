@@ -2,12 +2,11 @@
 title: "How React Works and Dirty Checking"
 date: "2019-07-26 14:55:00"
 author: "Han Sim"
-menu: "Web Development"
-category: "React"
+category: "Web Development"
 tags:
   - JavaScript
   - React
-  - Dirty-Checking
+  - Dirty Checking
   - VirtualDOM
 ---
 
@@ -17,7 +16,7 @@ The process of checking every watch to detect the changes.
 
 # How React Works?
 
-React works using a `virtual DOM`. The VirtualDOM is an abstraction of the HTML DOM. It is lightweight and detached from the browser-specific implementation details. 
+React works using a `virtual DOM`. The VirtualDOM is an abstraction of the HTML DOM. It is lightweight and detached from the browser-specific implementation details.
 
 Whenever a ReactComponent is changing the state, `diff algorithm` in React runs and identifies what has changed. And then it updates the DOM with the results of diff; thanks to `diffing`, it only updates the exact element that has to be changed. The point is - it’s done faster than it would be in the regular DOM.
 
@@ -27,7 +26,7 @@ Whenever a ReactComponent is changing the state, `diff algorithm` in React runs 
 
 > https://stackoverflow.com/questions/21109361/why-is-reacts-concept-of-virtual-dom-said-to-be-more-performant-than-dirty-mode
 
-In React, each of your components have a state. **This state is like an `observable`** you might find in knockout or other MVVM style libraries. Essentially, **React knows when to re-render the scene because it is able to observe when this data changes**. 
+In React, each of your components have a state. **This state is like an `observable`** you might find in knockout or other MVVM style libraries. Essentially, **React knows when to re-render the scene because it is able to observe when this data changes**.
 
 S**etting a value on the state will signal to a listener that some state has changed, so React can simply listen for change events on the state and queue up re-rendering.**
 
