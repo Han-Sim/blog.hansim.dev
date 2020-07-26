@@ -16,7 +16,7 @@ To see the full note of this project, visit here: https://blog.hansim.dev/markdo
 This is a fully featured blog which supports these features.
 
 - Markdown Language
-- Recent Post Sections
+- Recent Post
 - Tags
 - Comments using Social Media (DisQus Plugin)
 - SPA (Single Page Application)
