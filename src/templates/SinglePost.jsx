@@ -8,7 +8,7 @@ import { getFilename } from "src/util/helperFunctions";
 
 const SinglePost = ({ data, pageContext }) => {
   const post = data.markdownRemark.frontmatter;
-  const { setActiveMenu } = useContext(Context) || {};
+  const { setActiveMenu } = useContext(Context);
 
   useEffect(() => {
     setActiveMenu(post.category);
