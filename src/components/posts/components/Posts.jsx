@@ -1,26 +1,15 @@
-import React, { useContext, useMemo } from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { CATEGORY_WEB_DEVELOPMENT, CATEGORY_BASICS } from "src/util/constants";
 import { Context } from "src/context";
 import style from "./posts.module.scss";
 
-const Posts = ({ data, tag, setTotalCount, listOfPostsToRender }) => {
+const Posts = ({ listOfPostsToRender, postsTitleToRender }) => {
   const { activeMenu } = useContext(Context);
-
-  // const tagPostsTitleText = useMemo(() => {
-  //   if (tag && setTotalCount) {
-  //     const totalCount = listOfPostsToRender[activeMenu].length;
-  //     setTotalCount(totalCount);
-
-  //     return `${totalCount} post${
-  //       totalCount === 1 ? " is" : "s are"
-  //     } related to ${tag} in this category`;
-  //   }
-  // }, [activeMenu, listOfPostsToRender, tag, setTotalCount]);
 
   return (
     <div className={style.root}>
-      {/* {tag && <div className={style.pageTitleText}>{tagPostsTitleText}</div>} */}
+      {postsTitleToRender}
       <div>{listOfPostsToRender[activeMenu]}</div>
     </div>
   );

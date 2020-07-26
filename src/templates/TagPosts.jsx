@@ -6,6 +6,7 @@ import Layout from "src/components/Layout";
 import Posts from "src/components/posts";
 import PostCard from "src/components/PostCard";
 import SEO from "src/components/seo";
+import style from "./tagPosts.module.scss";
 
 const TagPosts = ({ data, pageContext, ...otherProps }) => {
   const { activeMenu, setActiveMenu } = useContext(Context);
@@ -13,8 +14,6 @@ const TagPosts = ({ data, pageContext, ...otherProps }) => {
   const [totalCount, setTotalCount] = useState();
 
   const seoTitle = useMemo(() => `Posts about ${tag}`, [tag]);
-
-  console.log(otherProps);
 
   const listOfPostsToRender = useMemo(() => {
     const obj = {
@@ -79,14 +78,24 @@ const TagPosts = ({ data, pageContext, ...otherProps }) => {
     if (totalCount === 0 && activeMenu === CATEGORY_WEB_DEVELOPMENT) {
       setActiveMenu(CATEGORY_BASICS);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // pass an empty array as its dependency in order to make this running only on its construction.
+
+  const postsTitleToRender = useMemo(() => {
+    return (
+      <div className={style.postTitleContainer}>
+        {totalCount} post{totalCount === 1 ? " is" : "s are"} related to
+        {tag} in this category
+      </div>
+    );
+  }, [tag, totalCount]);
 
   return (
     <Layout>
       <SEO title={seoTitle} />
       <Posts
         tag={tag}
-        setTotalCount={setTotalCount}
+        postsTitleToRender={postsTitleToRender}
         listOfPostsToRender={listOfPostsToRender}
       />
     </Layout>
