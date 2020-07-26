@@ -28,7 +28,6 @@ $color-white: #fff;
 $serif-font: "Roboto Slab", sans-serif;
 $sans-serif-font: "Roboto", sans-serif;
 
-// link style with dark gray and eclipse.
 @mixin link-style($color) {
   color: $color;
   text-decoration: none;
