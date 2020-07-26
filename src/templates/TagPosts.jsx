@@ -4,7 +4,7 @@ import { graphql } from "gatsby";
 import { CATEGORY_WEB_DEVELOPMENT, CATEGORY_BASICS } from "src/util/constants";
 import Layout from "src/components/Layout";
 import Posts from "src/components/posts";
-import PostCard from "src/components/PostCard";
+import PostCard from "src/components/postCard";
 import SEO from "src/components/seo";
 import style from "./tagPosts.module.scss";
 

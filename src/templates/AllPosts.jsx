@@ -3,7 +3,7 @@ import { graphql } from "gatsby";
 import { CATEGORY_WEB_DEVELOPMENT, CATEGORY_BASICS } from "src/util/constants";
 import SEO from "src/components/seo";
 import Layout from "src/components/Layout";
-import PostCard from "src/components/PostCard";
+import PostCard from "src/components/postCard";
 import Posts from "src/components/posts";
 
 const AllPosts = ({ data }) => {
