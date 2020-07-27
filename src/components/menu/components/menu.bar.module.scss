@@ -1,7 +1,7 @@
 @import "src/styles/index.scss";
 
 .container {
-  padding: 2px;
+  padding: 0 2px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -13,7 +13,8 @@
   transition: top 0.3s;
   background-color: $color-soybean;
   z-index: 99;
-  font-family: $serif-font;
+  font-family: $sans-serif-font;
+  font-weight: 700;
   height: 60px;
 
   .left {
@@ -27,42 +28,31 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      transform: translateY(14%);
-      min-height: 50px;
-      border-top-left-radius: 4px;
-      border-top-right-radius: 4px;
       font-weight: 400;
       cursor: pointer;
+      color: $color-white;
+      height: 60px;
     }
 
     .menuInactive {
-      color: $color-white;
-      background-color: $color-soybean;
-
       &:hover {
-        color: $color-soybean;
-        background-color: $color-eclipse;
+        color: $color-yellow;
       }
     }
 
     .menuActive {
-      color: $color-soybean;
-      background-color: $color-white;
-
-      &:hover {
-        color: $color-soybean;
-        background-color: $color-eclipse;
-      }
+      color: $color-yellow;
+      padding-bottom: -8px;
     }
 
     .webDevelopment {
-      width: 220px;
+      width: 70px;
       margin-left: 20px;
     }
 
     .basics {
       width: 90px;
-      margin-left: 8px;
+      margin-left: 15px;
     }
   }
 }
@@ -70,9 +60,10 @@
 .homeIcon,
 .menuOpenIcon {
   color: $color-white;
+  margin-right: 8px;
 
   &:hover {
-    color: $color-eclipse;
+    color: $color-yellow;
   }
 }
 
