@@ -11,13 +11,13 @@ const Posts = ({ listOfPostsToRender, postsTitleToRender }) => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    listOfPostsRef.current = listOfPostsToRender[activeMenu];
-    setItems(listOfPostsRef.current.splice(0, 5));
+    listOfPostsRef.current = [...listOfPostsToRender[activeMenu]];
+    setItems(listOfPostsRef.current.splice(0, 4));
   }, [listOfPostsToRender, activeMenu, setItems]);
 
   const fetchMoreData = () => {
     setTimeout(() => {
-      setItems([...items, listOfPostsRef.current.splice(0, 5)]);
+      setItems([...items, listOfPostsRef.current.splice(0, 4)]);
     }, 500);
   };
 
