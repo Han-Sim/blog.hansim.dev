@@ -11,6 +11,8 @@ import {
 } from "src/util/constants";
 import style from "./menu.bar.module.scss";
 
+const WEB_MENU_BAR_TEXT = "WEB";
+
 const MenuBar = forwardRef((props, ref) => {
   const { activeMenu, setActiveMenu } = useContext(Context);
 
@@ -48,7 +50,7 @@ const MenuBar = forwardRef((props, ref) => {
           role="button"
           tabindex={0}
         >
-          {CATEGORY_WEB_DEVELOPMENT}
+          {WEB_MENU_BAR_TEXT}
         </div>
         <div
           className={
