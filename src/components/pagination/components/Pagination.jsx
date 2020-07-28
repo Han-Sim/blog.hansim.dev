@@ -17,7 +17,7 @@ const Pagination = ({ title, titlesOfAll }) => {
   return (
     <div className={style.container}>
       <Grid container spacing={3}>
-        <Grid item xs={6}>
+        <Grid item md={6}>
           <div className={style.previousPostText}>Previous Post</div>
           {hasPrevPost ? (
             <a href={`/${slugify(titlesOfAll[index + 1])}`}>
@@ -32,7 +32,13 @@ const Pagination = ({ title, titlesOfAll }) => {
             </div>
           )}
         </Grid>
-        <Grid item xs={6}>
+        <Grid
+          item
+          md={6}
+          classes={{
+            item: style.gridItem,
+          }}
+        >
           <div className={style.nextPostText}>Next Post</div>
           {hasNextPost ? (
             <a href={`/${slugify(titlesOfAll[index - 1])}`}>
