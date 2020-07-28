@@ -30,7 +30,7 @@
       align-items: center;
       font-weight: 400;
       cursor: pointer;
-      color: $color-white;
+      color: $color-light-gray;
       height: 60px;
     }
 
@@ -59,7 +59,7 @@
 
 .homeIcon,
 .menuOpenIcon {
-  color: $color-white;
+  color: $color-light-gray;
   margin-right: 8px;
 
   &:hover {
