@@ -20,19 +20,22 @@ const Footer = () => {
 
   return (
     <div className={style.container}>
-      <div className={style.left}>
-        <div>Copyright © 2020</div>
+      <div className={style.titleContianer}>Blog by Han Sim</div>
+      <div className={style.copyRightContainer}>
+        <div>© 2020</div>
         <div className={style.divider}></div>
-        <a href="mailto:han.sim.dev@gmail.com">han.sim.dev@gmail.com</a>
+        <div>
+          <a href="mailto:han.sim.dev@gmail.com">han.sim.dev@gmail.com</a>
+        </div>
       </div>
-      <div className={style.right}>
-        <IconButton onClick={handleEmailOnClick}>
+      <div>
+        <IconButton onClick={handleEmailOnClick} fontSize="small">
           <EmailIcon />
         </IconButton>
-        <IconButton onClick={handleLinkedInOnClick}>
+        <IconButton onClick={handleLinkedInOnClick} fontSize="small">
           <LinkedInIcon />
         </IconButton>
-        <IconButton onClick={handleGitHubOnClick}>
+        <IconButton onClick={handleGitHubOnClick} fontSize="small">
           <GitHubIcon />
         </IconButton>
       </div>
