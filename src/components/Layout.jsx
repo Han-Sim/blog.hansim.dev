@@ -79,7 +79,7 @@ const Layout = ({ children }) => {
         footerRef.current.style.position = "relative";
       }
     }
-  }, [mainContainerRef.current, footerRef.current, windowHeight]);
+  }, [mainContainerRef, footerRef, windowHeight]);
 
   return (
     <MuiThemeProvider theme={theme}>

@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { debounce } from "src/util/helpers";
 
 /**
@@ -14,7 +14,7 @@ const useWindowHeightWithDebounce = delay => {
     window.addEventListener("resize", updateSize);
     updateSize();
     return () => window.removeEventListener("resize", updateSize);
-  }, []);
+  }, [delay]);
 
   return size;
 };
