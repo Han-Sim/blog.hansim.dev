@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import Grid from "@material-ui/core/Grid";
-import { slugify, findIndex } from "src/util/helperFunctions";
+import { slugify, findIndex } from "src/util/helpers";
 import style from "./pagination.module.scss";
 
 const Pagination = ({ title, titlesOfAll }) => {

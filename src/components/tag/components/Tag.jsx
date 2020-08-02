@@ -2,7 +2,7 @@ import React, { useMemo, useCallback } from "react";
 import PropTypes from "prop-types";
 import { navigate } from "gatsby";
 import Chip from "@material-ui/core/Chip";
-import { slugify } from "src/util/helperFunctions";
+import { slugify } from "src/util/helpers";
 
 import style from "./tag.module.scss";
 
