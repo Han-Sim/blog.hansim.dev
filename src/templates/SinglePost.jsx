@@ -4,7 +4,7 @@ import { Context } from "src/context";
 import Layout from "src/components/Layout";
 import SEO from "src/components/seo";
 import Post from "src/components/post";
-import { getFilename } from "src/util/helperFunctions";
+import { getFilename } from "src/util/helpers";
 
 const SinglePost = ({ data, pageContext }) => {
   const post = data.markdownRemark.frontmatter;

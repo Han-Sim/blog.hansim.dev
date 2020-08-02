@@ -1,6 +1,6 @@
 const path = require("path");
 const _ = require("lodash");
-const { countOccurrences, slugify } = require("./src/util/helperFunctions");
+const { countOccurrences, slugify } = require("./src/util/helpers");
 const {
   CATEGORY_WEB_DEVELOPMENT,
   CATEGORY_BASICS,

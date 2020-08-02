@@ -1,10 +1,7 @@
 import React, { forwardRef, useMemo } from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import uniq from "lodash/uniq";
-import {
-  countOccurrences,
-  sortObjectByValueDescOrder,
-} from "src/util/helperFunctions";
+import { countOccurrences, sortObjectByValueDescOrder } from "src/util/helpers";
 import { CATEGORY_WEB_DEVELOPMENT, CATEGORY_BASICS } from "src/util/constants";
 import MenuBar from "./Menu.Bar";
 import MenuList from "./Menu.List";

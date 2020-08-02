@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useState } from "react";
-import { debounce } from "src/util/helperFunctions";
+import { debounce } from "src/util/helpers";
 
 /**
  * Custom hook to re-render the component when window height changes.
