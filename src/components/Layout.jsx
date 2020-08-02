@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import classnames from "classnames";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import { Context } from "src/context";
-import { useWindowHeight } from "src/util/hooks";
+import { useWindowHeightWithDebounce } from "src/util/hooks";
 import Footer from "./footer";
 import Menu from "./menu";
 import style from "./layout.module.scss";
@@ -61,7 +61,7 @@ const Layout = ({ children }) => {
     [isMenuOpen]
   );
 
-  const windowHeight = useWindowHeight(); // get the window height.
+  const windowHeight = useWindowHeightWithDebounce(300); // get the window height.
 
   // Relocate the footer to the bottom of the window if there is no scrollbar.
   useEffect(() => {
