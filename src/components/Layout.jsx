@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import classnames from "classnames";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import { Context } from "src/context";
+import { useWindowHeight } from "src/util/hooks";
 import Footer from "./footer";
 import Menu from "./menu";
 import style from "./layout.module.scss";
@@ -26,9 +27,11 @@ const theme = createMuiTheme({
  */
 const Layout = ({ children }) => {
   const { isMenuOpen, setIsMenuOpen } = useContext(Context);
+  const mainContainerRef = createRef();
+  const footerRef = createRef();
 
   const handleMenuBarClick = useCallback(
-    value => event => {
+    _value => _event => {
       setIsMenuOpen(!isMenuOpen);
     },
     [isMenuOpen, setIsMenuOpen]
@@ -58,23 +61,41 @@ const Layout = ({ children }) => {
     [isMenuOpen]
   );
 
+  const windowHeight = useWindowHeight(); // get the window height.
+
+  // Relocate the footer to the bottom of the window if there is no scrollbar.
+  useEffect(() => {
+    if (footerRef.current && mainContainerRef.current) {
+      const hasScrollBar =
+        windowHeight <
+        mainContainerRef.current.clientHeight + footerRef.current.clientHeight;
+
+      if (!hasScrollBar) {
+        mainContainerRef.current.style.height = `${windowHeight -
+          footerRef.current.clientHeight * 2}px`;
+      }
+    }
+  }, [mainContainerRef.current, footerRef.current, windowHeight]);
+
   return (
     <MuiThemeProvider theme={theme}>
-      <div
-        className={
-          isMenuOpen ? style.layer : classnames(style.layer, style.layerHidden)
-        }
-        onClick={handleElsewhereClick}
-        onKeyDown={handleElsewhereOnKeyDown}
-        role="button"
-        aria-label="Close the sidebar"
-        tabindex={0}
-      />
-      <Menu toggleMenu={handleMenuBarClick} ref={menuRef} />
-      <div className={style.bodyContainer}>
-        {children}
-        <Footer />
+      <div ref={mainContainerRef}>
+        <div
+          className={
+            isMenuOpen
+              ? style.layer
+              : classnames(style.layer, style.layerHidden)
+          }
+          onClick={handleElsewhereClick}
+          onKeyDown={handleElsewhereOnKeyDown}
+          role="button"
+          aria-label="Close the sidebar"
+          tabindex={0}
+        />
+        <Menu toggleMenu={handleMenuBarClick} ref={menuRef} />
+        <div className={style.bodyContainer}>{children}</div>
       </div>
+      <Footer ref={footerRef} />
     </MuiThemeProvider>
   );
 };
