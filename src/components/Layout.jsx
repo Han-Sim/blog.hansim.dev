@@ -71,8 +71,12 @@ const Layout = ({ children }) => {
         mainContainerRef.current.clientHeight + footerRef.current.clientHeight;
 
       if (!hasScrollBar) {
-        mainContainerRef.current.style.height = `${windowHeight -
-          footerRef.current.clientHeight * 2}px`;
+        footerRef.current.style.position = "fixed";
+        footerRef.current.style.bottom = "0";
+        footerRef.current.style.left = "0";
+        footerRef.current.style.right = "0";
+      } else {
+        footerRef.current.style.position = "relative";
       }
     }
   }, [mainContainerRef.current, footerRef.current, windowHeight]);
