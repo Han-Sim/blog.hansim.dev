@@ -1,5 +1,5 @@
 ---
-title: "Promise API and Async/Await"
+title: "Promise API and Async Await"
 date: "2019-07-03 11:30:00"
 author: "Han Sim"
 category: "Web Development"
@@ -17,8 +17,10 @@ tags:
 
 Previous Post: http://blog.hansim.dev/asynchronous-javascript-and-callback-function
 
+# Some examples
+
 ```JavaScript
-//Asynchronous operation with Promise
+// Asynchronous operation with Promise
 function delay(msg) {
   return new Promise((resolve, reject) => {
     setTimeout(() => resolve(msg), 1000)
@@ -38,24 +40,23 @@ delay("a")
     console.log(result)
   })
 
-/*
-  a
-  b
-  end
-*/
-
-/*
+/**
+ * Reuslt:
+ * a
+ * b
+ * end
+ */
+```
 
 async/await
 
-1. await can be used in async function
-2. async function returns Promise by default. (we can explicitly put Promise)
-3. await --> waiting for its promise to be resolved.
-4. JS doesn't throw any errors even though await keyword is used without Promise;
-     if that's the case, it'll still work as same as without wait.
+1. `await` can be used in `async` function
+2. `async` function returns `Promise` by default. (we can explicitly put Promise)
+3. `await` --> waiting for its promise to be resolved.
+4. JS doesn't throw any errors even though `await` keyword is used without `Promise`;
+   if that's the case, it'll still work as same as without wait.
 
-*/
-
+```JavaScript
 async function myAsync() {
   const result = await delay("hi") //I'm waiting until 'resolve'
   return result //that is why I'm not 'undefined' anymore!
@@ -63,9 +64,7 @@ async function myAsync() {
 
 myAsync().then(result => console.log(result))
 
-/*
-    to throw error, we do 'throw' with try-catch
-*/
+// to throw error, we do 'throw' with try-catch
 
 function wait(msg) {
   return new Promise((resolve, reject) => {
@@ -86,11 +85,11 @@ myAsync2()
   .then(result => console.log(result))
   .catch(err => console.log(err))
 
-/*
-even though it was a syntax error for example,
-we can't catch myAsync2()'s error with try-catch
-Still need to use .catch() as it still returns Promise!
-*/
+/**
+ * even though it was a syntax error for example,
+ * we can't catch myAsync2()'s error with try-catch
+ * Still need to use .catch() as it still returns Promise!
+ */
 ```
 
 # Promise API
@@ -194,21 +193,17 @@ getData().then(function (data) {
 });
 ```
 
-## Example: my real code in Node.js
-
-This is from my full-stack web development project: https://blog.hansim.dev/full-stack-web-development-with-express-and-handlebars (**Node.js/Express**)
-
-Briefly, in `data-service.js` file, I have helper functions that handle data using `sequelize`. I used `Promise` as this needs to be synchronized (ajax communication).
+## Example: with Node.js
 
 This is **a chain of two promises**. If `sequelize.sync()` is `resolved`, `then` we resolve this Promise. If this promise is `resolved` too, the Node.js/Express server finally renders "employees" page using Template Engines.
 
 ```JavaScript
 module.exports.getAllEmployees = () => {
-    return new Promise((resolve, reject) => {
-        sequelize.sync()
-        .then(() => { resolve(Employee.findAll()); })
-        .catch((err) => { reject("No result returned. " + err); });
-    });
+  return new Promise((resolve, reject) => {
+      sequelize.sync()
+      .then(() => { resolve(Employee.findAll()); })
+      .catch((err) => { reject("No result returned. " + err); });
+  });
 }
 ```
 
