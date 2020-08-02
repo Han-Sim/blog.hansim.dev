@@ -1,7 +1,5 @@
-/**
- * This file contains helper functions.
- * It is used for gatsby-node.js thus should use the node.js syntax only.
- */
+// This file contains helper functions.
+// It is used for gatsby-node.js thus should use the node.js syntax only.
 
 /**
  * This function counts the occurrences of each element and return its result as object.
@@ -16,6 +14,23 @@ const countOccurrences = arr => {
   });
 
   return result;
+};
+
+/**
+ * Debounce function.
+ */
+const debounce = (func, delay) => {
+  let timeout;
+
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+
+    clearTimeout(timeout);
+    timeout = setTimeout(later, delay);
+  };
 };
 
 /**
@@ -82,6 +97,7 @@ const slugify = function(text) {
 // this module is to be used in gatsby-node.js that is run by Node as well.
 module.exports = {
   countOccurrences,
+  debounce,
   findIndex,
   getFilename,
   slugify,

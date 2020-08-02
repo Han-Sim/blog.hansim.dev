@@ -1,21 +1,5 @@
 import React, { useLayoutEffect, useState } from "react";
-
-/**
- * Debounce function.
- */
-const debounce = (func, delay) => {
-  let timeout;
-
-  return function executedFunction(...args) {
-    const later = () => {
-      clearTimeout(timeout);
-      func(...args);
-    };
-
-    clearTimeout(timeout);
-    timeout = setTimeout(later, delay);
-  };
-};
+import { debounce } from "src/util/helperFunctions";
 
 /**
  * Custom hook to re-render the component when window height changes.
