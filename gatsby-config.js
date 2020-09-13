@@ -71,6 +71,12 @@ module.exports = {
               ],
             },
           },
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 600,
+            },
+          },
         ],
       },
     },
