@@ -16,6 +16,5 @@ This is a fully featured blog which supports these features.
 - Markdown Language
 - Tags
 - Categories
-- Comments using Social Media w/ DisQus
 - SPA (Single Page Application)
 - User-friendly paths to each post
