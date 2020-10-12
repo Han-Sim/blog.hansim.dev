@@ -121,7 +121,7 @@ console.log(promise1);
 
 ### Pending
 
-If we call `new Promise()` method, it is now in the `Pending` state. **When we call `new Promise()` method, we can access to `resolve` and `reject` as a paramter of Callback Function.**
+If we call `new Promise()` method, it is now in the Pending state. **When we call `new Promise()` method, we can access to resolve and reject as a paramter of Callback Function.**
 
 ```JavaScript
 new Promise(function (resolve, reject) {
@@ -137,7 +137,7 @@ new Promise(function (resolve, reject) {
 });
 ```
 
-When it executes the parameter `resolve` of Callback Function, it is now in the `Fulfilled` state. If the promise is in this state, we can get results by using `then()`.
+When it executes the parameter `resolve` of Callback Function, it is now in the Fulfilled state. If the promise is in this state, we can get results by using `then()`.
 
 ```JavaScript
 function getData() {
@@ -154,11 +154,11 @@ getData().then(function (resolvedData) {
 
 ```
 
-> If the promise is `fulfilled`, we can say it is **complete** now.
+> If the promise is fulfilled, we can say it is **complete** now.
 
 ### Rejected
 
-When it executes the parameter `reject` of Callback Function, it is now in the `Rejected` state. If the promise is in this state, we can get results by using `catch()`.
+When it executes the parameter reject of Callback Function, it is now in the Rejected state. If the promise is in this state, we can get results by using `catch()`.
 
 ```JavaScript
 new Promise(function (resolve, reject) {
@@ -207,7 +207,7 @@ module.exports.getAllEmployees = () => {
 }
 ```
 
-I called the `getAllEmployees()` function in `server.js`. If the promise is resolved, it renders "employees" with `data`(response). Otherwise, it catches the error and renders "employees" with error messages.
+I called the `getAllEmployees()` function in `server.js`. If the promise is resolved, it renders "employees" with `data(response)`. Otherwise, it catches the error and renders "employees" with error messages.
 
 ```JavaScript
 app.get('/employees', (req, res) => {
@@ -232,9 +232,9 @@ Promise.all([a, b, c, d, e]).then(data => console.log(data)) //[ 'a', 'b', 'c', 
 Promise.race([a, b, c, d, e]).then(data => console.log(data)) //a
 ```
 
-# `async`/`await`
+# async/await
 
-`async/await` is just another way to use `Promise API`. Using Promise is way more easy with async/await.
+`async/await` is just another way to use Promise API. Using Promise is way more easy with async/await.
 
 ## A function with an `async` keyword --> always return `Promise`
 

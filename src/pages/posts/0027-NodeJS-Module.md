@@ -10,14 +10,14 @@ tags:
 
 # Modularity
 
-Node.js supports `Modularity` unlike the client-side JS. Each functions or variable is encapsulated within its module .
+Node.js supports Modularity unlike the client-side JS. Each functions or variable is encapsulated within its module .
 
 ```JavaScript{2}
-var message="hi!"
-console.log(global.message) //undefined
+var message = "hi!"
+console.log(global.message) // undefined
 ```
 
-The `message` variable are not accessible from the outside of its js file; it is not in a global scope.
+The `message` variable are not accessible from the outside of its `.js` file; it is not in a global scope.
 
 ## How does it work on the client-side (with browsers, not node)
 
@@ -31,14 +31,14 @@ var sayHi = function() {
 }
 
 window.sayHi()
-//we don't need to explicitly write window here; a browser will add window prefix.
+// we don't need to explicitly write window here; a browser will add window prefix.
 ```
 
-This can occur some problems. **Simply think about why we should avoid global variables; it is because it may make our application work unexpected way and debugging and unit testing would be so much painful**. For example, say we define a function with the same identifier `sayHi` in other js file. Because there are two identifiers in the same scope, it'll just `override` the previous definition.
+This can occur some problems. **Simply think about why we should avoid global variables; it is because it may make our application work unexpected way and debugging and unit testing would be so much painful**. For example, say we define a function with the same identifier `sayHi` in other `.js` file. Because there are two identifiers in the same scope, it'll just `override` the previous definition.
 
 # `module` object
 
-To use variables and functions in Node, we need to `explicitly export` them to make it `public`.
+To use variables and functions in Node, we need to explicitly export them to make it public.
 
 This is how module object looks like:
 
@@ -51,8 +51,9 @@ Module {
   loaded: false,
   children: [],
   paths:
-   [ '/Users/han/Desktop/Dev/JavaScript/blog/src/pages/posts/nothing/node_modules',
-   //......
+   [
+     '/Users/han/Desktop/Dev/JavaScript/blog/src/pages/posts/nothing/node_modules',
+     //...
    ]
 }
 ```
@@ -60,7 +61,7 @@ Module {
 We can export variables or functions and make them public.
 
 ```JavaScript{5}
-var greeting = "hi" //this will be private
+var greeting = "hi" // this will be private
 var sayHi = function() {
   console.log(greeting);
 }
@@ -86,9 +87,9 @@ const dataService = require("./data-service.js")
 dataService();
 ```
 
-## What's under the hood? `Module Wrapper Function`
+## What's under the hood - Module Wrapper Function
 
-Our code is converted to a function; node always wrap modules within `Moduler Wrapper Function`. For example, `require` is one of the arguments that is passed to the module wrapper function and that is how each module can use `require` to use other modules.
+Our code is converted to a function; node always wrap modules within **Module Wrapper Function**. For example, `require` is one of the arguments that is passed to the module wrapper function and that is how each module can use `require` to use other modules.
 
 ### `function(exports, require, module, __filename, __dirname)`
 
@@ -123,7 +124,7 @@ console.log(path.parse(__filename))
 
 When it comes to path, using `path` module will make things so much easier than just handling string.
 
-## `OS`
+## `os`
 
 This is to get information from the current OS.
 
@@ -141,7 +142,7 @@ total memory: 8589934592
 free memory: 223195136
 ```
 
-## `FS`: File System
+## `fs`: File System
 
 Methods in `fs` are always paired: Non-blocking(Asynchronous) and blocking(Synchronous). It is always recommended to use non-blocking code for the better performance and taking advantages of using JavaScript. **Node has a single thread so make sure always use asynchronous!** Synchronous codes are there just for simplicity.
 
@@ -152,7 +153,7 @@ fs.readdir(__dirname, (err, result) => {
   if (err) console.log(err)
   else console.log(result)
 })
-//it returns an array of the file names inside the given directory, if it is resolved.
+// it returns an array of the file names inside the given directory, if it is resolved.
 ```
 
 ## Event: `EventEmitter`
@@ -163,12 +164,12 @@ fs.readdir(__dirname, (err, result) => {
 const EventEmitter = require("events")
 const emitter = new EventEmitter()
 
-//to register a listener
+// to register a listener
 emitter.on('messageLogged', () => {
     console.log("Listener called")
 })
 
-//to raise an event; you're literally making a 'noise' to your application by calling emit() method.
+// to raise an event; you're literally making a 'noise' to your application by calling emit() method.
 emitter.emit('messageLogged')
 ```
 
@@ -182,7 +183,7 @@ emitter.on('messageLogged', (arg) => {
 emitter.emit('messageLogged', { id: 1, url: "https://blog.hansim.com" })
 ```
 
-## HTTP module
+## `http`
 
 This is to create networking application. We can create a web server that listens to the HTTP request on a given port. We can easily create a back-end service for our client application such as web or mobile applications using this `http` module.
 
@@ -198,7 +199,7 @@ const server = http.createServer((req, res) => {
 
 server.on('connection', (socket) => {
   console.log("new connection")
-}) //in real world, we don't respond to the connection event for each connection. this is just for practice!
+}) // in real world, we don't respond to the connection event for each connection. this is just for practice!
 
 server.listen(3000)
 ```

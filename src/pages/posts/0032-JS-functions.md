@@ -17,8 +17,8 @@ tags:
 There are more differences than just a syntactical difference
 
 ```JavaScript
-console.log(funcD()) //hi
-console.log(funcE()) //undefined
+console.log(funcD()) // hi
+console.log(funcE()) // undefined
 
 function funcD() {
   return("hi")
@@ -29,9 +29,9 @@ const funcE = function() {
 }
 ```
 
-1. `Function Expression` follows its variable scope; which means, if it is `let` or `const`, it is not going to be hoisted. `Function Declaration` is always hoisted though.
-2. If we want to pass the function to other function(`high order function`), we have to use `Function Expression` instead of `Function Declaration`. Because `Function Expression` is a variable. **Treating function as value** is one of the feature of JavaScript as a `Functional Programming` Language. https://blog.hansim.dev/functional-programming-in-simple-english
-3. `Function Expression` is essentially a `constructor function`. https://blog.hansim.dev/object-oriented-programming-syntax-in-javascript
+1. Function Expression follows its variable scope; which means, if it is `let` or `const`, it is not going to be hoisted. Function Declaration is always hoisted though.
+2. If we want to pass the function to other function(high order function), we have to use Function Expression instead of Function Declaration. Because Function Expression is a variable. **Treating function as value** is one of the feature of JavaScript as a Functional Programming Language. https://blog.hansim.dev/functional-programming-in-simple-english
+3. Function Expression is essentially a constructor function. https://blog.hansim.dev/object-oriented-programming-syntax-in-javascript
 
 ```JavaScript
 function Circle(radius) {
@@ -54,10 +54,10 @@ https://blog.hansim.dev/so-why-do-we-need-closure
 
 ## Factory Function with Closure ---> truly private variable
 
-`Singleton`is an object that is meant to have only one instance during the execution of the program. Because function() is `anonymous` and called right after its definition, we cannot create anymore object from this factory function. We only can use `get` and `increment` method only by using `singleton` instance. `private_counter` is now truly private.
+Singleton is an object that is meant to have only one instance during the execution of the program. Because function() is anonymous and called right after its definition, we cannot create anymore object from this factory function. We only can use get and increment method only by using singleton instance. `private_counter` is now truly private.
 
 ```JavaScript
-//factory function (function that returns an object)
+// factory function (function that returns an object)
 var singleton = function(){
   var private_counter = 0;
   return {
@@ -70,20 +70,20 @@ var singleton = function(){
   };
 }();  // Attention Here - the singleton is the result of this function's call
 
-console.log(singleton.get()); //0
-console.log(singleton.get()); //0
+console.log(singleton.get()); // 0
+console.log(singleton.get()); // 0
 
 singleton.increment();
-console.log(singleton.get()); //1
+console.log(singleton.get()); // 1
 singleton.increment();
-console.log(singleton.get()); //2
+console.log(singleton.get()); // 2
 ```
 
-# `IIFE` (Immediately Invoked Function Expression)
+# IIFE (Immediately Invoked Function Expression)
 
 https://mariusschulz.com/blog/use-cases-for-javascripts-iifes
 
-## 1. `IIFE` gives a block scope to `var`
+## 1. IIFE gives a block scope to `var`
 
 ```JavaScript
 (function() {
@@ -94,13 +94,13 @@ https://mariusschulz.com/blog/use-cases-for-javascripts-iifes
 foo; // ReferenceError: foo is not defined
 ```
 
-## 2. `IIFE` with `closure` --> to create truly private state
+## 2. IIFE with closure --> to create truly private state
 
 ```JavaScript
 const uniqueId = (function() {
   let private = 0;
 
-  //return a function that has access to the variable in its outer scope
+  // return a function that has access to the variable in its outer scope
   return function() {
     ++private;
     return `id_${private}`;
@@ -118,7 +118,7 @@ Note that **the private variable is inaccessible from outside of the IIFE**. Exc
 const counter = (function() {
   let private = 0;
 
-  //return an object that has access to the variable in its outer scope
+  // return an object that has access to the variable in its outer scope
   return {
     increment() {
       ++private;
@@ -149,7 +149,7 @@ http://blog.hansim.dev/asynchronous-javascript-and-callback-function
 ```JavaScript
 function getData(callback) {
 	$.get('https://api.com/products/1', function (res) {
-		callback(res); //pass 'res' from the server to callback function
+		callback(res); // pass 'res' from the server to callback function
 	});
 }
 
@@ -166,19 +166,19 @@ Arrow Function is not just a syntactic sugar!!!
 
 ### Arrow Function can be a simple solution for losing `this` context.
 
-> Roughly speaking, `Context` is the object that calls the function.
+> Roughly speaking, Context is the object that calls the function.
 > For example, `setTimeout()` is called by `global`(or `window` in browser) so `this` is `global` or `window`, even though it was defined within some other object.
 
-**`classic JS Functions`(other than `Arrow Function`), such as `splitName` below, have its own `this` no matter where it lies.** Even though `splitName` is under the property `setName` of the `profile` object, it has its own `this` context that is bound to `global`(node) or `window`(browser) object.
+**classic JS Functions(other than Arrow Function), such as `splitName` below, have its own `this` no matter where it lies.** Even though `splitName` is under the property `setName` of the `profile` object, it has its own `this` context that is bound to `global`(node) or `window`(browser) object.
 
 ```JavaScript
 const profile = {
   fName: "",
   lName: "",
   setName: function(name) {
-    console.log(this === profile) //true
+    console.log(this === profile) // true
     let splitName = function() {
-      console.log(this === global) //true
+      console.log(this === global) // true
       let nameArray = name.split(' ')
       this.fName = nameArray[0]
       this.lName = nameArray[0]
@@ -189,15 +189,15 @@ const profile = {
 }
 
 profile.setName("han sim")
-console.log(profile.fName) //still an empty string
+console.log(profile.fName) // still an empty string
 
-console.log(global.fName) //'han' (I used node here to compile this js file)
-//console.log(window.fName) //'han' (If this is in a browser JS runtime environment)
+console.log(global.fName) // 'han' (I used node here to compile this js file)
+// console.log(window.fName) // 'han' (If this is in a browser JS runtime environment)
 ```
 
 `fName` is not bound to `profile` because it lost `this` context here; it binds to `global`(node) or `window`(browser) scope now.
 
-**We can fix this unexpected behaviour by using `Arrow Function`, because it doesn't have its own `this` unlike other functions. It borrows `this` from its lexical scope automatically.**
+**We can fix this unexpected behaviour by using Arrow Function, because it doesn't have its own `this` unlike other functions. It borrows `this` from its lexical scope automatically.**
 
 ```JavaScript
 const profile = {
@@ -215,14 +215,14 @@ const profile = {
 }
 
 profile.setName("han sim")
-console.log(profile.fName) //'han'
+console.log(profile.fName) // 'han'
 ```
 
-This is why we use `Arrow Function` in `React`, especially for `event handlers` inside the React.Component extended Class.
+This is why we use Arrow Function in React, especially for event handlers inside the React.Component extended Class.
 
 #### we can use `bind`, `call`, or `apply` as well.
 
-Those methods give `context` manually no matter where we define the function.
+Those methods give context manually no matter where we define the function.
 
 ```JavaScript
 const profile = {
@@ -238,23 +238,23 @@ let setName = function(name) {
   }
 
   splitName()
-} //setName function binds to window object
+} // setName function binds to window object
 
-setName = setName.bind(profile) //--> setName function binds to profile object.
+setName = setName.bind(profile) // --> setName function binds to profile object.
 setName("han sim")
 
-console.log(profile.fName) //'han'
+console.log(profile.fName) // 'han'
 ```
 
 > Find this document to understand `this` and context. I think this comes with a perfect explanation: [MDN doc](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this?source=post_page--------------------------) > [MDN: Lexical Scoping](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures?source=post_page---------------------------)
 
-### Arrow Function cannot be a `constructor`
+### Arrow Function cannot be a constructor
 
-Because it doesn't have the `prototype` property so it can't be used with `new`.
+Because it doesn't have the prototype property so it can't be used with `new`.
 
-### Arrow Function does not have a `arguments`
+### Arrow Function does not have a arguments
 
-We have to use `spread operator` instead.
+We have to use spread operator instead.
 
 ```JavaScript
 let sumUp = (...args) => {
@@ -275,8 +275,8 @@ let sumUp = (...args) => args.reduce((a,b) => a + b, 0)
 
 > https://medium.com/@olinations/first-class-functions-higher-order-functions-callback-functions-4daad4856242
 
-A `first class function` is a function that was built with the intention of being passed around to other functions. It does one specific thing, does not have side effects, and is not intended to be called directly, but rather, to be used by ‘other functions.’
+A first class function is a function that was built with the intention of being passed around to other functions. It does one specific thing, does not have side effects, and is not intended to be called directly, but rather, to be used by ‘other functions.’
 
-Those ‘other functions’ which accept one of those `first class functions` as an argument are called higher order functions. Higher order functions also might be functions that return a function.
+Those ‘other functions’ which accept one of those first class functions as an argument are called higher order functions. Higher order functions also might be functions that return a function.
 
-In a higher order function, when one of the parameters passed in is a function, that function is a `callback` function because it will be called back and used within the higher order function.
+In a higher order function, when one of the parameters passed in is a function, that function is a callback function because it will be called back and used within the higher order function.

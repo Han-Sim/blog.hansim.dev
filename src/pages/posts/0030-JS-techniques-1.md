@@ -89,7 +89,7 @@ console.log(boundGetX());
 // expected output: 42
 ```
 
-Even when we declare functions inside the JS class or function, it can lost its context easily! For example, `Event Handlers` in React Component lose its context, so we have to `bind` them.
+Even when we declare functions inside the JS class or function, it can lost its context easily! For example, Callbacks in React Component lose its context, so we have to `bind` them.
 
 > Good resource here: https://javascript.info/bind
 

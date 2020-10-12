@@ -10,9 +10,9 @@ tags:
 
 # Function Generator
 
-`Function Generator` is a function that returns an `iterator` object and can be exited and later re-entered; which means it pauses its execution until `.next()` is called.
+Function Generator is a function that returns an `iterator` object and can be exited and later re-entered; which means it pauses its execution until `iterator.next()` is called.
 
-This is powerful because **it pauses until its `iterator.next()` is called**. The code below doesn't make `stack overflow` because it is a function generator.
+This is powerful because **it pauses until its `iterator.next()` is called**. For example, the codes below don't make _stack overflow_ because it is a function generator.
 
 ```JavaScript
 function* infiniteMaker() {
@@ -26,10 +26,10 @@ function* infiniteMaker() {
 
 let iterator = infiniteMaker()
 
-console.log(iterator.next()) //{ value: 0, done: false } 
-console.log(iterator.next()) //{ value: 1, done: false } 
-console.log(iterator.next()) //{ value: 2, done: false } 
-console.log(iterator.next()) //{ value: 3, done: false } 
+console.log(iterator.next()) // { value: 0, done: false } 
+console.log(iterator.next()) // { value: 1, done: false } 
+console.log(iterator.next()) // { value: 2, done: false } 
+console.log(iterator.next()) // { value: 3, done: false } 
 ```
 
 ## `return` stops generator
@@ -47,15 +47,15 @@ function* infiniteMaker() {
 
 let iterator = infiniteMaker()
 
-console.log(iterator.next()) //{ value: 0, done: false }
-console.log(iterator.next()) //{ value: 1, done: false }
-console.log(iterator.next()) //{ value: 'hello', done: true } 
-console.log(iterator.next()) //{ value: undefined, done: true } 
+console.log(iterator.next()) // { value: 0, done: false }
+console.log(iterator.next()) // { value: 1, done: false }
+console.log(iterator.next()) // { value: 'hello', done: true } 
+console.log(iterator.next()) // { value: undefined, done: true } 
 ```
 
-## Function Generator with `Promise API`
+## Function Generator with Promise API
 
-To undersstand `Promise API`, you can check my previous post [here](https://blog.hansim.dev/asynchronous-javascript-callback-function-and-promise-api)
+To understand Promise API, [you can check my previous post here](https://blog.hansim.dev/asynchronous-javascript-callback-function-and-promise-api)
 
 ```JavaScript
 function requestCall(url) {
@@ -68,7 +68,7 @@ function requestCall(url) {
 }
 ```
 
-Say we have a dependency issue: we need to get data from `url1` and only it was successfully resolved, then we get data from `url2` (we need data from `url1` to make a second call for `url2`). We can simply code this logic by using `function generator`
+Say we have a dependency issue: we need to get data from `url1` and only it was successfully resolved, then we get data from `url2` (we need data from `url1` to make a second call for `url2`). We can simply code this logic by using **function generator**.
 
 ```JavaScript
 function* generator() {

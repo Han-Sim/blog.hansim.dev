@@ -17,12 +17,12 @@ This is a basic forum web application built with JSP, JDBC and Apache Tomcat
 
 **Source Code**: https://github.com/Han-Sim/java-jsp-forum-web
 
-_I'm planning to deploy this applcation soon_
+_I'm planning to deploy this application soon_
 
 ## Techniques and features of the web application
 
 - Authentication: Sign up / Sign in
-- Handling of user `session`
+- Handling of user session
 
 `signIn` function in `UserDAO` object
 
@@ -100,8 +100,8 @@ public int signIn(String userID, String userPassword) {
 %>
 ```
 
-- Repsonsive design with `Bootstrap`
-- `MySQL` Database to hold user data and postings
+- Repsonsive design with Bootstrap
+- MySQL Database to hold user data and postings
   - Java Beans and Database Access Object using JDBC
 - HTML `<form>` tags to write a post / sign up / sign in
 

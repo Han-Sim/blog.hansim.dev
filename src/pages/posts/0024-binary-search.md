@@ -11,9 +11,9 @@ tags:
   - Time Complexity
 ---
 
-> `Binary search` is an efficient algorithm for **finding an item from a sorted list of items**. It works by repeatedly dividing in half the portion of the list that could contain the item, until you've narrowed down the possible locations to just one. [Link: what is binary search](https://www.khanacademy.org/computing/computer-science/algorithms/binary-search/a/binary-search)
+> **Binary search** is an efficient algorithm for **finding an item from a sorted list of items**. It works by repeatedly dividing in half the portion of the list that could contain the item, until you've narrowed down the possible locations to just one. [Link: what is binary search](https://www.khanacademy.org/computing/computer-science/algorithms/binary-search/a/binary-search)
 
-As compared to `linear search`, `binary search` is much faster with Time Complexity of `O(logN)`(Big-O of log N) whereas linear search algorithm works in `O(N)`(Big-O of N) time complexity.\*\*\*\*
+As compared to **linear search**, **binary search** is much faster with Time Complexity of `O(logN)`(Big-O of log N) whereas linear search algorithm works in `O(N)`(Big-O of N) time complexity.\*\*\*\*
 
 # JavaScript
 
@@ -21,23 +21,23 @@ As compared to `linear search`, `binary search` is much faster with Time Complex
 function binarySearch(arr, findMe, startIndex, endIndex) {
   if (startIndex > endIndex) return false
 
-  let mid = Math.floor((startIndex + endIndex) / 2) //index for medium
+  let mid = Math.floor((startIndex + endIndex) / 2) // index for medium
 
   if (arr[mid] === findMe) return true
   else if (arr[mid] > findMe) {
-    //check the left side of mid (excluding mid itself though)
+    // check the left side of mid (excluding mid itself though)
     return binarySearch(arr, findMe, startIndex, mid - 1)
   } else {
-    //check the right side of mid (excluding mid itself though)
+    // check the right side of mid (excluding mid itself though)
     return binarySearch(arr, findMe, mid + 1, endIndex)
   }
 }
 
-//Test
+// Test
 let array = [1, 10, 14, 23, 8, 7, 9, 2, 26]
 let findMe = 14
 
-//Ascending order
+// Ascending order
 array.sort((a, b) => {
   return a - b
 }) // array: [ 1, 2, 7, 8, 9, 10, 14, 23, 26 ]

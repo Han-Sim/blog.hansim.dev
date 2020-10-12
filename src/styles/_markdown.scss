@@ -952,7 +952,8 @@
 // #region customization
 
 .gatsby-highlight-code-line {
-  background-color: $color-black;
+  border-left: 2px solid $color-soybean;
+  background-color: #fff;
   display: block;
   margin-right: -1em;
   margin-left: -1em;
