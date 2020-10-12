@@ -15,7 +15,7 @@ tags:
 - Using `flexbox`
 - Or I can even use just CSS `position`s to center it!
 
-I'm gonna use `plain CSS` (old CSS) in this post.
+I'm gonna use plain CSS (old CSS) in this post.
 
 # Example Code
 

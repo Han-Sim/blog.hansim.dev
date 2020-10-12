@@ -20,7 +20,7 @@ tags:
   - an error
   - a 'completed' signal.
 - stream is nothing by itself. we must **subscribe** it.
-  - https://www.freecodecamp.org/news/blitz-tips-rxjs-pipe-is-not-a-subscribe-125c89437a2c/
+  - https://www.freecodecamp.org/news/blitz-tips-RxJS-pipe-is-not-a-subscribe-125c89437a2c/
 - We capture these values only **asynchronously**.
   - Means we don't get to decide when to execute each function. We just define each that will execute when a value / an error / a completed signal is emitted.
 - The "listening" to the stream is called **subscribing**.
@@ -51,13 +51,13 @@ http://jsfiddle.net/staltz/8jFJH/48/
 
 # Refined example here.
 
-[See the example on Codepen](https://codepen.io/han-sim/pen/GRZVEVJ?editors=1111)
+[See the example on CodePen](https://codepen.io/han-sim/pen/GRZVEVJ?editors=1111)
 
 I've created an example page on my own that has almost the same logic with the example above but more simplified with the updated RxJS library. These are what I refined:
 
-- Used `pipe` to define a chain of rxjs operators. This is recommended instead of using dot-chaining from an Observable(stream) since rxjs 5.5.
-  - Check this official document about `pipe`: https://rxjs.dev/guide/v6/pipeable-operators
-- Used `from` instead of `fromPromise`. `fromPromise` is deprecated and wrapped in `from` as of rxjs 6.0.0.
+- Used `pipe` to define a chain of RxJS operators. This is recommended instead of using dot-chaining from an Observable(stream) since RxJS 5.5.
+  - Check this official document about `pipe`: https://RxJS.dev/guide/v6/pipeable-operators
+- Used `from` instead of `fromPromise`. `fromPromise` is deprecated and wrapped in `from` as of RxJS 6.0.0.
 - We don't really need to create another stream out of `refreshClick$` again that emits the data `null`. I found it quite confusing to read and came up with simpler codes for each suggestion stream.
 
 ```JavaScript

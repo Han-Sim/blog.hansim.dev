@@ -1,5 +1,5 @@
 ---
-title: "Redux Basics"
+title: "Redux and Redux Thunk"
 date: "2019-07-28 17:47:00"
 author: "Han Sim"
 category: "Web Development"
@@ -15,13 +15,13 @@ This app is based on this course: https://www.youtube.com/watch?v=93p3LxR9xfM, I
 
 > Note that this tutorial did mutate on `props` directly(`this.props.posts.unshift(...)`), which you shouldn't do in any cases. Always dispatch the action to change the state.
 
-See the full source code here: https://github.com/Han-Sim/redux-basics
+> See the full source code here: https://github.com/Han-Sim/redux-basics
 
 # Redux Basics
 
 ## Provider
 
-It's a glue for `React` and `Redux`. It re-renders the entire application by wrapping them, whenever there is a change in the state.
+It's a glue for React and Redux. It re-renders the entire application by wrapping them, whenever there is a change in the state.
 
 This is my root component and I wrap it with `<Provider>` component.
 
@@ -51,10 +51,10 @@ This will be just a dummy store, but it works. I used `export default configureS
 
 ```JavaScript{8}
 import { createStore } from "redux"
-//import modules from "./modules"
+// import modules from "./modules"
 
 const configureStore = () => {
-  //This is to run DevTools on Chrome
+  // This is to run DevTools on Chrome
   const devTools =
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   const store = createStore(() => [], {}, devTools)
@@ -68,7 +68,7 @@ export default configureStore()
 To compose enhancers, we can use `composeEnhancer()`. I applied `thunk` middleware along with redux dev tool enhancer
 
 ```JavaScript
-//use 'compose' to put enhancers together
+// use 'compose' to put enhancers together
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
@@ -91,20 +91,20 @@ Without Redux Middleware, Redux works this way:
 ![Screen Shot 2019-07-26 at 5.34.19 PM.png](https://i.loli.net/2019/07/27/5d3b73095cba889349.png)
 
 1. **Action** type `AGE_UP` is dispatched from a component(view) to the **store**: `dispatch("AGE_UP")`
-2. **Store** provides `previous state` and `action` to **Reducers**
+2. **Store** provides previous state and action to **Reducers**
 3. **Reducer** returns a new `state` to the **store**
 
 #### However, what happens if we have an asynchronous operation in our application, such as `fetch`?
 
-If you try to do some asynchronous operation in reducers, it won't work since reducer is designed to run only synchronous operations. That's why we need `middleware`.
+If you try to do some asynchronous operation in reducers, it won't work since reducer is designed to run only synchronous operations. That's why we need **middleware**.
 
 Redux middleware does asynchronous operations in the middle before reducer is fired, and after (for example) it fetches data from API, then it passes it to reducer.
 
 ## `/actions/postAction.js`
 
-`Actions` are payloads of information that send data from your application to your store. They are the only source of information for the store. You send them to the store using store.dispatch().
+**Actions** are payloads of information that send data from your application to your store. They are the only source of information for the store. You send them to the store using store.dispatch().
 
-### Action Creator
+### Action Creator w/ Redux Thunk
 
 https://redux.js.org/basics/actions#action-creators
 
@@ -113,7 +113,7 @@ https://redux.js.org/basics/actions#action-creators
 ```JavaScript
 import { FETCH_POST, NEW_POST } from "./types"
 
-//action creator function; returns a function with an argument 'dispatch'
+// action creator function; returns a function with an argument 'dispatch'
 export const fetchPosts = () => {
   console.log("fetching...")
   return function(dispatch) {
@@ -129,25 +129,25 @@ export const fetchPosts = () => {
 }
 ```
 
-> Note that here we return a function that `dispatch`s `FETCH_POST` action.
-> The dispatch() function can be accessed directly from the store as store.dispatch(), but more likely you'll access it using a helper like react-redux's connect(). You can use bindActionCreators() to automatically bind many action creators to a dispatch() function.
+- Note that here we return a function that **dispatch**s `FETCH_POST` action.
+- The `dispatch()` function can be accessed directly from the store as `store.dispatch()`, but more likely you'll access it using a helper like react-redux's connect(). You can use bindActionCreators() to automatically bind many action creators to a `dispatch()` function.
 
-**`fetchPost()` is a `action creator`; a function to create `Action`**. Inside this function, we did `fetch` first and after the asynchronous operation is done, then we `dispatch` action with its `type` and `payload`. In this case, we put the data we fetched into the `payload`.
+**`fetchPost()` is a action creator; a function to create Action**. Inside this function, we did `fetch` first and after the asynchronous operation is done, then we _dispatch_ action with its _type_ and _payload_. In this case, we put the data we fetched into the payload.
 
-> This is why we need middleware; when we need asynchronous operations in order to define `payload`, we need to chain them. Redux Middleware make them possible
+_Redux Thunk_ allows action creators to perform side effect as per the example above.
 
 ### `/reducers/postReducer.js`
 
 ```JavaScript
-import { FETCH_POST, NEW_POST } from "src/actions/types" //those constants are representing action "type"
+import { FETCH_POST, NEW_POST } from "src/actions/types" // those constants are representing action "type"
 
 const initialState = {
-  items: [], //array of post objects
+  items: [], // array of post objects
 }
 
-//Export default reducer
-//  Parameters: initialState and Action Types
-//  Must be a pure function
+// Export default reducer
+// Parameters: initialState and Action Types
+// Must be a pure function
 export default function(state = initialState, action) {
   switch (action.type) {
     case FETCH_POST:
@@ -172,7 +172,7 @@ This is `./store/modules/index.js` file
 
 import { combineReducers } from "redux"
 import postReducer from "./postReducer"
-//import counter from "./counterReducer";
+// import counter from "./counterReducer";
 
 export default combineReducers({
   postReducer
@@ -191,7 +191,7 @@ import rootReducer from "./reducers"
 const configureStore = () => {
   const initialState = {}
 
-  //use 'compose' to put enhancers together
+  // use 'compose' to put enhancers together
   const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
   const store = createStore(
@@ -217,10 +217,10 @@ import { connect } from "react-redux"
 import { fetchPosts } from "src/store/actions/postAction"
 
 class Post extends Component {
-  //.....
+  // .....
 }
 
-//type-check with props
+// type-check with props
 Post.propTypes = {
   fetchPosts: PropTypes.func.isRequired,
   posts: PropTypes.array.isRequired
@@ -251,7 +251,7 @@ const mapStateToProps = state => ({
 
 This is related to `reducer`s; **what kind of state should be passed as props?**
 
-In our application, ist gets `state.postReducer.items`, because our `rootReducer` look like this:
+In our application, it gets `state.postReducer.items`, because our `rootReducer` look like this:
 
 ```JavaScript{2}
 export default combineReducers({
@@ -263,7 +263,7 @@ And in this `postReducer`, the state looks like this:
 
 ```JavaScript
 const initialState = {
-  items: [], //array of post objects
+  items: [], // array of post objects
 }
 ```
 

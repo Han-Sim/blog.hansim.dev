@@ -91,7 +91,7 @@ console.log(arrowFunc("hi")) // { '0': {}, '1': ........ }
 console.log(normalFunc("hi")) // { '0': 'hi' }
 ```
 
-This is because `arguments` does not bind to `Arrow Function` variable. If we'd like to use something like `arguments` with arrow function, we can do this:
+This is because arguments does not bind to Arrow Function variable. If we'd like to use something like arguments with arrow function, we can do this:
 
 ```JavaScript
 let arrowFunc = (...n) => { return n }
@@ -168,10 +168,10 @@ obj.age = 3
 console.log(obj.age) //29
 ```
 
-# `-infinity`
+# -infinity
 
 ```JavaScript
-console.log(Math.max()) //-infinity
+console.log(Math.max()) // -infinity
 ```
 
 This is related to how `Math.max()` works. It compares to numbers starting from `-infinity`. If it's `Math.max(1,2,3)`, it compares `1` to `-infinity` first. If there is none, it just returns `-infinity`.

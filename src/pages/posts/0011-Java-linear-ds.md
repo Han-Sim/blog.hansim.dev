@@ -8,13 +8,13 @@ tags:
   - Data Structure
 ---
 
-# What is `Data Structure`
+# What is **Data Structure**
 
 It is about how to organize data in a computer.
 
 # Linear Data Structures
 
-In this post, I'll be mainly disucssing about **linear** data structures. There is **nothing hierarchical** here, it has only one dimension; data is stored in a single line.
+In this post, I'll be mainly discussing about **linear** data structures. There is **nothing hierarchical** here, it has only one dimension; data is stored in a single line.
 
 **References**
 
@@ -65,7 +65,7 @@ https://dzone.com/articles/arraylist-vs-linkedlist-vs
 
 ### Implementation of Queue: LinkedList
 
-A linked list is a linear data structure (like arrays) where each element is a separate object. Each element (that is `node`) of a list is comprising of two items – the `data` and a `reference` to the next node.
+A linked list is a linear data structure (like arrays) where each element is a separate object. Each element (that is node) of a list is comprising of two items – the data and a reference to the next node.
 
 ```Java
 // Java code for Linked List implementation

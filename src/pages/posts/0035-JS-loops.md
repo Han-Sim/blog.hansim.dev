@@ -42,7 +42,7 @@ let person = {
   hobby: "cooking"
 }
 
-//add getName() method to the prototype chain.
+// add getName() method to the prototype chain.
 // the object 'Object' is the parent object of every JS object
 //
 Object.prototype.getName = function() {
@@ -93,13 +93,13 @@ for (let [key, value] of Object.entries(object1)) {
 `for-in` enumerates properties in the prototype chain as well, but `Object.entries()` doesn't.
 
 ```JavaScript
-//constructor with function expression
+// constructor with function expression
 var Macbook = function(year, model) {
   this.year = year
   this.model = model
 }
 
-//add getModel() to the prototype chain
+// add getModel() to the prototype chain
 Macbook.prototype.getModel = function() {
   return "Macbook " + this.model
 }
@@ -109,12 +109,12 @@ var myMac = new Macbook(2018, "macbook pro")
 console.log("----- for-of with Object.entries -----")
 for (let [key, value] of Object.entries(myMac)) {
   console.log(key, " : ", value)
-} //only 'year' and 'model' are enumerated.
+} // only 'year' and 'model' are enumerated.
 
 console.log("\n----- for-in loop -----")
 for (let x in myMac) {
   console.log(x, " : ", myMac[x])
-} //it catches getModel() method as well since for-in loop searchs for the prototype chain as well
+} // it catches getModel() method as well since for-in loop searchs for the prototype chain as well
 ```
 
 output:
@@ -175,7 +175,7 @@ const str = "hansim"
 for (char of str) console.log(char)
 
 const set = new Set([1, 2, 3, 3, 4])
-for (x of set) console.log(x)  //1, 2, 3, 4
+for (x of set) console.log(x)  // 1, 2, 3, 4
 ```
 
 For Arrays, we can use `forEach()` method.
@@ -190,4 +190,4 @@ array1.forEach(function(element) {
 
 ## Symbol.iterator
 
-> References: https://alligator.io/js/iterables/
+References: https://alligator.io/js/iterables/

@@ -17,7 +17,7 @@ Effectively reverse the given string.
 
 ## Solution: JavaScript
 
-I used `recursive function` here.
+I used **recursive function** here.
 
 Some JavaScript Techniques here:
 
@@ -41,10 +41,10 @@ const arrOfChars = str.split("")
 reverse(arrOfChars, 0, str.length)
 
 const result = arrOfChars.join("")
-console.log(result) //misnah
+console.log(result) // misnah
 ```
 
-Time complexity is O(n) and space complexity is O(n)
+Time complexity is `O(n)` and space complexity is `O(n)`
 
 ## using `Stack` data structure
 
@@ -52,12 +52,12 @@ Time complexity is O(n) and space complexity is O(n)
 function reverse(str) {
   const arr = str.split("")
   let reverseStr = ""
-  let n = arr.length //since pop() removed the last element, we need to define 'n' first.
+  let n = arr.length // since pop() removes the last element, we need to define 'n' first.
 
   for (let i = 0; i < n; i++) reverseStr += arr.pop()
   return reverseStr
 }
 
 const str = "hansim"
-console.log(reverse(str)) //misnah
+console.log(reverse(str)) // misnah
 ```
