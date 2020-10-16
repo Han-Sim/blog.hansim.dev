@@ -7,7 +7,7 @@ tags:
   - TypeScript
 ---
 
-# TypeScript: Generics
+# Type Variable
 
 ```TypeScript
 function foo<T>(arg: T): T {

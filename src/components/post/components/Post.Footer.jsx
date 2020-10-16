@@ -1,5 +1,4 @@
 import React from "react";
-import EditIcon from "@material-ui/icons/Edit";
 import LabelIcon from "@material-ui/icons/Label";
 import Tag from "src/components/tag";
 
@@ -12,7 +11,6 @@ const Post = ({ filename, tags }) => {
   return (
     <div className={style.postFooterContainer}>
       <div className={style.editThisPage}>
-        <EditIcon />
         <a
           href={`${GIT_HUB_URL}/${filename}`}
           className={style.editThisPageText}
