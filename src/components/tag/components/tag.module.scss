@@ -1,7 +1,14 @@
-.tag {
-  margin-right: 3px;
+@import "src/styles/index.scss";
+
+.tagContainer {
+  @include link-style($color-dark-gray);
+
+  margin: 5px 5px 5px 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
-.root {
-  margin-bottom: 5px !important;
+.count {
+  font-size: 12px;
 }

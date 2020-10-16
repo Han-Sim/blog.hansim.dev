@@ -24,8 +24,8 @@ const Post = ({ filename, tags }) => {
         <div className={style.labelIcon}>
           <LabelIcon />
         </div>
-        {tags.map(tag => (
-          <Tag tag={tag} key={tag} />
+        {tags.map((tag, index) => (
+          <Tag tag={tag} key={tag} isLastTag={index === tags.length - 1} />
         ))}
       </div>
     </div>
