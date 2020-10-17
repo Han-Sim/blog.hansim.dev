@@ -4,41 +4,60 @@
   color: $color-dark-gray;
   margin-bottom: 40px;
 
-  .info {
-    display: flex;
-    align-items: flex-end;
-    letter-spacing: 0.08em;
-
-    .category {
-      font-size: 16px;
-      font-weight: 500;
-      font-family: $sans-serif-font;
-      cursor: pointer;
-      color: $color-blue;
-
-      &:hover {
-        color: $color-eclipse;
-      }
-    }
-
-    .divider {
-      width: 45px;
-      margin: 0 8px 0 10px;
-      border-bottom: 1px solid #757575a6;
-    }
-
-    .dateAndAuthor {
-      font-size: 12px;
-    }
-  }
-
   .title {
     display: inline-block;
     margin-top: 15px;
-    padding-left: 20px;
-    border-left: 8px solid $color-blue;
-    font-size: 50px;
+    font-size: 2rem;
     font-weight: 700;
-    font-family: $serif-font;
+    letter-spacing: 0.08em;
+  }
+
+  .footer {
+    font-size: 15px;
+    color: $color-dark-gray;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .categoryContainer,
+    .authorContainer,
+    .dateContainer {
+      margin: 10px 20px 20px 0;
+      border-top: 1px solid $color-light-gray;
+      padding-top: 10px;
+      width: 250px;
+      letter-spacing: 0.08em;
+
+      @media only screen and (max-width: 860px) {
+        width: 100%;
+      }
+    }
+
+    .category {
+      font-weight: 600;
+      color: $color-light-gray;
+      margin-bottom: 5px;
+    }
+
+    .categoryName {
+      @include link-style($color-dark-gray);
+
+      cursor: pointer;
+    }
+
+    .writtenBy {
+      font-weight: 600;
+      color: $color-light-gray;
+      margin-bottom: 5px;
+    }
+
+    .datePublished {
+      font-weight: 600;
+      color: $color-light-gray;
+      margin-bottom: 5px;
+    }
   }
 }

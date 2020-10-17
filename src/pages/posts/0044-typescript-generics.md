@@ -7,7 +7,7 @@ tags:
   - TypeScript
 ---
 
-# TypeScript: Generics
+# Type Variable
 
 ```TypeScript
 function foo<T>(arg: T): T {
@@ -22,7 +22,7 @@ T is called a _Type Variable_.
 
 The compiler will automatically look at the value 'hi' and then set 'T' to its type. However this can make potential pitfalls, so you may want to explicitly pass the type variable.
 
-# Generic Type Variables.
+# Generic Type Variables
 
 You can set a type of a generic variable by this.
 

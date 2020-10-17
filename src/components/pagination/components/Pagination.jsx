@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
-import Grid from "@material-ui/core/Grid";
 import { slugify, findIndex } from "src/util/helpers";
+import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import style from "./pagination.module.scss";
 
 const Pagination = ({ title, titlesOfAll }) => {
@@ -14,45 +15,39 @@ const Pagination = ({ title, titlesOfAll }) => {
   ]);
   const hasNextPost = useMemo(() => index > 0, [index]);
 
+  // TODO: cool animation for arrow back/forward icons on hover
   return (
     <div className={style.container}>
-      <Grid container spacing={3}>
-        <Grid item md={6}>
-          <div className={style.previousPostText}>Previous Post</div>
-          {hasPrevPost ? (
-            <a href={`/${slugify(titlesOfAll[index + 1])}`}>
-              <div className={style.previous}>
-                <div className={style.postTitle}>{titlesOfAll[index + 1]}</div>
-              </div>
-            </a>
-          ) : (
-            <div className={`${style.previous} ${style.previousNone}`}>
-              <div className={style.textInd}>Previous Post</div>
-              <div className={style.postTitle}>no more previous post</div>
-            </div>
-          )}
-        </Grid>
-        <Grid
-          item
-          md={6}
-          classes={{
-            item: style.gridItem,
-          }}
-        >
-          <div className={style.nextPostText}>Next Post</div>
-          {hasNextPost ? (
+      <div className={style.nextContainer}>
+        <div className={style.nextPost}>Next</div>
+        {hasNextPost ? (
+          <div className={style.linkContainer}>
             <a href={`/${slugify(titlesOfAll[index - 1])}`}>
-              <div className={style.next}>
-                <div className={style.postTitle}>{titlesOfAll[index - 1]}</div>
-              </div>
+              <div className={style.postTitle}>{titlesOfAll[index - 1]}</div>
             </a>
-          ) : (
-            <div className={`${style.next} ${style.nextNone}`}>
-              <div className={style.postTitle}>no more next post</div>
+            <div className={style.arrowIcon}>
+              <ArrowForwardIcon />
             </div>
-          )}
-        </Grid>
-      </Grid>
+          </div>
+        ) : (
+          <div className={style.nextNone}>no more next post</div>
+        )}
+      </div>
+      <div className={style.previousContainer}>
+        <div className={style.previousPost}>Previous</div>
+        {hasPrevPost ? (
+          <div className={style.linkContainer}>
+            <a href={`/${slugify(titlesOfAll[index + 1])}`}>
+              <div className={style.postTitle}>{titlesOfAll[index + 1]}</div>
+            </a>
+            <div className={style.arrowIcon}>
+              <ArrowBackIcon />
+            </div>
+          </div>
+        ) : (
+          <div className={style.previousNone}>no more previous post</div>
+        )}
+      </div>
     </div>
   );
 };

@@ -3,75 +3,60 @@
 .container {
   margin: 45px 0;
   color: $color-dark-gray;
+}
 
-  .previous {
-    border-left: 8px solid $color-blue;
-    padding-left: 20px;
+.nextContainer,
+.previousContainer {
+  display: flex;
+  align-items: center;
 
-    &:hover {
-      border-color: $color-eclipse;
-      color: $color-eclipse;
-    }
-
-    a {
-      color: inherit;
-    }
-  }
-
-  .next {
-    border-right: 8px solid $color-blue;
-    padding-right: 20px;
-
-    * {
-      text-align: right;
-    }
-
-    &:hover {
-      border-color: $color-eclipse;
-      color: $color-eclipse;
-    }
-
-    a {
-      color: inherit;
-    }
+  a {
+    @include link-style($color-dark-gray);
   }
 }
 
-.previousPostText,
-.nextPostText {
-  font-family: $sans-serif-font;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: $color-dark-gray;
-  margin-bottom: 10px;
+.previousContainer {
+  margin-top: 15px;
 }
 
-.nextPostText {
-  text-align: right;
+.linkContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.nextPost,
+.previousPost {
+  font-weight: 600;
+  color: $color-light-gray;
+}
+
+.nextPost {
+  margin-right: 60px;
+}
+
+.previousPost {
+  margin-right: 30px;
 }
 
 .postTitle {
+  display: inline-block;
   font-size: 30px;
-  font-weight: 700;
-  font-family: "Roboto Slab", sans-serif;
 }
 
-.nextNone {
-  border-color: $color-dark-gray !important;
-
-  &:hover {
-    color: inherit !important;
-  }
-}
-
+.nextNone,
 .previousNone {
-  border-color: $color-dark-gray !important;
-
-  &:hover {
-    color: inherit !important;
-  }
+  color: $color-light-gray;
+  font-size: 30px;
 }
 
-.gridItem {
-  width: 100%;
+.arrowIcon {
+  margin-left: 15px;
+  margin-right: 20px;
+  padding-top: 10px;
+
+  @media only screen and (max-width: 860px) {
+    display: none;
+  }
 }

@@ -1,44 +1,77 @@
-import React, { useMemo, useCallback } from "react";
+import React, { useMemo } from "react";
 import PropTypes from "prop-types";
 import { navigate } from "gatsby";
-import Chip from "@material-ui/core/Chip";
+import { KEY_ENTER } from "src/util/constants";
 import { slugify } from "src/util/helpers";
 
 import style from "./tag.module.scss";
 
-const Tag = ({ classes, count, tag, onClick, ...otherProps }) => {
+const Tag = ({ count, key, tag, onClick, isLastTag }) => {
+  console.log("tag", tag);
+  console.log("isLastTag", isLastTag);
   const label = useMemo(() => {
-    if (count) {
-      return `${tag} (${count})`;
-    }
-    return tag;
-  }, [count, tag]);
+    if (!isLastTag) {
+      if (count) {
+        return (
+          <>
+            <div className={style.tag}>{tag}</div>
+            <div className={style.count}>({count})</div>
+            <div className={style.comma}>,</div>
+          </>
+        );
+      }
 
-  const handleTagOnClick = useCallback(() => {
+      return (
+        <>
+          <div className={style.tag}>{tag}</div>
+          <div className={style.comma}>,</div>
+        </>
+      );
+    }
+
+    if (count) {
+      return (
+        <>
+          <div className={style.tag}>{tag}</div>
+          <div className={style.count}>({count})</div>
+        </>
+      );
+    }
+
+    return <div className={style.tag}>{tag}</div>;
+  }, [count, tag, isLastTag]);
+
+  const handleTagOnClick = () => {
     navigate(`/tag/${slugify(tag)}`);
     onClick && onClick();
-  }, [onClick, tag]);
+  };
+
+  const handleTagOnKeyDown = event => {
+    if (event.keyCode === KEY_ENTER) {
+      navigate(`/tag/${slugify(tag)}`);
+      onClick && onClick();
+    }
+  };
 
   return (
-    <span className={style.tag}>
-      <Chip
-        label={label}
-        classes={{
-          root: style.root,
-          ...classes,
-        }}
-        clickable
-        onClick={handleTagOnClick}
-        {...otherProps}
-      />
-    </span>
+    <div
+      className={style.tagContainer}
+      key={key}
+      onClick={handleTagOnClick}
+      onKeyDown={handleTagOnKeyDown}
+      role="button"
+      tabindex={0}
+    >
+      {label}
+    </div>
   );
 };
 
 Tag.propTypes = {
-  classes: PropTypes.shape({}),
   count: PropTypes.number,
-  tag: PropTypes.string,
+  isLastTag: PropTypes.bool.isRequired,
+  tag: PropTypes.string.isRequired,
+  key: PropTypes.string,
   onClick: PropTypes.func,
 };
 

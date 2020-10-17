@@ -7,15 +7,27 @@ import style from "./menu.tags.module.scss";
 const MenuTags = ({ tags, postCountByTagDescOrder, onClick }) => {
   const tagsToRender = useMemo(() => {
     const arr = [];
-    for (const [tag, count] of Object.entries(postCountByTagDescOrder)) {
+    for (const [index, [tag, count]] of Object.entries(
+      postCountByTagDescOrder
+    ).entries()) {
       if (tags.includes(tag)) {
         if (count >= 5) {
           arr.push(
-            <Tag tag={tag} count={count} color="primary" onClick={onClick} />
+            <Tag
+              tag={tag}
+              count={count}
+              onClick={onClick}
+              isLastTag={index === tags.length - 1}
+            />
           );
         } else {
           arr.push(
-            <Tag tag={tag} count={count} variant="outlined" onClick={onClick} />
+            <Tag
+              tag={tag}
+              count={count}
+              onClick={onClick}
+              isLastTag={index === tags.length - 1}
+            />
           );
         }
       }

@@ -17,22 +17,29 @@ const PostHeader = ({ author, category, date, title }) => {
   return (
     <div className={style.postHeaderContainer}>
       <div>
-        <div className={style.info}>
-          <div
-            className={style.category}
-            onClick={handleCategoryOnClick}
-            onKeyDown={handleCategoryOnKeyDown}
-            role="button"
-            tabindex={0}
-          >
-            {category.toUpperCase()}
+        <div className={style.title}>{title}</div>
+        <div className={style.footer}>
+          <div className={style.categoryContainer}>
+            <div className={style.category}>Category</div>
+            <div
+              className={style.categoryName}
+              onClick={handleCategoryOnClick}
+              onKeyDown={handleCategoryOnKeyDown}
+              role="button"
+              tabindex={0}
+            >
+              {category}
+            </div>
           </div>
-          <div className={style.divider} />
-          <div className={style.dateAndAuthor}>
-            {date}, {author}
+          <div className={style.authorContainer}>
+            <div className={style.writtenBy}>Written by</div>
+            <div>{author}</div>
+          </div>
+          <div className={style.dateContainer}>
+            <div className={style.datePublished}>Date published</div>
+            <div>{date}</div>
           </div>
         </div>
-        <div className={style.title}>{title}</div>
       </div>
     </div>
   );

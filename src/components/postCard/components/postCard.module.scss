@@ -21,7 +21,7 @@
       margin-right: 13px;
 
       a {
-        @include link-style($color-black);
+        @include link-style($color-dark-gray);
       }
     }
   }
