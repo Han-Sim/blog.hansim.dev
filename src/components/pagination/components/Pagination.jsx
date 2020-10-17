@@ -30,9 +30,7 @@ const Pagination = ({ title, titlesOfAll }) => {
             </div>
           </div>
         ) : (
-          <div className={style.nextNone}>
-            <div className={style.postTitle}>no more next post</div>
-          </div>
+          <div className={style.nextNone}>no more next post</div>
         )}
       </div>
       <div className={style.previousContainer}>
@@ -47,10 +45,7 @@ const Pagination = ({ title, titlesOfAll }) => {
             </div>
           </div>
         ) : (
-          <div className={style.previousNone}>
-            <div className={style.textInd}>Previous Post</div>
-            <div className={style.postTitle}>no more previous post</div>
-          </div>
+          <div className={style.previousNone}>no more previous post</div>
         )}
       </div>
     </div>
