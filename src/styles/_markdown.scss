@@ -50,3 +50,8 @@ li > p {
   padding: 0 1em;
   margin: 0;
 }
+
+code[class*="language-"],
+pre[class*="language-"] {
+  color: $color-dark-gray;
+}
