@@ -20,7 +20,7 @@ const Post = ({ filename, tags }) => {
           Edit this post on GitHub
         </a>
       </div>
-      <div className={style.tasgList}>
+      <div className={style.tagsList}>
         <div className={style.labelIcon}>
           <LabelIcon />
         </div>
