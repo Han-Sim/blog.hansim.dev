@@ -18,7 +18,7 @@ const MenuBar = forwardRef((props, ref) => {
 
   const handleCategoryOnClick = useCallback(
     category => {
-      navigate(`/all-posts`);
+      navigate(`/posts`);
       setActiveMenu(category);
     },
     [setActiveMenu]
@@ -27,7 +27,7 @@ const MenuBar = forwardRef((props, ref) => {
   const handleCategoryOnKeyDown = useCallback(
     (category, event) => {
       if (event.keyCode === KEY_ENTER) {
-        navigate(`/all-posts`);
+        navigate(`/posts`);
         setActiveMenu(category);
       }
     },

@@ -5,12 +5,12 @@ import style from "./post.header.module.scss";
 
 const PostHeader = ({ author, category, date, title }) => {
   const handleCategoryOnClick = useCallback(() => {
-    navigate(`/all-posts`);
+    navigate(`/posts`);
   }, []);
 
   const handleCategoryOnKeyDown = useCallback(event => {
     if (event.keyCode === KEY_ENTER) {
-      navigate(`/all-posts`);
+      navigate(`/posts`);
     }
   }, []);
 

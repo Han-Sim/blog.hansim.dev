@@ -32,7 +32,7 @@ const MenuList = ({
     category => {
       setActiveMenu(category);
       setIsMenuOpen(false);
-      navigate(`/all-posts`);
+      navigate(`/posts`);
     },
     [setActiveMenu, setIsMenuOpen]
   );
@@ -42,7 +42,7 @@ const MenuList = ({
       if (event.keyCode === KEY_ENTER) {
         setActiveMenu(category);
         setIsMenuOpen(false);
-        navigate(`/all-posts`);
+        navigate(`/posts`);
       }
     },
     [setActiveMenu, setIsMenuOpen]

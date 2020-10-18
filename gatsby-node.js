@@ -98,10 +98,14 @@ exports.createPages = ({ actions, graphql }) => {
 
     // #endregion
 
+    // #region Category Posts
+
+    // #endregion
+
     // #region All Posts
 
     createPage({
-      path: `/all-posts`,
+      path: `/posts`,
       component: templates.allPosts,
     });
 
