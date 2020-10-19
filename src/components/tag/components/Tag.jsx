@@ -7,8 +7,6 @@ import { slugify } from "src/util/helpers";
 import style from "./tag.module.scss";
 
 const Tag = ({ count, key, tag, onClick, isLastTag }) => {
-  console.log("tag", tag);
-  console.log("isLastTag", isLastTag);
   const label = useMemo(() => {
     if (!isLastTag) {
       if (count) {

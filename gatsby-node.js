@@ -2,8 +2,9 @@ const path = require("path");
 const _ = require("lodash");
 const { countOccurrences, slugify } = require("./src/util/helpers");
 const {
-  CATEGORY_WEB_DEVELOPMENT,
-  CATEGORY_BASICS,
+  PATH_CATEGORY_WEB_DEVELOPMENT,
+  PATH_CATEGORY_BASICS,
+  PATH_ALL_POSTS,
 } = require("./src/util/constants");
 
 exports.onCreateNode = ({ node, actions }) => {
@@ -98,14 +99,20 @@ exports.createPages = ({ actions, graphql }) => {
 
     // #endregion
 
-    // #region Category Posts
-
-    // #endregion
-
-    // #region All Posts
+    // #region category posts and all posts
 
     createPage({
-      path: `/posts`,
+      path: PATH_CATEGORY_WEB_DEVELOPMENT,
+      component: templates.allPosts,
+    });
+
+    createPage({
+      path: PATH_CATEGORY_BASICS,
+      component: templates.allPosts,
+    });
+
+    createPage({
+      path: PATH_ALL_POSTS,
       component: templates.allPosts,
     });
 
