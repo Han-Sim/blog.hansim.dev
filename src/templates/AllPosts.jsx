@@ -40,7 +40,7 @@ const AllPosts = ({ data, path }) => {
       case PATH_ALL_POSTS:
         return "All posts";
       case PATH_CATEGORY_BASICS:
-        return "Posts about basics";
+        return "Posts about programming basics";
       case PATH_CATEGORY_WEB_DEVELOPMENT:
         return "Posts about web development";
     }
