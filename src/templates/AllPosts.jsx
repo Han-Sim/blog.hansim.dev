@@ -26,12 +26,14 @@ const AllPosts = ({ data, path }) => {
       case PATH_CATEGORY_BASICS: {
         console.log("PATH_CATEGORY_BASICS", PATH_CATEGORY_BASICS);
         setActiveMenu(CATEGORY_BASICS);
+        break;
       }
       case PATH_CATEGORY_WEB_DEVELOPMENT: {
         setActiveMenu(CATEGORY_WEB_DEVELOPMENT);
+        break;
       }
     }
-  }, [path]);
+  }, [path, setActiveMenu]);
 
   const seoTitle = useMemo(() => {
     switch (path) {

@@ -2,7 +2,7 @@
 title: "Refs and the DOM in React"
 date: "2019-07-26 15:39:00"
 author: "Han Sim"
-category: "Web Development"
+category: "Web"
 tags:
   - JavaScript
   - React

@@ -2,7 +2,7 @@
 title: "When to Use React Portals"
 date: "2019-07-28 00:01:00"
 author: "Han Sim"
-category: "Web Development"
+category: "Web"
 tags:
   - JavaScript
   - React

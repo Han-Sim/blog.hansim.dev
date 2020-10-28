@@ -26,9 +26,7 @@ const Menu = forwardRef(({ toggleMenu }, ref) => {
       }
     }
   `);
-  const edges = useMemo(() => data.allMarkdownRemark.edges, [
-    data.allMarkdownRemark.edges,
-  ]);
+  const { edges = [] } = data.allMarkdownRemark;
 
   const categoryTags = useMemo(() => {
     const obj = {
@@ -42,6 +40,9 @@ const Menu = forwardRef(({ toggleMenu }, ref) => {
         [CATEGORY_BASICS]: [],
       },
     };
+
+    console.log("edges", edges);
+    console.log("obj", obj);
 
     edges.forEach(edge => {
       obj.categories.push(edge.node.frontmatter.category);
@@ -61,6 +62,8 @@ const Menu = forwardRef(({ toggleMenu }, ref) => {
 
     return obj;
   }, [edges]);
+
+  console.log("categoryTags", categoryTags);
 
   // Post count by tag and category.
   // Sort it by desc order.

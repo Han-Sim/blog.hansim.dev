@@ -2,7 +2,7 @@
 title: "TypeScript Generics"
 date: "2020-08-14 23:00:00"
 author: "Han Sim"
-category: "Web Development"
+category: "Web"
 tags:
   - TypeScript
 ---

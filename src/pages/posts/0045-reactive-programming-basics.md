@@ -2,7 +2,7 @@
 title: "Reactive Programming Basics"
 date: "2020-09-13 16:00:00"
 author: "Han Sim"
-category: "Web Development"
+category: "Web"
 tags:
   - Reactive Programming
   - RxJS

@@ -2,7 +2,7 @@
 title: "JavaScript: When to Use const and let"
 date: "2019-07-17 16:33:00"
 author: "Han Sim"
-category: "Web Development"
+category: "Web"
 tags:
   - JavaScript
   - Scope

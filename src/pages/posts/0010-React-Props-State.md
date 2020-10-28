@@ -2,7 +2,7 @@
 title: "React: Props and State in a nutshell"
 date: "2019-07-04 01:30:00"
 author: "Han Sim"
-category: "Web Development"
+category: "Web"
 tags:
   - JavaScript
   - React

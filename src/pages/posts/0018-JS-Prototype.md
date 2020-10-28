@@ -2,7 +2,7 @@
 title: "JavaScript and Prototype-based Inheritance"
 date: "2019-07-17 21:22:00"
 author: "Han Sim"
-category: "Web Development"
+category: "Web"
 tags:
   - JavaScript
   - OOP
