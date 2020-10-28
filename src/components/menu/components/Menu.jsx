@@ -41,9 +41,6 @@ const Menu = forwardRef(({ toggleMenu }, ref) => {
       },
     };
 
-    console.log("edges", edges);
-    console.log("obj", obj);
-
     edges.forEach(edge => {
       obj.categories.push(edge.node.frontmatter.category);
       obj.categoryWithTags[edge.node.frontmatter.category] = [
@@ -62,8 +59,6 @@ const Menu = forwardRef(({ toggleMenu }, ref) => {
 
     return obj;
   }, [edges]);
-
-  console.log("categoryTags", categoryTags);
 
   // Post count by tag and category.
   // Sort it by desc order.

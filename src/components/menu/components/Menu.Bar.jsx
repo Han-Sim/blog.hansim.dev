@@ -1,45 +1,70 @@
-import React, { forwardRef, useContext, useCallback } from "react";
+import React, { forwardRef, useContext } from "react";
 import { navigate } from "gatsby";
 import IconButton from "@material-ui/core/IconButton";
 import MenuOpenIcon from "@material-ui/icons/MenuOpen";
 import classnames from "classnames";
 import { Context } from "src/context";
 import {
-  CATEGORY_WEB_DEVELOPMENT,
+  CATEGORY_ALL_POSTS,
   CATEGORY_BASICS,
+  CATEGORY_WEB_DEVELOPMENT,
   KEY_ENTER,
+  PATH_ALL_POSTS,
+  PATH_CATEGORY_BASICS,
+  PATH_CATEGORY_WEB_DEVELOPMENT,
 } from "src/util/constants";
 import style from "./menu.bar.module.scss";
 
 const MenuBar = forwardRef((props, ref) => {
   const { activeMenu, setActiveMenu } = useContext(Context);
 
-  const handleCategoryOnClick = useCallback(
-    category => {
-      navigate(`/posts`);
-      setActiveMenu(category);
-    },
-    [setActiveMenu]
-  );
+  const navigateCategory = category => {
+    if (CATEGORY_ALL_POSTS) {
+      navigate(PATH_ALL_POSTS);
+    }
 
-  const handleCategoryOnKeyDown = useCallback(
-    (category, event) => {
-      if (event.keyCode === KEY_ENTER) {
-        navigate(`/posts`);
-        setActiveMenu(category);
-      }
-    },
-    [setActiveMenu]
-  );
+    if (CATEGORY_BASICS) {
+      navigate(PATH_CATEGORY_BASICS);
+    }
+
+    if (CATEGORY_WEB_DEVELOPMENT) {
+      navigate(PATH_CATEGORY_WEB_DEVELOPMENT);
+    }
+
+    setActiveMenu(category);
+  };
+
+  const handleCategoryOnClick = category => navigateCategory(category);
+
+  const handleCategoryOnKeyDown = (category, event) => {
+    if (event.keyCode === KEY_ENTER) {
+      navigateCategory(category);
+    }
+  };
 
   return (
     <div className={style.container} ref={ref}>
       <div className={style.left}>
         <div
           className={
+            activeMenu === CATEGORY_ALL_POSTS
+              ? classnames(style.menu, style.menuActive, style.allPosts)
+              : classnames(style.menu, style.menuInactive, style.allPosts)
+          }
+          onClick={() => handleCategoryOnClick(CATEGORY_ALL_POSTS)}
+          onKeyDown={event =>
+            handleCategoryOnKeyDown(CATEGORY_ALL_POSTS, event)
+          }
+          role="button"
+          tabindex={0}
+        >
+          {CATEGORY_ALL_POSTS}
+        </div>
+        <div
+          className={
             activeMenu === CATEGORY_WEB_DEVELOPMENT
-              ? classnames(style.menu, style.menuActive, style.webDevelopment)
-              : classnames(style.menu, style.menuInactive, style.webDevelopment)
+              ? classnames(style.menu, style.menuActive, style.web)
+              : classnames(style.menu, style.menuInactive, style.web)
           }
           onClick={() => handleCategoryOnClick(CATEGORY_WEB_DEVELOPMENT)}
           onKeyDown={event =>
