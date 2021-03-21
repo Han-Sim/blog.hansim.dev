@@ -47,3 +47,10 @@ $sans-serif-font: "Roboto", sans-serif;
     color: inherit;
   }
 }
+
+// Exporting variables to be used in JS.
+:export {
+  colorEclipse: $color-eclipse;
+  colorYellow: $color-yellow;
+  colorLightGray: $color-light-gray;
+}
