@@ -6,6 +6,7 @@
   .editThisPage {
     display: flex;
     align-items: flex-end;
+    margin-top: 5px;
 
     .editThisPageText {
       @include link-style($color-dark-gray);
@@ -15,7 +16,6 @@
   }
 
   .tagsList {
-    margin-top: 5px;
     display: flex;
     align-items: center;
     flex-wrap: wrap;

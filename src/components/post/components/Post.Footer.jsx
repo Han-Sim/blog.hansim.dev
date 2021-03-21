@@ -10,6 +10,14 @@ const GIT_HUB_URL =
 const Post = ({ filename, tags }) => {
   return (
     <div className={style.postFooterContainer}>
+      <div className={style.tagsList}>
+        <div className={style.labelIcon}>
+          <LabelIcon />
+        </div>
+        {tags.map((tag, index) => (
+          <Tag tag={tag} key={tag} isLastTag={index === tags.length - 1} />
+        ))}
+      </div>
       <div className={style.editThisPage}>
         <a
           href={`${GIT_HUB_URL}/${filename}`}
@@ -19,14 +27,6 @@ const Post = ({ filename, tags }) => {
         >
           Edit this post on GitHub
         </a>
-      </div>
-      <div className={style.tagsList}>
-        <div className={style.labelIcon}>
-          <LabelIcon />
-        </div>
-        {tags.map((tag, index) => (
-          <Tag tag={tag} key={tag} isLastTag={index === tags.length - 1} />
-        ))}
       </div>
     </div>
   );
