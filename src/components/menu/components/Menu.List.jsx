@@ -16,6 +16,8 @@ import {
   CATEGORY_BASICS,
   CATEGORY_WEB_DEVELOPMENT,
   KEY_ENTER,
+  PATH_CATEGORY_BASICS,
+  PATH_CATEGORY_WEB_DEVELOPMENT,
 } from "src/util/constants";
 import MenuTags from "./Menu.Tags";
 import style from "./menu.list.module.scss";
@@ -26,35 +28,29 @@ const MenuList = ({
   postCountByCategory,
   postCountByTagAndCategory,
 }) => {
-  const { setActiveMenu, isMenuOpen, setIsMenuOpen } = useContext(Context);
+  const { isMenuOpen, setIsMenuOpen } = useContext(Context);
 
   const handleCategoryOnClick = useCallback(
-    category => {
-      setActiveMenu(category);
+    path => {
       setIsMenuOpen(false);
-      navigate(`/posts`);
+      navigate(path);
     },
-    [setActiveMenu, setIsMenuOpen]
+    [setIsMenuOpen]
   );
 
   const handleCategoryOnKeyDown = useCallback(
-    (category, event) => {
+    (path, event) => {
       if (event.keyCode === KEY_ENTER) {
-        setActiveMenu(category);
         setIsMenuOpen(false);
-        navigate(`/posts`);
+        navigate(path);
       }
     },
-    [setActiveMenu, setIsMenuOpen]
+    [setIsMenuOpen]
   );
 
-  const handleTagOnClick = useCallback(
-    category => {
-      setActiveMenu(category);
-      setIsMenuOpen(false);
-    },
-    [setActiveMenu, setIsMenuOpen]
-  );
+  const handleTagOnClick = useCallback(() => {
+    setIsMenuOpen(false);
+  }, [setIsMenuOpen]);
 
   return (
     <Drawer open={isMenuOpen} anchor="right" variant="persistent">
@@ -67,9 +63,9 @@ const MenuList = ({
         <Divider />
         <List disablePadding>
           <div
-            onClick={() => handleCategoryOnClick(CATEGORY_WEB_DEVELOPMENT)}
+            onClick={() => handleCategoryOnClick(PATH_CATEGORY_WEB_DEVELOPMENT)}
             onKeyDown={event =>
-              handleCategoryOnKeyDown(CATEGORY_WEB_DEVELOPMENT, event)
+              handleCategoryOnKeyDown(PATH_CATEGORY_WEB_DEVELOPMENT, event)
             }
             role="button"
             tabindex={0}
@@ -94,15 +90,17 @@ const MenuList = ({
               postCountByTagDescOrder={
                 postCountByTagAndCategory[[CATEGORY_WEB_DEVELOPMENT]]
               }
-              onClick={() => handleTagOnClick(CATEGORY_WEB_DEVELOPMENT)}
+              onClick={handleTagOnClick}
             />
           </div>
         </List>
         <Divider />
         <List disablePadding>
           <div
-            onClick={() => handleCategoryOnClick(CATEGORY_BASICS)}
-            onKeyDown={event => handleCategoryOnKeyDown(CATEGORY_BASICS, event)}
+            onClick={() => handleCategoryOnClick(PATH_CATEGORY_BASICS)}
+            onKeyDown={event =>
+              handleCategoryOnKeyDown(PATH_CATEGORY_BASICS, event)
+            }
             role="button"
             tabindex={0}
           >
@@ -126,7 +124,7 @@ const MenuList = ({
               postCountByTagDescOrder={
                 postCountByTagAndCategory[CATEGORY_BASICS]
               }
-              onClick={() => handleTagOnClick(CATEGORY_BASICS)}
+              onClick={handleTagOnClick}
             />
           </div>
         </List>
