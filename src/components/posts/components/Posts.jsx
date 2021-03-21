@@ -1,7 +1,11 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import PropTypes from "prop-types";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { CATEGORY_WEB_DEVELOPMENT, CATEGORY_BASICS } from "src/util/constants";
+import {
+  CATEGORY_ALL_POSTS,
+  CATEGORY_BASICS,
+  CATEGORY_WEB_DEVELOPMENT,
+} from "src/util/constants";
 import { Context } from "src/context";
 import style from "./posts.module.scss";
 
@@ -21,6 +25,8 @@ const Posts = ({ listOfPostsToRender, postsTitleToRender }) => {
     }, 500);
   };
 
+  console.log("listOfPostsRef.current", listOfPostsRef.current);
+
   return (
     <div className={style.root}>
       {postsTitleToRender}
@@ -33,6 +39,7 @@ const Posts = ({ listOfPostsToRender, postsTitleToRender }) => {
 
 Posts.propTypes = {
   listOfPostsToRender: PropTypes.shape({
+    [CATEGORY_ALL_POSTS]: PropTypes.arrayOf(PropTypes.node),
     [CATEGORY_WEB_DEVELOPMENT]: PropTypes.arrayOf(PropTypes.node),
     [CATEGORY_BASICS]: PropTypes.arrayOf(PropTypes.node),
   }),

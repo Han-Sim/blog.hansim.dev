@@ -16,22 +16,10 @@ import {
 import style from "./menu.bar.module.scss";
 
 const MenuBar = forwardRef((props, ref) => {
-  const { activeMenu, setActiveMenu } = useContext(Context);
+  const { activeMenu } = useContext(Context);
 
-  const navigateCategory = category => {
-    if (CATEGORY_ALL_POSTS) {
-      navigate(PATH_ALL_POSTS);
-    }
-
-    if (CATEGORY_BASICS) {
-      navigate(PATH_CATEGORY_BASICS);
-    }
-
-    if (CATEGORY_WEB_DEVELOPMENT) {
-      navigate(PATH_CATEGORY_WEB_DEVELOPMENT);
-    }
-
-    setActiveMenu(category);
+  const navigateCategory = path => {
+    navigate(path);
   };
 
   const handleCategoryOnClick = category => navigateCategory(category);
@@ -51,7 +39,7 @@ const MenuBar = forwardRef((props, ref) => {
               ? classnames(style.menu, style.menuActive, style.allPosts)
               : classnames(style.menu, style.menuInactive, style.allPosts)
           }
-          onClick={() => handleCategoryOnClick(CATEGORY_ALL_POSTS)}
+          onClick={() => handleCategoryOnClick(PATH_ALL_POSTS)}
           onKeyDown={event =>
             handleCategoryOnKeyDown(CATEGORY_ALL_POSTS, event)
           }
@@ -66,7 +54,7 @@ const MenuBar = forwardRef((props, ref) => {
               ? classnames(style.menu, style.menuActive, style.web)
               : classnames(style.menu, style.menuInactive, style.web)
           }
-          onClick={() => handleCategoryOnClick(CATEGORY_WEB_DEVELOPMENT)}
+          onClick={() => handleCategoryOnClick(PATH_CATEGORY_WEB_DEVELOPMENT)}
           onKeyDown={event =>
             handleCategoryOnKeyDown(CATEGORY_WEB_DEVELOPMENT, event)
           }
@@ -81,7 +69,7 @@ const MenuBar = forwardRef((props, ref) => {
               ? classnames(style.menu, style.menuActive, style.basics)
               : classnames(style.menu, style.menuInactive, style.basics)
           }
-          onClick={() => handleCategoryOnClick(CATEGORY_BASICS)}
+          onClick={() => handleCategoryOnClick(PATH_CATEGORY_BASICS)}
           onKeyDown={event => handleCategoryOnKeyDown(CATEGORY_BASICS, event)}
           role="button"
           tabindex={0}

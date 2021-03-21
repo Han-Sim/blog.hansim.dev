@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useMemo } from "react";
 import { graphql } from "gatsby";
 import {
+  CATEGORY_ALL_POSTS,
   CATEGORY_BASICS,
   CATEGORY_WEB_DEVELOPMENT,
   PATH_ALL_POSTS,
@@ -14,17 +15,15 @@ import PostCard from "src/components/postCard";
 import Posts from "src/components/posts";
 
 const AllPosts = ({ data, path }) => {
-  const { activeMenu, setActiveMenu } = useContext(Context);
-  console.log("activeMenu", activeMenu);
+  const { setActiveMenu } = useContext(Context);
 
   useEffect(() => {
-    console.log("path", path);
-
     switch (path) {
-      // case PATH_ALL_POSTS:
-      //   return setActiveMenu(CATEGORY_ALL_POSTS);
+      case PATH_ALL_POSTS:
+        setActiveMenu(CATEGORY_ALL_POSTS);
+        break;
+
       case PATH_CATEGORY_BASICS: {
-        console.log("PATH_CATEGORY_BASICS", PATH_CATEGORY_BASICS);
         setActiveMenu(CATEGORY_BASICS);
         break;
       }
@@ -48,6 +47,7 @@ const AllPosts = ({ data, path }) => {
 
   const listOfPostsToRender = useMemo(() => {
     const obj = {
+      [CATEGORY_ALL_POSTS]: [],
       [CATEGORY_WEB_DEVELOPMENT]: [],
       [CATEGORY_BASICS]: [],
     };
@@ -60,9 +60,25 @@ const AllPosts = ({ data, path }) => {
       if (node.frontmatter.category === CATEGORY_BASICS) {
         obj[CATEGORY_BASICS].push(node);
       }
+
+      obj[CATEGORY_ALL_POSTS].push(node);
     });
 
     const listOfPosts = {
+      [CATEGORY_ALL_POSTS]: obj[CATEGORY_ALL_POSTS].map((node, index) => {
+        return (
+          <PostCard
+            key={node.id}
+            title={node.frontmatter.title}
+            author={node.frontmatter.author}
+            slug={node.fields.slug}
+            date={node.frontmatter.date}
+            body={node.excerpt}
+            tags={node.frontmatter.tags}
+            index={index}
+          />
+        );
+      }),
       [CATEGORY_WEB_DEVELOPMENT]: obj[CATEGORY_WEB_DEVELOPMENT].map(
         (node, index) => {
           return (
