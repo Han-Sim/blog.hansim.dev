@@ -26,7 +26,7 @@ const PostHeader = ({ author, category, date, title }) => {
               onClick={handleCategoryOnClick}
               onKeyDown={handleCategoryOnKeyDown}
               role="button"
-              tabindex={0}
+              tabIndex={0}
             >
               {category}
             </div>
