@@ -2,7 +2,7 @@
 
 Personal blog to post about some useful codes snippets, programming concepts, etc.
 
-## Frameworks/libraries
+## Key Technologies
 
 - `Gatsby`
 - `GraphQL`
@@ -10,8 +10,6 @@ Personal blog to post about some useful codes snippets, programming concepts, et
 - `Material-UI`
 
 ## Key Features
-
-This is a fully featured blog which supports these features.
 
 - Markdown Language
 - Tags
