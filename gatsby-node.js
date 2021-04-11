@@ -1,6 +1,9 @@
 const path = require("path");
 const _ = require("lodash");
-const { countOccurrences, slugify } = require("./src/util/helpers");
+const {
+  convertArrayToObjectOfCountOccurrences,
+  slugify,
+} = require("./src/util/helpers");
 const {
   PATH_CATEGORY_WEB_DEVELOPMENT,
   PATH_CATEGORY_BASICS,
@@ -84,7 +87,7 @@ exports.createPages = ({ actions, graphql }) => {
       }
     });
 
-    const tagPostCount = countOccurrences(tags);
+    const tagPostCount = convertArrayToObjectOfCountOccurrences(tags);
 
     _.uniq(tags).forEach(tag => {
       createPage({

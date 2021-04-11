@@ -3,9 +3,10 @@
 
 /**
  * This function counts the occurrences of each element and return its result as object.
- * i.e. { JavaScript: 5, Java: 12, ...}
+ * Accept an array of string and return an object.
+ * i.e. ["JavaScript", "Java", "JavaScript", ...] -> { JavaScript: 5, Java: 12, ...}
  */
-const countOccurrences = arr => {
+const convertArrayToObjectOfCountOccurrences = arr => {
   let result = {};
   arr.forEach(elem => {
     result[elem] = (result[elem] || 0) + 1;
@@ -37,7 +38,7 @@ const debounce = (func, delay) => {
  * Sorts object property by values in descending order.
  * i.e. { JavaScript: 10, Java: 7, ...}
  */
-const sortObjectByValueDescOrder = obj => {
+const sortObjectByValueInDescOrder = obj => {
   const sortable = [];
   for (let property in obj) {
     sortable.push([property, obj[property]]);
@@ -80,7 +81,6 @@ const getFilename = function(absolutePath) {
 
 /**
  * slugify text to create user friendly url for tags
- * TODO bug fix: toLowerCase doesn't work properly for sidebar menu.
  */
 const slugify = function(text) {
   return text
@@ -96,10 +96,10 @@ const slugify = function(text) {
 // Node.js syntax export (not ES6)
 // this module is to be used in gatsby-node.js that is run by Node as well.
 module.exports = {
-  countOccurrences,
+  convertArrayToObjectOfCountOccurrences,
   debounce,
   findIndex,
   getFilename,
   slugify,
-  sortObjectByValueDescOrder,
+  sortObjectByValueInDescOrder,
 };
