@@ -44,7 +44,7 @@ const MenuBar = forwardRef((props, ref) => {
             handleCategoryOnKeyDown(CATEGORY_ALL_POSTS, event)
           }
           role="button"
-          tabindex={0}
+          tabIndex={0}
         >
           {CATEGORY_ALL_POSTS}
         </div>
@@ -59,7 +59,7 @@ const MenuBar = forwardRef((props, ref) => {
             handleCategoryOnKeyDown(CATEGORY_WEB_DEVELOPMENT, event)
           }
           role="button"
-          tabindex={0}
+          tabIndex={0}
         >
           {CATEGORY_WEB_DEVELOPMENT}
         </div>
@@ -72,7 +72,7 @@ const MenuBar = forwardRef((props, ref) => {
           onClick={() => handleCategoryOnClick(PATH_CATEGORY_BASICS)}
           onKeyDown={event => handleCategoryOnKeyDown(CATEGORY_BASICS, event)}
           role="button"
-          tabindex={0}
+          tabIndex={0}
         >
           {CATEGORY_BASICS}
         </div>

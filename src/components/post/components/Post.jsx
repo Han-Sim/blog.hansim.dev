@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Container from "@material-ui/core/Container";
 import Pagination from "src/components/pagination";
 import PostHeader from "./Post.Header";
@@ -6,15 +7,13 @@ import PostFooter from "./Post.Footer";
 
 import style from "./post.module.scss";
 
-//this is a single post page
+// Single post page
 const Post = ({
   author,
   category,
   children,
   date,
   filename,
-  id,
-  slug,
   tags,
   title,
   titlesOfAll,
@@ -35,5 +34,16 @@ const Post = ({
     </Container>
   </div>
 );
+
+Post.prototype = {
+  author: PropTypes.string,
+  category: PropTypes.string,
+  children: PropTypes.node,
+  date: PropTypes.string,
+  filename: PropTypes.string,
+  tags: PropTypes.arrayOf(PropTypes.string),
+  title: PropTypes.string,
+  titlesOfAll: PropTypes.arrayOf(PropTypes.string),
+};
 
 export default Post;

@@ -41,6 +41,7 @@ Posts.propTypes = {
     [CATEGORY_WEB_DEVELOPMENT]: PropTypes.arrayOf(PropTypes.node),
     [CATEGORY_BASICS]: PropTypes.arrayOf(PropTypes.node),
   }),
+  postsTitleToRender: PropTypes.node,
 };
 
 export default Posts;

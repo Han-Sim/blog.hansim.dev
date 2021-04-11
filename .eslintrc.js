@@ -17,4 +17,8 @@ module.exports = {
     "react/display-name": [0],
     "no-unused-vars": [1],
   },
+  globals: {
+    module: "readonly",
+    __dirname: "readonly",
+  },
 };

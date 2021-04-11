@@ -2,8 +2,7 @@
 @import "./variables.module";
 
 .gatsby-highlight-code-line {
-  border-left: 3px solid #f5f2f0;
-  border-right: 3px solid #f5f2f0;
+  border-left: 3px solid $color-dark-black;
   background-color: #fffbf7;
   display: block;
   margin-right: -1em;
@@ -12,8 +11,13 @@
   padding-left: 0.75em;
 }
 
+.gatsby-highlight {
+  font-size: 13px;
+}
+
 .markdown-body {
   line-height: 1.7;
+  word-wrap: break-word;
 
   * > img {
     max-width: 100%;

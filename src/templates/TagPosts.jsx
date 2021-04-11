@@ -105,7 +105,7 @@ const TagPosts = ({ data, pageContext }) => {
     return (
       <div className={style.postTitleContainer}>
         <div className={style.tag}>{tag}</div>found {totalCount} post
-        {totalCount === 1 ? "" : "s"} in this category.
+        {totalCount === 1 ? "" : "s"}.
       </div>
     );
   }, [tag, totalCount]);
