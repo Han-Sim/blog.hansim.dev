@@ -21,6 +21,7 @@ const MenuDrawerTags = ({ postCountByTag }) => {
       arr.push(
         <Tag
           tag={tag}
+          key={tag}
           count={count}
           onClick={handleTagOnClick}
           isLastTag={index === Object.entries(postCountByTag).length - 1}
