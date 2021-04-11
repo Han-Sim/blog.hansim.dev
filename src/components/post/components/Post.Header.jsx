@@ -1,4 +1,5 @@
 import React, { useCallback } from "react";
+import PropTypes from "prop-types";
 import { navigate } from "gatsby";
 import { KEY_ENTER } from "src/util/constants";
 import style from "./post.header.module.scss";
@@ -43,6 +44,13 @@ const PostHeader = ({ author, category, date, title }) => {
       </div>
     </div>
   );
+};
+
+PostHeader.propTypes = {
+  author: PropTypes.string,
+  category: PropTypes.string,
+  date: PropTypes.string,
+  title: PropTypes.string,
 };
 
 export default PostHeader;

@@ -1,4 +1,5 @@
 import React, { forwardRef, useMemo } from "react";
+import PropTypes from "prop-types";
 import { graphql, useStaticQuery } from "gatsby";
 import { countOccurrences, sortObjectByValueDescOrder } from "src/util/helpers";
 // import { CATEGORY_WEB_DEVELOPMENT, CATEGORY_BASICS } from "src/util/constants";
@@ -60,5 +61,9 @@ const Menu = forwardRef(({ toggleMenu }, ref) => {
     </>
   );
 });
+
+Menu.propTypes = {
+  toggleMenu: PropTypes.func.isRequired,
+};
 
 export default Menu;

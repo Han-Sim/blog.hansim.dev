@@ -1,9 +1,10 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState } from "react";
+import PropTypes from "prop-types";
 import { CATEGORY_ALL_POSTS } from "src/util/constants";
 
 const Context = createContext();
 
-const ContextProvider = props => {
+const ContextProvider = ({ children }) => {
   const [activeMenu, setActiveMenu] = useState(CATEGORY_ALL_POSTS);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -16,9 +17,13 @@ const ContextProvider = props => {
         setIsMenuOpen,
       }}
     >
-      {props.children}
+      {children}
     </Context.Provider>
   );
+};
+
+ContextProvider.propTypes = {
+  children: PropTypes.node,
 };
 
 export { Context, ContextProvider };

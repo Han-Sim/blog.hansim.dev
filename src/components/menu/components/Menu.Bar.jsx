@@ -1,4 +1,5 @@
 import React, { forwardRef, useContext } from "react";
+import PropTypes from "prop-types";
 import { navigate } from "gatsby";
 import IconButton from "@material-ui/core/IconButton";
 import MenuOpenIcon from "@material-ui/icons/MenuOpen";
@@ -89,5 +90,9 @@ const MenuBar = forwardRef((props, ref) => {
     </div>
   );
 });
+
+MenuBar.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
 
 export default MenuBar;

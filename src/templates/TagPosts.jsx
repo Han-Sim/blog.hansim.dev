@@ -1,4 +1,5 @@
 import React, { useContext, useMemo, useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import { Context } from "src/context";
 import { graphql } from "gatsby";
 import {
@@ -39,7 +40,7 @@ const TagPosts = ({ data, pageContext }) => {
     });
 
     const listOfPosts = {
-      [CATEGORY_ALL_POSTS]: obj[CATEGORY_ALL_POSTS].map((node, index) => {
+      [CATEGORY_ALL_POSTS]: obj[CATEGORY_ALL_POSTS].map(node => {
         return (
           <PostCard
             key={node.id}
@@ -49,27 +50,10 @@ const TagPosts = ({ data, pageContext }) => {
             date={node.frontmatter.date}
             body={node.excerpt}
             tags={node.frontmatter.tags}
-            index={index}
           />
         );
       }),
-      [CATEGORY_WEB_DEVELOPMENT]: obj[CATEGORY_WEB_DEVELOPMENT].map(
-        (node, index) => {
-          return (
-            <PostCard
-              key={node.id}
-              title={node.frontmatter.title}
-              author={node.frontmatter.author}
-              slug={node.fields.slug}
-              date={node.frontmatter.date}
-              body={node.excerpt}
-              tags={node.frontmatter.tags}
-              index={index}
-            />
-          );
-        }
-      ),
-      [CATEGORY_BASICS]: obj[CATEGORY_BASICS].map((node, index) => {
+      [CATEGORY_WEB_DEVELOPMENT]: obj[CATEGORY_WEB_DEVELOPMENT].map(node => {
         return (
           <PostCard
             key={node.id}
@@ -79,7 +63,19 @@ const TagPosts = ({ data, pageContext }) => {
             date={node.frontmatter.date}
             body={node.excerpt}
             tags={node.frontmatter.tags}
-            index={index}
+          />
+        );
+      }),
+      [CATEGORY_BASICS]: obj[CATEGORY_BASICS].map(node => {
+        return (
+          <PostCard
+            key={node.id}
+            title={node.frontmatter.title}
+            author={node.frontmatter.author}
+            slug={node.fields.slug}
+            date={node.frontmatter.date}
+            body={node.excerpt}
+            tags={node.frontmatter.tags}
           />
         );
       }),
@@ -148,5 +144,24 @@ export const TagQuery = graphql`
     }
   }
 `;
+
+TagPosts.propTypes = {
+  data: PropTypes.shape({
+    allMarkdownRemark: PropTypes.shape({
+      edges: PropTypes.arrayOf(
+        PropTypes.shape({
+          author: PropTypes.string,
+          category: PropTypes.string,
+          date: PropTypes.string,
+          tags: PropTypes.arrayOf(PropTypes.string),
+          title: PropTypes.string,
+        })
+      ),
+    }),
+  }),
+  pageContext: PropTypes.shape({
+    tag: PropTypes.string,
+  }),
+};
 
 export default TagPosts;

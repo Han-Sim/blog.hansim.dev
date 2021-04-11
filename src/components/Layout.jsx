@@ -1,6 +1,5 @@
 import React, { createRef, useCallback, useContext, useEffect } from "react";
 import PropTypes from "prop-types";
-import classnames from "classnames";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import { Context } from "src/context";
 import { useWindowHeightWithDebounce } from "src/util/hooks";
