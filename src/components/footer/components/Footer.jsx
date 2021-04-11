@@ -5,7 +5,7 @@ import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import style from "./footer.module.scss";
 
-const Footer = () => {
+const Footer = forwardRef((_p, ref) => {
   const handleEmailOnClick = useCallback(() => {
     window.location.href = "mailto:han.sim.dev@gmail.com";
   }, []);
@@ -19,8 +19,8 @@ const Footer = () => {
   }, []);
 
   return (
-    <div className={style.container}>
-      <div className={style.titleContainer}>Blog by Han Sim</div>
+    <div className={style.container} ref={ref}>
+      <div className={style.titleContianer}>Blog by Han Sim</div>
       <div className={style.copyRightContainer}>
         <div>© 2020</div>
         <div className={style.divider}></div>
@@ -41,6 +41,6 @@ const Footer = () => {
       </div>
     </div>
   );
-};
+});
 
 export default Footer;
