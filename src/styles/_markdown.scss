@@ -2,8 +2,7 @@
 @import "./variables.module";
 
 .gatsby-highlight-code-line {
-  border-left: 3px solid #f5f2f0;
-  border-right: 3px solid #f5f2f0;
+  border-left: 3px solid $color-dark-black;
   background-color: #fffbf7;
   display: block;
   margin-right: -1em;
