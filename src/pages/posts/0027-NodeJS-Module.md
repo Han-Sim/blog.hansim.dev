@@ -2,7 +2,7 @@
 title: "Node.js and Module Object"
 date: "2019-07-24 13:46:00"
 author: "Han Sim"
-category: "Web Development"
+category: "Web"
 tags:
   - JavaScript
   - NodeJS

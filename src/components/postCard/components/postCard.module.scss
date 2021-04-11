@@ -1,10 +1,10 @@
 @import "src/styles/index.scss";
 
 .container {
-  margin-bottom: 50px;
-  padding-left: 50px;
-  color: $color-dark-gray;
-  border-left: 8px solid $color-soybean;
+  margin-bottom: 25px;
+  border: 1px solid $color-light-gray-1;
+  border-radius: 8px;
+  padding: 20px 20px 10px 20px;
 
   @media only screen and (max-width: 620px) {
     padding-left: 15px;
@@ -15,10 +15,8 @@
     align-items: center;
 
     .title {
-      font-size: 50px;
-      font-weight: 900;
-      padding-right: 13px;
-      margin-right: 13px;
+      font-size: 2rem;
+      font-weight: 700;
 
       a {
         @include link-style($color-dark-gray);
@@ -27,17 +25,17 @@
   }
 
   .body {
-    margin-top: 30px;
+    margin-top: 25px;
 
     .bodyHtml {
-      font-size: 14px !important;
+      font-size: 15px !important;
 
       h1,
       h2,
       h3,
       h4,
       h5 {
-        font-size: 14px !important;
+        font-size: 15px !important;
       }
 
       blockquote {
@@ -45,26 +43,40 @@
       }
     }
   }
+}
 
-  .footer {
-    display: flex;
-    align-items: center;
-    margin-top: 30px;
+.footer {
+  margin-top: 25px;
+  font-size: 15px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
 
-    .dateAndAuthor {
-      margin-bottom: 5px;
-      margin-left: 20px;
-      padding-left: 20px;
-      font-size: 12px;
-      border-left: 1px solid $color-dark-gray;
+.tagsContainer,
+.authorContainer,
+.dateContainer {
+  margin-bottom: 10px;
+}
 
-      @media only screen and (max-width: 620px) {
-        padding-left: 10px;
-      }
-    }
+.tags,
+.writtenBy,
+.datePublished {
+  font-weight: 600;
+  color: $color-light-gray;
+  margin-bottom: 8px;
+  letter-spacing: 0.08em;
+
+  @media only screen and (max-width: 860px) {
+    width: 100%;
   }
 }
 
-.otherBorderColor {
-  border-left: 8px solid $color-eclipse;
+.tagsList,
+.author,
+.date {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  line-height: 10px;
 }

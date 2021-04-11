@@ -2,7 +2,7 @@
 title: "JavaScript Techniques #1"
 date: "2019-07-25 01:40:00"
 author: "Han Sim"
-category: "Web Development"
+category: "Web"
 tags:
   - JavaScript
   - Closure

@@ -1,7 +1,11 @@
 import React, { useContext, useMemo, useEffect, useState } from "react";
 import { Context } from "src/context";
 import { graphql } from "gatsby";
-import { CATEGORY_WEB_DEVELOPMENT, CATEGORY_BASICS } from "src/util/constants";
+import {
+  CATEGORY_ALL_POSTS,
+  CATEGORY_WEB_DEVELOPMENT,
+  CATEGORY_BASICS,
+} from "src/util/constants";
 import Layout from "src/components/Layout";
 import Posts from "src/components/posts";
 import PostCard from "src/components/postCard";
@@ -17,6 +21,7 @@ const TagPosts = ({ data, pageContext }) => {
 
   const listOfPostsToRender = useMemo(() => {
     const obj = {
+      [CATEGORY_ALL_POSTS]: [],
       [CATEGORY_WEB_DEVELOPMENT]: [],
       [CATEGORY_BASICS]: [],
     };
@@ -29,9 +34,25 @@ const TagPosts = ({ data, pageContext }) => {
       if (node.frontmatter.category === CATEGORY_BASICS) {
         obj[CATEGORY_BASICS].push(node);
       }
+
+      obj[CATEGORY_ALL_POSTS].push(node);
     });
 
     const listOfPosts = {
+      [CATEGORY_ALL_POSTS]: obj[CATEGORY_ALL_POSTS].map((node, index) => {
+        return (
+          <PostCard
+            key={node.id}
+            title={node.frontmatter.title}
+            author={node.frontmatter.author}
+            slug={node.fields.slug}
+            date={node.frontmatter.date}
+            body={node.excerpt}
+            tags={node.frontmatter.tags}
+            index={index}
+          />
+        );
+      }),
       [CATEGORY_WEB_DEVELOPMENT]: obj[CATEGORY_WEB_DEVELOPMENT].map(
         (node, index) => {
           return (
@@ -78,7 +99,6 @@ const TagPosts = ({ data, pageContext }) => {
     if (totalCount === 0 && activeMenu === CATEGORY_WEB_DEVELOPMENT) {
       setActiveMenu(CATEGORY_BASICS);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // pass an empty array as its dependency in order to make this running only on its construction.
 
   const postsTitleToRender = useMemo(() => {
@@ -115,7 +135,7 @@ export const TagQuery = graphql`
           frontmatter {
             category
             title
-            date(formatString: "MMM Do YYYY")
+            date(formatString: "MMM Do, YYYY")
             author
             tags
           }

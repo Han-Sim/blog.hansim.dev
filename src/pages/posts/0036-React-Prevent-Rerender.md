@@ -2,7 +2,7 @@
 title: "Ways to Prevent Components from Re-rendering"
 date: "2019-07-26 14:55:00"
 author: "Han Sim"
-category: "Web Development"
+category: "Web"
 tags:
   - JavaScript
   - React

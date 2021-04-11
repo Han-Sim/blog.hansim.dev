@@ -1,16 +1,53 @@
-import React, { useMemo } from "react";
+import React, { useContext, useEffect, useMemo } from "react";
 import { graphql } from "gatsby";
-import { CATEGORY_WEB_DEVELOPMENT, CATEGORY_BASICS } from "src/util/constants";
+import {
+  CATEGORY_ALL_POSTS,
+  CATEGORY_BASICS,
+  CATEGORY_WEB_DEVELOPMENT,
+  PATH_ALL_POSTS,
+  PATH_CATEGORY_BASICS,
+  PATH_CATEGORY_WEB_DEVELOPMENT,
+} from "src/util/constants";
+import { Context } from "src/context";
 import SEO from "src/components/seo";
 import Layout from "src/components/Layout";
 import PostCard from "src/components/postCard";
 import Posts from "src/components/posts";
 
-const AllPosts = ({ data }) => {
-  const seoTitle = useMemo(() => "All Posts", []);
+const AllPosts = ({ data, path }) => {
+  const { setActiveMenu } = useContext(Context);
+
+  useEffect(() => {
+    switch (path) {
+      case PATH_ALL_POSTS:
+        setActiveMenu(CATEGORY_ALL_POSTS);
+        break;
+
+      case PATH_CATEGORY_BASICS: {
+        setActiveMenu(CATEGORY_BASICS);
+        break;
+      }
+      case PATH_CATEGORY_WEB_DEVELOPMENT: {
+        setActiveMenu(CATEGORY_WEB_DEVELOPMENT);
+        break;
+      }
+    }
+  }, [path, setActiveMenu]);
+
+  const seoTitle = useMemo(() => {
+    switch (path) {
+      case PATH_ALL_POSTS:
+        return "All posts";
+      case PATH_CATEGORY_BASICS:
+        return "Posts about programming basics";
+      case PATH_CATEGORY_WEB_DEVELOPMENT:
+        return "Posts about web development";
+    }
+  }, [path]);
 
   const listOfPostsToRender = useMemo(() => {
     const obj = {
+      [CATEGORY_ALL_POSTS]: [],
       [CATEGORY_WEB_DEVELOPMENT]: [],
       [CATEGORY_BASICS]: [],
     };
@@ -23,9 +60,25 @@ const AllPosts = ({ data }) => {
       if (node.frontmatter.category === CATEGORY_BASICS) {
         obj[CATEGORY_BASICS].push(node);
       }
+
+      obj[CATEGORY_ALL_POSTS].push(node);
     });
 
     const listOfPosts = {
+      [CATEGORY_ALL_POSTS]: obj[CATEGORY_ALL_POSTS].map((node, index) => {
+        return (
+          <PostCard
+            key={node.id}
+            title={node.frontmatter.title}
+            author={node.frontmatter.author}
+            slug={node.fields.slug}
+            date={node.frontmatter.date}
+            body={node.excerpt}
+            tags={node.frontmatter.tags}
+            index={index}
+          />
+        );
+      }),
       [CATEGORY_WEB_DEVELOPMENT]: obj[CATEGORY_WEB_DEVELOPMENT].map(
         (node, index) => {
           return (
@@ -78,7 +131,7 @@ export const AllPostsQuery = graphql`
           id
           frontmatter {
             title
-            date(formatString: "MMM Do YYYY")
+            date(formatString: "MMM Do, YYYY")
             author
             category
             tags

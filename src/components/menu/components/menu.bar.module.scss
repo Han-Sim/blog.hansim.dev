@@ -11,7 +11,7 @@
   left: 0;
   right: 0;
   transition: top 0.3s;
-  background-color: $color-soybean;
+  background-color: $color-dark-black;
   z-index: 99;
   font-family: $sans-serif-font;
   font-weight: 700;
@@ -45,9 +45,14 @@
       padding-bottom: -8px;
     }
 
-    .webDevelopment {
-      width: 70px;
+    .allPosts {
+      width: 120px;
       margin-left: 20px;
+    }
+
+    .web {
+      width: 70px;
+      margin-left: 15px;
     }
 
     .basics {

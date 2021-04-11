@@ -2,7 +2,7 @@
 title: "Why Do We Need closure?"
 date: "2019-07-17 18:33:00"
 author: "Han Sim"
-category: "Web Development"
+category: "Web"
 tags:
   - JavaScript
   - Scope

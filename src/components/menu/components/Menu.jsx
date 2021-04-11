@@ -1,10 +1,11 @@
 import React, { forwardRef, useMemo } from "react";
 import { graphql, useStaticQuery } from "gatsby";
-import uniq from "lodash/uniq";
 import { countOccurrences, sortObjectByValueDescOrder } from "src/util/helpers";
-import { CATEGORY_WEB_DEVELOPMENT, CATEGORY_BASICS } from "src/util/constants";
+// import { CATEGORY_WEB_DEVELOPMENT, CATEGORY_BASICS } from "src/util/constants";
 import MenuBar from "./Menu.Bar";
 import MenuList from "./Menu.List";
+
+// const categories = [CATEGORY_WEB_DEVELOPMENT, CATEGORY_BASICS];
 
 const Menu = forwardRef(({ toggleMenu }, ref) => {
   const data = useStaticQuery(graphql`
@@ -26,73 +27,35 @@ const Menu = forwardRef(({ toggleMenu }, ref) => {
       }
     }
   `);
-  const edges = useMemo(() => data.allMarkdownRemark.edges, [
-    data.allMarkdownRemark.edges,
-  ]);
+  const { edges = [] } = data.allMarkdownRemark;
 
-  const categoryTags = useMemo(() => {
-    const obj = {
-      categories: [],
-      categoryWithTags: {
-        [CATEGORY_WEB_DEVELOPMENT]: [],
-        [CATEGORY_BASICS]: [],
-      },
-      categoryWithTagsUniq: {
-        [CATEGORY_WEB_DEVELOPMENT]: [],
-        [CATEGORY_BASICS]: [],
-      },
-    };
+  const tagsAll = useMemo(() => {
+    const tagsAll = [];
 
     edges.forEach(edge => {
-      obj.categories.push(edge.node.frontmatter.category);
-      obj.categoryWithTags[edge.node.frontmatter.category] = [
-        ...obj.categoryWithTags[edge.node.frontmatter.category],
-        ...edge.node.frontmatter.tags,
-      ];
+      tagsAll.push(...edge.node.frontmatter.tags);
     });
 
-    // uniq for categoryWithTags
-    obj.categoryWithTagsUniq[CATEGORY_WEB_DEVELOPMENT] = uniq(
-      obj.categoryWithTags[CATEGORY_WEB_DEVELOPMENT]
-    );
-    obj.categoryWithTagsUniq[CATEGORY_BASICS] = uniq(
-      obj.categoryWithTags[CATEGORY_BASICS]
-    );
-
-    return obj;
+    return tagsAll;
   }, [edges]);
 
-  // Post count by tag and category.
-  // Sort it by desc order.
-  const postCountByTagAndCategory = useMemo(() => {
-    const postCountByTagAndCategory = {
-      [CATEGORY_WEB_DEVELOPMENT]: sortObjectByValueDescOrder(
-        countOccurrences(
-          categoryTags.categoryWithTags[CATEGORY_WEB_DEVELOPMENT]
-        )
-      ),
-      [CATEGORY_BASICS]: sortObjectByValueDescOrder(
-        countOccurrences(categoryTags.categoryWithTags[CATEGORY_BASICS])
-      ),
-    };
+  // Post count by tag and sort it by descending order.
+  const postCountByTag = useMemo(() => {
+    return sortObjectByValueDescOrder(countOccurrences(tagsAll));
+  }, [tagsAll]);
 
-    return postCountByTagAndCategory;
-  }, [categoryTags.categoryWithTags]);
-
-  // Category count.
-  const postCountByCategory = useMemo(
-    () => countOccurrences(categoryTags.categories),
-    [categoryTags.categories]
-  );
+  // Category count. TODO: put it later.
+  // const postCountByCategory = useMemo(() => countOccurrences(categories), [
+  //   categories,
+  // ]);
 
   return (
     <>
       <MenuBar onClick={toggleMenu} ref={ref} />
       <MenuList
-        postCountByCategory={postCountByCategory}
-        postCountByTagAndCategory={postCountByTagAndCategory}
+        // postCountByCategory={postCountByCategory}
+        postCountByTag={postCountByTag}
         toggleMenu={toggleMenu}
-        categoryWithTags={categoryTags.categoryWithTags}
       />
     </>
   );

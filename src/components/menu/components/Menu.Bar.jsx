@@ -1,56 +1,67 @@
-import React, { forwardRef, useContext, useCallback } from "react";
+import React, { forwardRef, useContext } from "react";
 import { navigate } from "gatsby";
 import IconButton from "@material-ui/core/IconButton";
 import MenuOpenIcon from "@material-ui/icons/MenuOpen";
 import classnames from "classnames";
 import { Context } from "src/context";
 import {
-  CATEGORY_WEB_DEVELOPMENT,
+  CATEGORY_ALL_POSTS,
   CATEGORY_BASICS,
+  CATEGORY_WEB_DEVELOPMENT,
   KEY_ENTER,
+  PATH_ALL_POSTS,
+  PATH_CATEGORY_BASICS,
+  PATH_CATEGORY_WEB_DEVELOPMENT,
 } from "src/util/constants";
 import style from "./menu.bar.module.scss";
 
-const WEB_MENU_BAR_TEXT = "WEB";
-
 const MenuBar = forwardRef((props, ref) => {
-  const { activeMenu, setActiveMenu } = useContext(Context);
+  const { activeMenu } = useContext(Context);
 
-  const handleCategoryOnClick = useCallback(
-    category => {
-      navigate(`/all-posts`);
-      setActiveMenu(category);
-    },
-    [setActiveMenu]
-  );
+  const navigateCategory = path => {
+    navigate(path);
+  };
 
-  const handleCategoryOnKeyDown = useCallback(
-    (category, event) => {
-      if (event.keyCode === KEY_ENTER) {
-        navigate(`/all-posts`);
-        setActiveMenu(category);
-      }
-    },
-    [setActiveMenu]
-  );
+  const handleCategoryOnClick = category => navigateCategory(category);
+
+  const handleCategoryOnKeyDown = (category, event) => {
+    if (event.keyCode === KEY_ENTER) {
+      navigateCategory(category);
+    }
+  };
 
   return (
     <div className={style.container} ref={ref}>
       <div className={style.left}>
         <div
           className={
-            activeMenu === CATEGORY_WEB_DEVELOPMENT
-              ? classnames(style.menu, style.menuActive, style.webDevelopment)
-              : classnames(style.menu, style.menuInactive, style.webDevelopment)
+            activeMenu === CATEGORY_ALL_POSTS
+              ? classnames(style.menu, style.menuActive, style.allPosts)
+              : classnames(style.menu, style.menuInactive, style.allPosts)
           }
-          onClick={() => handleCategoryOnClick(CATEGORY_WEB_DEVELOPMENT)}
+          onClick={() => handleCategoryOnClick(PATH_ALL_POSTS)}
+          onKeyDown={event =>
+            handleCategoryOnKeyDown(CATEGORY_ALL_POSTS, event)
+          }
+          role="button"
+          tabindex={0}
+        >
+          {CATEGORY_ALL_POSTS}
+        </div>
+        <div
+          className={
+            activeMenu === CATEGORY_WEB_DEVELOPMENT
+              ? classnames(style.menu, style.menuActive, style.web)
+              : classnames(style.menu, style.menuInactive, style.web)
+          }
+          onClick={() => handleCategoryOnClick(PATH_CATEGORY_WEB_DEVELOPMENT)}
           onKeyDown={event =>
             handleCategoryOnKeyDown(CATEGORY_WEB_DEVELOPMENT, event)
           }
           role="button"
           tabindex={0}
         >
-          {WEB_MENU_BAR_TEXT}
+          {CATEGORY_WEB_DEVELOPMENT}
         </div>
         <div
           className={
@@ -58,7 +69,7 @@ const MenuBar = forwardRef((props, ref) => {
               ? classnames(style.menu, style.menuActive, style.basics)
               : classnames(style.menu, style.menuInactive, style.basics)
           }
-          onClick={() => handleCategoryOnClick(CATEGORY_BASICS)}
+          onClick={() => handleCategoryOnClick(PATH_CATEGORY_BASICS)}
           onKeyDown={event => handleCategoryOnKeyDown(CATEGORY_BASICS, event)}
           role="button"
           tabindex={0}

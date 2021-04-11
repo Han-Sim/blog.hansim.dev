@@ -48,7 +48,7 @@ export const postQuery = graphql`
         title
         author
         tags
-        date(formatString: "MMM Do YYYY")
+        date(formatString: "MMM Do, YYYY")
         category
       }
       excerpt

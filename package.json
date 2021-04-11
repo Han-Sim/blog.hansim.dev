@@ -34,6 +34,9 @@
     "reactstrap": "^8.5.1"
   },
   "devDependencies": {
+    "eslint": "^7.24.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-react": "^7.23.2",
     "gatsby-plugin-root-import": "^2.0.5",
     "postcss-scss": "^2.1.1",
     "prettier": "1.19.1"

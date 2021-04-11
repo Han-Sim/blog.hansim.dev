@@ -1,5 +1,5 @@
 body {
-  font-family: $serif-font;
+  font-family: $sans-serif-font;
   color: $color-dark-gray;
   margin: 0;
 }
@@ -13,17 +13,17 @@ a {
 // https://stackoverflow.com/questions/48834555/how-can-i-change-text-selection-highlight-color-usually-selection-in-react
 
 ::-moz-selection {
-  background: $color-soybean;
+  background: $color-dark-black;
   color: $color-eclipse;
 }
 
 ::-webkit-selection {
-  background: $color-soybean;
+  background: $color-dark-black;
   color: $color-eclipse;
 }
 
 ::selection {
-  background: $color-soybean;
+  background: $color-dark-black;
   color: $color-eclipse;
 }
 

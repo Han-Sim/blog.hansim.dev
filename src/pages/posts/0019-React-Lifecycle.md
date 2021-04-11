@@ -2,7 +2,7 @@
 title: "React Lifecycle Explanation in Simple English"
 date: "2019-07-18 12:19:00"
 author: "Han Sim"
-category: "Web Development"
+category: "Web"
 tags:
   - JavaScript
   - React

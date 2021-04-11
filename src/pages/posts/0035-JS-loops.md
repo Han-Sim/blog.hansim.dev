@@ -2,7 +2,7 @@
 title: "JavaScript Loops and Iterables"
 date: "2019-07-26 00:48:00"
 author: "Han Sim"
-category: "Web Development"
+category: "Web"
 tags:
   - JavaScript
   - Loop
