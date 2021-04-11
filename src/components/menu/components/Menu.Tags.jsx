@@ -10,27 +10,16 @@ const MenuTags = ({ postCountByTagDescOrder, onClick }) => {
     for (const [index, [tag, count]] of Object.entries(
       postCountByTagDescOrder
     ).entries()) {
-      // if (tagsUnique.includes(tag)) {
-      if (count >= 5) {
-        arr.push(
-          <Tag
-            tag={tag}
-            count={count}
-            onClick={onClick}
-            // isLastTag={index === tagsUnique.length - 1}
-          />
-        );
-      } else {
-        arr.push(
-          <Tag
-            tag={tag}
-            count={count}
-            onClick={onClick}
-            // isLastTag={index === tagsUnique.length - 1}
-          />
-        );
-      }
-      // }
+      arr.push(
+        <Tag
+          tag={tag}
+          count={count}
+          onClick={onClick}
+          isLastTag={
+            index === Object.entries(postCountByTagDescOrder).length - 1
+          }
+        />
+      );
     }
 
     return arr;
