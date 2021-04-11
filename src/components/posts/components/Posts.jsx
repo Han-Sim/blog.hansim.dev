@@ -25,8 +25,6 @@ const Posts = ({ listOfPostsToRender, postsTitleToRender }) => {
     }, 500);
   };
 
-  console.log("listOfPostsRef.current", listOfPostsRef.current);
-
   return (
     <div className={style.root}>
       {postsTitleToRender}
