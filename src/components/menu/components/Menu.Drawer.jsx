@@ -13,10 +13,10 @@ import LabelIcon from "@material-ui/icons/Label";
 // import ComputerIcon from "@material-ui/icons/Computer";
 // import LanguageIcon from "@material-ui/icons/Language";
 import { Context } from "src/context";
-import MenuTags from "./Menu.Tags";
-import style from "./menu.list.module.scss";
+import MenuDrawerTags from "./Menu.Drawer.Tags";
+import style from "./menu.drawer.module.scss";
 
-const MenuList = ({ postCountByTag, toggleMenu }) => {
+const MenuDrawer = ({ postCountByTag, toggleMenu }) => {
   const { isMenuOpen, setIsMenuOpen } = useContext(Context);
 
   return (
@@ -50,7 +50,7 @@ const MenuList = ({ postCountByTag, toggleMenu }) => {
           </ListItem>
           <Divider />
           <div className={style.categoryContainer}>
-            <MenuTags postCountByTag={postCountByTag} />
+            <MenuDrawerTags postCountByTag={postCountByTag} />
           </div>
         </List>
       </div>
@@ -58,9 +58,9 @@ const MenuList = ({ postCountByTag, toggleMenu }) => {
   );
 };
 
-MenuList.propTypes = {
+MenuDrawer.propTypes = {
   postCountByTag: PropTypes.shape({}),
   toggleMenu: PropTypes.func.isRequired,
 };
 
-export default MenuList;
+export default MenuDrawer;
