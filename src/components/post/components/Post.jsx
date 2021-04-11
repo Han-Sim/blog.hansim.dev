@@ -35,7 +35,7 @@ const Post = ({
   </div>
 );
 
-Post.prototype = {
+Post.propTypes = {
   author: PropTypes.string,
   category: PropTypes.string,
   children: PropTypes.node,
