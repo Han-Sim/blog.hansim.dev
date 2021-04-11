@@ -81,7 +81,6 @@ const getFilename = function(absolutePath) {
 
 /**
  * slugify text to create user friendly url for tags
- * TODO bug fix: toLowerCase doesn't work properly for sidebar menu.
  */
 const slugify = function(text) {
   return text
