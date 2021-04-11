@@ -20,7 +20,7 @@ const Footer = forwardRef((_p, ref) => {
 
   return (
     <div className={style.container} ref={ref}>
-      <div className={style.titleContianer}>Blog by Han Sim</div>
+      <div className={style.titleContainer}>Blog by Han Sim</div>
       <div className={style.copyRightContainer}>
         <div>© 2020</div>
         <div className={style.divider}></div>
