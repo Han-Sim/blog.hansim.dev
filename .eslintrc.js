@@ -16,6 +16,5 @@ module.exports = {
     "react/prop-types": [1],
     "react/display-name": [0],
     "no-unused-vars": [1],
-    "no-undef": [0],
   },
 };
