@@ -2,7 +2,6 @@ import React, { forwardRef, useMemo } from "react";
 import PropTypes from "prop-types";
 import { graphql, useStaticQuery } from "gatsby";
 import { countOccurrences, sortObjectByValueDescOrder } from "src/util/helpers";
-// import { CATEGORY_WEB_DEVELOPMENT, CATEGORY_BASICS } from "src/util/constants";
 import MenuBar from "./Menu.Bar";
 import MenuDrawer from "./Menu.Drawer";
 
