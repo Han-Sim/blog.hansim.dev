@@ -48,19 +48,6 @@ const Layout = ({ children }) => {
 
   const menuRef = createRef();
 
-  const handleElsewhereClick = useCallback(() => {
-    isMenuOpen && setIsMenuOpen(false);
-  }, [isMenuOpen, setIsMenuOpen]);
-
-  const handleElsewhereOnKeyDown = useCallback(
-    event => {
-      if (isMenuOpen && event.keyCode === 13) {
-        isMenuOpen(false);
-      }
-    },
-    [isMenuOpen]
-  );
-
   const windowHeight = useWindowHeightWithDebounce(300); // get the window height.
 
   // Relocate the footer to the bottom of the window if there is no scrollbar.
@@ -84,18 +71,6 @@ const Layout = ({ children }) => {
   return (
     <MuiThemeProvider theme={theme}>
       <div ref={mainContainerRef}>
-        <div
-          className={
-            isMenuOpen
-              ? style.layer
-              : classnames(style.layer, style.layerHidden)
-          }
-          onClick={handleElsewhereClick}
-          onKeyDown={handleElsewhereOnKeyDown}
-          role="button"
-          aria-label="Close the sidebar"
-          tabIndex={0}
-        />
         <Menu toggleMenu={handleMenuBarClick} ref={menuRef} />
         <div className={style.bodyContainer}>{children}</div>
       </div>
