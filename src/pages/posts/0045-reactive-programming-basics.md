@@ -9,7 +9,7 @@ tags:
   - Observable
 ---
 
-[This post on GitHub](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754#reactive-programming-is-programming-with-asynchronous-data-streams) literally the greatest explanation of reactive programming I have found on Internet and I get to decide to summarize it here into several important points.
+[This post on GitHub](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754#reactive-programming-is-programming-with-asynchronous-data-streams) delivers great explanation of reactive programming I have found on Internet and I get to decide to summarize it here into several important points.
 
 # Reactive Programming is programming with asynchronous data stream.
 
