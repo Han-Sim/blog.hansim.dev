@@ -31,8 +31,13 @@ const MenuDrawer = ({ postCountByTag, toggleMenu }) => {
       }}
     >
       <div className={style.drawerContainer}>
-        <div className={style.drawerHeader}>
-          <IconButton onClick={toggleMenu(false)}>
+        <div
+          className={style.drawerHeader}
+          onClick={toggleMenu(false)}
+          role="button"
+          tabIndex={0}
+        >
+          <IconButton>
             <ChevronRightIcon />
           </IconButton>
         </div>
