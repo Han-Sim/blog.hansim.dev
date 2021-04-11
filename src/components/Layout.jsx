@@ -94,7 +94,7 @@ const Layout = ({ children }) => {
           onKeyDown={handleElsewhereOnKeyDown}
           role="button"
           aria-label="Close the sidebar"
-          tabindex={0}
+          tabIndex={0}
         />
         <Menu toggleMenu={handleMenuBarClick} ref={menuRef} />
         <div className={style.bodyContainer}>{children}</div>
