@@ -1,4 +1,5 @@
 import React, { useMemo } from "react";
+import PropTypes from "prop-types";
 import { slugify, findIndex } from "src/util/helpers";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
@@ -50,6 +51,11 @@ const Pagination = ({ title, titlesOfAll }) => {
       </div>
     </div>
   );
+};
+
+Pagination.propTypes = {
+  title: PropTypes.string,
+  titlesOfAll: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default Pagination;

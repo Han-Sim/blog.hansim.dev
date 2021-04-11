@@ -1,0 +1,22 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": ["react"],
+  "ignorePatterns": ["/public/*", "/node_modules/*"],
+  "rules": {
+    "react/prop-types": [1],
+    "react/display-name": [0],
+    "no-unused-vars": [1, { "args": "all", "argsIgnorePattern": "^_" }]
+  }
+}

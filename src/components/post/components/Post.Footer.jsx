@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import LabelIcon from "@material-ui/icons/Label";
 import Tag from "src/components/tag";
 
@@ -30,6 +31,11 @@ const Post = ({ filename, tags }) => {
       </div>
     </div>
   );
+};
+
+Post.propTypes = {
+  filename: PropTypes.string,
+  tags: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default Post;

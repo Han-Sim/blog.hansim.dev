@@ -1,9 +1,10 @@
 import React, { forwardRef, useMemo } from "react";
+import PropTypes from "prop-types";
 import { graphql, useStaticQuery } from "gatsby";
 import { countOccurrences, sortObjectByValueDescOrder } from "src/util/helpers";
 // import { CATEGORY_WEB_DEVELOPMENT, CATEGORY_BASICS } from "src/util/constants";
 import MenuBar from "./Menu.Bar";
-import MenuList from "./Menu.List";
+import MenuDrawer from "./Menu.Drawer";
 
 // const categories = [CATEGORY_WEB_DEVELOPMENT, CATEGORY_BASICS];
 
@@ -52,7 +53,7 @@ const Menu = forwardRef(({ toggleMenu }, ref) => {
   return (
     <>
       <MenuBar onClick={toggleMenu} ref={ref} />
-      <MenuList
+      <MenuDrawer
         // postCountByCategory={postCountByCategory}
         postCountByTag={postCountByTag}
         toggleMenu={toggleMenu}
@@ -60,5 +61,9 @@ const Menu = forwardRef(({ toggleMenu }, ref) => {
     </>
   );
 });
+
+Menu.propTypes = {
+  toggleMenu: PropTypes.func.isRequired,
+};
 
 export default Menu;

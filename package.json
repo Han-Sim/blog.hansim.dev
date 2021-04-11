@@ -36,6 +36,7 @@
   "devDependencies": {
     "eslint": "^7.24.0",
     "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-react": "^7.23.2",
     "gatsby-plugin-root-import": "^2.0.5",
     "postcss-scss": "^2.1.1",
@@ -51,7 +52,8 @@
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
+    "lint": "eslint --fix --ext .js,.jsx ."
   },
   "repository": {
     "type": "git",

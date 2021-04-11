@@ -6,7 +6,7 @@ import { slugify } from "src/util/helpers";
 
 import style from "./tag.module.scss";
 
-const Tag = ({ count, key, tag, onClick, isLastTag }) => {
+const Tag = ({ count, tag, onClick, isLastTag }) => {
   const label = useMemo(() => {
     if (!isLastTag) {
       if (count) {
@@ -54,7 +54,7 @@ const Tag = ({ count, key, tag, onClick, isLastTag }) => {
   return (
     <div
       className={style.tagContainer}
-      key={key}
+      key={tag}
       onClick={handleTagOnClick}
       onKeyDown={handleTagOnKeyDown}
       role="button"
@@ -69,7 +69,6 @@ Tag.propTypes = {
   count: PropTypes.number,
   isLastTag: PropTypes.bool.isRequired,
   tag: PropTypes.string.isRequired,
-  key: PropTypes.string,
   onClick: PropTypes.func,
 };
 

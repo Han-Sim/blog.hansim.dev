@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from "react";
+import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import { Context } from "src/context";
 import Layout from "src/components/Layout";
@@ -56,7 +57,29 @@ export const postQuery = graphql`
     }
   }
 `;
-//String! --> Exclamation Mark means it MUST receive this
+// NOTE:
+// String! --> Exclamation Mark means it MUST receive this
 //  gatsby-node will pass 'slug' when it calls single-post.jsx
+
+SinglePost.propTypes = {
+  data: PropTypes.shape({
+    markdownRemark: PropTypes.shape({
+      fileAbsolutePath: PropTypes.string,
+      frontmatter: PropTypes.shape({
+        author: PropTypes.string,
+        category: PropTypes.string,
+        date: PropTypes.string,
+        tags: PropTypes.arrayOf(PropTypes.string),
+        title: PropTypes.string,
+      }),
+      id: PropTypes.string,
+      html: PropTypes.string,
+    }),
+  }),
+  pageContext: PropTypes.shape({
+    slug: PropTypes.string,
+    titlesOfAll: PropTypes.arrayOf(PropTypes.string),
+  }),
+};
 
 export default SinglePost;

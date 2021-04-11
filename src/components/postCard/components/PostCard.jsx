@@ -1,8 +1,9 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Tag from "src/components/tag";
 import style from "./postCard.module.scss";
 
-const PostCard = ({ title, author, slug, date, body, tags, index }) => {
+const PostCard = ({ title, author, slug, date, body, tags }) => {
   return (
     <div className={style.container}>
       <div className={style.header}>
@@ -23,6 +24,7 @@ const PostCard = ({ title, author, slug, date, body, tags, index }) => {
             {tags.map((tag, index) => (
               <Tag
                 tag={tag}
+                key={tag}
                 variant="outlined"
                 isLastTag={index === tags.length - 1}
               />
@@ -40,6 +42,16 @@ const PostCard = ({ title, author, slug, date, body, tags, index }) => {
       </div>
     </div>
   );
+};
+
+PostCard.propTypes = {
+  author: PropTypes.string,
+  body: PropTypes.node,
+  category: PropTypes.string,
+  date: PropTypes.string,
+  slug: PropTypes.string,
+  tags: PropTypes.arrayOf(PropTypes.string),
+  title: PropTypes.string,
 };
 
 export default PostCard;
