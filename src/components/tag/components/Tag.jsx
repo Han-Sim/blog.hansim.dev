@@ -58,7 +58,7 @@ const Tag = ({ count, key, tag, onClick, isLastTag }) => {
       onClick={handleTagOnClick}
       onKeyDown={handleTagOnKeyDown}
       role="button"
-      tabindex={0}
+      tabIndex={0}
     >
       {label}
     </div>
