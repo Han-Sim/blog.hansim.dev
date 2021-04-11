@@ -1,7 +1,10 @@
 import React, { forwardRef, useMemo } from "react";
 import PropTypes from "prop-types";
 import { graphql, useStaticQuery } from "gatsby";
-import { countOccurrences, sortObjectByValueDescOrder } from "src/util/helpers";
+import {
+  convertArrayToObjectOfCountOccurrences,
+  sortObjectByValueInDescOrder,
+} from "src/util/helpers";
 import MenuBar from "./Menu.Bar";
 import MenuDrawer from "./Menu.Drawer";
 
@@ -41,11 +44,13 @@ const Menu = forwardRef(({ toggleMenu }, ref) => {
 
   // Post count by tag and sort it by descending order.
   const postCountByTag = useMemo(() => {
-    return sortObjectByValueDescOrder(countOccurrences(tagsAll));
+    return sortObjectByValueInDescOrder(
+      convertArrayToObjectOfCountOccurrences(tagsAll)
+    );
   }, [tagsAll]);
 
   // Category count. TODO: put it later.
-  // const postCountByCategory = useMemo(() => countOccurrences(categories), [
+  // const postCountByCategory = useMemo(() => convertArrayToObjectOfCountOccurrences(categories), [
   //   categories,
   // ]);
 
