@@ -17,10 +17,19 @@ import MenuTags from "./Menu.Tags";
 import style from "./menu.list.module.scss";
 
 const MenuList = ({ postCountByTag, toggleMenu }) => {
-  const { isMenuOpen } = useContext(Context);
+  const { isMenuOpen, setIsMenuOpen } = useContext(Context);
 
   return (
-    <Drawer open={isMenuOpen} anchor="right">
+    <Drawer
+      open={isMenuOpen}
+      anchor="right"
+      onBackdropClick={() => {
+        setIsMenuOpen(false);
+      }}
+      onEscapeKeyDown={() => {
+        setIsMenuOpen(false);
+      }}
+    >
       <div className={style.drawerContainer}>
         <div className={style.drawerHeader}>
           <IconButton onClick={toggleMenu(false)}>
