@@ -49,6 +49,7 @@ const MenuBar = forwardRef((props, ref) => {
         >
           {CATEGORY_ALL_POSTS}
         </div>
+        <div className={style.verticalDivider} />
         <div
           className={
             activeMenu === CATEGORY_WEB_DEVELOPMENT
@@ -64,6 +65,7 @@ const MenuBar = forwardRef((props, ref) => {
         >
           {CATEGORY_WEB_DEVELOPMENT}
         </div>
+        <div className={style.verticalDivider} />
         <div
           className={
             activeMenu === CATEGORY_BASICS
