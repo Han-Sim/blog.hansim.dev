@@ -49,6 +49,12 @@
       margin-left: 20px;
     }
 
+    .verticalDivider {
+      border-left: 1px solid $color-light-gray;
+      margin-left: 15px;
+      height: 13px !important;
+    }
+
     .web,
     .basics {
       margin-left: 15px;
