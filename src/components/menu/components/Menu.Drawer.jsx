@@ -16,7 +16,7 @@ import { Context } from "src/context";
 import MenuDrawerTags from "./Menu.Drawer.Tags";
 import style from "./menu.drawer.module.scss";
 
-const MenuDrawer = ({ postCountByTag, toggleMenu }) => {
+const MenuDrawer = ({ postCountByTag }) => {
   const { isMenuOpen, setIsMenuOpen } = useContext(Context);
 
   return (
@@ -33,7 +33,9 @@ const MenuDrawer = ({ postCountByTag, toggleMenu }) => {
       <div className={style.drawerContainer}>
         <div
           className={style.drawerHeader}
-          onClick={toggleMenu(false)}
+          onClick={() => {
+            setIsMenuOpen(false);
+          }}
           role="button"
           tabIndex={0}
         >
@@ -65,7 +67,6 @@ const MenuDrawer = ({ postCountByTag, toggleMenu }) => {
 
 MenuDrawer.propTypes = {
   postCountByTag: PropTypes.shape({}),
-  toggleMenu: PropTypes.func.isRequired,
 };
 
 export default MenuDrawer;

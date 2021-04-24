@@ -1,7 +1,6 @@
-import React, { createRef, useCallback, useContext, useEffect } from "react";
+import React, { createRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
-import { Context } from "src/context";
 import { useWindowHeightWithDebounce } from "src/util/hooks";
 import Footer from "./footer";
 import Menu from "./menu";
@@ -25,16 +24,8 @@ const theme = createMuiTheme({
  * The very fundamental layout component for the application.
  */
 const Layout = ({ children }) => {
-  const { isMenuOpen, setIsMenuOpen } = useContext(Context);
   const mainContainerRef = createRef();
   const footerRef = createRef();
-
-  const handleMenuBarClick = useCallback(
-    _value => _event => {
-      setIsMenuOpen(!isMenuOpen);
-    },
-    [isMenuOpen, setIsMenuOpen]
-  );
 
   const menuRef = createRef();
 
@@ -61,7 +52,7 @@ const Layout = ({ children }) => {
   return (
     <MuiThemeProvider theme={theme}>
       <div ref={mainContainerRef}>
-        <Menu toggleMenu={handleMenuBarClick} ref={menuRef} />
+        <Menu ref={menuRef} />
         <div className={style.bodyContainer}>{children}</div>
       </div>
       <Footer ref={footerRef} />
