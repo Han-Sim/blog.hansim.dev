@@ -36,15 +36,6 @@ const Layout = ({ children }) => {
     [isMenuOpen, setIsMenuOpen]
   );
 
-  useEffect(() => {
-    // Enable/disable the body level scroll-bar.
-    if (isMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "visible";
-    }
-  }, [isMenuOpen]);
-
   const menuRef = createRef();
 
   const windowHeight = useWindowHeightWithDebounce(300); // get the window height.
