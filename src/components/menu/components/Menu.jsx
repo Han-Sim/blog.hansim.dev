@@ -56,11 +56,10 @@ const Menu = forwardRef(({ toggleMenu }, ref) => {
 
   return (
     <>
-      <MenuBar onClick={toggleMenu} ref={ref} />
+      <MenuBar ref={ref} />
       <MenuDrawer
         // postCountByCategory={postCountByCategory}
         postCountByTag={postCountByTag}
-        toggleMenu={toggleMenu}
       />
     </>
   );

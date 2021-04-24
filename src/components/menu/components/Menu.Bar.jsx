@@ -1,5 +1,4 @@
 import React, { forwardRef, useContext } from "react";
-import PropTypes from "prop-types";
 import { navigate } from "gatsby";
 import IconButton from "@material-ui/core/IconButton";
 import MenuOpenIcon from "@material-ui/icons/MenuOpen";
@@ -16,8 +15,8 @@ import {
 } from "src/util/constants";
 import style from "./menu.bar.module.scss";
 
-const MenuBar = forwardRef((props, ref) => {
-  const { activeMenu } = useContext(Context);
+const MenuBar = forwardRef((_props, ref) => {
+  const { activeMenu, setIsMenuOpen } = useContext(Context);
 
   const navigateCategory = path => {
     navigate(path);
@@ -81,7 +80,11 @@ const MenuBar = forwardRef((props, ref) => {
         </div>
       </div>
       <div>
-        <IconButton onClick={props.onClick(true)}>
+        <IconButton
+          onClick={() => {
+            setIsMenuOpen(true);
+          }}
+        >
           <MenuOpenIcon
             classes={{
               root: style.menuOpenIcon,
@@ -92,9 +95,5 @@ const MenuBar = forwardRef((props, ref) => {
     </div>
   );
 });
-
-MenuBar.propTypes = {
-  onClick: PropTypes.func.isRequired,
-};
 
 export default MenuBar;
