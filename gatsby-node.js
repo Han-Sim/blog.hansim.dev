@@ -1,10 +1,14 @@
 const path = require("path");
-const _ = require("lodash");
+const isNil = require("lodash/isNil");
+const get = require("lodash/get");
+const uniq = require("lodash/uniq");
 const {
   convertArrayToObjectOfCountOccurrences,
   slugify,
 } = require("./src/util/helpers");
 const {
+  CATEGORY_BASICS,
+  CATEGORY_WEB_DEVELOPMENT,
   PATH_CATEGORY_WEB_DEVELOPMENT,
   PATH_CATEGORY_BASICS,
   PATH_ALL_POSTS,
@@ -24,6 +28,10 @@ exports.onCreateNode = ({ node, actions }) => {
   }
 };
 
+// This application has five URL entries.
+// 1. Single post - bring the post contents using slug.
+// 2. Tag posts - bring the list of posts associated with the given tag.
+// 3, 4, 5. All posts - bring the entire list of posts - the list of posts by categories as well.
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions;
   const templates = {
@@ -56,21 +64,41 @@ exports.createPages = ({ actions, graphql }) => {
 
     const { edges } = res.data.allMarkdownRemark;
 
-    // #region Single Post
+    // Quick sanity check for the post md files
+    edges.forEach(edge => {
+      const { fields, frontmatter } = edge.node;
 
-    const titlesOfAll = edges.map(edge => {
-      if (_.get(edge, "node.frontmatter.title")) {
-        return edge.node.frontmatter.title;
+      if (isNil(frontmatter)) {
+        throw new Error("Some post has no frontmatter");
+      }
+
+      if (isNil(frontmatter.title) || isNil(frontmatter.author)) {
+        throw new Error("Some post has no title or author");
+      }
+
+      if (
+        ![
+          CATEGORY_BASICS.toUpperCase(),
+          CATEGORY_WEB_DEVELOPMENT.toUpperCase(),
+        ].includes(frontmatter.category.toUpperCase())
+      ) {
+        throw new Error("Some post has a wrong undefined category");
+      }
+
+      if (isNil(fields.slug)) {
+        throw new Error("Some post failed to generate a slug");
       }
     });
+
+    // #region Single Post
 
     edges.forEach(({ node }) => {
       createPage({
         path: node.fields.slug,
         component: templates.singlePost,
         context: {
-          slug: node.fields.slug, // Passing a slug for the template to use to get posts.
-          titlesOfAll, // titles array
+          slug: node.fields.slug, // Passing a slug for the template for <SinglePost /> graphql to find the post.
+          titlesOfAll: edges.map(edge => edge.node.frontmatter.title), // titles array
         },
       });
     });
@@ -81,15 +109,15 @@ exports.createPages = ({ actions, graphql }) => {
 
     let tags = [];
     edges.forEach(edge => {
-      if (_.get(edge, "node.frontmatter.tags")) {
-        // Note that each edge has an array of tags.
+      if (get(edge, "node.frontmatter.tags")) {
+        // Note that each edge can have an array of tags.
         tags = [...tags, ...edge.node.frontmatter.tags];
       }
     });
 
     const tagPostCount = convertArrayToObjectOfCountOccurrences(tags);
 
-    _.uniq(tags).forEach(tag => {
+    uniq(tags).forEach(tag => {
       createPage({
         path: `/tag/${slugify(tag)}`,
         component: templates.tagPosts,
