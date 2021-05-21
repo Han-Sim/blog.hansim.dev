@@ -49,5 +49,8 @@ li > p {
 code[class*="language-"],
 pre[class*="language-"] {
   color: $color-dark-gray;
-  font-size: 13px;
+}
+
+p > code[class*="language-"] {
+  font-size: 0.9em;
 }
