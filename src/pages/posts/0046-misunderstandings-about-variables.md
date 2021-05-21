@@ -1,22 +1,25 @@
 ---
-title: "Understanding of JavaScript Variables"
+title: "3 things about JavaScript Variables that you might be wrong about"
 date: "2021-05-20 20:30:00"
 author: "Han Sim"
 category: "Web"
 tags:
   - JavaScript
+  - Hoisting
+  - Scope
+  - Variable
 ---
 
 # 1. `const` and `let` are also hoisted
 
-`let` and `const` are hoisted but not initialized. MDN Web Doc describes this status as _variables is in a temporal dead zone_. [MDN doc](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_Types#variable_hoisting) As a matter of fact, all declarations are hoisted in Javascript including `var`, `let`, `const`, `function`, `function*`, and `class`.
+`let` and `const` are hoisted but not initialized. MDN Web Doc describes this status as _variables is in a temporal dead zone_. [MDN doc](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_Types#variable_hoisting) **As a matter of fact, all declarations are hoisted in Javascript** including `var`, `let`, `const`, `function`, `function*`, and `class`.
 
 ```JavaScript
 console.log(x); // ReferenceError. - x is defined but still in a temporal dead zone.
 let x = 3;
 ```
 
-One more example from [here](https://stackoverflow.com/questions/500431/what-is-the-scope-of-variables-in-javascript),
+One more example from [stack overflow](https://stackoverflow.com/questions/500431/what-is-the-scope-of-variables-in-javascript),
 
 ```JavaScript
 function f() {
@@ -29,9 +32,9 @@ function f() {
 f(); // 1 because x is hoisted even though declared with `let`!
 ```
 
-# 2. Only the declaration is hoisted.
+# 2. Only the declaration is hoisted, not the assignment
 
-**Hoisting** means the variable is taken apart form where it is declared and placed to the top of everything. The browser will take every declaration such as variable a, b, c in this example and before showing anything inside the browser, it takes these declaration to the top of the document. Note that the actual assignment to this variable won't be hoisted.
+**Hoisting** means the variable is taken apart form where it is declared and placed to the top of the document. The browser will take every declaration and before showing anything on the browser, it takes these declaration to the top of the document. However, the assignment to this variable won't be hoisted.
 
 ```JavaScript
 console.log(a); // undefined
@@ -64,7 +67,7 @@ function foo() {
 While `let` and `const` have block scope, `var` has function scope; simply means `var` is only visible in the function.
 
 ```JavaScript
-if (true) {
+if (true) { // If block is not a function scope but a block scope.
   var a = 'aa';
   let b = 'bb';
   const c = 'cc';
@@ -75,4 +78,4 @@ console.log(b); // error
 console.log(c); // error
 ```
 
-> To understand **scope** in JS, [check this dev.to post](https://dev.to/sandy8111112004/javascript-introduction-to-scope-function-scope-block-scope-d11)
+To understand **scope** in JS, [check this post on dev.to](https://dev.to/sandy8111112004/javascript-introduction-to-scope-function-scope-block-scope-d11)
