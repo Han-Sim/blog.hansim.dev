@@ -51,6 +51,6 @@ pre[class*="language-"] {
   color: $color-dark-gray;
 }
 
-pre[class*="language-"] {
-  font-size: 13px;
+p > code[class*="language-"] {
+  font-size: 0.9em;
 }
