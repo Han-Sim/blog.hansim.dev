@@ -6,7 +6,7 @@ category: "Basics"
 tags:
   - Problem Solving
   - JavaScript
-  - Sets
+  - Set
   - Data Structure
 ---
 
