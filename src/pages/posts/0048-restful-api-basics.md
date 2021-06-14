@@ -67,7 +67,7 @@ POST /api/customers
 
 ## Response
 
-Response with `json`
+Response with json (`Content-Type: application/json`)
 
 # The advantages of REST API
 
