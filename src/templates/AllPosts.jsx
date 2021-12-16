@@ -113,7 +113,8 @@ const AllPosts = ({ data, path }) => {
   return (
     <Layout>
       <SEO title={seoTitle} />
-      <Posts posts={posts} />
+      {/* TODO: fix it later to support all posts and posts by category */}
+      <Posts posts={data.allMarkdownRemark.edges.map(({ node }) => node)} />
     </Layout>
   );
 };

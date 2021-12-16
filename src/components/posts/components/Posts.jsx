@@ -1,23 +1,33 @@
-import React, { useContext, useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useMemo, useRef } from "react";
 import PropTypes from "prop-types";
 import InfiniteScroll from "react-infinite-scroll-component";
-import {
-  CATEGORY_ALL_POSTS,
-  CATEGORY_BASICS,
-  CATEGORY_WEB_DEVELOPMENT,
-} from "src/util/constants";
-import { Context } from "src/context";
+import PostCard from "src/components/postCard";
 import style from "./posts.module.scss";
 
 const Posts = ({ posts, postsTitleToRender }) => {
-  const { activeMenu } = useContext(Context);
+  console.log({ posts });
   const postsRef = useRef([]);
   const [items, setItems] = useState([]);
 
+  // Set an array of PostCard component to render.
+  const postCardsToRender = useMemo(() =>
+    posts.map(node => (
+      <PostCard
+        key={node.id}
+        title={node.frontmatter.title}
+        author={node.frontmatter.author}
+        slug={node.fields.slug}
+        date={node.frontmatter.date}
+        body={node.excerpt}
+        tags={node.frontmatter.tags}
+      />
+    ))
+  );
+
   useEffect(() => {
-    postsRef.current = [...posts[activeMenu]];
+    postsRef.current = [...postCardsToRender];
     setItems(postsRef.current.splice(0, 4));
-  }, [posts, activeMenu, setItems]);
+  }, [posts]);
 
   const fetchMoreData = () => {
     setTimeout(() => {
@@ -36,11 +46,15 @@ const Posts = ({ posts, postsTitleToRender }) => {
 };
 
 Posts.propTypes = {
-  posts: PropTypes.shape({
-    [CATEGORY_ALL_POSTS]: PropTypes.arrayOf(PropTypes.node),
-    [CATEGORY_WEB_DEVELOPMENT]: PropTypes.arrayOf(PropTypes.node),
-    [CATEGORY_BASICS]: PropTypes.arrayOf(PropTypes.node),
-  }),
+  posts: PropTypes.arrayOf(
+    PropTypes.shape({
+      author: PropTypes.string,
+      category: PropTypes.string,
+      date: PropTypes.string,
+      tags: PropTypes.arrayOf(PropTypes.string),
+      title: PropTypes.string,
+    })
+  ),
   postsTitleToRender: PropTypes.node,
 };
 
