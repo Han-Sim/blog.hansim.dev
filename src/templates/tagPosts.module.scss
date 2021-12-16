@@ -1,12 +1,12 @@
 @import "src/styles/index.scss";
 
 .postTitleContainer {
-  margin-bottom: 30px;
   font-size: 16px;
   color: $color-dark-gray;
   font-family: $sans-serif-font;
   display: flex;
   align-items: center;
+  margin: 0 20px 30px;
 
   .tag {
     margin-right: 15px;

@@ -1,4 +1,4 @@
-import React, { createRef, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import { useWindowHeightWithDebounce } from "src/util/hooks";
@@ -24,10 +24,9 @@ const theme = createMuiTheme({
  * The very fundamental layout component for the application.
  */
 const Layout = ({ children }) => {
-  const mainContainerRef = createRef();
-  const footerRef = createRef();
-
-  const menuRef = createRef();
+  const mainContainerRef = useRef();
+  const footerRef = useRef();
+  const menuRef = useRef();
 
   const windowHeight = useWindowHeightWithDebounce(300); // get the window height.
 
