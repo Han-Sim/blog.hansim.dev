@@ -1,27 +1,37 @@
-import React, { useContext, useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useMemo, useRef } from "react";
 import PropTypes from "prop-types";
 import InfiniteScroll from "react-infinite-scroll-component";
-import {
-  CATEGORY_ALL_POSTS,
-  CATEGORY_BASICS,
-  CATEGORY_WEB_DEVELOPMENT,
-} from "src/util/constants";
-import { Context } from "src/context";
+import PostCard from "src/components/postCard";
 import style from "./posts.module.scss";
 
-const Posts = ({ listOfPostsToRender, postsTitleToRender }) => {
-  const { activeMenu } = useContext(Context);
-  const listOfPostsRef = useRef([]);
+const Posts = ({ posts, postsTitleToRender }) => {
+  console.log({ posts });
+  const postsRef = useRef([]);
   const [items, setItems] = useState([]);
 
+  // Set an array of PostCard component to render.
+  const postCardsToRender = useMemo(() =>
+    posts.map(node => (
+      <PostCard
+        key={node.id}
+        title={node.frontmatter.title}
+        author={node.frontmatter.author}
+        slug={node.fields.slug}
+        date={node.frontmatter.date}
+        body={node.excerpt}
+        tags={node.frontmatter.tags}
+      />
+    ))
+  );
+
   useEffect(() => {
-    listOfPostsRef.current = [...listOfPostsToRender[activeMenu]];
-    setItems(listOfPostsRef.current.splice(0, 4));
-  }, [listOfPostsToRender, activeMenu, setItems]);
+    postsRef.current = [...postCardsToRender];
+    setItems(postsRef.current.splice(0, 4));
+  }, [posts]);
 
   const fetchMoreData = () => {
     setTimeout(() => {
-      setItems([...items, listOfPostsRef.current.splice(0, 4)]);
+      setItems([...items, postsRef.current.splice(0, 4)]);
     }, 500);
   };
 
@@ -36,11 +46,21 @@ const Posts = ({ listOfPostsToRender, postsTitleToRender }) => {
 };
 
 Posts.propTypes = {
-  listOfPostsToRender: PropTypes.shape({
-    [CATEGORY_ALL_POSTS]: PropTypes.arrayOf(PropTypes.node),
-    [CATEGORY_WEB_DEVELOPMENT]: PropTypes.arrayOf(PropTypes.node),
-    [CATEGORY_BASICS]: PropTypes.arrayOf(PropTypes.node),
-  }),
+  posts: PropTypes.arrayOf(
+    PropTypes.shape({
+      frontmatter: PropTypes.shape({
+        author: PropTypes.string.isRequired,
+        category: PropTypes.string.isRequired,
+        date: PropTypes.string.isRequired,
+        tags: PropTypes.arrayOf(PropTypes.string),
+        title: PropTypes.string.isRequired,
+      }).isRequired,
+      excerpt: PropTypes.string.isRequired,
+      fields: PropTypes.shape({
+        slug: PropTypes.string,
+      }).isRequired,
+    })
+  ).isRequired,
   postsTitleToRender: PropTypes.node,
 };
 
