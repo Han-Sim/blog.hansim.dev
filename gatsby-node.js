@@ -7,6 +7,7 @@ const {
   slugify,
 } = require("./src/util/helpers");
 const {
+  CATEGORY_ALL_POSTS,
   CATEGORY_BASICS,
   CATEGORY_WEB_DEVELOPMENT,
   PATH_CATEGORY_WEB_DEVELOPMENT,
@@ -35,9 +36,9 @@ exports.onCreateNode = ({ node, actions }) => {
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions;
   const templates = {
+    categoryPosts: path.resolve("src/templates/CategoryPosts.jsx"),
     singlePost: path.resolve("src/templates/SinglePost.jsx"),
     tagPosts: path.resolve("src/templates/TagPosts.jsx"),
-    allPosts: path.resolve("src/templates/AllPosts.jsx"),
   };
 
   return graphql(`
@@ -133,18 +134,27 @@ exports.createPages = ({ actions, graphql }) => {
     // #region category posts and all posts
 
     createPage({
-      path: PATH_CATEGORY_WEB_DEVELOPMENT,
-      component: templates.allPosts,
+      path: PATH_ALL_POSTS,
+      component: templates.categoryPosts,
+      context: {
+        category: CATEGORY_ALL_POSTS,
+      },
     });
 
     createPage({
       path: PATH_CATEGORY_BASICS,
-      component: templates.allPosts,
+      component: templates.categoryPosts,
+      context: {
+        category: CATEGORY_BASICS,
+      },
     });
 
     createPage({
-      path: PATH_ALL_POSTS,
-      component: templates.allPosts,
+      path: PATH_CATEGORY_WEB_DEVELOPMENT,
+      component: templates.categoryPosts,
+      context: {
+        category: CATEGORY_WEB_DEVELOPMENT,
+      },
     });
 
     // #endregion

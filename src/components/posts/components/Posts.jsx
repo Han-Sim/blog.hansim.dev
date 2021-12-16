@@ -48,13 +48,19 @@ const Posts = ({ posts, postsTitleToRender }) => {
 Posts.propTypes = {
   posts: PropTypes.arrayOf(
     PropTypes.shape({
-      author: PropTypes.string,
-      category: PropTypes.string,
-      date: PropTypes.string,
-      tags: PropTypes.arrayOf(PropTypes.string),
-      title: PropTypes.string,
+      frontmatter: PropTypes.shape({
+        author: PropTypes.string.isRequired,
+        category: PropTypes.string.isRequired,
+        date: PropTypes.string.isRequired,
+        tags: PropTypes.arrayOf(PropTypes.string),
+        title: PropTypes.string.isRequired,
+      }).isRequired,
+      excerpt: PropTypes.string.isRequired,
+      fields: PropTypes.shape({
+        slug: PropTypes.string,
+      }).isRequired,
     })
-  ),
+  ).isRequired,
   postsTitleToRender: PropTypes.node,
 };
 
