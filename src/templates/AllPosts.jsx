@@ -46,7 +46,7 @@ const AllPosts = ({ data, path }) => {
     }
   }, [path]);
 
-  const listOfPostsToRender = useMemo(() => {
+  const posts = useMemo(() => {
     const obj = {
       [CATEGORY_ALL_POSTS]: [],
       [CATEGORY_WEB_DEVELOPMENT]: [],
@@ -113,7 +113,7 @@ const AllPosts = ({ data, path }) => {
   return (
     <Layout>
       <SEO title={seoTitle} />
-      <Posts listOfPostsToRender={listOfPostsToRender} />
+      <Posts posts={posts} />
     </Layout>
   );
 };

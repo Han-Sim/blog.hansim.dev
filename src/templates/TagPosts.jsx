@@ -20,7 +20,7 @@ const TagPosts = ({ data, pageContext }) => {
 
   const seoTitle = useMemo(() => `Posts about ${tag}`, [tag]);
 
-  const listOfPostsToRender = useMemo(() => {
+  const posts = useMemo(() => {
     const obj = {
       [CATEGORY_ALL_POSTS]: [],
       [CATEGORY_WEB_DEVELOPMENT]: [],
@@ -109,11 +109,7 @@ const TagPosts = ({ data, pageContext }) => {
   return (
     <Layout>
       <SEO title={seoTitle} />
-      <Posts
-        tag={tag}
-        postsTitleToRender={postsTitleToRender}
-        listOfPostsToRender={listOfPostsToRender}
-      />
+      <Posts tag={tag} postsTitleToRender={postsTitleToRender} posts={posts} />
     </Layout>
   );
 };

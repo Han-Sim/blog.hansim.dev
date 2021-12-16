@@ -9,19 +9,19 @@ import {
 import { Context } from "src/context";
 import style from "./posts.module.scss";
 
-const Posts = ({ listOfPostsToRender, postsTitleToRender }) => {
+const Posts = ({ posts, postsTitleToRender }) => {
   const { activeMenu } = useContext(Context);
-  const listOfPostsRef = useRef([]);
+  const postsRef = useRef([]);
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    listOfPostsRef.current = [...listOfPostsToRender[activeMenu]];
-    setItems(listOfPostsRef.current.splice(0, 4));
-  }, [listOfPostsToRender, activeMenu, setItems]);
+    postsRef.current = [...posts[activeMenu]];
+    setItems(postsRef.current.splice(0, 4));
+  }, [posts, activeMenu, setItems]);
 
   const fetchMoreData = () => {
     setTimeout(() => {
-      setItems([...items, listOfPostsRef.current.splice(0, 4)]);
+      setItems([...items, postsRef.current.splice(0, 4)]);
     }, 500);
   };
 
@@ -36,7 +36,7 @@ const Posts = ({ listOfPostsToRender, postsTitleToRender }) => {
 };
 
 Posts.propTypes = {
-  listOfPostsToRender: PropTypes.shape({
+  posts: PropTypes.shape({
     [CATEGORY_ALL_POSTS]: PropTypes.arrayOf(PropTypes.node),
     [CATEGORY_WEB_DEVELOPMENT]: PropTypes.arrayOf(PropTypes.node),
     [CATEGORY_BASICS]: PropTypes.arrayOf(PropTypes.node),
