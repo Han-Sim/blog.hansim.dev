@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import MetaTags from "react-meta-tags";
 import { useWindowHeightWithDebounce } from "src/util/hooks";
 import Footer from "./footer";
 import Menu from "./menu";
@@ -51,6 +52,9 @@ const Layout = ({ children }) => {
   return (
     <MuiThemeProvider theme={theme}>
       <div ref={mainContainerRef}>
+        <MetaTags>
+          <meta name="theme-color" content="#292929" />
+        </MetaTags>
         <Menu ref={menuRef} />
         <div className={style.bodyContainer}>{children}</div>
       </div>
