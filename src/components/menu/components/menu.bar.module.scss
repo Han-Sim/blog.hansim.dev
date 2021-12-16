@@ -14,8 +14,7 @@
   background-color: $color-dark-black;
   z-index: 99;
   font-family: $sans-serif-font;
-  font-weight: 700;
-  height: 60px;
+  height: 52px;
 
   .left {
     display: flex;
@@ -31,7 +30,7 @@
       font-weight: 400;
       cursor: pointer;
       color: $color-light-gray;
-      height: 60px;
+      height: 52px;
     }
 
     .menuInactive {

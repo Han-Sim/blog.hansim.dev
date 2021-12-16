@@ -1,5 +1,4 @@
 import React, { forwardRef, useMemo } from "react";
-import PropTypes from "prop-types";
 import { graphql, useStaticQuery } from "gatsby";
 import {
   convertArrayToObjectOfCountOccurrences,
@@ -10,7 +9,7 @@ import MenuDrawer from "./Menu.Drawer";
 
 // const categories = [CATEGORY_WEB_DEVELOPMENT, CATEGORY_BASICS];
 
-const Menu = forwardRef(({ toggleMenu }, ref) => {
+const Menu = forwardRef((_props, ref) => {
   const data = useStaticQuery(graphql`
     query {
       allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
@@ -64,9 +63,5 @@ const Menu = forwardRef(({ toggleMenu }, ref) => {
     </>
   );
 });
-
-Menu.propTypes = {
-  toggleMenu: PropTypes.func.isRequired,
-};
 
 export default Menu;
