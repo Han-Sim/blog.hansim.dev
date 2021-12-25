@@ -7,7 +7,7 @@ const {
   slugify,
 } = require("./src/util/helpers");
 const {
-  CATEGORY_ALL_POSTS,
+  MENU_ALL_POSTS,
   PATH_ALL_POSTS,
 } = require("./src/util/constants");
 
@@ -124,7 +124,7 @@ exports.createPages = ({ actions, graphql }) => {
       path: PATH_ALL_POSTS,
       component: templates.AllPosts,
       context: {
-        category: CATEGORY_ALL_POSTS,
+        category: MENU_ALL_POSTS,
       },
     });
 

@@ -2,7 +2,7 @@ import React, { useContext, useMemo, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Context } from "src/context";
 import { graphql } from "gatsby";
-import { CATEGORY_ALL_POSTS } from "src/util/constants";
+import { MENU_ALL_POSTS } from "src/util/constants";
 import Layout from "src/components/Layout";
 import Posts from "src/components/posts";
 import SEO from "src/components/seo";
@@ -13,10 +13,10 @@ const TagPosts = ({ data, pageContext }) => {
   const { activeMenu, setActiveMenu } = useContext(Context);
   const { tag } = pageContext;
 
-  // Always set menu to CATEGORY_ALL_POSTS.
+  // Always set menu to MENU_ALL_POSTS.
   useEffect(() => {
-    if (activeMenu !== CATEGORY_ALL_POSTS) {
-      setActiveMenu(CATEGORY_ALL_POSTS);
+    if (activeMenu !== MENU_ALL_POSTS) {
+      setActiveMenu(MENU_ALL_POSTS);
     }
   }, [activeMenu]);
 

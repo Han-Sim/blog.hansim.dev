@@ -1,7 +1,7 @@
 import React, { useContext, useMemo } from "react";
 import PropTypes from "prop-types";
 import Tag from "src/components/tag";
-import { CATEGORY_ALL_POSTS } from "src/util/constants";
+import { MENU_ALL_POSTS } from "src/util/constants";
 import { Context } from "src/context";
 import style from "./menu.drawer.tags.module.scss";
 
@@ -10,7 +10,7 @@ const MenuDrawerTags = ({ postCountByTag }) => {
 
   const handleTagOnClick = () => {
     setIsMenuOpen(false);
-    setActiveMenu(CATEGORY_ALL_POSTS);
+    setActiveMenu(MENU_ALL_POSTS);
   };
 
   const tagsToRender = useMemo(() => {
