@@ -8,10 +8,6 @@ const {
 } = require("./src/util/helpers");
 const {
   CATEGORY_ALL_POSTS,
-  CATEGORY_BASICS,
-  CATEGORY_WEB_DEVELOPMENT,
-  PATH_CATEGORY_WEB_DEVELOPMENT,
-  PATH_CATEGORY_BASICS,
   PATH_ALL_POSTS,
 } = require("./src/util/constants");
 
@@ -36,7 +32,7 @@ exports.onCreateNode = ({ node, actions }) => {
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions;
   const templates = {
-    categoryPosts: path.resolve("src/templates/CategoryPosts.jsx"),
+    AllPosts: path.resolve("src/templates/AllPosts.jsx"),
     singlePost: path.resolve("src/templates/SinglePost.jsx"),
     tagPosts: path.resolve("src/templates/TagPosts.jsx"),
   };
@@ -75,15 +71,6 @@ exports.createPages = ({ actions, graphql }) => {
 
       if (isNil(frontmatter.title) || isNil(frontmatter.author)) {
         throw new Error("Some post has no title or author");
-      }
-
-      if (
-        ![
-          CATEGORY_BASICS.toUpperCase(),
-          CATEGORY_WEB_DEVELOPMENT.toUpperCase(),
-        ].includes(frontmatter.category.toUpperCase())
-      ) {
-        throw new Error("Some post has a wrong undefined category");
       }
 
       if (isNil(fields.slug)) {
@@ -135,25 +122,9 @@ exports.createPages = ({ actions, graphql }) => {
 
     createPage({
       path: PATH_ALL_POSTS,
-      component: templates.categoryPosts,
+      component: templates.AllPosts,
       context: {
         category: CATEGORY_ALL_POSTS,
-      },
-    });
-
-    createPage({
-      path: PATH_CATEGORY_BASICS,
-      component: templates.categoryPosts,
-      context: {
-        category: CATEGORY_BASICS,
-      },
-    });
-
-    createPage({
-      path: PATH_CATEGORY_WEB_DEVELOPMENT,
-      component: templates.categoryPosts,
-      context: {
-        category: CATEGORY_WEB_DEVELOPMENT,
       },
     });
 

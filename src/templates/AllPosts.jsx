@@ -1,20 +1,13 @@
 import React, { useContext, useEffect, useMemo } from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
-import {
-  CATEGORY_ALL_POSTS,
-  CATEGORY_BASICS,
-  CATEGORY_WEB_DEVELOPMENT,
-  PATH_ALL_POSTS,
-  PATH_CATEGORY_BASICS,
-  PATH_CATEGORY_WEB_DEVELOPMENT,
-} from "src/util/constants";
+import { CATEGORY_ALL_POSTS, PATH_ALL_POSTS } from "src/util/constants";
 import { Context } from "src/context";
 import SEO from "src/components/seo";
 import Layout from "src/components/Layout";
 import Posts from "src/components/posts";
 
-const CategoryPosts = ({ data, pageContext, path }) => {
+const AllPosts = ({ data, pageContext, path }) => {
   const { category } = pageContext;
   const { setActiveMenu } = useContext(Context);
 
@@ -23,15 +16,6 @@ const CategoryPosts = ({ data, pageContext, path }) => {
       case PATH_ALL_POSTS:
         setActiveMenu(CATEGORY_ALL_POSTS);
         break;
-
-      case PATH_CATEGORY_BASICS: {
-        setActiveMenu(CATEGORY_BASICS);
-        break;
-      }
-      case PATH_CATEGORY_WEB_DEVELOPMENT: {
-        setActiveMenu(CATEGORY_WEB_DEVELOPMENT);
-        break;
-      }
     }
   }, [path, setActiveMenu]);
 
@@ -39,10 +23,8 @@ const CategoryPosts = ({ data, pageContext, path }) => {
     switch (path) {
       case PATH_ALL_POSTS:
         return "All posts";
-      case PATH_CATEGORY_BASICS:
-        return "Programming basics";
-      case PATH_CATEGORY_WEB_DEVELOPMENT:
-        return "Web development";
+      default:
+        return "";
     }
   }, [path]);
 
@@ -62,7 +44,7 @@ const CategoryPosts = ({ data, pageContext, path }) => {
   );
 };
 
-export const CategoryPostsQuery = graphql`
+export const AllPostsQuery = graphql`
   query {
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
       totalCount
@@ -86,7 +68,7 @@ export const CategoryPostsQuery = graphql`
   }
 `;
 
-CategoryPosts.propTypes = {
+AllPosts.propTypes = {
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
       edges: PropTypes.arrayOf(
@@ -114,4 +96,4 @@ CategoryPosts.propTypes = {
   path: PropTypes.string,
 };
 
-export default CategoryPosts;
+export default AllPosts;

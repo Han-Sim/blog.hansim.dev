@@ -7,8 +7,6 @@ import {
 import MenuBar from "./Menu.Bar";
 import MenuDrawer from "./Menu.Drawer";
 
-// const categories = [CATEGORY_WEB_DEVELOPMENT, CATEGORY_BASICS];
-
 const Menu = forwardRef((_props, ref) => {
   const data = useStaticQuery(graphql`
     query {
