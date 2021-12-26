@@ -7,7 +7,7 @@ import style from "./menu.module.scss";
 
 // TODO: hide it when scroll down if the screen height is small.
 const Menu = () => {
-  const { isMenuOpen, setIsMenuOpen } = useContext(Context);
+  const { isMenuDrawerOpen, setIsMenuDrawerOpen } = useContext(Context);
 
   return (
     <>
@@ -31,12 +31,12 @@ const Menu = () => {
       {/* Fixed position in order to set z-index to float it on top of drawer menu */}
       <div
         className={
-          isMenuOpen
+          isMenuDrawerOpen
             ? classnames(style.hamburgerMenuIcon, style.hamburgerMenuIconOpen)
             : style.hamburgerMenuIcon
         }
         onClick={() => {
-          setIsMenuOpen(!isMenuOpen);
+          setIsMenuDrawerOpen(!isMenuDrawerOpen);
         }}
       >
         <span></span>

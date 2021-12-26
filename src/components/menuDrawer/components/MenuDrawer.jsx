@@ -10,7 +10,7 @@ import Tag from "../../tag";
 import style from "./menuDrawer.module.scss";
 
 const MenuDrawer = () => {
-  const { isMenuOpen, setIsMenuOpen } = useContext(Context);
+  const { isMenuDrawerOpen, setIsMenuDrawerOpen } = useContext(Context);
 
   const data = useStaticQuery(graphql`
     query {
@@ -59,7 +59,7 @@ const MenuDrawer = () => {
             count={count}
             isLastTag={index === Object.entries(postCountByTag).length - 1}
             onClick={() => {
-              setIsMenuOpen(false);
+              setIsMenuDrawerOpen(false);
             }}
           />
         </div>
@@ -71,13 +71,13 @@ const MenuDrawer = () => {
 
   return (
     <Drawer
-      open={isMenuOpen}
+      open={isMenuDrawerOpen}
       anchor="right"
       onBackdropClick={() => {
-        setIsMenuOpen(false);
+        setIsMenuDrawerOpen(false);
       }}
       onEscapeKeyDown={() => {
-        setIsMenuOpen(false);
+        setIsMenuDrawerOpen(false);
       }}
     >
       <div className={style.drawerContainer}>

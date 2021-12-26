@@ -4,13 +4,13 @@ import PropTypes from "prop-types";
 const Context = createContext();
 
 const ContextProvider = ({ children }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuDrawerOpen, setIsMenuDrawerOpen] = useState(false);
 
   return (
     <Context.Provider
       value={{
-        isMenuOpen,
-        setIsMenuOpen,
+        isMenuDrawerOpen,
+        setIsMenuDrawerOpen,
       }}
     >
       {children}
