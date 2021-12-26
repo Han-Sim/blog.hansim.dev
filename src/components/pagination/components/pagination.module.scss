@@ -9,10 +9,6 @@
 .previousContainer {
   display: flex;
   align-items: center;
-
-  a {
-    @include link-style($color-dark-gray);
-  }
 }
 
 .previousContainer {

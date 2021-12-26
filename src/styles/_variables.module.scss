@@ -9,8 +9,6 @@ $background-blue-bolder: rgba(113, 199, 236, 0.5);
 $background-pink: rgba(245, 106, 159, 0.16);
 $background-yellow: rgba(226, 199, 64, 0.25);
 
-$white: white;
-
 // This is a new color theme for the new design.
 // Remove unused variables later above.
 // https://www.designwizard.com/blog/design-trends/colour-combination
@@ -28,15 +26,6 @@ $color-background-main: #f1f1f12e; // TODO
 $color-white: #fff;
 
 $sans-serif-font: "Roboto", sans-serif;
-
-@mixin link-style($color) {
-  color: $color;
-  text-decoration: none;
-
-  &:hover {
-    color: $color-eclipse;
-  }
-}
 
 @mixin link-blue {
   position: relative;

@@ -7,10 +7,6 @@
     display: flex;
     align-items: flex-end;
     margin-top: 5px;
-
-    .editThisPageText {
-      @include link-style($color-dark-gray);
-    }
   }
 
   .tagsList {

@@ -39,7 +39,7 @@
     }
 
     .categoryName {
-      @include link-style($color-dark-gray);
+      @include link-blue;
 
       cursor: pointer;
     }
