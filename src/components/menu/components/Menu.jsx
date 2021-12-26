@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
+import { navigate } from "gatsby";
 import classnames from "classnames";
+import { KEY_ENTER } from "src/util/constants";
 import { Context } from "src/context";
 import style from "./menu.module.scss";
 
@@ -7,12 +9,23 @@ import style from "./menu.module.scss";
 const Menu = () => {
   const { isMenuOpen, setIsMenuOpen } = useContext(Context);
 
-  // TODO: update logo with actual icon.
   return (
     <>
       <div className={style.menuContainer}>
-        <div className={style.logo}>
-          <a href="/posts">Han Sim.</a>
+        <div
+          className={style.logo}
+          onClick={() => {
+            navigate("/posts");
+          }}
+          onKeyDown={event => {
+            if (event.keyCode === KEY_ENTER) {
+              navigate("/posts");
+            }
+          }}
+          role="button"
+          tabIndex={0}
+        >
+          HANSIM.DEV.
         </div>
       </div>
       {/* Fixed position in order to set z-index to float it on top of drawer menu */}

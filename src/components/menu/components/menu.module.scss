@@ -16,21 +16,46 @@
 }
 
 .logo {
-  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
   font-size: 24px;
+  font-weight: 800;
 
-  a {
-    @include link($color-dark-gray, $color-peach);
+  // gradient color effect.
+  background: linear-gradient(
+    90deg,
+    #8184e8 0%,
+    #9ebae6 18%,
+    #c2bfe2 46%,
+    #eeaeca 67%,
+    #eeaeca 67%,
+    #ff86a0 100%
+  );
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -o-background-clip: text;
+  color: transparent;
+
+  -webkit-transition: background 0.5s ease-out;
+  -moz-transition: background 0.5s ease-out;
+  -o-transition: background 0.5s ease-out;
+  transition: background 0.5s ease-out;
+
+  // transition trick for linear-gradient with background-position
+  // https://stackoverflow.com/questions/6542212/use-css3-transitions-with-gradient-backgrounds
+  &:hover {
+    background-position: 100px;
   }
 }
 
 /* hamburger icon */
 
 .hamburgerMenuIcon {
-  width: 40px;
+  width: 20px;
   height: 30px;
   position: fixed;
-  top: 15px;
+  top: 24px;
   right: 40px;
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
@@ -47,9 +72,9 @@
 .hamburgerMenuIcon span {
   display: block;
   position: absolute;
-  height: 6px;
+  height: 3px;
   width: 100%;
-  background: $color-peach;
+  background: $color-dark-gray;
   border-radius: 9px;
   opacity: 1;
   left: 0;
@@ -69,15 +94,15 @@
 
 .hamburgerMenuIcon span:nth-child(2),
 .hamburgerMenuIcon span:nth-child(3) {
-  top: 12px;
+  top: 6px;
 }
 
 .hamburgerMenuIcon span:nth-child(4) {
-  top: 24px;
+  top: 12px;
 }
 
 .hamburgerMenuIconOpen span:nth-child(1) {
-  top: 12px;
+  top: 6px;
   width: 0%;
   left: 50%;
 }
