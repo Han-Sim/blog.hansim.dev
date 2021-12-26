@@ -38,6 +38,28 @@ $sans-serif-font: "Roboto", sans-serif;
   }
 }
 
+@mixin link-blue {
+  position: relative;
+  color: $color-blue;
+  overflow: hidden;
+  background: linear-gradient(
+    to right,
+    $color-eclipse,
+    $color-eclipse 50%,
+    $color-blue 50%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 100%;
+  background-position: 100%;
+  transition: background-position 275ms ease;
+  text-decoration: none; // text decorations are clipped in WebKit browsers
+  &:hover {
+    background-position: 0 100%;
+  }
+}
+
 // link style with no change.
 @mixin link-no-change {
   color: inherit;
