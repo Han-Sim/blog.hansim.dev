@@ -53,7 +53,7 @@ export const AllPostsQuery = graphql`
           id
           frontmatter {
             title
-            date(formatString: "MMM Do, YYYY")
+            date(formatString: "MMM D, YYYY")
             author
             category
             tags

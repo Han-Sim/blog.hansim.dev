@@ -18,7 +18,7 @@ const IndexPage = () => {
             html
             frontmatter {
               title
-              date(formatString: "MMM Do, YYYY")
+              date(formatString: "MMM D, YYYY")
               author
               tags
               category
