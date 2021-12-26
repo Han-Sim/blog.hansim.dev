@@ -1,68 +1,30 @@
-import React, { useContext, useEffect, useMemo } from "react";
+import React, { useMemo } from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
-import {
-  CATEGORY_ALL_POSTS,
-  CATEGORY_BASICS,
-  CATEGORY_WEB_DEVELOPMENT,
-  PATH_ALL_POSTS,
-  PATH_CATEGORY_BASICS,
-  PATH_CATEGORY_WEB_DEVELOPMENT,
-} from "src/util/constants";
-import { Context } from "src/context";
+import { PATH_ALL_POSTS } from "src/util/constants";
 import SEO from "src/components/seo";
 import Layout from "src/components/Layout";
 import Posts from "src/components/posts";
 
-const CategoryPosts = ({ data, pageContext, path }) => {
-  const { category } = pageContext;
-  const { setActiveMenu } = useContext(Context);
-
-  useEffect(() => {
-    switch (path) {
-      case PATH_ALL_POSTS:
-        setActiveMenu(CATEGORY_ALL_POSTS);
-        break;
-
-      case PATH_CATEGORY_BASICS: {
-        setActiveMenu(CATEGORY_BASICS);
-        break;
-      }
-      case PATH_CATEGORY_WEB_DEVELOPMENT: {
-        setActiveMenu(CATEGORY_WEB_DEVELOPMENT);
-        break;
-      }
-    }
-  }, [path, setActiveMenu]);
-
+const AllPosts = ({ data, path }) => {
   const seoTitle = useMemo(() => {
     switch (path) {
       case PATH_ALL_POSTS:
-        return "All posts";
-      case PATH_CATEGORY_BASICS:
-        return "Programming basics";
-      case PATH_CATEGORY_WEB_DEVELOPMENT:
-        return "Web development";
+        return "Posts";
+      default:
+        return "";
     }
   }, [path]);
-
-  const posts = useMemo(() => {
-    const nodes = data.allMarkdownRemark.edges.map(({ node }) => node);
-
-    return category === CATEGORY_ALL_POSTS
-      ? nodes
-      : nodes.filter(node => node.frontmatter.category === category);
-  }, [category, data]);
 
   return (
     <Layout>
       <SEO title={seoTitle} />
-      <Posts posts={posts} />
+      <Posts posts={data.allMarkdownRemark.edges.map(({ node }) => node)} />
     </Layout>
   );
 };
 
-export const CategoryPostsQuery = graphql`
+export const AllPostsQuery = graphql`
   query {
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
       totalCount
@@ -71,7 +33,7 @@ export const CategoryPostsQuery = graphql`
           id
           frontmatter {
             title
-            date(formatString: "MMM Do, YYYY")
+            date(formatString: "MMM D, YYYY")
             author
             category
             tags
@@ -86,7 +48,7 @@ export const CategoryPostsQuery = graphql`
   }
 `;
 
-CategoryPosts.propTypes = {
+AllPosts.propTypes = {
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
       edges: PropTypes.arrayOf(
@@ -114,4 +76,4 @@ CategoryPosts.propTypes = {
   path: PropTypes.string,
 };
 
-export default CategoryPosts;
+export default AllPosts;

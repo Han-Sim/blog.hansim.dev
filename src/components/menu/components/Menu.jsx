@@ -1,67 +1,51 @@
-import React, { forwardRef, useMemo } from "react";
-import { graphql, useStaticQuery } from "gatsby";
-import {
-  convertArrayToObjectOfCountOccurrences,
-  sortObjectByValueInDescOrder,
-} from "src/util/helpers";
-import MenuBar from "./Menu.Bar";
-import MenuDrawer from "./Menu.Drawer";
+import React, { useContext } from "react";
+import { navigate } from "gatsby";
+import classnames from "classnames";
+import { KEY_ENTER, PATH_ALL_POSTS } from "src/util/constants";
+import { Context } from "src/context";
+import style from "./menu.module.scss";
 
-// const categories = [CATEGORY_WEB_DEVELOPMENT, CATEGORY_BASICS];
-
-const Menu = forwardRef((_props, ref) => {
-  const data = useStaticQuery(graphql`
-    query {
-      allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-        totalCount
-        edges {
-          node {
-            frontmatter {
-              title
-              tags
-              category
-            }
-            fields {
-              slug
-            }
-          }
-        }
-      }
-    }
-  `);
-  const { edges = [] } = data.allMarkdownRemark;
-
-  const tagsAll = useMemo(() => {
-    const tagsAll = [];
-
-    edges.forEach(edge => {
-      tagsAll.push(...edge.node.frontmatter.tags);
-    });
-
-    return tagsAll;
-  }, [edges]);
-
-  // Post count by tag and sort it by descending order.
-  const postCountByTag = useMemo(() => {
-    return sortObjectByValueInDescOrder(
-      convertArrayToObjectOfCountOccurrences(tagsAll)
-    );
-  }, [tagsAll]);
-
-  // Category count. TODO: put it later.
-  // const postCountByCategory = useMemo(() => convertArrayToObjectOfCountOccurrences(categories), [
-  //   categories,
-  // ]);
+// TODO: hide it when scroll down if the screen height is small.
+const Menu = () => {
+  const { isMenuDrawerOpen, setIsMenuDrawerOpen } = useContext(Context);
 
   return (
     <>
-      <MenuBar ref={ref} />
-      <MenuDrawer
-        // postCountByCategory={postCountByCategory}
-        postCountByTag={postCountByTag}
-      />
+      <div className={style.menuContainer}>
+        <div
+          className={style.logo}
+          onClick={() => {
+            navigate(PATH_ALL_POSTS);
+          }}
+          onKeyDown={event => {
+            if (event.keyCode === KEY_ENTER) {
+              navigate(PATH_ALL_POSTS);
+            }
+          }}
+          role="button"
+          tabIndex={0}
+        >
+          HANSIM.DEV.
+        </div>
+      </div>
+      {/* Fixed position in order to set z-index to float it on top of drawer menu */}
+      <div
+        className={
+          isMenuDrawerOpen
+            ? classnames(style.hamburgerMenuIcon, style.hamburgerMenuIconOpen)
+            : style.hamburgerMenuIcon
+        }
+        onClick={() => {
+          setIsMenuDrawerOpen(!isMenuDrawerOpen);
+        }}
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </>
   );
-});
+};
 
 export default Menu;

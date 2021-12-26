@@ -1,9 +1,9 @@
 @import "src/styles/index.scss";
 
 .tagContainer {
-  @include link-style($color-dark-gray);
+  @include link-blue;
 
-  margin: 5px 5px 5px 0;
+  margin-right: 5px;
   cursor: pointer;
   display: flex;
   align-items: center;

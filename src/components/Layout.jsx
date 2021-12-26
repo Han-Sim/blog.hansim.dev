@@ -5,6 +5,7 @@ import MetaTags from "react-meta-tags";
 import { useWindowHeightWithDebounce } from "src/util/hooks";
 import Footer from "./footer";
 import Menu from "./menu";
+import MenuDrawer from "./menuDrawer";
 import style from "./layout.module.scss";
 
 const colorBlue = "#00539c";
@@ -27,7 +28,6 @@ const theme = createMuiTheme({
 const Layout = ({ children }) => {
   const mainContainerRef = useRef();
   const footerRef = useRef();
-  const menuRef = useRef();
 
   const windowHeight = useWindowHeightWithDebounce(300); // get the window height.
 
@@ -50,16 +50,19 @@ const Layout = ({ children }) => {
   }, [mainContainerRef, footerRef, windowHeight]);
 
   return (
-    <MuiThemeProvider theme={theme}>
-      <div ref={mainContainerRef}>
-        <MetaTags>
-          <meta name="theme-color" content="#292929" />
-        </MetaTags>
-        <Menu ref={menuRef} />
-        <div className={style.bodyContainer}>{children}</div>
-      </div>
-      <Footer ref={footerRef} />
-    </MuiThemeProvider>
+    <>
+      <MetaTags>
+        <meta name="theme-color" content="#292929" />
+      </MetaTags>
+      <MuiThemeProvider theme={theme}>
+        <MenuDrawer />
+        <div ref={mainContainerRef}>
+          <Menu />
+          <div className={style.bodyContainer}>{children}</div>
+        </div>
+        <Footer ref={footerRef} />
+      </MuiThemeProvider>
+    </>
   );
 };
 

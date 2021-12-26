@@ -1,8 +1,6 @@
 import React, { useMemo } from "react";
 import PropTypes from "prop-types";
 import { slugify, findIndex } from "src/util/helpers";
-import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
-import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import style from "./pagination.module.scss";
 
 const Pagination = ({ title, titlesOfAll }) => {
@@ -16,37 +14,30 @@ const Pagination = ({ title, titlesOfAll }) => {
   ]);
   const hasNextPost = useMemo(() => index > 0, [index]);
 
-  // TODO: cool animation for arrow back/forward icons on hover
   return (
     <div className={style.container}>
       <div className={style.nextContainer}>
-        <div className={style.nextPost}>Next</div>
-        {hasNextPost ? (
-          <div className={style.linkContainer}>
-            <a href={`/${slugify(titlesOfAll[index - 1])}`}>
-              <div className={style.postTitle}>{titlesOfAll[index - 1]}</div>
-            </a>
-            <div className={style.arrowIcon}>
-              <ArrowForwardIcon />
+        {hasNextPost && (
+          <>
+            <div className={style.nextPost}>Next Post</div>
+            <div className={style.linkContainer}>
+              <a href={`/${slugify(titlesOfAll[index - 1])}`}>
+                <div className={style.postTitle}>{titlesOfAll[index - 1]}</div>
+              </a>
             </div>
-          </div>
-        ) : (
-          <div className={style.nextNone}>no more next post</div>
+          </>
         )}
       </div>
       <div className={style.previousContainer}>
-        <div className={style.previousPost}>Previous</div>
-        {hasPrevPost ? (
-          <div className={style.linkContainer}>
-            <a href={`/${slugify(titlesOfAll[index + 1])}`}>
-              <div className={style.postTitle}>{titlesOfAll[index + 1]}</div>
-            </a>
-            <div className={style.arrowIcon}>
-              <ArrowBackIcon />
+        {hasPrevPost && (
+          <>
+            <div className={style.previousPost}>Previous Post</div>
+            <div className={style.linkContainer}>
+              <a href={`/${slugify(titlesOfAll[index + 1])}`}>
+                <div className={style.postTitle}>{titlesOfAll[index + 1]}</div>
+              </a>
             </div>
-          </div>
-        ) : (
-          <div className={style.previousNone}>no more previous post</div>
+          </>
         )}
       </div>
     </div>

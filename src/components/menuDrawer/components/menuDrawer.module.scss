@@ -1,0 +1,29 @@
+@import "src/styles/index.scss";
+
+.drawerContainer {
+  width: 600px;
+  font-size: 20px;
+  color: $color-dark-gray;
+  padding-top: 60px;
+
+  @media only screen and (max-width: 620px) {
+    width: 100%;
+  }
+}
+
+.list {
+  padding: 0 20px;
+
+  .listHeader {
+    padding-bottom: 10px;
+    border-bottom: 1px solid $color-light-gray;
+    font-weight: 600;
+  }
+}
+
+.tagsContainer {
+  margin: 15px 0;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 1rem;
+}

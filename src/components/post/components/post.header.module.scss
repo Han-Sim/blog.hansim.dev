@@ -6,9 +6,8 @@
 
   .title {
     display: inline-block;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
+    font-size: 2.5em;
+    font-weight: 600;
   }
 
   .footer {
@@ -21,17 +20,15 @@
     justify-content: space-between;
     flex-wrap: wrap;
 
-    .categoryContainer,
     .authorContainer,
     .dateContainer {
       margin: 10px 20px 20px 0;
       border-top: 1px solid $color-light-gray;
       padding-top: 10px;
-      width: 250px;
-      letter-spacing: 0.08em;
+      width: 45%;
+      min-width: 300px;
     }
 
-    .category,
     .writtenBy,
     .datePublished {
       font-weight: 500;
@@ -40,7 +37,7 @@
     }
 
     .categoryName {
-      @include link-style($color-dark-gray);
+      @include link-blue;
 
       cursor: pointer;
     }

@@ -5,7 +5,6 @@ import PostCard from "src/components/postCard";
 import style from "./posts.module.scss";
 
 const Posts = ({ posts, postsTitleToRender }) => {
-  console.log({ posts });
   const postsRef = useRef([]);
   const [items, setItems] = useState([]);
 

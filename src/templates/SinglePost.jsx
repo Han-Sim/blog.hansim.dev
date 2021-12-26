@@ -1,7 +1,6 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
-import { Context } from "src/context";
 import Layout from "src/components/Layout";
 import SEO from "src/components/seo";
 import Post from "src/components/post";
@@ -9,11 +8,6 @@ import { getFilename } from "src/util/helpers";
 
 const SinglePost = ({ data, pageContext }) => {
   const post = data.markdownRemark.frontmatter;
-  const { setActiveMenu } = useContext(Context);
-
-  useEffect(() => {
-    setActiveMenu(post.category);
-  }, [setActiveMenu, post.category]);
 
   return (
     <Layout>
@@ -49,7 +43,7 @@ export const postQuery = graphql`
         title
         author
         tags
-        date(formatString: "MMM Do, YYYY")
+        date(formatString: "MMM D, YYYY")
         category
       }
       excerpt

@@ -1,8 +1,6 @@
-import React, { useContext, useMemo, useEffect } from "react";
+import React, { useMemo } from "react";
 import PropTypes from "prop-types";
-import { Context } from "src/context";
 import { graphql } from "gatsby";
-import { CATEGORY_ALL_POSTS } from "src/util/constants";
 import Layout from "src/components/Layout";
 import Posts from "src/components/posts";
 import SEO from "src/components/seo";
@@ -10,15 +8,7 @@ import style from "./tagPosts.module.scss";
 
 const TagPosts = ({ data, pageContext }) => {
   const { edges } = data.allMarkdownRemark;
-  const { activeMenu, setActiveMenu } = useContext(Context);
   const { tag } = pageContext;
-
-  // Always set menu to CATEGORY_ALL_POSTS.
-  useEffect(() => {
-    if (activeMenu !== CATEGORY_ALL_POSTS) {
-      setActiveMenu(CATEGORY_ALL_POSTS);
-    }
-  }, [activeMenu]);
 
   const seoTitle = useMemo(() => `Posts about ${tag}`, [tag]);
 
@@ -26,7 +16,7 @@ const TagPosts = ({ data, pageContext }) => {
     return (
       <div className={style.postTitleContainer}>
         <div className={style.tag}>{tag}</div>found {edges.length} post
-        {edges.length === 1 ? "" : "s"}.
+        {edges.length === 1 ? "" : "s"}
       </div>
     );
   }, [edges.length, tag]);
@@ -56,7 +46,7 @@ export const TagQuery = graphql`
           frontmatter {
             category
             title
-            date(formatString: "MMM Do, YYYY")
+            date(formatString: "MMM D, YYYY")
             author
             tags
           }

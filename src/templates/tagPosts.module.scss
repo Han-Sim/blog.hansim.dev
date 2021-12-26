@@ -2,8 +2,6 @@
 
 .postTitleContainer {
   font-size: 16px;
-  color: $color-dark-gray;
-  font-family: $sans-serif-font;
   display: flex;
   align-items: center;
   margin: 0 20px 30px;
@@ -13,9 +11,8 @@
     font-family: $sans-serif-font;
     text-transform: uppercase;
     border-radius: 10px;
-    background-color: $color-blue;
+    background-color: $color-dark-gray;
     color: $color-white;
     padding: 10px;
-    letter-spacing: 0.08em;
   }
 }

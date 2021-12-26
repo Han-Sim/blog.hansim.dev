@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { navigate } from "gatsby";
 import { KEY_ENTER } from "src/util/constants";
 import { slugify } from "src/util/helpers";
-
 import style from "./tag.module.scss";
 
 const Tag = ({ count, tag, onClick, isLastTag }) => {
