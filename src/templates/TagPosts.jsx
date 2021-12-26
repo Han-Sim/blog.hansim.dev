@@ -1,8 +1,6 @@
-import React, { useContext, useMemo, useEffect } from "react";
+import React, { useMemo } from "react";
 import PropTypes from "prop-types";
-import { Context } from "src/context";
 import { graphql } from "gatsby";
-import { MENU_ALL_POSTS } from "src/util/constants";
 import Layout from "src/components/Layout";
 import Posts from "src/components/posts";
 import SEO from "src/components/seo";
@@ -10,15 +8,7 @@ import style from "./tagPosts.module.scss";
 
 const TagPosts = ({ data, pageContext }) => {
   const { edges } = data.allMarkdownRemark;
-  const { activeMenu, setActiveMenu } = useContext(Context);
   const { tag } = pageContext;
-
-  // Always set menu to MENU_ALL_POSTS.
-  useEffect(() => {
-    if (activeMenu !== MENU_ALL_POSTS) {
-      setActiveMenu(MENU_ALL_POSTS);
-    }
-  }, [activeMenu]);
 
   const seoTitle = useMemo(() => `Posts about ${tag}`, [tag]);
 

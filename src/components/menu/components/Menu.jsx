@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { navigate } from "gatsby";
 import classnames from "classnames";
-import { KEY_ENTER } from "src/util/constants";
+import { KEY_ENTER, PATH_ALL_POSTS } from "src/util/constants";
 import { Context } from "src/context";
 import style from "./menu.module.scss";
 
@@ -15,11 +15,11 @@ const Menu = () => {
         <div
           className={style.logo}
           onClick={() => {
-            navigate("/posts");
+            navigate(PATH_ALL_POSTS);
           }}
           onKeyDown={event => {
             if (event.keyCode === KEY_ENTER) {
-              navigate("/posts");
+              navigate(PATH_ALL_POSTS);
             }
           }}
           role="button"

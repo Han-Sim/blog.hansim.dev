@@ -123,9 +123,6 @@ exports.createPages = ({ actions, graphql }) => {
     createPage({
       path: PATH_ALL_POSTS,
       component: templates.AllPosts,
-      context: {
-        category: MENU_ALL_POSTS,
-      },
     });
 
     // #endregion

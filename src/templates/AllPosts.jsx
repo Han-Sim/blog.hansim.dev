@@ -1,45 +1,25 @@
-import React, { useContext, useEffect, useMemo } from "react";
+import React, { useMemo } from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
-import { MENU_ALL_POSTS, PATH_ALL_POSTS } from "src/util/constants";
-import { Context } from "src/context";
+import { PATH_ALL_POSTS } from "src/util/constants";
 import SEO from "src/components/seo";
 import Layout from "src/components/Layout";
 import Posts from "src/components/posts";
 
-const AllPosts = ({ data, pageContext, path }) => {
-  const { category } = pageContext;
-  const { setActiveMenu } = useContext(Context);
-
-  useEffect(() => {
-    switch (path) {
-      case PATH_ALL_POSTS:
-        setActiveMenu(MENU_ALL_POSTS);
-        break;
-    }
-  }, [path, setActiveMenu]);
-
+const AllPosts = ({ data, path }) => {
   const seoTitle = useMemo(() => {
     switch (path) {
       case PATH_ALL_POSTS:
-        return "All posts";
+        return "Posts";
       default:
         return "";
     }
   }, [path]);
 
-  const posts = useMemo(() => {
-    const nodes = data.allMarkdownRemark.edges.map(({ node }) => node);
-
-    return category === MENU_ALL_POSTS
-      ? nodes
-      : nodes.filter(node => node.frontmatter.category === category);
-  }, [category, data]);
-
   return (
     <Layout>
       <SEO title={seoTitle} />
-      <Posts posts={posts} />
+      <Posts posts={data.allMarkdownRemark.edges.map(({ node }) => node)} />
     </Layout>
   );
 };
