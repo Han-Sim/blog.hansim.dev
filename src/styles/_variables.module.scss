@@ -51,7 +51,7 @@ $sans-serif-font: "Roboto", sans-serif;
 }
 
 @mixin link-blue {
-  @include link($color-blue, $color-eclipse);
+  @include link($color-blue, $color-peach);
 }
 
 // link style with no change.
