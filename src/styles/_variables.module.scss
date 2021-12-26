@@ -17,7 +17,7 @@ $color-peach: #eea47f;
 $color-eclipse: #d7c49e;
 $color-yellow: #ffd662;
 
-$color-dark-black: #292929; // Basic text color.
+$color-dark-black: #292929;
 $color-dark-gray: #565656; // Basic text color.
 $color-dark-gray-1: #8c8c8c;
 $color-light-gray: #bfbfbf;
@@ -27,15 +27,15 @@ $color-white: #fff;
 
 $sans-serif-font: "Roboto", sans-serif;
 
-@mixin link-blue {
+@mixin link($color, $color-hover) {
   position: relative;
-  color: $color-blue;
+  color: $color;
   overflow: hidden;
   background: linear-gradient(
     to right,
-    $color-eclipse,
-    $color-eclipse 50%,
-    $color-blue 50%
+    $color-hover,
+    $color-hover 50%,
+    $color 50%
   );
   background-clip: text;
   -webkit-background-clip: text;
@@ -44,9 +44,14 @@ $sans-serif-font: "Roboto", sans-serif;
   background-position: 100%;
   transition: background-position 275ms ease;
   text-decoration: none; // text decorations are clipped in WebKit browsers
+
   &:hover {
     background-position: 0 100%;
   }
+}
+
+@mixin link-blue {
+  @include link($color-blue, $color-eclipse);
 }
 
 // link style with no change.

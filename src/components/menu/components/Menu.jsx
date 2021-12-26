@@ -10,7 +10,9 @@ const Menu = () => {
 
   return (
     <div className={style.menuContainer}>
-      <div className={style.logo}>Blog.</div>
+      <div className={style.logo}>
+        <a href="/posts">Han Sim.</a>
+      </div>
       <IconButton
         onClick={() => {
           setIsMenuOpen(true);
