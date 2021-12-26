@@ -1,12 +1,6 @@
 import React, { useContext, useMemo } from "react";
 import { graphql, useStaticQuery } from "gatsby";
-import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import LabelIcon from "@material-ui/icons/Label";
 import { Context } from "src/context";
 import {
   convertArrayToObjectOfCountOccurrences,
@@ -84,22 +78,10 @@ const MenuDrawer = () => {
       }}
     >
       <div className={style.drawerContainer}>
-        <div className={style.drawerHeader}>TODO: gap</div>
-        <Divider />
-        <List disablePadding>
-          <ListItem key="tags">
-            <ListItemIcon
-              classes={{
-                root: style.menuIcon,
-              }}
-            >
-              <LabelIcon />
-            </ListItemIcon>
-            <ListItemText>Tags</ListItemText>
-          </ListItem>
-          <Divider />
+        <div className={style.list}>
+          <div className={style.listHeader}>Tags</div>
           <div className={style.tagsContainer}>{tagsToRender}</div>
-        </List>
+        </div>
       </div>
     </Drawer>
   );

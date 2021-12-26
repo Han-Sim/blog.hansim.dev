@@ -1,40 +1,29 @@
 @import "src/styles/index.scss";
 
-.drawerHeader {
-  cursor: pointer;
-}
-
 .drawerContainer {
   width: 600px;
   font-size: 20px;
+  color: $color-dark-gray;
+  padding-top: 60px;
 
   @media only screen and (max-width: 620px) {
     width: 100%;
   }
+}
 
-  .drawerHeader {
-    text-align: right;
-    padding: 2px;
-  }
+.list {
+  padding: 0 20px;
 
-  .subMenuContainer {
-    padding: 10px;
+  .listHeader {
+    padding-bottom: 10px;
+    border-bottom: 1px solid $color-light-gray;
+    font-weight: 600;
   }
 }
 
 .tagsContainer {
-  margin: 10px 15px;
+  margin: 15px 0;
   display: flex;
   flex-wrap: wrap;
   font-size: 1rem;
-}
-
-// Override MuiListItemIcon styles.
-.menuIcon {
-  min-width: 40px !important;
-}
-
-.listItem {
-  padding-top: 4px !important;
-  padding-bottom: 4px !important;
 }
