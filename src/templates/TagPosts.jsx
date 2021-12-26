@@ -26,7 +26,7 @@ const TagPosts = ({ data, pageContext }) => {
     return (
       <div className={style.postTitleContainer}>
         <div className={style.tag}>{tag}</div>found {edges.length} post
-        {edges.length === 1 ? "" : "s"}.
+        {edges.length === 1 ? "" : "s"}
       </div>
     );
   }, [edges.length, tag]);

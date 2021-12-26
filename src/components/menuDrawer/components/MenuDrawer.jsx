@@ -20,7 +20,6 @@ import style from "./menuDrawer.module.scss";
 const MenuDrawer = () => {
   const { isMenuOpen, setIsMenuOpen } = useContext(Context);
 
-  // TODO: move all of this logic to drawer.
   const data = useStaticQuery(graphql`
     query {
       allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
@@ -61,12 +60,14 @@ const MenuDrawer = () => {
       postCountByTag
     ).entries()) {
       arr.push(
-        <Tag
-          tag={tag}
-          key={tag}
-          count={count}
-          isLastTag={index === Object.entries(postCountByTag).length - 1}
-        />
+        <div style={{ marginBottom: "5px" }}>
+          <Tag
+            tag={tag}
+            key={tag}
+            count={count}
+            isLastTag={index === Object.entries(postCountByTag).length - 1}
+          />
+        </div>
       );
     }
 
