@@ -6,10 +6,7 @@ const {
   convertArrayToObjectOfCountOccurrences,
   slugify,
 } = require("./src/util/helpers");
-const {
-  MENU_ALL_POSTS,
-  PATH_ALL_POSTS,
-} = require("./src/util/constants");
+const { PATH_ALL_POSTS } = require("./src/util/constants");
 
 exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions;
