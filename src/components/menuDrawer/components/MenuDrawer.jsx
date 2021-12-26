@@ -58,6 +58,9 @@ const MenuDrawer = () => {
             key={tag}
             count={count}
             isLastTag={index === Object.entries(postCountByTag).length - 1}
+            onClick={() => {
+              setIsMenuOpen(false);
+            }}
           />
         </div>
       );
