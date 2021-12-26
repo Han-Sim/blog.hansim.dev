@@ -56,7 +56,7 @@ const Layout = ({ children }) => {
       </MetaTags>
       <MuiThemeProvider theme={theme}>
         <MenuDrawer />
-        <div ref={mainContainerRef} className={style.mainContainer}>
+        <div ref={mainContainerRef}>
           <Menu />
           <div className={style.bodyContainer}>{children}</div>
         </div>

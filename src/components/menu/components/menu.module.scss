@@ -11,6 +11,8 @@
   right: 0;
   background-color: #fff;
   padding: 0 24px;
+  box-shadow: 1px 2px 6px 0px $color-light-gray;
+  z-index: 1299;
 }
 
 .logo {
@@ -39,7 +41,7 @@
   -o-transition: 0.5s ease-in-out;
   transition: 0.5s ease-in-out;
   cursor: pointer;
-  z-index: 1400;
+  z-index: 1301;
 }
 
 .hamburgerMenuIcon span {
