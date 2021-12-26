@@ -50,16 +50,21 @@ const Layout = ({ children }) => {
   }, [mainContainerRef, footerRef, windowHeight]);
 
   return (
-    <MuiThemeProvider theme={theme}>
-      <div ref={mainContainerRef}>
-        <MetaTags>
-          <meta name="theme-color" content="#292929" />
-        </MetaTags>
-        <Menu ref={menuRef} />
-        <div className={style.bodyContainer}>{children}</div>
-      </div>
-      <Footer ref={footerRef} />
-    </MuiThemeProvider>
+    <>
+      <MetaTags>
+        <meta name="theme-color" content="#292929" />
+      </MetaTags>
+      <MuiThemeProvider theme={theme}>
+        <div ref={mainContainerRef} className={style.mainContainer}>
+          <div className={style.menuContainer}>
+            <div className={style.logo}>logo</div>
+            <Menu ref={menuRef} />
+          </div>
+          <div className={style.bodyContainer}>{children}</div>
+        </div>
+        <Footer ref={footerRef} />
+      </MuiThemeProvider>
+    </>
   );
 };
 
