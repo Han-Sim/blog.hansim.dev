@@ -2,12 +2,10 @@ import React, { useContext, useMemo } from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
-import IconButton from "@material-ui/core/IconButton";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import CloseIcon from "@material-ui/icons/Close";
 import LabelIcon from "@material-ui/icons/Label";
 import { Context } from "src/context";
 import {
@@ -86,18 +84,7 @@ const MenuDrawer = () => {
       }}
     >
       <div className={style.drawerContainer}>
-        <div
-          className={style.drawerHeader}
-          onClick={() => {
-            setIsMenuOpen(false);
-          }}
-          role="button"
-          tabIndex={0}
-        >
-          <IconButton>
-            <CloseIcon />
-          </IconButton>
-        </div>
+        <div className={style.drawerHeader}>TODO: gap</div>
         <Divider />
         <List disablePadding>
           <ListItem key="tags">

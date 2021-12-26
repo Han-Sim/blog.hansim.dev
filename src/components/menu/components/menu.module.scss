@@ -1,7 +1,7 @@
 @import "src/styles/index.scss";
 
 .menuContainer {
-  height: 80px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -10,15 +10,92 @@
   left: 0;
   right: 0;
   background-color: #fff;
-  padding: 0 10px;
+  padding: 0 24px;
 }
 
 .logo {
-  margin-left: 12px;
   font-weight: 800;
   font-size: 24px;
 
   a {
     @include link($color-dark-gray, $color-peach);
   }
+}
+
+/* hamburger icon */
+
+.hamburgerMenuIcon {
+  width: 40px;
+  height: 30px;
+  position: fixed;
+  top: 15px;
+  right: 40px;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+  cursor: pointer;
+  z-index: 1400;
+}
+
+.hamburgerMenuIcon span {
+  display: block;
+  position: absolute;
+  height: 6px;
+  width: 100%;
+  background: $color-peach;
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: 0.25s ease-in-out;
+  -moz-transition: 0.25s ease-in-out;
+  -o-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
+}
+
+.hamburgerMenuIcon span:nth-child(1) {
+  top: 0px;
+}
+
+.hamburgerMenuIcon span:nth-child(2),
+.hamburgerMenuIcon span:nth-child(3) {
+  top: 12px;
+}
+
+.hamburgerMenuIcon span:nth-child(4) {
+  top: 24px;
+}
+
+.hamburgerMenuIconOpen span:nth-child(1) {
+  top: 12px;
+  width: 0%;
+  left: 50%;
+}
+
+.hamburgerMenuIconOpen span:nth-child(2) {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.hamburgerMenuIconOpen span:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.hamburgerMenuIconOpen span:nth-child(4) {
+  top: 18px;
+  width: 0%;
+  left: 50%;
 }

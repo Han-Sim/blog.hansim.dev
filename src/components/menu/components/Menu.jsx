@@ -1,26 +1,37 @@
 import React, { useContext } from "react";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
+import classnames from "classnames";
 import { Context } from "src/context";
 import style from "./menu.module.scss";
 
 // TODO: hide it when scroll down if the screen height is small.
 const Menu = () => {
-  const { setIsMenuOpen } = useContext(Context);
+  const { isMenuOpen, setIsMenuOpen } = useContext(Context);
 
+  // TODO: update logo with actual icon.
   return (
-    <div className={style.menuContainer}>
-      <div className={style.logo}>
-        <a href="/posts">Han Sim.</a>
+    <>
+      <div className={style.menuContainer}>
+        <div className={style.logo}>
+          <a href="/posts">Han Sim.</a>
+        </div>
       </div>
-      <IconButton
+      {/* Fixed position in order to set z-index to float it on top of drawer menu */}
+      <div
+        className={
+          isMenuOpen
+            ? classnames(style.hamburgerMenuIcon, style.hamburgerMenuIconOpen)
+            : style.hamburgerMenuIcon
+        }
         onClick={() => {
-          setIsMenuOpen(true);
+          setIsMenuOpen(!isMenuOpen);
         }}
       >
-        <MenuIcon />
-      </IconButton>
-    </div>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </>
   );
 };
 
