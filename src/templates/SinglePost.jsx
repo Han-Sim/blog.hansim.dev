@@ -53,7 +53,7 @@ export const postQuery = graphql`
 `;
 // NOTE:
 // String! --> Exclamation Mark means it MUST receive this
-//  gatsby-node will pass 'slug' when it calls single-post.jsx
+// gatsby-node will pass 'slug' when it calls single-post.jsx
 
 SinglePost.propTypes = {
   data: PropTypes.shape({
