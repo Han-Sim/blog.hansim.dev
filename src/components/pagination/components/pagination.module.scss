@@ -5,35 +5,16 @@
   color: $color-dark-gray;
 }
 
-.nextContainer,
-.previousContainer {
-  display: flex;
-  align-items: center;
-}
-
 .previousContainer {
   margin-top: 15px;
 }
 
-.linkContainer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-}
-
 .nextPost,
 .previousPost {
-  font-weight: 600;
-  color: $color-light-gray;
-}
-
-.nextPost {
-  margin-right: 60px;
-}
-
-.previousPost {
+  width: 100px;
   margin-right: 30px;
+  margin-left: 2px;
+  color: $color-light-gray;
 }
 
 .postTitle {
@@ -41,20 +22,4 @@
   font-size: 30px;
 
   @include link-blue;
-}
-
-.nextNone,
-.previousNone {
-  color: $color-light-gray;
-  font-size: 30px;
-}
-
-.arrowIcon {
-  margin-left: 15px;
-  margin-right: 20px;
-  padding-top: 10px;
-
-  @media only screen and (max-width: 860px) {
-    display: none;
-  }
 }
