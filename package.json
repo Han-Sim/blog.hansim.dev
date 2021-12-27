@@ -31,7 +31,6 @@
     "react-helmet": "^5.2.1",
     "react-infinite-scroll-component": "^5.0.5",
     "react-markdown": "^4.3.1",
-    "react-meta-tags": "^1.0.1",
     "reactstrap": "^8.5.1"
   },
   "devDependencies": {

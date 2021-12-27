@@ -28,6 +28,7 @@ $color-white: #fff;
 $sans-serif-font: "Roboto", sans-serif;
 
 @mixin link($color, $color-hover) {
+  display: block; // NOTE: https://stackoverflow.com/questions/32084460/safari-doesnt-render-css-gradient-text
   cursor: pointer;
   position: relative;
   color: $color;

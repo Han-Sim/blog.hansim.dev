@@ -22,10 +22,6 @@ exports.onCreateNode = ({ node, actions }) => {
   }
 };
 
-// This application has five URL entries.
-// 1. Single post - bring the post contents using slug.
-// 2. Tag posts - bring the list of posts associated with the given tag.
-// 3, 4, 5. All posts - bring the entire list of posts - the list of posts by categories as well.
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions;
   const templates = {

@@ -22,22 +22,20 @@ const Pagination = ({ title, titlesOfAll }) => {
         {hasNextPost && (
           <>
             <div className={style.nextPost}>Next Post</div>
-            <div className={style.linkContainer}>
-              <div
-                className={style.postTitle}
-                onClick={() => {
+            <div
+              className={style.postTitle}
+              onClick={() => {
+                navigate(`/${slugify(titlesOfAll[index - 1])}`);
+              }}
+              onKeyDown={event => {
+                if (event.keyCode === KEY_ENTER) {
                   navigate(`/${slugify(titlesOfAll[index - 1])}`);
-                }}
-                onKeyDown={event => {
-                  if (event.keyCode === KEY_ENTER) {
-                    navigate(`/${slugify(titlesOfAll[index - 1])}`);
-                  }
-                }}
-                role="button"
-                tabIndex={0}
-              >
-                {titlesOfAll[index - 1]}
-              </div>
+                }
+              }}
+              role="button"
+              tabIndex={0}
+            >
+              {titlesOfAll[index - 1]}
             </div>
           </>
         )}
@@ -46,22 +44,20 @@ const Pagination = ({ title, titlesOfAll }) => {
         {hasPrevPost && (
           <>
             <div className={style.previousPost}>Previous Post</div>
-            <div className={style.linkContainer}>
-              <div
-                className={style.postTitle}
-                onClick={() => {
+            <div
+              className={style.postTitle}
+              onClick={() => {
+                navigate(`/${slugify(titlesOfAll[index + 1])}`);
+              }}
+              onKeyDown={event => {
+                if (event.keyCode === KEY_ENTER) {
                   navigate(`/${slugify(titlesOfAll[index + 1])}`);
-                }}
-                onKeyDown={event => {
-                  if (event.keyCode === KEY_ENTER) {
-                    navigate(`/${slugify(titlesOfAll[index + 1])}`);
-                  }
-                }}
-                role="button"
-                tabIndex={0}
-              >
-                {titlesOfAll[index + 1]}
-              </div>
+                }
+              }}
+              role="button"
+              tabIndex={0}
+            >
+              {titlesOfAll[index + 1]}
             </div>
           </>
         )}
