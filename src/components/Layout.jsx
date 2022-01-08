@@ -5,8 +5,9 @@ import { useWindowHeightWithDebounce } from "src/util/hooks";
 import Footer from "./footer";
 import Menu from "./menu";
 import MenuDrawer from "./menuDrawer";
+import GlobalStyle from "./styled/globalStyle";
+import theme from "./styled/theme";
 import { MainContainer } from "./layout.styled";
-import theme from "./theme";
 
 /**
  * The very fundamental layout component for the application.
@@ -43,6 +44,7 @@ const Layout = ({ children }) => {
         <MainContainer>{children}</MainContainer>
       </div>
       <Footer ref={footerRef} />
+      <GlobalStyle />
     </ThemeProvider>
   );
 };

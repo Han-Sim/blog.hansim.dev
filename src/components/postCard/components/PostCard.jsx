@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Tag from "src/components/tag";
+import { InternalLinkPostTitle } from "../../styled";
 import * as style from "./postCard.module.scss";
 
 const PostCard = ({ title, author, slug, date, body, tags }) => {
@@ -8,7 +9,9 @@ const PostCard = ({ title, author, slug, date, body, tags }) => {
     <div className={style.container}>
       <div className={style.header}>
         <div className={style.title}>
-          <a href={`/${slug}`}>{title}</a>
+          <InternalLinkPostTitle href={`/${slug}`}>
+            {title}
+          </InternalLinkPostTitle>
         </div>
       </div>
       <div className={style.body}>

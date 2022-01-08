@@ -1,9 +1,13 @@
 import React, { useMemo } from "react";
 import { navigate } from "gatsby";
 import PropTypes from "prop-types";
-import { KEY_ENTER } from "src/util/constants";
 import { slugify, findIndex } from "src/util/helpers";
-import * as style from "./pagination.module.scss";
+import { InternalLinkPostTitle } from "../../styled";
+import {
+  PaginationRootContainer,
+  PostTitleLabel,
+  PreviousPostContainer,
+} from "./pagination.styled";
 
 const Pagination = ({ title, titlesOfAll }) => {
   const index = useMemo(() => findIndex(titlesOfAll, title), [
@@ -17,52 +21,36 @@ const Pagination = ({ title, titlesOfAll }) => {
   const hasNextPost = useMemo(() => index > 0, [index]);
 
   return (
-    <div className={style.container}>
-      <div className={style.nextContainer}>
+    <PaginationRootContainer>
+      <div>
         {hasNextPost && (
           <>
-            <div className={style.nextPost}>Next Post</div>
-            <div
-              className={style.postTitle}
+            <PostTitleLabel>Next Post</PostTitleLabel>
+            <InternalLinkPostTitle
               onClick={() => {
                 navigate(`/${slugify(titlesOfAll[index - 1])}`);
               }}
-              onKeyDown={event => {
-                if (event.keyCode === KEY_ENTER) {
-                  navigate(`/${slugify(titlesOfAll[index - 1])}`);
-                }
-              }}
-              role="button"
-              tabIndex={0}
             >
               {titlesOfAll[index - 1]}
-            </div>
+            </InternalLinkPostTitle>
           </>
         )}
       </div>
-      <div className={style.previousContainer}>
+      <PreviousPostContainer>
         {hasPrevPost && (
           <>
-            <div className={style.previousPost}>Previous Post</div>
-            <div
-              className={style.postTitle}
+            <PostTitleLabel>Previous Post</PostTitleLabel>
+            <InternalLinkPostTitle
               onClick={() => {
                 navigate(`/${slugify(titlesOfAll[index + 1])}`);
               }}
-              onKeyDown={event => {
-                if (event.keyCode === KEY_ENTER) {
-                  navigate(`/${slugify(titlesOfAll[index + 1])}`);
-                }
-              }}
-              role="button"
-              tabIndex={0}
             >
               {titlesOfAll[index + 1]}
-            </div>
+            </InternalLinkPostTitle>
           </>
         )}
-      </div>
-    </div>
+      </PreviousPostContainer>
+    </PaginationRootContainer>
   );
 };
 
