@@ -3,7 +3,7 @@ import { navigate } from "gatsby";
 import classnames from "classnames";
 import { KEY_ENTER, PATH_ALL_POSTS } from "src/util/constants";
 import { Context } from "src/context";
-import style from "./menu.module.scss";
+import * as style from "./menu.module.scss";
 
 // TODO: hide it when scroll down if the screen height is small.
 const Menu = () => {

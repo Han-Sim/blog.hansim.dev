@@ -1,13 +1,13 @@
 import React, { useContext, useMemo } from "react";
 import { graphql, useStaticQuery } from "gatsby";
-import Drawer from "@material-ui/core/Drawer";
+import Drawer from "@mui/material/Drawer";
 import { Context } from "src/context";
 import {
   convertArrayToObjectOfCountOccurrences,
   sortObjectByValueInDescOrder,
 } from "src/util/helpers";
 import Tag from "../../tag";
-import style from "./menuDrawer.module.scss";
+import * as style from "./menuDrawer.module.scss";
 
 const MenuDrawer = () => {
   const { isMenuDrawerOpen, setIsMenuDrawerOpen } = useContext(Context);

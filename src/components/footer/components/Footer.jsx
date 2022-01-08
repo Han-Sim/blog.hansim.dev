@@ -1,9 +1,9 @@
 import React, { forwardRef, useCallback } from "react";
-import IconButton from "@material-ui/core/IconButton";
-import EmailIcon from "@material-ui/icons/Email";
-import LinkedInIcon from "@material-ui/icons/LinkedIn";
-import GitHubIcon from "@material-ui/icons/GitHub";
-import style from "./footer.module.scss";
+import IconButton from "@mui/material/IconButton";
+import EmailIcon from "@mui/icons-material/Email";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import * as style from "./footer.module.scss";
 
 const Footer = forwardRef((_p, ref) => {
   const handleEmailOnClick = useCallback(() => {

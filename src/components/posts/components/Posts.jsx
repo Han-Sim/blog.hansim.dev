@@ -2,7 +2,7 @@ import React, { useEffect, useState, useMemo, useRef } from "react";
 import PropTypes from "prop-types";
 import InfiniteScroll from "react-infinite-scroll-component";
 import PostCard from "src/components/postCard";
-import style from "./posts.module.scss";
+import * as style from "./posts.module.scss";
 
 const Posts = ({ posts, postsTitleToRender }) => {
   const postsRef = useRef([]);

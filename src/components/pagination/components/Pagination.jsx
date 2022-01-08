@@ -3,7 +3,7 @@ import { navigate } from "gatsby";
 import PropTypes from "prop-types";
 import { KEY_ENTER } from "src/util/constants";
 import { slugify, findIndex } from "src/util/helpers";
-import style from "./pagination.module.scss";
+import * as style from "./pagination.module.scss";
 
 const Pagination = ({ title, titlesOfAll }) => {
   const index = useMemo(() => findIndex(titlesOfAll, title), [
