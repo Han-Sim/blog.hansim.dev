@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Tag from "src/components/tag";
-import style from "./postCard.module.scss";
+import * as style from "./postCard.module.scss";
 
 const PostCard = ({ title, author, slug, date, body, tags }) => {
   return (

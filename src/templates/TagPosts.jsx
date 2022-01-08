@@ -4,7 +4,7 @@ import { graphql } from "gatsby";
 import Layout from "src/components/Layout";
 import Posts from "src/components/posts";
 import SEO from "src/components/seo";
-import style from "./tagPosts.module.scss";
+import * as style from "./tagPosts.module.scss";
 
 const TagPosts = ({ data, pageContext }) => {
   const { edges } = data.allMarkdownRemark;

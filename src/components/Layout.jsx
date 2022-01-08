@@ -4,7 +4,7 @@ import { useWindowHeightWithDebounce } from "src/util/hooks";
 import Footer from "./footer";
 import Menu from "./menu";
 import MenuDrawer from "./menuDrawer";
-import style from "./layout.module.scss";
+import * as style from "./layout.module.scss";
 
 /**
  * The very fundamental layout component for the application.

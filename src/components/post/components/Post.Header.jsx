@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import style from "./post.header.module.scss";
+import * as style from "./post.header.module.scss";
 
 const PostHeader = ({ author, date, title }) => {
   return (

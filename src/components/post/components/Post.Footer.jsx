@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import LabelIcon from "@material-ui/icons/Label";
+import LabelIcon from "@mui/icons-material/Label";
 import Tag from "src/components/tag";
 
-import style from "./post.footer.module.scss";
+import * as style from "./post.footer.module.scss";
 
 const GIT_HUB_URL =
   "https://github.com/Han-Sim/blog.hansim.dev/tree/master/src/pages/posts";

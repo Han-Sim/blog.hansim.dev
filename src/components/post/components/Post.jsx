@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Container from "@material-ui/core/Container";
+import Container from "@mui/material/Container";
 import Pagination from "src/components/pagination";
 import PostHeader from "./Post.Header";
 import PostFooter from "./Post.Footer";
 
-import style from "./post.module.scss";
+import * as style from "./post.module.scss";
 
 // Single post page
 const Post = ({
