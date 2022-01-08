@@ -1,10 +1,12 @@
 import React, { useRef, useEffect } from "react";
 import PropTypes from "prop-types";
+import { ThemeProvider } from "styled-components";
 import { useWindowHeightWithDebounce } from "src/util/hooks";
 import Footer from "./footer";
 import Menu from "./menu";
 import MenuDrawer from "./menuDrawer";
 import * as style from "./layout.module.scss";
+import theme from "./theme";
 
 /**
  * The very fundamental layout component for the application.
@@ -34,14 +36,14 @@ const Layout = ({ children }) => {
   }, [mainContainerRef, footerRef, windowHeight]);
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <MenuDrawer />
       <div ref={mainContainerRef}>
         <Menu />
         <div className={style.bodyContainer}>{children}</div>
       </div>
       <Footer ref={footerRef} />
-    </>
+    </ThemeProvider>
   );
 };
 
