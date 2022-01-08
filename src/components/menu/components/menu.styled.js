@@ -22,15 +22,7 @@ export const Logo = styled.div`
   cursor: pointer;
 
   // gradient color effect.
-  background: linear-gradient(
-    90deg,
-    #8184e8 0%,
-    #9ebae6 30%,
-    #c2bfe2 60%,
-    #eeaeca 80%,
-    #eeaeca 80%,
-    #ff86a0 100%
-  );
+  background: linear-gradient( 90deg, #8184e8 0%, #9ebae6 20%, #c2bfe2 50%, #eeaeca 60%, #eeaeca 80%, #ff86a0 100% );
   -webkit-background-clip: text;
   -moz-background-clip: text;
   -o-background-clip: text;
@@ -44,7 +36,7 @@ export const Logo = styled.div`
   // transition trick for linear-gradient with background-position
   // https://stackoverflow.com/questions/6542212/use-css3-transitions-with-gradient-backgrounds
   &:hover {
-    background-position: 180px;
+    background-position: 163px;
   }
 `
 

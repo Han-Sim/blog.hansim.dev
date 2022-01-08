@@ -3,7 +3,12 @@ import IconButton from "@mui/material/IconButton";
 import EmailIcon from "@mui/icons-material/Email";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import * as style from "./footer.module.scss";
+import {
+  FooterCopyRight,
+  FooterDivider,
+  FooterRootContainer,
+  FooterTitle,
+} from "./footer.styled";
 
 const Footer = forwardRef((_p, ref) => {
   const handleEmailOnClick = useCallback(() => {
@@ -19,15 +24,15 @@ const Footer = forwardRef((_p, ref) => {
   }, []);
 
   return (
-    <div className={style.container} ref={ref}>
-      <div className={style.titleContainer}>Blog by Han Sim</div>
-      <div className={style.copyRightContainer}>
-        <div>© 2020</div>
-        <div className={style.divider}></div>
-        <div>
+    <FooterRootContainer ref={ref}>
+      <FooterTitle>Blog by Han Sim</FooterTitle>
+      <FooterCopyRight>
+        <span>© 2022</span>
+        <FooterDivider />
+        <span>
           <a href="mailto:han.sim.dev@gmail.com">han.sim.dev@gmail.com</a>
-        </div>
-      </div>
+        </span>
+      </FooterCopyRight>
       <div>
         <IconButton onClick={handleEmailOnClick} fontSize="small">
           <EmailIcon />
@@ -39,7 +44,7 @@ const Footer = forwardRef((_p, ref) => {
           <GitHubIcon />
         </IconButton>
       </div>
-    </div>
+    </FooterRootContainer>
   );
 });
 
