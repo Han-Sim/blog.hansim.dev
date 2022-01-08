@@ -18,7 +18,7 @@ const Menu = () => {
             navigate(PATH_ALL_POSTS);
           }}
           onKeyDown={event => {
-            if (event.keyCode === KEY_ENTER) {
+            if (event.key === KEY_ENTER) {
               navigate(PATH_ALL_POSTS);
             }
           }}
