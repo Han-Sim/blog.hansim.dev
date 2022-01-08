@@ -6,8 +6,8 @@
 const React = require("react");
 const PropTypes = require("prop-types");
 const { ContextProvider } = require("./src/context");
+require("prismjs/themes/prism.css");
 require("./src/styles/index.scss");
-require("./src/styles/prism.css");
 
 const App = ({ element }) => {
   // Provide Context.
