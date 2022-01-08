@@ -1,26 +1,10 @@
 import React, { useRef, useEffect } from "react";
 import PropTypes from "prop-types";
-import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
-import MetaTags from "react-meta-tags";
 import { useWindowHeightWithDebounce } from "src/util/hooks";
 import Footer from "./footer";
 import Menu from "./menu";
 import MenuDrawer from "./menuDrawer";
 import style from "./layout.module.scss";
-
-const colorBlue = "#00539c";
-const colorSoybean = "#343148";
-
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: colorBlue,
-    },
-    secondary: {
-      main: colorSoybean,
-    },
-  },
-});
 
 /**
  * The very fundamental layout component for the application.
@@ -51,17 +35,12 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <MetaTags>
-        <meta name="theme-color" content="#292929" />
-      </MetaTags>
-      <MuiThemeProvider theme={theme}>
-        <MenuDrawer />
-        <div ref={mainContainerRef}>
-          <Menu />
-          <div className={style.bodyContainer}>{children}</div>
-        </div>
-        <Footer ref={footerRef} />
-      </MuiThemeProvider>
+      <MenuDrawer />
+      <div ref={mainContainerRef}>
+        <Menu />
+        <div className={style.bodyContainer}>{children}</div>
+      </div>
+      <Footer ref={footerRef} />
     </>
   );
 };

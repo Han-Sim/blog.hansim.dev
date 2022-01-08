@@ -16,11 +16,10 @@
 }
 
 .logo {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
+  display: block; // NOTE: https://stackoverflow.com/questions/32084460/safari-doesnt-render-css-gradient-text
   font-size: 24px;
   font-weight: 800;
+  cursor: pointer;
 
   // gradient color effect.
   background: linear-gradient(

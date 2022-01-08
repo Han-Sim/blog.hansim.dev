@@ -7,25 +7,6 @@ import style from "./tag.module.scss";
 
 const Tag = ({ count, tag, onClick, isLastTag }) => {
   const label = useMemo(() => {
-    if (!isLastTag) {
-      if (count) {
-        return (
-          <>
-            <div className={style.tag}>{tag}</div>
-            <div className={style.count}>({count})</div>
-            <div className={style.comma}>,</div>
-          </>
-        );
-      }
-
-      return (
-        <>
-          <div className={style.tag}>{tag}</div>
-          <div className={style.comma}>,</div>
-        </>
-      );
-    }
-
     if (count) {
       return (
         <>
@@ -36,7 +17,7 @@ const Tag = ({ count, tag, onClick, isLastTag }) => {
     }
 
     return <div className={style.tag}>{tag}</div>;
-  }, [count, tag, isLastTag]);
+  }, [count, tag]);
 
   const handleTagOnClick = () => {
     navigate(`/tag/${slugify(tag)}`);
@@ -51,16 +32,19 @@ const Tag = ({ count, tag, onClick, isLastTag }) => {
   };
 
   return (
-    <div
-      className={style.tagContainer}
-      key={tag}
-      onClick={handleTagOnClick}
-      onKeyDown={handleTagOnKeyDown}
-      role="button"
-      tabIndex={0}
-    >
-      {label}
-    </div>
+    <>
+      <div
+        className={style.tagContainer}
+        key={tag}
+        onClick={handleTagOnClick}
+        onKeyDown={handleTagOnKeyDown}
+        role="button"
+        tabIndex={0}
+      >
+        {label}
+        {!isLastTag && <>,</>}
+      </div>
+    </>
   );
 };
 

@@ -1,12 +1,15 @@
 @import "src/styles/index.scss";
 
 .tagContainer {
-  @include link-blue;
-
   margin-right: 5px;
-  cursor: pointer;
   display: flex;
   align-items: center;
+
+  // @include link-blue;
+
+  > * {
+    @include link-blue;
+  }
 }
 
 .count {

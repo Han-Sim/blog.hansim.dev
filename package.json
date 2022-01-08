@@ -1,8 +1,8 @@
 {
-  "name": "blog-hansim-dev",
+  "name": "blog.hansim.dev",
   "private": true,
-  "description": "personal dev blog",
-  "version": "0.1.0",
+  "description": "Personal Blog",
+  "version": "2021.12.0",
   "author": "Han Sim <han.sim.dev@gmail.com>",
   "dependencies": {
     "@material-ui/core": "^4.11.0",
@@ -31,7 +31,6 @@
     "react-helmet": "^5.2.1",
     "react-infinite-scroll-component": "^5.0.5",
     "react-markdown": "^4.3.1",
-    "react-meta-tags": "^1.0.1",
     "reactstrap": "^8.5.1"
   },
   "devDependencies": {
@@ -58,9 +57,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/Han-Sim/blog.hansim.dev"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/Han-Sim/blog.hansim.dev/issues"
   }
 }

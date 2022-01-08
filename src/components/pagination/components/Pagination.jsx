@@ -1,5 +1,7 @@
 import React, { useMemo } from "react";
+import { navigate } from "gatsby";
 import PropTypes from "prop-types";
+import { KEY_ENTER } from "src/util/constants";
 import { slugify, findIndex } from "src/util/helpers";
 import style from "./pagination.module.scss";
 
@@ -20,10 +22,20 @@ const Pagination = ({ title, titlesOfAll }) => {
         {hasNextPost && (
           <>
             <div className={style.nextPost}>Next Post</div>
-            <div className={style.linkContainer}>
-              <a href={`/${slugify(titlesOfAll[index - 1])}`}>
-                <div className={style.postTitle}>{titlesOfAll[index - 1]}</div>
-              </a>
+            <div
+              className={style.postTitle}
+              onClick={() => {
+                navigate(`/${slugify(titlesOfAll[index - 1])}`);
+              }}
+              onKeyDown={event => {
+                if (event.keyCode === KEY_ENTER) {
+                  navigate(`/${slugify(titlesOfAll[index - 1])}`);
+                }
+              }}
+              role="button"
+              tabIndex={0}
+            >
+              {titlesOfAll[index - 1]}
             </div>
           </>
         )}
@@ -32,10 +44,20 @@ const Pagination = ({ title, titlesOfAll }) => {
         {hasPrevPost && (
           <>
             <div className={style.previousPost}>Previous Post</div>
-            <div className={style.linkContainer}>
-              <a href={`/${slugify(titlesOfAll[index + 1])}`}>
-                <div className={style.postTitle}>{titlesOfAll[index + 1]}</div>
-              </a>
+            <div
+              className={style.postTitle}
+              onClick={() => {
+                navigate(`/${slugify(titlesOfAll[index + 1])}`);
+              }}
+              onKeyDown={event => {
+                if (event.keyCode === KEY_ENTER) {
+                  navigate(`/${slugify(titlesOfAll[index + 1])}`);
+                }
+              }}
+              role="button"
+              tabIndex={0}
+            >
+              {titlesOfAll[index + 1]}
             </div>
           </>
         )}
