@@ -4,8 +4,7 @@ import Container from "@mui/material/Container";
 import Pagination from "src/components/pagination";
 import PostHeader from "./Post.Header";
 import PostFooter from "./Post.Footer";
-
-import * as style from "./post.module.scss";
+import { PostRootContainer } from "./post.styled";
 
 // Single post page
 const Post = ({
@@ -18,9 +17,9 @@ const Post = ({
   title,
   titlesOfAll,
 }) => (
-  <div className={style.root}>
+  <PostRootContainer>
     <Container maxWidth="md">
-      <div className={style.container}>
+      <article>
         <PostHeader
           author={author}
           category={category}
@@ -30,9 +29,9 @@ const Post = ({
         <div>{children}</div>
         <PostFooter filename={filename} tags={tags} />
         <Pagination titlesOfAll={titlesOfAll} title={title} />
-      </div>
+      </article>
     </Container>
-  </div>
+  </PostRootContainer>
 );
 
 Post.propTypes = {

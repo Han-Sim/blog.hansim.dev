@@ -1,9 +1,8 @@
 import React, { useContext } from "react";
 import { navigate } from "gatsby";
-import classnames from "classnames";
 import { KEY_ENTER, PATH_ALL_POSTS } from "src/util/constants";
 import { Context } from "src/context";
-import * as style from "./menu.module.scss";
+import { HamburgerMenuIcon, Logo, MenuContainer } from "./menu.styled";
 
 // TODO: hide it when scroll down if the screen height is small.
 const Menu = () => {
@@ -11,9 +10,8 @@ const Menu = () => {
 
   return (
     <>
-      <div className={style.menuContainer}>
-        <div
-          className={style.logo}
+      <MenuContainer>
+        <Logo
           onClick={() => {
             navigate(PATH_ALL_POSTS);
           }}
@@ -25,16 +23,18 @@ const Menu = () => {
           role="button"
           tabIndex={0}
         >
-          HANSIM.DEV.
-        </div>
-      </div>
+          BLOG.HANSIM.DEV
+        </Logo>
+      </MenuContainer>
       {/* Fixed position in order to set z-index to float it on top of drawer menu */}
-      <div
-        className={
-          isMenuDrawerOpen
-            ? classnames(style.hamburgerMenuIcon, style.hamburgerMenuIconOpen)
-            : style.hamburgerMenuIcon
-        }
+      <HamburgerMenuIcon
+        id="hamburgerMenuIcon"
+        isMenuDrawerOpen={isMenuDrawerOpen}
+        // className={
+        //   isMenuDrawerOpen
+        //     ? classnames(style.hamburgerMenuIcon, style.hamburgerMenuIconOpen)
+        //     : style.hamburgerMenuIcon
+        // }
         onClick={() => {
           setIsMenuDrawerOpen(!isMenuDrawerOpen);
         }}
@@ -43,7 +43,7 @@ const Menu = () => {
         <span></span>
         <span></span>
         <span></span>
-      </div>
+      </HamburgerMenuIcon>
     </>
   );
 };

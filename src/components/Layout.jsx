@@ -1,26 +1,29 @@
 import React, { useRef, useEffect } from "react";
 import PropTypes from "prop-types";
+import { ThemeProvider } from "styled-components";
 import { useWindowHeightWithDebounce } from "src/util/hooks";
 import Footer from "./footer";
 import Menu from "./menu";
 import MenuDrawer from "./menuDrawer";
-import * as style from "./layout.module.scss";
+import GlobalStyle from "./styled/globalStyle";
+import theme from "./styled/theme";
+import { MainContainer } from "./layout.styled";
 
 /**
  * The very fundamental layout component for the application.
  */
 const Layout = ({ children }) => {
-  const mainContainerRef = useRef();
+  const divRef = useRef();
   const footerRef = useRef();
 
   const windowHeight = useWindowHeightWithDebounce(300); // get the window height.
 
   // Relocate the footer to the bottom of the window if there is no scrollbar.
   useEffect(() => {
-    if (footerRef.current && mainContainerRef.current) {
+    if (footerRef.current && divRef.current) {
       const hasScrollBar =
         windowHeight <
-        mainContainerRef.current.clientHeight + footerRef.current.clientHeight;
+        divRef.current.clientHeight + footerRef.current.clientHeight;
 
       if (!hasScrollBar) {
         footerRef.current.style.position = "fixed";
@@ -31,17 +34,18 @@ const Layout = ({ children }) => {
         footerRef.current.style.position = "relative";
       }
     }
-  }, [mainContainerRef, footerRef, windowHeight]);
+  }, [divRef, footerRef, windowHeight]);
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <MenuDrawer />
-      <div ref={mainContainerRef}>
+      <div ref={divRef}>
         <Menu />
-        <div className={style.bodyContainer}>{children}</div>
+        <MainContainer>{children}</MainContainer>
       </div>
       <Footer ref={footerRef} />
-    </>
+      <GlobalStyle />
+    </ThemeProvider>
   );
 };
 

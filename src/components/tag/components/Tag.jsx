@@ -1,22 +1,22 @@
 import React, { useMemo } from "react";
 import PropTypes from "prop-types";
 import { navigate } from "gatsby";
-import { KEY_ENTER } from "src/util/constants";
 import { slugify } from "src/util/helpers";
-import * as style from "./tag.module.scss";
+import { InternalLink } from "../../styled";
+import { TagCount, TagRootContainer } from "./tag.styled";
 
 const Tag = ({ count, tag, onClick, isLastTag }) => {
   const label = useMemo(() => {
     if (count) {
       return (
         <>
-          <div className={style.tag}>{tag}</div>
-          <div className={style.count}>({count})</div>
+          <span>{tag}</span>
+          <TagCount>({count})</TagCount>
         </>
       );
     }
 
-    return <div className={style.tag}>{tag}</div>;
+    return <span>{tag}</span>;
   }, [count, tag]);
 
   const handleTagOnClick = () => {
@@ -24,27 +24,22 @@ const Tag = ({ count, tag, onClick, isLastTag }) => {
     onClick && onClick();
   };
 
-  const handleTagOnKeyDown = event => {
-    if (event.keyCode === KEY_ENTER) {
-      navigate(`/tag/${slugify(tag)}`);
-      onClick && onClick();
-    }
-  };
-
   return (
-    <>
-      <div
-        className={style.tagContainer}
+    <TagRootContainer>
+      <InternalLink
+        style={{
+          display: "flex",
+          alignItems: "center",
+        }}
         key={tag}
         onClick={handleTagOnClick}
-        onKeyDown={handleTagOnKeyDown}
-        role="button"
-        tabIndex={0}
       >
         {label}
-        {!isLastTag && <>,</>}
-      </div>
-    </>
+      </InternalLink>
+      {!isLastTag && (
+        <span style={{ marginLeft: "2px", marginRight: "7px" }}>,</span>
+      )}
+    </TagRootContainer>
   );
 };
 
