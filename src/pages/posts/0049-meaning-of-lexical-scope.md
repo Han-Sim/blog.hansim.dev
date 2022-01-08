@@ -58,6 +58,6 @@ The reason why ES2015's Arrow Function fixes this issue is that Arrow Function a
 
 Before ES2015, _"ES5 also introduced the `bind()` method to set the value of a function's `this` regardless of how it's called"_. Now, we know this also means `bind()` makes `this` to follow lexical scope, not dynamic scope.
 
-# Useful Resources
+# References
 
-[ES6 in Depth: Arrow Functions](https://hacks.mozilla.org/2015/06/es6-in-depth-arrow-functions/)
+- [ES6 in Depth: Arrow Functions](https://hacks.mozilla.org/2015/06/es6-in-depth-arrow-functions/)
